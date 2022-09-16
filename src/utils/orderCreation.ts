@@ -32,7 +32,7 @@ export async function orderCreation(data, callback, env) {
     host = "http://localhost:7000";
   }
   const sign = await encrypt(body);
-  const response = await fetch(host + "/api/sgs/acquire2/placeOrder", {
+  const response = await fetch(host + "/sgs/api/acquire2/placeOrder", {
     headers: {
       "Content-Language": "en",
       sign,
