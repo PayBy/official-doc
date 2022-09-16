@@ -10,7 +10,7 @@ const config = {
   title: 'Integrate PayBy and Accept Payment',
   tagline: 'PayBy, a flexible and fast payment solution to manage all business transactions.',
   url: 'https://paypy.github.io',
-  baseUrl: '/official-doc/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
