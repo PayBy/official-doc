@@ -19,14 +19,13 @@ function createIframe(props) {
           if (typeof props.success === 'function') {
             props.success(data)
           } else {
-            if (data.merchantReturnUrl) {
-              window.location.href = data.merchantReturnUrl
+            if (data.redirectURI && /^http/.test(data.redirectURI)) {
+              window.location.href = data.redirectURI
+              return
             }
-            if (data.bankForm) {
-              document.open()
-              document.write(data.bankForm)
-              document.close()
-            }
+            document.open()
+            document.write(data.redirectURI)
+            document.close()
           }
           break
         case 'PAYMENT_FAILED':
@@ -36,6 +35,8 @@ function createIframe(props) {
           break
         case 'RESIZE_CONTAINER':
           container.style.height = data.height + 'px'
+          break
+        default:
           break
       }
     }
