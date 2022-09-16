@@ -8,7 +8,6 @@ import clsx from "clsx";
 import React from "react";
 import styles from "./index.module.css";
 
-
 ConfigProvider.config({
   theme: {
     primaryColor: "#00A75D",
@@ -22,10 +21,11 @@ function HomepageHeader() {
         <h1 className={clsx("hero__title hero--primary", styles.title)}>{siteConfig.title}</h1>
         <p className={clsx("hero__subtitle", styles.tagline)}>{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          
-          <Button ghost type="primary" size="large">
-            <Link to="/docs/createorder">API reference</Link>
-          </Button>
+          <ConfigProvider>
+            <Button ghost type="primary" size="large">
+              <Link to="/docs/createorder">API reference</Link>
+            </Button>
+          </ConfigProvider>
         </div>
       </div>
     </header>
