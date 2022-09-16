@@ -21,11 +21,9 @@ function HomepageHeader() {
         <h1 className={clsx("hero__title hero--primary", styles.title)}>{siteConfig.title}</h1>
         <p className={clsx("hero__subtitle", styles.tagline)}>{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <ConfigProvider>
-            <Button ghost type="primary" size="large">
-              <Link to="/docs/createorder">API reference</Link>
-            </Button>
-          </ConfigProvider>
+          <Button ghost type="primary" size="large" style={{ borderColor: "#00A75D", color: "#00A75D" }}>
+            <Link to="/docs/createorder">API reference</Link>
+          </Button>
         </div>
       </div>
     </header>
@@ -35,7 +33,7 @@ function HomepageHeader() {
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout title={`Hello from ${siteConfig.title}`} description="Description will go into a meta tag in <head />">
+    <Layout title={siteConfig.title} description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
