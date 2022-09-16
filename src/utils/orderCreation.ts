@@ -27,7 +27,7 @@ export async function orderCreation(data, callback, env) {
       ...resData,
     },
   };
-  let host = 'https://uat-api.test2pay.com';
+  let host = 'http://localhost:7000';
   if (env === "development") {
     host = "http://localhost:7000";
   }

@@ -92,7 +92,6 @@ textarea {
 }
 
 a {
-  color: var(--ant-primary-color);
   text-decoration: none;
   background-color: transparent;
   outline: none;
