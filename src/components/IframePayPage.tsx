@@ -2,7 +2,7 @@ import React from "react";
 // import { FormattedMessage } from 'react-intl'
 // import messages from './messages'
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { Button, Divider, Form, Input } from "antd";
+import { Button, ConfigProvider, Divider, Form, Input } from "antd";
 import FormItem from "antd/es/form/FormItem";
 import message from "antd/es/message";
 import validateAmount from "@site/src/utils/validateAmount";
@@ -44,7 +44,7 @@ function IframePayPage(props: { orderCreation?: any; siteConfig?: any }) {
   };
   const isBrowser = useIsBrowser();
   return (
-    <React.Fragment>
+    <ConfigProvider>
       <Form style={{ maxWidth: 400, margin: "0 auto" }} layout="vertical" onFinish={handleSubmit}>
         <FormItem
           name="amount"
@@ -72,7 +72,7 @@ function IframePayPage(props: { orderCreation?: any; siteConfig?: any }) {
         id="paypage-container"
         style={{ maxWidth: 375, margin: "0 auto", boxShadow: "0px -4px 30px rgba(0, 0, 0, 0.12)" }}
       ></div>
-    </React.Fragment>
+    </ConfigProvider>
   );
 }
 
