@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import { FormattedMessage } from 'react-intl'
 // import messages from './messages'
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -22,7 +22,7 @@ function IframePayPage(props: { orderCreation?: any; siteConfig?: any }) {
     siteConfig: { customFields },
   } = useDocusaurusContext();
   let env = customFields.env as string;
-
+  const [tokenUrl, setTokenUrl] = useState(null);
   const handleSubmit = async (e: { amount: string; redirectUrl: string }) => {
     const values: Partial<OrderCreationParams> = { amount: e.amount, paySceneParams: { redirectUrl: e.redirectUrl } };
     if (!validateAmount(values)) {
@@ -30,6 +30,7 @@ function IframePayPage(props: { orderCreation?: any; siteConfig?: any }) {
       orderCreation(
         values,
         (result) => {
+          result.interActionParams?.tokenUrl && setTokenUrl(result.interActionParams.tokenUrl);
           PayBy.createIframe({
             id: "paypage-container",
             tokenUrl: result.interActionParams.tokenUrl,
@@ -70,7 +71,12 @@ function IframePayPage(props: { orderCreation?: any; siteConfig?: any }) {
       <Divider />
       <div
         id="paypage-container"
-        style={{ maxWidth: 375, margin: "0 auto", boxShadow: "0px -4px 30px rgba(0, 0, 0, 0.12)" }}
+        style={{
+          maxWidth: 375,
+          margin: "0 auto",
+          height: tokenUrl ? 500 : 0,
+          boxShadow: "0px -4px 30px rgba(0, 0, 0, 0.12)",
+        }}
       ></div>
     </ConfigProvider>
   );
