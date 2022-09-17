@@ -9,7 +9,7 @@ const mdxMermaid =require('mdx-mermaid')
 const config = {
   title: 'Integrate PayBy and Accept Payment',
   tagline: 'PayBy, a flexible and fast payment solution to manage all business transactions.',
-  url: 'https://doctest.test2pay.com',
+  url: 'https://developers.payby.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
