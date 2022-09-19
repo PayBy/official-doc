@@ -4,19 +4,23 @@
 
 **<font color="#333333"> PayScene parameters</font>**
 
-- **eWalletCode** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
+- **eWalletCode** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}>Required</span>
 
-  Your app needs to be registered with PayBy. PayBy will assign an app id after successful registration. Please log in to the portal and visit [Setting - Developers - My Apps] to register your application.
+  Which e-wallet you want to invoke via the deeplink. 
 
-  Example value: 20211222000000241
+  Example value: 
 
-  Maximum length: `17`.
+  `payby`. PayBy app.
+
+  `botim-pay`. BOTIM app.
+
+  Maximum length: `20`
 
   <br/>
 
 - **redirectUrl** <span style={{color:" #7d8793"}}>String</span>
 
-  Link that the payer will be redirected once the payer finalizes payments on PayBy's checkout.
+  Link that the payer will be redirected once the payer finalizes payments on the e-wallet's checkout.
 
   Example value: https://www.yoursite.com
 
