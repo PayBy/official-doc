@@ -17,18 +17,20 @@ import DYNQR from "./_dynqr.md";
 import JSAPI from "./_jsapi.md";
 import QRPAY from "./_qrpay.md";
 import InAPP from "./_in-app.md";
+import CashTopUp from "./_cashtopup.md";
 import ResponseExample from './_response-example.md'
 import RequestHeader from '../../_request-header.mdx'
 import ResponseHead from '../../Refund/_response-head.mdx'
 export const PRODUCTS_ENUM = {
-  PAYPAGE: "Paypage",
-  IN_APP_SDK: "In-APP SDK",
-  E_WALLET: "E-wallet",
+  PAYPAGE: "PAYPAGE",
+  IN_APP_SDK: "INAPP",
+  E_WALLET: "EWLLET",
   DYNQR: "DYNQR",
   QRPAY: "QRPAY",
   JSAPI: "JSAPI",
   AUTODEBIT: "AUTODEBIT",
   DIRECTPAY: "DIRECTPAY",
+  CASHTOPUP:"CASHTOPUP"
 };
 
 export const PRODUCTS_MAP = {
@@ -40,6 +42,7 @@ export const PRODUCTS_MAP = {
 [PRODUCTS_ENUM.AUTODEBIT]: AutoDebit,
 [PRODUCTS_ENUM.DIRECTPAY]: DirectPay,
 [PRODUCTS_ENUM.IN_APP_SDK]: InAPP,
+[PRODUCTS_ENUM.CASHTOPUP]:CashTopUp
 };
 
 export function SwitchProduct() {
@@ -389,9 +392,11 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
     `INAPP`. A link that redirects the payer to the paypage or the chosen E-wallet.
 
-    `DYNQR`. A link that redirects the payer to the paypage.
+    `DYNQR`. A link contains details of the order, the merchant needs to convert it to a QR code and present to the payer.
 
     `JSAPI`. A link that redirects the payer to the checkout within the APP.
+    
+    `CASHTOPUP`. A link contains details of the order, the merchant needs to convert it to a QR code and present to the payer.
 
     <br />
 
