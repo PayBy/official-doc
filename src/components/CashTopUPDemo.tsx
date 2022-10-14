@@ -20,7 +20,7 @@ ConfigProvider.config({
   },
 })
 
-function CashTopUPDemo(props: { orderCreation?: any; siteConfig?: any }) {
+export function CashTopUpDemo(props: { orderCreation?: any; siteConfig?: any }) {
   const {
     siteConfig: { customFields },
   } = useDocusaurusContext()
@@ -135,4 +135,4 @@ function CashTopUPDemo(props: { orderCreation?: any; siteConfig?: any }) {
   )
 }
 
-export default CashTopUPDemo
+export default CashTopUpDemo
