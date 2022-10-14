@@ -4,4 +4,4 @@ export * from './HomepageFeatures';
 export * from './Paypage';
 export * from './DynqrPayment'
 export * from './IframePayPage'
-export * from './CashTopUPDemo'
+export * from './CashTopUpDemo'
