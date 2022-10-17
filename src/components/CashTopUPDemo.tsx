@@ -135,4 +135,3 @@ export function CashTopUpDemo(props: { orderCreation?: any; siteConfig?: any }) 
   )
 }
 
-export default CashTopUpDemo
