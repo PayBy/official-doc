@@ -185,7 +185,7 @@ The result of the request. The possible values are:
 
 **code**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
-Response Codes. View the [resconse codes](#response code) section to know all the possible results.
+Response Codes. View the [Response code](/docs/response-code) section to know all the possible results.
 
 Example value: 0
 
@@ -193,7 +193,7 @@ Example value: 0
 
 **msg**   <font color = ' #7d8793'>String</font>   
 
-Description of this code. View the [resconse codes](#response code) section to know all the possible results.
+Description of this code. View the [Response code](/docs/response-code) section to know all the possible results.
 
 <br/>
 
