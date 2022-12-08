@@ -16,7 +16,7 @@ All applications and accounts on this page are only used for testing in the test
 
 To test **scan to pay** or **display QR code to pay** and other scenarios, you need to download the app and use the account below.
 
-- Click to download [Android APK](https://appdownload.payby.com/VPOS/Payby_uat.apk)
+- Click to download [Android APK](https://appdownload.payby.com/VPOS/Payby_3.4.0_2022_11_10_13_36_uat.apk)
 
 - Scan to download Android APK
 
