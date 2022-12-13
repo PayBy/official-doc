@@ -24,13 +24,14 @@ import ResponseHead from '../../Refund/_response-head.mdx'
 export const PRODUCTS_ENUM = {
   PAYPAGE: "PAYPAGE",
   IN_APP_SDK: "INAPP",
-  E_WALLET: "EWLLET",
+  E_WALLET: "EWALLET",
   DYNQR: "DYNQR",
   QRPAY: "QRPAY",
   JSAPI: "JSAPI",
   AUTODEBIT: "AUTODEBIT",
   DIRECTPAY: "DIRECTPAY",
   CASHTOPUP:"CASHTOPUP"
+  PAYANDSIGN:"PAYANDSIGN"
 };
 
 export const PRODUCTS_MAP = {
@@ -43,6 +44,7 @@ export const PRODUCTS_MAP = {
 [PRODUCTS_ENUM.DIRECTPAY]: DirectPay,
 [PRODUCTS_ENUM.IN_APP_SDK]: InAPP,
 [PRODUCTS_ENUM.CASHTOPUP]:CashTopUp
+[PRODUCTS_ENUM.PAYANDSIGN]:PAYANDSIGN
 };
 
 export function SwitchProduct() {
@@ -395,8 +397,10 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
     `DYNQR`. A link contains details of the order, the merchant needs to convert it to a QR code and present to the payer.
 
     `JSAPI`. A link that redirects the payer to the checkout within the APP.
-    
+  
     `CASHTOPUP`. A link contains details of the order, the merchant needs to convert it to a QR code and present to the payer.
+
+    `PAYANDSIGN`. A link that redirects the payer to the checkout within the APP.
 
     <br />
 
@@ -415,7 +419,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
     If the merchant decides or PayBy's risk control system recognizes that the transaction requires 3DS verification, the 3DS verification link will be returned.
 
     <br />
-
+  
   > The `AUTODEBIT` and `QRPAY ` payment scene don't have `interactionParams`.
 
 <br />

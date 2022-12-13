@@ -135,9 +135,9 @@ import CardInfo from "./_card-info.mdx";
 
   <br />
 
-- **sharingParamList** <span style={{color:" #7d8793"}}>List</span> 
+- **sharingInfoList** <span style={{color:" #7d8793"}}>List</span> 
 
-  With every payment, you can split the funds between your merchant account and other PayBy member IDs. For example, a payment of 10 AED, if you share 1 AED to A and 2 AED to B, you will get 7 AED.
+  If the sharing information is passed in the request, PayBy will return the actual amount received by each sharing account.
 
   The attributes of each item in the list are:
 
@@ -151,7 +151,7 @@ import CardInfo from "./_card-info.mdx";
 
   - **sharingMid**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
-    If the **sharingIdentityType** and **sharingIdentity** passed in the request can correspond to a member id that already exists in the PayBy system, in the response PayBy will return the member id.
+    If the **sharingIdentityType** and **sharingIdentity** passed in the request can be corresponded to a member id that already exists in the PayBy system, in the response PayBy will return the member id.
 
     <br/>
 
@@ -166,6 +166,14 @@ import CardInfo from "./_card-info.mdx";
     The amount you plan to split to this id.
 
     <br/>
+    
+  - **sharingSettledAmount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
+
+    The amount this id actually received. If the order is not settled in real-time and a refund occurs before settlement, the requested amount will be different from the actual amount.
+
+    <br/>
+    
+    
 
 - **subject** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
 

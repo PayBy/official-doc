@@ -130,44 +130,6 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
   <br/>
 
-- **interactionParams**  
-
-	In different payment scenarios, PayBy may return different parameters, allowing the merchant system and PayBy continue to interact to complete the order.
-
-	- **tokenUrl**   <font color = ' #7d8793'>String</font> 
-
-		Appears only in the following payment scene. 
-
-		`PAYPAGE`. A link that redirects the payer to the paypage.
-
-		`INAPP`. A link that redirects the payer to the paypage or the chosen E-wallet.
-
-		`DYNQR`. A link that redirects the payer to the paypage.
-
-		`JSAPI`. A link that redirects the payer to the checkout within the APP.
-
-		<br/>
-
-	- **deepLink**   <font color = ' #7d8793'>String</font> 
-
-		Appears only in `EWALLET` payment scene. 
-
-		When the payer chooses to open another e-wallet for payment at the merchant's payment page, PayBy will return a link to redirect the payer to the e-wallet's checkout.
-
-		<br/>
-
-	- **threeDSecureDom**    <font color = ' #7d8793'>String</font> 
-
-		Appears only in `DIRECTPAY` payment scene. 
-
-		If the merchant decides or PayBy's risk control system recognizes that the transaction requires 3DS verification, the 3DS verification link will be returned.
-
-		<br/>
-
-	> The `AUTODEBIT`  and `QRPAY `payment scene don't have  `interactionParams`.
-
-<br/>
-
 #### Response sample
 
 ```json
