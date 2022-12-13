@@ -22,7 +22,7 @@ This product is suitable for recurring payment. After the customer agrees to the
 
 The merchant app collects all the parameters needed to sign the agreement and the merchant's server call the [Apply Protocal](/docs/applyprot) API.
 
-If the request is successful, PayBy will return the **tokenUrl**. The merchant's server needs to convert the URL into an QRcode image and display it to customers on its interface.<br/>
+If the request is successful, PayBy will return the **tokenUrl**. PayBy or BOTIM APP will parse this parameter and redirect the customer to the built-in checkout of the app.<br/>
 
 ![autodebitflow](../pic/autodebit.png)
 
