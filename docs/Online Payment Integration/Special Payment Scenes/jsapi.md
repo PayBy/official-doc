@@ -33,7 +33,7 @@ When the customer confirms to pay, call the [Create order](/docs/createorder) AP
 
 <br/>
 
-If the request is successful, PayBy will return the **tokenUrl**. The merchant's server needs to convert the URL into an QRcode image and display it to customers on its interface.
+If the request is successful, PayBy will return the **tokenUrl**. PayBy or BOTIM application will parse this parameter and redirect the customer to the built-in checkout of the app.
 
 <br/>
 
