@@ -242,6 +242,14 @@ The attributes are:
     The amount you plan to split to this id.
   
     <br/>
+    
+  - **withholdAndRemitFee**   <font color = ' #7d8793'>Boolean</font>    
+  
+    Whether this sharing account pay the PayBy transaction fee. If `true`, the final amount this sharing account received is : [**sharingAmount** - PayBy transaction fee].
+  
+    Note that if there are multiple sharing accounts in this order request, at most one can pass `true` in this parameter, otherwise the request will fail.
+    
+    <br/>
   
 - **notifyUrl** <span style={{color:" #7d8793"}}>String</span>
 
