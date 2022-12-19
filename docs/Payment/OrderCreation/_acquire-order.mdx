@@ -167,10 +167,24 @@ import CardInfo from "./_card-info.mdx";
 
     <br/>
     
+  - **sharingSettledFeeAmount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
+
+    If the **withholdAndRemitFee** is `ture`, which means that this sharing account should pay the PayBy transaction fee, the **sharingSettledFeeAmount** represents the transaction fee PayBy charged in this order.
+
+    <br/>
+    
   - **sharingSettledAmount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
 
-    The amount this id actually received. If the order is not settled in real-time and a refund occurs before settlement, the requested amount will be different from the actual amount.
+    The amount this id actually received. If the order is not settled in real-time and a refund occurs before settlement, or this id should pay the PayBy transaction fee, the requested amount will be different from the actual amout received.
 
+    <br/>
+    
+  - **withholdAndRemitFee**   <font color = ' #7d8793'>Boolean</font>  
+
+    The valus passed in the request.  This parameter means that hether this sharing account pay the PayBy transaction fee. If `true`, the final amount this sharing account will receive is : [**sharingAmount** - PayBy transaction fee].
+
+    Note that if there are multiple sharing accounts in this order request, at most one can pass `true` in this parameter, otherwise the request will fail.
+    
     <br/>
     
     
