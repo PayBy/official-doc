@@ -62,6 +62,10 @@
 
   You can use this parameter if you want to specify the refund amount of different sharing accounts in the request. Note that only if the `refundSharingAmount` is **true**, this parameter takes effect.
 
+  Note:
+
+  If the parameter **withholdAndRemitFee**  is used in the order creation request, when a refund is initiated, only the proportional refund can be made, and the refund amount of each sharing account cannot be specified.
+
   The attributes of each item in the list are:
 
   - **sharingIdentitySeqId**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
