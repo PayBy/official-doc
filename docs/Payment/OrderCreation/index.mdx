@@ -247,7 +247,11 @@ The attributes are:
   
     Whether this sharing account pay the PayBy transaction fee. If `true`, the final amount this sharing account received is : [**sharingAmount** - PayBy transaction fee].
   
-    Note that if there are multiple sharing accounts in this order request, at most one can pass `true` in this parameter, otherwise the request will fail.
+    Note :
+    
+    If there are multiple sharing accounts in this order request, at most one can pass `true` in this parameter, otherwise the request will fail.
+    
+    If this parameter is used, when a refund is initiated, only the proportional refund can be made, and the refund amount of each sharing account cannot be specified.
     
     <br/>
   
