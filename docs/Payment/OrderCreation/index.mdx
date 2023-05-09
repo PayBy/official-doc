@@ -220,7 +220,7 @@ The attributes are:
   
   - **sharingIdentity**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
   
-    After selecting the identity type, what value should be passed. The parameter needs to be encrypted when passed, and SHA-256 algorithm is recommended.
+    After selecting the identity type, what value should be passed. The parameter needs to be encrypted when passed, and RSA algorithm is recommended.
   
     For `PHONE_NO`, example value: +971-585812345
   
@@ -244,11 +244,11 @@ The attributes are:
     
   - **withholdAndRemitFee**   <font color = ' #7d8793'>Boolean</font>    
   
-    Whether this sharing account pay the PayBy transaction fee. If `True`, the final amount this sharing account received is : [**sharingAmount** - PayBy transaction fee].
+    Whether this sharing account pay the PayBy transaction fee. If `true`, the final amount this sharing account received is : [**sharingAmount** - PayBy transaction fee].
   
     Note :
     
-    If there are multiple sharing accounts in this order request, at most one can pass `True` in this parameter, otherwise the request will fail.
+    If there are multiple sharing accounts in this order request, at most one can pass `true` in this parameter, otherwise the request will fail.
     
     If this parameter is used, when a refund is initiated, only the proportional refund can be made, and the refund amount of each sharing account cannot be specified.
     
