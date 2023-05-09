@@ -62,12 +62,6 @@
 
   You can use this parameter if you want to specify the refund amount of different sharing accounts in the request. Note that only if the `refundSharingAmount` is **true**, this parameter takes effect.
 
-  Note:
-
-  If the parameter **withholdAndRemitFee**  is used in the order creation request, when a refund is initiated, only the proportional refund can be made, and the refund amount of each sharing account cannot be specified.
-
-  The attributes of each item in the list are:
-
   - **sharingIdentitySeqId**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
 
     You can pass multiple account ids to refund from different sharing accounts, in order to distinguish them, the serial number is needed. Please start with 1, then 2, 3, 4, etc.
@@ -85,34 +79,41 @@
     `PHONE_NO`. Transfer through mobile phone number.
 
     `MEMBER_ID`. Transfer through PayBy member id.
-
-
+    
     Maximum length: `20`
-
+    
     <br/>
-
+    
   - **sharingIdentity**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
-
-    After selecting the identity type, what value should be passed. The parameter needs to be encrypted when passed, and SHA-256 algorithm is recommended.
-
+  
+    After selecting the identity type, what value should be passed. The parameter needs to be encrypted when passed, and RSA algorithm is recommended.
+  
     For `PHONE_NO`, example value: +971-585812345
-
+  
     For `MEMBER_ID`, example value: 100006514321
-
+  
     Maximum length: `20`
-
+    
     <br/>
-
+    
   - **sharingMemo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
-
+  
     Add some description to this operation.
-
+  
     <br/>
-
+  
   - **sharingAmount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
-
+  
     The amount you plan to refund from this id.
-
+  
+    <br/>
+  
+  - **withholdAndRemitFee**   <font color = ' #7d8793'>Boolean</font>    
+  
+    If in the original payment order, **withholdAndRemitFee** is `True` for this sharing account, then in the refund order, **withholdAndRemitFee** should also be `True` for this sharing account. The actual amount deducted from this sharing account is [**sharingAmount** -PayBy Transaction Fee refunded]. The transaction fee will be refunded in proportion to the amount of the refunded order/original payment order.
+  
+    Same rule for the case **withholdAndRemitFee** is `False`.
+  
     <br/>
 
 - **notifyUrl** <font color = ' #7d8793'>String</font>
