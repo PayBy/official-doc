@@ -52,7 +52,7 @@ The format of the transaction statement is as follows:
 #### Example
 
 ```
-mid:200000054800periodNo:20210113|startTime:2021-01-12 00:00|endTime:2021-01-13 01:00|totalCount:14
+mid:200000054800|periodNo:20210113|startTime:2021-01-12 00:00|endTime:2021-01-13 01:00|totalCount:14
 paidTime|transactionType|totalAmount|orderCurrency|productName|paySceneCode|merchantOrderNo|orderNo|status|paymentMethodType|subject|payeeMid|terminalId|operatorId|storeId|merchantName|storeName|originMerchantOrderNo|reserved
 2021-01-12T17:46:36+0400|PAYMENT|60.00|AED|Smart Purchase|QRPAY|210112214643201985620006|131610459203006982|SUCCESS|BALANCE|LLH & Medeor Hospital Administration Office|200000054800|533|ADMIN|268|upload key test merchant1|LLH & Medeor Hospital Administration Office||
 ```
@@ -110,7 +110,7 @@ The format of the settlement statement is as follows:
 #### Example
 
 ```
-settlePeriodNo:20210113|startTime:2021-01-12 00:00|endTime:2021-01-13 01:00|openingAmount:AED 1.00|totalCount:33|totalCredit:AED 472.70|totalDebit:AED 333.21|totalComm:AED 14.92|totalVAT:AED 0.75|settleToBank:AED 139.49 success|stayAmount:AED 1.00
+mid:200000054800|settlePeriodNo:20210113|startTime:2021-01-12 00:00|endTime:2021-01-13 01:00|openingAmount:AED 1.00|totalCount:33|totalCredit:AED 472.70|totalDebit:AED 333.21|totalComm:AED 14.92|totalVAT:AED 0.75|settleToBank:AED 139.49 success|stayAmount:AED 1.00
 settledTIme|transactionType|direction|settlementAmount|orderCurrency|productName|paySceneCode|merchantOrderNo|orderNo|paidTime|status|comm|commCurrency|VAT|VATCurrency|paymentMethodType|subject|payeeMid|terminalId|operatorId|storeId|merchantName|storeName|originMerchantOrderNo|reserved
 2021-01-13T00:18:39+0400|ADJUST|OUT|100.00|AED|||adjustfd059cd19066414d979013fc3a6d2467|804c2f6f-5b9f-41ae-aeaf-380ce624b269|2021-01-13T00:18:39+0400||0.00|AED|0.00|AED|BALANCE|||||||||
 ```
@@ -121,6 +121,7 @@ settledTIme|transactionType|direction|settlementAmount|orderCurrency|productName
 
 | Variable Desc.         | Desc.                 |
 | -------------- | -------------------- |
+| mid | Member Id |
 | settlePeriodNo | Settle period No.           |
 | startTime      | Start time             |
 | endTime        | End time             |
