@@ -52,7 +52,7 @@ The format of the transaction statement is as follows:
 #### Example
 
 ```
-periodNo:20210113|startTime:2021-01-12 00:00|endTime:2021-01-13 01:00|totalCount:14
+mid:200000054800periodNo:20210113|startTime:2021-01-12 00:00|endTime:2021-01-13 01:00|totalCount:14
 paidTime|transactionType|totalAmount|orderCurrency|productName|paySceneCode|merchantOrderNo|orderNo|status|paymentMethodType|subject|payeeMid|terminalId|operatorId|storeId|merchantName|storeName|originMerchantOrderNo|reserved
 2021-01-12T17:46:36+0400|PAYMENT|60.00|AED|Smart Purchase|QRPAY|210112214643201985620006|131610459203006982|SUCCESS|BALANCE|LLH & Medeor Hospital Administration Office|200000054800|533|ADMIN|268|upload key test merchant1|LLH & Medeor Hospital Administration Office||
 ```
@@ -63,7 +63,8 @@ paidTime|transactionType|totalAmount|orderCurrency|productName|paySceneCode|merc
 
 | Variable Desc.     | Desc.     |
 | ---------- | -------- |
-| periodNo   | Period No.   |
+| mid | Member Id |
+| periodNo   | Period No   |
 | startTime  | Start time |
 | endTime    | End time |
 | totalCount | Total count |
@@ -75,7 +76,7 @@ paidTime|transactionType|totalAmount|orderCurrency|productName|paySceneCode|merc
 | Variable Desc.                | Desc.                                |
 | --------------------- | ----------------------------------- |
 | paidTime              | Payment success time(DD-MM-YYYY HH24:MI:SS) |
-| transactionType       | Transaction type<br/>Enum value:<br/>PAYMENT<br/>REFUND<br/>VOID<br/>DEPOSIT<br/>TRANSFER<br/>EATM                            |
+| transactionType       | Transaction type<br/>Enum value:<br/>PAYMENT<br/>REFUND<br/>VOID<br/>DEPOSIT<br/>TRANSFER<br/>EATM<br />ADJUST<br />KIOSK<br />WITHDRAWAL<br />REFUND_SPLIT<br />PAYMENT_SPLIT<br />CHARGE |
 | totalAmount           | Order amount                            |
 | orderCurrency         | Order currency                            |
 | productName           | Product name                            |
@@ -139,7 +140,7 @@ settledTIme|transactionType|direction|settlementAmount|orderCurrency|productName
 | Variable Desc.                | Desc.                                |
 | --------------------- | ----------------------------------- |
 | settledTIme           | Settled time(DD-MM-YYYY HH24:MI:SS)     |
-| transactionType       | Transaction type<br/>Enum value:PAYMENT<br/>REFUND<br/>VOID<br/>DEPOSIT<br/>TRANSFER<br/>EATM                            |
+| transactionType       | Transaction type<br/>Enum value:PAYMENT<br/>PAYMENT<br/>REFUND<br/>VOID<br/>DEPOSIT<br/>TRANSFER<br/>EATM<br />ADJUST<br />KIOSK<br />WITHDRAWAL<br />REFUND_SPLIT<br />PAYMENT_SPLIT<br />CHARGE |
 | direction             | Direction<br/>Enum value:<br/>CREDIT<br/>DEBIT                            |
 | settlementAmount      | Settlement amount                            |
 | orderCurrency         | Order currency                            |
@@ -148,7 +149,7 @@ settledTIme|transactionType|direction|settlementAmount|orderCurrency|productName
 | merchantOrderNo       | Merchant order No.                          |
 | orderNo               | PayBy order No.                         |
 | paidTime              | Paid time(DD-MM-YYYY HH24:MI:SS) |
-| status                | Status<br/>Enumvalue:<br/>SUCCESS<br/>REVERTED
+| status                | Status<br/>Enumvalue:<br/>SUCCESS<br/>REVERTED|
 | comm                  | PayBy Pre-tax commission                    |
 | commCurrency          | PayBy Pre-tax commission currency                 |
 | VAT                   | PayBy Value-added tax                         |
