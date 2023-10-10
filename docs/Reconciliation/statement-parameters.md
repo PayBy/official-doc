@@ -76,7 +76,7 @@ paidTime|transactionType|totalAmount|orderCurrency|productName|paySceneCode|merc
 | Variable Desc.                | Desc.                                |
 | --------------------- | ----------------------------------- |
 | paidTime              | Payment success time(DD-MM-YYYY HH24:MI:SS) |
-| transactionType       | Transaction type<br/>Enum value:<br/>PAYMENT<br/>REFUND<br/>VOID<br/>DEPOSIT<br/>TRANSFER<br/>EATM<br />ADJUST<br />KIOSK<br />WITHDRAWAL<br />REFUND_SPLIT<br />PAYMENT_SPLIT<br />CHARGE |
+| transactionType       | Transaction type<br/>Enum value:<br/>PAYMENT<br/>REFUND<br/>VOID<br/>DEPOSIT<br/>TRANSFER<br/>EATM<br />ADJUST<br />KIOSK<br />WITHDRAWAL<br />REFUND_SPLIT<br />PAYMENT_SPLIT<br />CHARGE <br/>CHARGEBACK |
 | totalAmount           | Order amount                            |
 | orderCurrency         | Order currency                            |
 | productName           | Product name                            |
@@ -141,7 +141,7 @@ settledTIme|transactionType|direction|settlementAmount|orderCurrency|productName
 | Variable Desc.                | Desc.                                |
 | --------------------- | ----------------------------------- |
 | settledTIme           | Settled time(DD-MM-YYYY HH24:MI:SS)     |
-| transactionType       | Transaction type<br/>Enum value:PAYMENT<br/>PAYMENT<br/>REFUND<br/>VOID<br/>DEPOSIT<br/>TRANSFER<br/>EATM<br />ADJUST<br />KIOSK<br />WITHDRAWAL<br />REFUND_SPLIT<br />PAYMENT_SPLIT<br />CHARGE |
+| transactionType       | Transaction type<br/>Enum value:PAYMENT<br/>PAYMENT<br/>REFUND<br/>VOID<br/>DEPOSIT<br/>TRANSFER<br/>EATM<br />ADJUST<br />KIOSK<br />WITHDRAWAL<br />REFUND_SPLIT<br />PAYMENT_SPLIT<br />CHARGE<br/>CHARGEBACK |
 | direction             | Direction<br/>Enum value:<br/>CREDIT<br/>DEBIT                            |
 | settlementAmount      | Settlement amount                            |
 | orderCurrency         | Order currency                            |
