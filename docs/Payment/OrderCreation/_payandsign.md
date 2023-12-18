@@ -19,4 +19,10 @@ The payer completes the signing of the automatic deduction agreement while makin
   To receive asynchronous notifications of payer's signing result of the autodebit deduction agreement, pass the notify URL. If the agreement is successfully signed, a notification will be sent to this address.
 
   Example value: [https://www.yoursite.com](https://www.yoursite.com/)
+  <br/>
 
+- **customerId** <span style={{color:" #7d8793"}}>String</span>
+
+  The payer's id in the merchant's system.Used to identify the payer's contracted entity within PAYBY.
+  
+  Example value: user1233
