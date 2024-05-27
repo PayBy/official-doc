@@ -14,7 +14,11 @@
 
   `botim-pay`. BOTIM app.
 
+  `ALIPAYPLUS`. Alipay plus Wallet.
+
   Maximum length: `20`
+  
+  paySceneCode=EWALLET, eWalletCode=ALIPAYPLUS
 
   <br/>
 
