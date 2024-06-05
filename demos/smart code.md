@@ -4,7 +4,7 @@ sidebar_position: 10
 
 # Smart code
 
-Set the amount to generate a QR code. You can download from PayBy protal and print it and place the materiel in your store where customers can see it. The customer can scan the code by any scanner APP or PayBy to complete the payment.
+Set the amount to generate a QR code. You can download from PayBy portal and print it and place the materiel in your store where customers can see it. The customer can scan the code by any scanner APP or PayBy to complete the payment.
 
 <br/>
 

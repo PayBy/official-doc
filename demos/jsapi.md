@@ -16,6 +16,6 @@ Sample:
 
 <br/>
 
-**Step 2**: You will be redirected to built-in checkout. Enter the password and complete the payment. If your customer opens your wibsite in BOTIM app and pay, it's the same payment process.
+**Step 2**: You will be redirected to built-in checkout. Enter the password and complete the payment. If your customer opens your website in BOTIM app and pay, it's the same payment process.
 
 <br/>

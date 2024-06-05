@@ -29,7 +29,7 @@ If your customers have many installed PayBy or BOTIM app, integrating this payme
 
 #### Create order
 
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `DYNQR` in the **paySceneCode** parameter.
+When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `DYNQR` in the **paySceneCode** parameter.
 
 <br/>
 

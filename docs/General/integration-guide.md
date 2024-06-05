@@ -67,7 +67,7 @@ When the merchant calls the API, PayBy only allows requests from the whitelist t
 
 The preferred signature algorithm is SHA256withRSA, an efficient asymmetric encryption method. This algorithm first calculates a unique hash of the input data using SHA256 algorithm. The hash is then encrypted with a private key using the RSA algorithm.
 
-Merchants would need to generate a pair of private key and public key from OPENSSL. Once the key pair is generated, the merchant's public key needs be shared with PayBy so that the sent messages can be validated by PayBy. So should they obtain PayBy's public key for furture use cases.
+Merchants would need to generate a pair of private key and public key from OPENSSL. Once the key pair is generated, the merchant's public key needs be shared with PayBy so that the sent messages can be validated by PayBy. So should they obtain PayBy's public key for future use cases.
 
 When the merchant is ready to send the API request, they should sign the request message with the merchant's private key.
 
@@ -153,7 +153,7 @@ Maximum length: `12`
 
 ---
 
-When PayBy sends response to you, the respons content includes **Http Header** and **Http Body**. In most responses, the **Http Header** should be the same, as follows
+When PayBy sends response to you, the response content includes **Http Header** and **Http Body**. In most responses, the **Http Header** should be the same, as follows
 
 <br/>
 
@@ -169,7 +169,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
 ---
 
-When PayBy sends response to you, the respons content includes **Http Header** and **Http Body**. The **Http Body** consists **head** and **body**. In most responses, the **Body** should be the same, as follows:
+When PayBy sends response to you, the response content includes **Http Header** and **Http Body**. The **Http Body** consists **head** and **body**. In most responses, the **Body** should be the same, as follows:
 
 <br/>
 
@@ -223,5 +223,5 @@ Choose your integration to match your business needs in the menu:
 If you have successfully verified in the test environment and prepare to launch in live environment, follow the steps as you have done in the test environment.
 
 - Apply for production environment account: https://b.payby.com/
-- Enable production environment products: Contact our sales to decide the procucts and rates bd@payby.com
+- Enable production environment products: Contact our sales to decide the products and rates bd@payby.com
 - Configure production environment key: https://b.payby.com/management/api-key

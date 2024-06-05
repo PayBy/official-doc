@@ -13,7 +13,7 @@ For online merchants, this product offers users who don't have bank accounts the
 
 1.  The customer confirms to add money to his or her online account, the merchant will generate an QR code for the payer's order. Along with the order, Payby will also send a how-to guide to the user's phone.
 2.  The customer follows the guide, find a nearest store that running this business.
-3.  The payer gives cash (same amount with the order amount) to cashier of the store, the cashier cheks the cash then use PayBy POS to scan the QR code. In this process, the store's e-waller balance will be used to pay the payer's order.
+3.  The payer gives cash (same amount with the order amount) to cashier of the store, the cashier checks the cash then use PayBy POS to scan the QR code. In this process, the store's e-waller balance will be used to pay the payer's order.
 4.  The payer will receive notification that the payment has been made, and the balance of the online account added.
 
 <br/>
@@ -24,7 +24,7 @@ For online merchants, this product offers users who don't have bank accounts the
 
 ### Cashier experience
 
-1. The cashier cheks that the cash amount is correct and then use PayBy POS to scan the QR code presented by the payer. In the process, password is required.
+1. The cashier checks that the cash amount is correct and then use PayBy POS to scan the QR code presented by the payer. In the process, password is required.
 2. After scanning, the PayBy backend system will deduct balance from the store and change the online order status to success.
 3. Note that the cashier should make sure the store's PayBy account has enough balance otherwise the payment can't be completed.
 
@@ -38,7 +38,7 @@ For online merchants, this product offers users who don't have bank accounts the
 
 #### Create order
 
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `CASHTOPUP` in the **paySceneCode** parameter.
+When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `CASHTOPUP` in the **paySceneCode** parameter.
 
 <br/>
 

@@ -33,7 +33,7 @@ Some interfaces are not suitable for customers to enter card information, such a
 
 #### Create order
 
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `DYNQR` in the **paySceneCode** parameter.<br/>
+When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `DYNQR` in the **paySceneCode** parameter.<br/>
 
 If the request is successful, PayBy will return the **tokenUrl**. The merchant's server needs to convert the URL into an QRcode image and display it to customers on its interface.<br/>
 

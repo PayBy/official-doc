@@ -10,7 +10,7 @@ import CardInfo from "./_card-info.mdx";
 
 - **merchantOrderNo** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
 
-  The merchant's referece number of the request. Used to track every request.
+  The merchant's reference number of the request. Used to track every request.
 
   Example value: M965739182419
 
@@ -106,7 +106,7 @@ import CardInfo from "./_card-info.mdx";
 
 - **totalAmount** <span style={{color:" #7d8793"}}>Money</span> <span style={{color:"#f19938"}}>Required</span>
 
-  The order amout intended to collect from the payer.
+  The order amount intended to collect from the payer.
 
 
 <br />
@@ -181,7 +181,7 @@ import CardInfo from "./_card-info.mdx";
     
   - **withholdAndRemitFee**   <font color = ' #7d8793'>Boolean</font>  
 
-    The valus passed in the request.  This parameter means that hether this sharing account pay the PayBy transaction fee. If `true`, the final amount this sharing account will receive is : [**sharingAmount** - PayBy transaction fee].
+    The values passed in the request.  This parameter means that whether this sharing account pay the PayBy transaction fee. If `true`, the final amount this sharing account will receive is : [**sharingAmount** - PayBy transaction fee].
 
     Note that if there are multiple sharing accounts in this order request, at most one can pass `true` in this parameter, otherwise the request will fail.
     

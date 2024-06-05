@@ -10,7 +10,7 @@ Notes:
 
 - Use iValidate ONLY when your product is ready to go live.
 - To simulate real payment scenarios, all test cases must be started by using PAYMENT TERMINALS, rather than by manually calling APIs.
-- After your product goes live, PayBy will analyze your transaction status and identify the hidden integration problems or problems casued by code changes.
+- After your product goes live, PayBy will analyze your transaction status and identify the hidden integration problems or problems caused by code changes.
 
 <br/>
 
@@ -120,7 +120,7 @@ Notes:
     <summary>Case-008 Query fails after multiple attempts</summary>
     <div>
       <p>When a query fails, the merchant must keep calling QUERY until at least more than 3 FAILs are returned, or
-        until reque requests keep failing for more than 10 seconds. If cancel still fails, the responsible person must
+        until requests keep failing for more than 10 seconds. If cancel still fails, the responsible person must
         be notified of the problem. In production environment, technical support must be contacted to confirm the
         transaction status and handle the problem.</p>
       <p>Acceptance rules: </p>

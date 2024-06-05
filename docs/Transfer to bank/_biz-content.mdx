@@ -1,6 +1,6 @@
 - **merchantOrderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
-  The merchant's referece number of the request. Used to track every request.
+  The merchant's reference number of the request. Used to track every request.
 
   Example value: M965739182419
 
@@ -10,7 +10,7 @@
 
 - **holderName**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
-  The hloder name of the beneficiary account. The parameter needs to be encrypted when passed, and SHA-256 algorithm is recommended.
+  The holder name of the beneficiary account. The parameter needs to be encrypted when passed, and SHA-256 algorithm is recommended.
 
   Maximum length: `100`
   
@@ -34,12 +34,12 @@
 
 - **beneficiaryAddress**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
-  1. If the benificiary account is a personal account, the beneficiary address must be passed, and the sum of the characters of the two values of holderName and beneficiaryAddress cannot exceed 140, otherwise the transfer may fail.
+  1. If the beneficiary account is a personal account, the beneficiary address must be passed, and the sum of the characters of the two values of holderName and beneficiaryAddress cannot exceed 140, otherwise the transfer may fail.
 
   2. Only the following characters are allowed to pass, if the parameter contains other characters, the response will be error: a - z A - Z 0 - 9 / . -
   3. The parameter needs to be encrypted when passed, and SHA-256 algorithm is recommended.
 
-  Example value: Liwa Street off Khaliffa Stree
+  Example value: Liwa Street off Khalifa Street
 
   Maximum length: `140`
   

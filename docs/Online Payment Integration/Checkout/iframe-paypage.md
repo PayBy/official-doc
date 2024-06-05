@@ -35,7 +35,7 @@ Unlike the hosted paypage, using iFrame payapge will not go out of your website 
 
 #### Get tokenUrl
 
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `PAYPAGE` in the **paySceneCode** parameter.<br/>If the request is successful, PayBy will return a token url that can be rendered in the container on your checkout page.
+When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `PAYPAGE` in the **paySceneCode** parameter.<br/>If the request is successful, PayBy will return a token url that can be rendered in the container on your checkout page.
 
 ![iFrameflow](../pic/iframe.png)
 
@@ -84,7 +84,7 @@ Example value:
 
 **tokenUrl**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
-Link of the paypage, whichcan be rendered in the container on your checkout page.
+Link of the paypage, which can be rendered in the container on your checkout page.
 
 <br/>
 
