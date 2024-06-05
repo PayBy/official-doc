@@ -8,6 +8,6 @@
 
   Inform PayBy about the specific scenarios in which the product being used.
 
-  Eaxmole value: `GAME_TOP_UP`
+  Example value: `GAME_TOP_UP`
   
   <br/>

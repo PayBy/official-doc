@@ -5,7 +5,7 @@ id: paylink
 
 # Paylink
 
-Add the product and set the amount to generate a permnant link that can be repeatedly paid. You can put it on the website ot share it on social media. 
+Add the product and set the amount to generate a permanent link that can be repeatedly paid. You can put it on the website ot share it on social media. 
 
 <br/>
 

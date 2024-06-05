@@ -24,7 +24,7 @@ If the request to download statement is successful, you will get a zip file cont
 
 #### Content file name
 
-| Contant name format                   | Example                                    |
+| Content name format                   | Example                                    |
 | ------------------------------------- | ------------------------------------------ |
 | Purchase_Statement_date_no.csv        | Purchase_Statement_13012021_001.csv        |
 | Purchase_Settle_Statement_date_no.csv | Purchase_Settle_Statement_13012021_001.csv |

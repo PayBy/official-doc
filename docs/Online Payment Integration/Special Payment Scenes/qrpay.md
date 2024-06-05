@@ -16,7 +16,7 @@ If your store is already equipped with barcode scanners and you don't plan to us
 ### User experience
 
 1. The customer opens PayBy or BOTIM app to present QR code.
-2. The cashier confirms the payment amout, generates a payment order in the merchant’s system to place order in PayBy.
+2. The cashier confirms the payment amount, generates a payment order in the merchant’s system to place order in PayBy.
 3. The merchant' cashier scans the customer's barcode / QR code with the code scanning equipment, and the merchant‘s POS system submits the payment.
 4. Customers enter their payment details on the payment page and complete the transaction.
 5. If the payment is completed, customers will be redirected to the merchant's success page.
@@ -29,7 +29,7 @@ If your store is already equipped with barcode scanners and you don't plan to us
 
 #### Create order
 
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `QRPAY` in the **paySceneCode** parameter.
+When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `QRPAY` in the **paySceneCode** parameter.
 
 <br/>
 

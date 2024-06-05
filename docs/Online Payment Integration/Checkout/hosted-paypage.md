@@ -26,7 +26,7 @@ Hosted paypage is one of the most common and easiest ways to acquire payments. I
 
 #### Create Order
 
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `PAYPAGE` in the **paySceneCode** parameter.<br/>
+When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `PAYPAGE` in the **paySceneCode** parameter.<br/>
 
 If the request is successful, PayBy will return the **tokenUrl**, redirect your customer to the URL for the Checkout page returned in the response.<br/>
 

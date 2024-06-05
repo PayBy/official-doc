@@ -115,7 +115,7 @@ Save and execute `pod install`, then open the project with a file with the suffi
 SLDPayByPaymentEnvironment Description:
 
 - SLDPayByPaymentEnvironmentDevelop: The environment for developing and testing.
-- SLDPayByPaymentEnvironmentUAT: The environment for customer debuging.
+- SLDPayByPaymentEnvironmentUAT: The environment for customer debugging.
 - SLDPayByPaymentEnvironmentRelease: The environment for product online.
 
 <br/>

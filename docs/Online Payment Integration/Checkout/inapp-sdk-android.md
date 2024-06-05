@@ -114,7 +114,7 @@ dependencies{
 
 #### Step 3: Add Placeholder
 
-Add the manifestPlaceholders key-value pair. The key is "PACKAGENAME" and the value is the current application package name. When Android downloads files, you need to read and write through the FileProvider, and you need to assign the path of Fileprovider according to the **applicationId**. It also needs to support Java8 compilation.
+Add the manifestPlaceholders key-value pair. The key is "PACKAGENAME" and the value is the current application package name. When Android downloads files, you need to read and write through the FileProvider, and you need to assign the path of File provider according to the **applicationId**. It also needs to support Java8 compilation.
 
 ```
 android{
@@ -232,7 +232,7 @@ Construct a **PayTask** object according to the parameters prepared before. It s
 Then initiate the payment by calling its pay method through the initialized PbManager object. The first parameter is the PayTask type, the second parameter is an Enum type, the value includes Environment.DEV、Environment.UAT and Environment.PRO.
 
 - **Environment.DEV**:the environment for developing and testing
-- **Environent.UAT**:the environment for customer debuging
+- **Environent.UAT**:the environment for customer debugging
 - **Environment.PRO**:the environment for product online
 
 ```
@@ -334,7 +334,7 @@ public class MainActivity extends AppCompatActivity implements OnPayResultListen
     manager.pay(task, Environment.UAT);
 	//also,you can use the other method to pay
 	//manager.payWithOrderCallback(this);
-	// after calling this method,the loading dialog will not be canceled until gettting the paying app list.you need implement the method onOrder,in the method,you can pass the order information to SDK by successCallback.
+	// after calling this method,the loading dialog will not be canceled until getting the paying app list.you need implement the method onOrder,in the method,you can pass the order information to SDK by successCallback.
   }
 
   @Override
@@ -370,7 +370,7 @@ public class MainActivity extends AppCompatActivity implements OnPayResultListen
   // step1:in here,you need get order information by placing order.
   // step2:construct a PayTask with the order information
   // step3: if success,pass the order information to sdk with OnOrderSuccessCallback,if fail,just notify SDK the state with OnOrderFailCallback
- // the following code simulates the process of placeing order and pass the parameter to sdk
+ // the following code simulates the process of placing order and pass the parameter to sdk
     mToken = et_token.getText().toString().trim();
     mPartnerId = et_id.getText().toString().trim();
     mIapDeviceId = et_deviceId.getText().toString().trim();
