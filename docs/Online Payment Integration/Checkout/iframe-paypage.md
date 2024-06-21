@@ -43,10 +43,10 @@ When the customer confirms to pay, call the [Create order](/docs/createorder) AP
 
 #### Create an iFrame
 
-Use PayBy.createiFrame with tokenUrl to create an iFrame within a predefined div element.
+Use PayBy.createIframe with tokenUrl to create an iFrame within a predefined div element.
 
 ```
-PayBy.createiFrame({
+PayBy.createIframe({
   id: 'container',
   lang: 'ar',
   tokenUrl: tokenUrl,
