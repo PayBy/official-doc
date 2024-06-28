@@ -20,6 +20,41 @@
   
   paySceneCode=EWALLET, eWalletCode=ALIPAYPLUS
 
+  osType Enum 
+
+  Mobile Operating System Types 
+
+    Example value: 
+
+      `IOS` . Apple Corp
+
+      `ANDROID` . Google Corp.
+  
+  terminalType Enum 
+
+  Terminal types for initiating payments. 
+
+      Example value: 
+
+      `WEB` 
+
+      `WAP` 
+
+      `APP` 
+
+ 
+
+  subEWalletCode String 
+
+  Secondary E-Wallet Code 
+
+  Example value: 
+
+    `ALIPAYALL` . All Alipay plus wallets 
+
+    `ALIPAYCN` . Alipay CN 
+
+
   <br/>
 
 - **redirectUrl** <span style={{color:" #7d8793"}}>String</span>
