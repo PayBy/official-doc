@@ -20,7 +20,7 @@
   
   paySceneCode=EWALLET, eWalletCode=ALIPAYPLUS
 
-  osType Enum 
+- **osType** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}></span>
 
   Mobile Operating System Types 
 
@@ -30,7 +30,7 @@
 
       `ANDROID` . Google Corp.
   
-  terminalType Enum 
+- **terminalType** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}></span>
 
   Terminal types for initiating payments. 
 
