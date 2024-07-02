@@ -48,6 +48,8 @@
 
   Secondary E-Wallet Code 
 
+  When the eWalletCode is set to ALIPAYPLUS, the subEWalletCode must be required
+
   Example value: 
 
     `ALIPAYALL` . All Alipay plus wallets 
