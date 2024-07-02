@@ -24,23 +24,23 @@
 
   Mobile Operating System Types 
 
-    Example value: 
+  Example value: 
 
-      `IOS` . Apple Corp
+  `IOS` . Apple Corp
 
-      `ANDROID` . Google Corp.
+  `ANDROID` . Google Corp.
   
 - **terminalType** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}></span>
 
   Terminal types for initiating payments. 
 
-      Example value: 
+  Example value: 
 
-      `WEB` 
+  `WEB` 
 
-      `WAP` 
+  `WAP` 
 
-      `APP` 
+  `APP` 
 
  
 
@@ -52,9 +52,9 @@
 
   Example value: 
 
-    `ALIPAYALL` . All Alipay plus wallets 
+  `ALIPAYALL` . All Alipay plus wallets 
 
-    `ALIPAYCN` . Alipay CN 
+  `ALIPAYCN` . Alipay CN 
 
 
   <br/>
