@@ -5,8 +5,7 @@ toc_max_heading_level: 6
 
 # iFrame paypage
 
-iFrame Payment Page is a website prepared by PayBy and can be embedded in your website. The Hosted Pay Page still resides on PayBy’ secure servers but the transition to the PayBy secure page is invisible to the cardholder.<br/>
-Unlike the hosted paypage, using iFrame payapge will not go out of your website when customer pays, which can reduce the failure rate of payment. At the same time, integrating it on its own page will provide you more flexibility.
+The iFrame Payment Page is a webpage prepared by PayBy that can be embedded within your website. Although it resides on PayBy’s secure servers, the transition to the PayBy secure page is invisible to the cardholder. <br/>Unlike the Hosted Paypage, using the iFrame Paypage ensures that customers remain on your website when making a payment, potentially reducing the payment failure rate. Additionally, integrating the iFrame Paypage within your site provides greater flexibility.
 
 <br/>
 
@@ -131,7 +130,7 @@ To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveord
 
 ### Set payment method
 
-On the paypage page, by default all the payment methods that merchants have activated in PayBy will be listed. If you need to adjust the order of payment methods that your customers see, or temporarily set some payment methods as unavailable to the payer, please configure it in [Payment Methods](https://b.payby.com/payment-methods).
+On the paypage, by default, all payment methods activated by the merchant in PayBy will be listed. To adjust the order of payment methods or temporarily disable some payment methods for the payer, configure it in Payment Methods. [Payment Methods](https://b.payby.com/payment-methods).
 
 <br/>
 
