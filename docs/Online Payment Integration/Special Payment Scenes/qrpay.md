@@ -37,7 +37,7 @@ If the request is successful, PayBy will return the **tokenUrl**. The merchant's
 
 <br/>
 
-After the payment the payby server will notify the result to PayBy or BOTIM  app, and the customer will see the payment result on the app.
+After the payment the PayBy server will notify the result to PayBy or BOTIM  app, and the customer will see the payment result on the app.
 
 <br/>
 

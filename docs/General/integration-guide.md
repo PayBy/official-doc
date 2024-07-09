@@ -37,7 +37,7 @@ Configuration: https://uat-web-merchant.test2pay.com/management/api-key
 
 <br/>
 
-PayBy uses asymmetric encryption to verify signatures. Asymmetric cryptography, or public-key cryptography, is a cryptographic system that uses pairs of keys. Each pair consists of a public key (which may be known to others) and a private key (which may not be known by anyone except the owner).
+PayBy uses asymmetric encryption to verify signatures. Asymmetric cryptography, or public-key cryptography, uses pairs of keys: a public key (which can be shared) and a private key (which must remain confidential).
 
 <br/>
 

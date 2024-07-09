@@ -18,7 +18,7 @@
 | 62008 | EXPIREDTIME_LESS_THAN_REQUESTTIME | The expiration time is earlier than the request time                               | Adjust the expiration time             |
 | 62009 | EXPIREDTIME_TOO_LATER             | The expiration time is exceeded more than 48 hours from the requested time         | Adjust the expiration time             |
 | 62012 | PAYSCENECODE_ILLEGAL              | Invalid payment scenario code                                                      | Adjust the payment scenario code       |
-| 62016 | MERCHANT_ORDER_NO_EXIST           | Merchant order exists                                                              | Adjust mechant request number          |
+| 62016 | MERCHANT_ORDER_NO_EXIST           | Merchant order exists                                                              | Adjust merchant request number          |
 | 62019 | PAYEEMID_NOT_EXIST                | Invalid PayeeMid                                                                   | Adjust payeeMid                        |
 | 62026 | PRODUCT_IS_NOT_APPLIED            | Product not applied                                                                | Apply for product first                |
 | 62036 | MERCHANT_DEVICE_NOT_EXIST         | Merchant device does not exist                                                     | Adjust secondaryMerchantId or deviceId |
