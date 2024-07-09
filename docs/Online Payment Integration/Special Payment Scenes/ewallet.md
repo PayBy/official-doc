@@ -5,16 +5,16 @@ toc_max_heading_level: 6
 
 # E-wallet
 
-Put one or more E-wallet  icons that we supported on your mobile application's checkout. After your customer selects one, he or she will be redirected to that E-wallet app to finish the payment. Currently our supported wallets are BOTIM and PayBy APP.
+Display one or more E-wallet icons supported by PayBy on your mobile application’s checkout page. After your customer selects an E-wallet, they will be redirected to that E-wallet app to complete the payment. Currently, our supported wallets are BOTIM and PayBy APP.
 
 <br/>
 
 ### User experience
 
 1. When customers are ready to complete their payment, your application creates a new order creation request.
-2. The PayBy returns a URL that your APP can revoke the Ewallet's checkout through deeplink method.
+2. The PayBy returns a URL that your APP can revoke the E-wallet's checkout through deeplink method.
 3. Customers enter their payment details on the payment page and complete the transaction.
-4. If the payment is completed, customers will be redirected to the merchant's success page.<br/>
+4. Upon successful payment, customers are redirected to the merchant's success page.<br/>
 
 ![ue-ewallet](../pic/ue-ewallet.png)
 
@@ -26,9 +26,9 @@ Put one or more E-wallet  icons that we supported on your mobile application's c
 
 #### Create order
 
-When the customer confirms to pay, render the ewallet list for the customer to choose. Which wallets and order of wallets the customers see is determined by the merchant and stored in the merchant's server. When customers initiate payments, the merchant app query from the merchant's server.<br/>
+When the customer confirms to pay, render the E-wallet list for the customer to choose from. Which wallets and order of wallets the customers see is determined by the merchant and stored in the merchant's server. When customers initiate payments, the merchant app query from the merchant's server.<br/>
 
-Call the [Create order](/docs/createorder) API,  follow the API description to create a reuest. Pass `EWALLET` in the **paySceneCode** parameter.<br/>
+Call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `EWALLET` in the **paySceneCode** parameter.<br/>
 
 If the request is successful, PayBy will return a deeplink to redirect the customer to the target ewallet.<br/>
 
