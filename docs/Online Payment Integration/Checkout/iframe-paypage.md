@@ -55,6 +55,56 @@ PayBy.createIframe({
  }
 ```
 
+
+1.	Handling success Function:
+	•	If the merchant passes a success function while creating the iFrame, the redirection will not happen automatically. Instead, the merchant can handle the result themselves.
+	•	The data parameter in the success function contains a JSON object with the payment result.
+2.	Handling redirectURI:
+	•	The redirectURI can either be a URL or a form.
+	•	If the redirectURI is a URL (starts with “https”), the merchant needs to redirect the user to that URL.
+	•	If the redirectURI is a form, it will contain an HTML form that needs to be rendered and submitted automatically. The form includes a script for auto-submission.
+3.	3D Secure (3DS) Handling:
+	•	Merchants need to handle the 3DS verification themselves. The redirectURI will either lead to a 3DS verification link or contain a form that triggers the 3DS process.
+
+
+When you create the iFrame using PayBy.createIframe, you can pass a success function to handle the payment result manually. The success function receives a data parameter that contains the payment result in JSON format.
+
+```
+window.PayBy.createIframe({
+    id: 'paypage',
+    tokenUrl: tokenUrl.value,
+    success: function(data) {
+        // Parse and handle the result
+        var result = JSON.stringify(data);
+        document.querySelector('#payment_result_message').innerText = result;
+        document.querySelector('#payment_result_dialog').showModal();
+
+        // Handle redirectURI
+        var redirectURI = data.redirectURI;
+        if (redirectURI.startsWith('https')) {
+            window.location.href = redirectURI;
+        } else {
+            // Render and submit the form for 3DS
+            var formHtml = redirectURI;
+            document.body.innerHTML += formHtml;
+            document.forms['frmBankID'].submit();
+        }
+    },
+    error: function(err) {
+        console.error('Payment failed:', err);
+    }
+});
+
+```
+
+
+### 3DS Verification Handling
+
+	•	URL Handling: If redirectURI is a URL, redirect the user to this URL for 3DS verification.
+	•	Form Handling: If redirectURI is an HTML form, render the form on your page and let it auto-submit for 3DS verification.
+
+
+
 ---
 
 **id**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
