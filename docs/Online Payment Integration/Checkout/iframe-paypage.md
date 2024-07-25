@@ -52,7 +52,7 @@ PayBy.createIframe({
   error: function (msg) {
    alert(msg); 
   }
- }
+ });
 ```
 
 
