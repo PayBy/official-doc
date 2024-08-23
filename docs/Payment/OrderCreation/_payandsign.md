@@ -10,7 +10,7 @@ The payer completes the signing of the automatic deduction agreement while makin
 
   The auto-debit service ID between PayBy and the merchant, and some data reading rules are configured in the ID. Please ask PayBy operations staff for your service number.
 
-  Example value: 111
+  Constant value: 120
   
   <br/>
   
