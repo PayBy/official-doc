@@ -663,7 +663,7 @@ PayByClient client = getPayByClient();
         applyProtocolRequest
             .setSignerMerchantId(RsaUtil.encrypt("200000001222", Charset.forName("UTF-8"), payByPubKey, 2048));
         // protocolSceneCode Required
-        applyProtocolRequest.setProtocolSceneCode("110");
+        applyProtocolRequest.setProtocolSceneCode("120");
         // Notification URL Optional
         applyProtocolRequest.setNotifyUrl("http://yoursite.com/api/notification");
         // protocolSceneParams Required
