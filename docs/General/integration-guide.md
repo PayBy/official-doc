@@ -212,7 +212,7 @@ Choose your integration to match your business needs in the menu:
 
 **Special payment scenes**: E-wallet, DYNQR, QRPAY, JSAPI, Direct pay
 
-**E-commerce plugin**: Magento plugin, Opencart plugin, WooCommerce plugin
+<!-- **E-commerce plugin**: Magento plugin, Opencart plugin, WooCommerce plugin -->
 
 **Fundout**: Transfer, Transfer to bank
 
