@@ -16,7 +16,7 @@
 
   <br/>
 
-- **cvv** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
+- **cvv** <span style={{color:" #7d8793"}}>String</span>
 
   The three- or four-digit security code of the card. Also known as the CVV, CVC, CVN, CVE, or CID. The CVV needs to be encrypted when passed.
 
