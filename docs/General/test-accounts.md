@@ -19,7 +19,7 @@ To test **scan to pay** or **display QR code to pay** and other scenarios, you n
 
 - Scan to download Android APK
 
-  ![hostedflow](./pic/download.png)
+  <img src="./pic/download.png" alt="hostedflow" width="300">
 
 
 
