@@ -23,3 +23,11 @@
   Maximum length: `17`.
   
   <br/>
+
+- **email** <span style={{color:" #7d8793"}}>String</span>
+
+  Cardholder's email. After the payment is successful, PayBy will send the billing information to this email address.
+
+  Example value: customer@payment.com
+
+  <br/>
