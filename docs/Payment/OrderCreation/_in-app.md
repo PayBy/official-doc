@@ -23,3 +23,11 @@
   Maximum length: `17`.
   
   <br/>
+
+- **email** <span style={{color:" #7d8793"}}>String</span>
+
+  Payer's email.
+
+  Example value: customer@payment.com
+
+  <br/>

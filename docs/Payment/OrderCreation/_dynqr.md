@@ -21,3 +21,11 @@ Merchant presented QR code
   Default value: False
   
   <br/>
+
+- **email** <span style={{color:" #7d8793"}}>String</span>
+
+  Payer's email.
+
+  Example value: customer@payment.com
+
+  <br/>
