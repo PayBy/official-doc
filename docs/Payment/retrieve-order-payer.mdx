@@ -6,7 +6,7 @@ slug: /retrieveorderpayer
 
 import RequestHeader from '../_request-header.mdx'
 import ResponseHead from '../Refund/_response-head.mdx'
-import Payer from ''
+import AcquireOrderPayer from './_acquire-order-payer.mdx'
 
 
 # Retrieve order payer
@@ -128,29 +128,7 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 
   <details open={true}>
   <summary>Attributes</summary>
-    - **mobileNumberMask** <span style={{color:" #7d8793"}}>Timestamp</span> <span style={{color:"#f19938"}}>Required</span>
-
-      Payer mobile with mask
-
-      Example value:
-
-    <br />
-
-    - **deviceId** <span style={{color:" #7d8793"}}>Timestamp</span> <span style={{color:"#f19938"}}>Required</span>
-
-      Payer device fingerprint.
-
-      Example value: 1581493898000
-
-    <br />
-
-    - **ipAddress** <span style={{color:" #7d8793"}}>Timestamp</span> <span style={{color:"#f19938"}}>Required</span>
-
-      Payer device ip address.
-
-      Example value: 1581493898000
-
-    <br />
+  <AcquireOrderPayer />
   </details>
 
 <br/>
