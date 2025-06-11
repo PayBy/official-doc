@@ -7,21 +7,25 @@ import TransferToBankOrder from './_transfer-to-bank-order.mdx'
 
 # Asynchronous notification
 
-If the `notifyUrl` parameter is passed in the transfer to bank request to receive notifications, PayBy will send a message to the address when when the order status changes from `CREATED` to `SUCCESS` or ` FAILURE`.
+Once a transfer to a bank account is processed, PayBy will send the result to the merchant. The merchant must handle the notification and respond accordingly. The actual time the funds arrive depends on the settlement times of the receiving bank.
 
 <br/>
 
  **<font color = '#f19938'>Notice</font>**
 
-1.  <font color = 'black'>In this scenario, the request is sent by PayBy to the merchant, and the merchant needs to send response to PayBy.</font>
-2.  After receiving the notification, please return the success message, otherwise PayBy will try to send multiple times. The maximum number of attempts is 7. The interval time between each attempt is as follows:  2 minutes, 10 minutes, 10  minutes, 1 hour, 2 hours, 6 hours, and 15 hours. 
-3.  The notification request is signed by payBy side. The merchant must verify the notification signature before processing the content.
+  1. Duplicate Notifications: The same notification may be sent multiple times. Your system must be able to handle duplicate notifications correctly.
+
+  2. Retry Mechanism: If PayBy does not receive a valid or timely response from your system, it will consider the notification failed and retry sending it. PayBy will retry sending the notification up to 7 times at intervals of 2, 10, 10, 60, 120, 360, and 900 minutes, but final delivery success is not guaranteed.
+
+  3. Uncertain Order Status: If the order status is unclear or no notification is received, merchants should actively query the transfer status via the API.
+
+  4. Signature Verification: Notification requests are signed using PayBy’s RSA private key. Merchants must verify the signature using the PayBy public key, which can be downloaded from the merchant portal. The signing method is the same as for regular API requests.
 
 <br/>
 
-### Request
+## Request
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -45,7 +49,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -87,15 +91,15 @@ The parameter is deprecated.
 
 <br/>
 
-#### Notification sample
+### Notification Sample
 
 ```json
-Http Header
+// Http Header
 {
     "Content-Type": "application/json; charset=UTF-8"
 }
 
-Http Body
+// Http Body
 {
     "_input_charset": "UTF-8",
     "notify_id": "202004140007474501",
@@ -128,13 +132,13 @@ Http Body
 
 
 
-### Response 
+## Response 
 
 Please reply `success` after receiving the notification, otherwise PayBy will send the notification repeatedly for the same order.
 
 <br/>
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -146,7 +150,7 @@ Example value: application/json
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -157,13 +161,43 @@ Example value: Success
 <br/>
 
 ```json
-Http Header
+// Http Header
 {
  "Content-Type": "application/json; charset=UTF-8" 
 }
 
-Http Body
+// Http Body
 {
     "response":"SUCCESS"
 }
 ```
+
+## Response Codes for Bank Transfer Query
+
+
+| Code   | Message                          | Description                                                                 | Suggested Action             |
+|--------|----------------------------------|-----------------------------------------------------------------------------|------------------------------|
+| 0      | SUCCESS                          | Request was successful                                                      | —                            |
+| 400    | INVALID_PARAMETER                | Invalid request parameters                                                  | Adjust request parameters    |
+| 400    | REQUESTTIME_TOO_EARLY           | Request time is too far in the past                                         | Adjust request time          |
+| 400    | REQUESTTIME_TOO_LATER           | Request time is too far in the future                                       | Adjust request time          |
+| 402    | RATE_LIMIT_REJECT               | Too many requests in a short time                                           | Reduce request frequency     |
+| 403    | UNAUTHORIZED                     | API access not authorized                                                   | Contact PayBy                |
+| 404    | SERVICE_NOT_AVAILABLE           | API service is currently unavailable                                        | Contact PayBy                |
+| 500    | SYSTEM_ERROR                    | Internal system error                                                       | Contact PayBy and retry later|
+| 504    | SERVICE_TIMEOUT                 | Request timed out                                                           | Retry later                  |
+| 601    | RISK_FAIL                       | Risk control validation failed                                              | Adjust business logic        |
+| 62002  | ORDER_FAILURE                   | Attempted to cancel or refund a failed order                                | Modify merchant order number |
+| 62004  | MERCHANT_ORDER_NO_NOT_EXIST     | Order with the given merchant order number does not exist                   | Modify merchant order number |
+| 62016  | MERCHANT_ORDER_NO_EXIST         | Duplicate order number with different business parameters                   | Modify order number          |
+| 62026  | PRODUCT_IS_NOT_APPLIED          | Product not applied for                                                     | Apply for the product        |
+| 62028  | ORDER_SUCCESS                   | Order has already been successfully processed                               | Modify merchant order number |
+| 62029  | ORDER_CREATED                   | Order has already been created                                              | Modify merchant order number |
+| 62076  | FUND_OUT_ABILITY_SUPPORTED      | `networkCode` or `fundoutCurrencyCode` not enabled or unsupported           | Contact PayBy                |
+| 62101  | WRONG_IBAN_FORMAT               | Invalid IBAN format                                                         | Correct IBAN format          |
+| 62102  | NAME_NOT_FOUND                  | Name could not be retrieved via IBAN                                        | Correct IBAN                 |
+| 62103  | QUERY_API_UNAVAILABLE           | Query API is currently unavailable                                          | Retry later                  |
+| 62094  | THE_ENTERED_COUNTRY_CODE_IS_INVALID | Invalid country code                                                   | Adjust request parameters    |
+| 62095  | THE_ENTERED_CITY_CODE_IS_INVALID    | Invalid city code                                                      | Adjust request parameters    |
+
+
