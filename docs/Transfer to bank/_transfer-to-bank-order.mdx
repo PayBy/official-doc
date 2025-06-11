@@ -172,3 +172,49 @@
 	Maximum length: `16`
 
 	<br />
+
+- **bankReference** <font color = ' #7d8793'>String</font>
+
+	A unique identifier assigned by the bank to the transfer transaction.
+
+	Example value: 2000000111101.
+
+	<br />
+
+- **product** <font color = ' #7d8793'>String</font>
+
+	The type of financial service or transaction being performed. It helps categorize the transaction for reporting or processing logic.
+
+	Example value: Transfer To Bank.
+
+	<br />
+
+- **status** <font color = ' #7d8793'>String</font>
+
+	Indicates the current state of the transfer transaction.
+
+	Example value: SUCCESS.
+
+	<br />
+
+- **paymentInfo** <font color = ' #7d8793'>String</font>
+
+	Contains detailed information about the payment processing, especially related to fees and timing:
+
+	- arrivalTime: Timestamp when the funds were expected to arrive or did arrive.
+
+	- payerFeeAmount: The fee charged to the sender (payer), including amount and currency.
+
+	Example:
+
+	```
+	"paymentInfo": {
+                "arrivalTime": 1585133416000,
+                "payerFeeAmount": {
+                    "amount": 0,
+                    "currency": "AED"
+                }
+            }
+	```
+
+	<br />
