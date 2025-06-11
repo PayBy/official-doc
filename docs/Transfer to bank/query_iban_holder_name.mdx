@@ -1,0 +1,133 @@
+---
+sidebar_position: 6
+toc_max_heading_level: 6
+---
+
+# Query IBAN holder name
+
+## Overview
+
+This API verifies whether the provided account holder name matches the given IBAN.
+
+## Endpoints
+
+- **UAT**: `https://uat.test2pay.com/sgs/api/transfer/getIbanHolderName`  
+- **Production**: `https://api.payby.com/sgs/api/transfer/getIbanHolderName`
+
+
+
+## Request
+
+### HTTP Headers
+
+| Field            | Name             | Required | Type       | Example | Description                  |
+| ---------------- | ---------------- | -------- | ---------- | ------- | ---------------------------- |
+| Content-Language | Content-Language | No       | String(10) | `en`    | Language of the response     |
+| Signature        | Sign             | Yes      | String     |         | RSA signature                |
+| Merchant ID      | Partner-Id       | Yes      | String(12) |         | Assigned merchant identifier |
+
+### HTTP Body
+
+| Field         | Name        | Required | Type                       | Example       | Description       |
+| ------------- | ----------- | -------- | -------------------------- | ------------- | ----------------- |
+| Request Time  | requestTime | Yes      | Timestamp (ms)             | 1581493898000 | Epoch time in ms  |
+| Business Data | bizContent  | Yes      | `GetIbanHolderNameRequest` | -             | Encrypted payload |
+
+#### `GetIbanHolderNameRequest`
+
+| Field       | Name       | Required | Type        | Example | Description         |
+| ----------- | ---------- | -------- | ----------- | ------- | ------------------- |
+| Holder Name | holderName | Yes      | String(256) |         | Encrypted full name |
+| IBAN        | iban       | Yes      | String(256) |         | Encrypted IBAN      |
+
+
+
+## Sample Request
+
+```json
+{
+  "body": {
+    "bizContent": {
+      "holderName": "<encrypted_holder_name>",
+      "iban": "<encrypted_iban>"
+    },
+    "requestTime": 1585142880000
+  }
+}
+```
+
+
+
+## Response
+
+### HTTP Headers
+
+| Field            | Name             | Required | Type       | Example | Description                  |
+| ---------------- | ---------------- | -------- | ---------- | ------- | ---------------------------- |
+| Content-Language | Content-Language | No       | String(10) | `en`    | Language of the response     |
+| Signature        | Sign             | Yes      | String     |         | RSA signature                |
+| Merchant ID      | Partner-Id       | Yes      | String(12) |         | Assigned merchant identifier |
+
+### HTTP Body
+
+| Field  | Name | Required | Type                        | Description       |
+| ------ | ---- | -------- | --------------------------- | ----------------- |
+| Header | head | Yes      | `ResponseHeader`            | Response metadata |
+| Body   | body | No       | `GetIbanHolderNameResponse` | IBAN match result |
+
+#### `GetIbanHolderNameResponse`
+
+| Field            | Name           | Required | Type             | Description                  |
+| ---------------- | -------------- | -------- | ---------------- | ---------------------------- |
+| IBAN Holder Name | ibanHolderName | Yes      | `IbanHolderName` | Masked name and match result |
+
+#### `IbanHolderName`
+
+| Field        | Name               | Type   | Description                              |
+| ------------ | ------------------ | ------ | ---------------------------------------- |
+| Masked Name  | holderNameMask     | String | Masked version of the account name       |
+| Match Level  | nameMatchingLevel  | String | Match confidence level (e.g., "1")       |
+| Match Result | nameMatchingResult | String | `"TRUE"` if matched, otherwise `"FALSE"` |
+
+
+
+## Sample Response
+
+```json
+{
+  "head": {
+    "applyStatus": "SUCCESS",
+    "code": "0",
+    "msg": "SUCCESS",
+    "traceCode": "1133"
+  },
+  "body": {
+    "ibanHolderName": {
+      "holderNameMask": "xxx*** xxx*** xxx***",
+      "nameMatchingLevel": "1",
+      "nameMatchingResult": "TRUE"
+    }
+  }
+}
+```
+
+
+
+## Response Codes
+
+| Code  | Message               | Description                    | Suggested Action             |
+| ----- | --------------------- | ------------------------------ | ---------------------------- |
+| 0     | SUCCESS               | Request successful             | —                            |
+| 400   | INVALID_PARAMETER     | Invalid request parameters     | Check and correct input      |
+| 400   | REQUESTTIME*TOO*EARLY | Request time too early         | Adjust request time          |
+| 400   | REQUESTTIME*TOO*LATER | Request time too late          | Adjust request time          |
+| 402   | RATE*LIMIT*REJECT     | Too many requests              | Reduce request frequency     |
+| 403   | UNAUTHORIZED          | Unauthorized API access        | Contact PayBy                |
+| 404   | SERVICE*NOT*AVAILABLE | API service unavailable        | Contact PayBy                |
+| 500   | SYSTEM_ERROR          | Internal system error          | Retry later or contact PayBy |
+| 504   | SERVICE_TIMEOUT       | Request timed out              | Retry later                  |
+| 601   | RISK_FAIL             | Risk control validation failed | Adjust business logic        |
+| 62101 | WRONG*IBAN*FORMAT     | Invalid IBAN format            | Correct IBAN                 |
+| 62102 | NAME*NOT*FOUND        | Name not found for given IBAN  | Verify IBAN                  |
+| 62103 | QUERY*API*UNAVAILABLE | Query API unavailable          | Retry later                  |
+
