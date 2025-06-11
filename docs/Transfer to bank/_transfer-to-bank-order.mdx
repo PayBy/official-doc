@@ -172,3 +172,44 @@
 	Maximum length: `16`
 
 	<br />
+
+- **product** <font color = ' #7d8793'>String</font>
+
+	The type of financial service or transaction being used.
+
+	Example value: Transfer to bank.
+
+	Maximum length: `16`
+
+	<br />
+
+- **status** <font color = ' #7d8793'>String</font>
+
+	The current state of the transaction. Common statuses include:
+	- "CREATED" – The transfer order has been created.
+	- "COMPLETED" – The transfer completes.
+	- "FAILED" – The transfer failed.
+	- "CANCELLED" – The transfer was cancelled before completion.
+
+	Example value: COMPLETED.
+
+	Maximum length: `16`
+
+	<br />
+
+- **paymentInfo** <font color = ' #7d8793'>Object</font>
+
+	A nested object that contains detailed information about the payment, such as: amount, currency, arrivalTime.
+
+	For example:
+	```
+	"paymentInfo":{
+                "payerFeeAmount":{
+                    "amount":5,
+                    "currency":"AED"
+                },
+                "arrivalTime":1646278514000
+            }
+	```
+
+	<br />
