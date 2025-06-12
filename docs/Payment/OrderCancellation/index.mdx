@@ -15,7 +15,7 @@ If the order status has been updated to `PAID_SUCCESS` or `SETTLED` when the can
 
 <br/>
 
-### API URL
+## API URL
 
 UAT: https://uat.test2pay.com/sgs/api/acquire2/cancelOrder
 
@@ -23,9 +23,9 @@ Production: https://api.payby.com/sgs/api/acquire2/cancelOrder
 
 <br/>
 
-### Request 
+## Request 
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -37,7 +37,7 @@ Production: https://api.payby.com/sgs/api/acquire2/cancelOrder
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -51,7 +51,7 @@ Example value: 1581493898000
 
 **bizContent**   <font color = ' #7d8793'>Object</font>  
 
-> You can use either `merchantOrderNo`  or `orderNo` to specify an order. But you can't use the two parameters at the same time.
+> **Note:** Use either `merchantOrderNo` or `orderNo` to specify an order, but never both at the same time.
 
 - **merchantOrderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
@@ -71,10 +71,10 @@ Example value: 1581493898000
 
 <br/>
 
-#### Request sample
+### Request Sample
 
 ```json
-Http Header  
+// Http Header  
 {
     "Content-Language": "en",
     "Content-Type": "application/json",
@@ -82,7 +82,7 @@ Http Header
     "Partner-Id": "200000000888"
 }
 
-Http Body
+// Http Body
 {
     "requestTime": 1581422748669,
     "bizContent": {
@@ -93,9 +93,9 @@ Http Body
 
 <br/>
 
-### Response
+## Response
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -105,7 +105,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -119,7 +119,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
 **body** 
 
-**Notice **:Body is returned only when `applystatus` = `success`, and `code` = `0`. If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
+**Note:** Body is returned only when `applystatus` = `success`, and `code` = `0`. If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
 
 - **acquireOrder** <span style={{color:" #7d8793"}}>Object</span>
 
@@ -130,80 +130,101 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
   <br/>
 
-#### Response sample
+### Response sample
 
 ```json
-Http Header
+// Http Header
 {
-    "sign": "XBRRQzTFvIKPE4bhBLKXF23RBeJn7WytxwhQXutCTZgO7NmzVE0YufjbSUSFKB5Eg6EtrVMVFM/FmTSSI/hWBJnk0j8rBxb+K3FlplTw1ydStM7upkvxLOe2uoOkac8FFXZIvjRWDNY7+VXwo40yI33Ct3YLTwu5kQHhVCEf6ClvnkTynXuy6hxALFsbJchKOZNbqm5WA24x2VtFbNe+jz+CRwD4MD8xg6npPMwfTc0b4sZ7SkUAKYlttxm+nO9qFjczbp55R7LdajxfCXxgpTp0hc576pwo2AqyNDcMjzunynX+AR7pzDqwkgC1NIc/eax67HPq/X+v/T8t671sHg=="
+  "sign": "XBRRQzTFvIKPE4bhBLKXF23RBeJn7WytxwhQXutCTZgO7NmzVE0YufjbSUSFKB5Eg6EtrVMVFM/FmTSSI/hWBJnk0j8rBxb+K3FlplTw1ydStM7upkvxLOe2uoOkac8FFXZIvjRWDNY7+VXwo40yI33Ct3YLTwu5kQHhVCEf6ClvnkTynXuy6hxALFsbJchKOZNbqm5WA24x2VtFbNe+jz+CRwD4MD8xg6npPMwfTc0b4sZ7SkUAKYlttxm+nO9qFjczbp55R7LdajxfCXxgpTp0hc576pwo2AqyNDcMjzunynX+AR7pzDqwkgC1NIc/eax67HPq/X+v/T8t671sHg=="
 }
 
-Http Body
+// Http Body
 {
-    "head": {
-        "applyStatus": "SUCCESS",
-        "code": "0",
-        "msg": "SUCCESS",
-        "traceCode": "1127"
-    },
-    "body": {
-        "acquireOrder": {
-            "merchantOrderNo": "M172475858661",
-            "orderNo": "131422372621002238",
-            "status": "FAILURE",
-            "product": "Basic Payment Gateway",
-            "totalAmount": {
-                "currency": "AED",
-                "amount": 21.74
-            },
-            "payeeMid": "200000004021",
-            "expiredTime": 1581429572587,
-            "notifyUrl": "http://www.yoursite.com",
-            "subject": "Your subject",
-            "requestTime": 1581422372587,
-            "accessoryContent": {
-                "amountDetail": {
-                    "discountableAmount": {
-                        "currency": "AED",
-                        "amount": 2.31
-                    },
-                    "amount": {
-                        "currency": "AED",
-                        "amount": 20.65
-                    },
-                    "vatAmount": {
-                        "currency": "AED",
-                        "amount": 1.09
-                    },
-                    "tipAmount": {
-                        "currency": "AED",
-                        "amount": 0.02
-                    }
-                },
-                "goodsDetail": {
-                    "body": "Gifts",
-                    "categoriesTree": "CT12",
-                    "goodsCategory": "GC10",
-                    "goodsId": "GI1005",
-                    "goodsName": "candy flower",
-                    "price": {
-                        "currency": "AED",
-                        "amount": 10.87
-                    },
-                    "quantity": 2,
-                    "showUrl": "http://www.yourshop.com/index.htm"
-                },
-                "terminalDetail": {
-                    "operatorId": "OP10001",
-                    "storeId": "SI1002",
-                    "terminalId": "TI10000",
-                    "merchantName": "candy home",
-                    "storeName": "lovely house"
-                }
-            },
-            "paySceneCode": "PAYPAGE",
+  "head": {
+    "applyStatus": "SUCCESS",
+    "code": "0",
+    "msg": "SUCCESS"
+  },
+  "body": {
+    "acquireOrder": {
+      "merchantOrderNo": "M172475858661",
+      "orderNo": "131422372621002238",
+      "status": "FAILURE",
+      "product": "Basic Payment Gateway",
+      "totalAmount": {
+        "currency": "AED",
+        "amount": 21.74
+      },
+      "payeeMid": "200000004021",
+      "expiredTime": 1581429572587,
+      "notifyUrl": "http://www.yoursite.com",
+      "subject": "Your subject",
+      "requestTime": 1581422372587,
+      "accessoryContent": {
+        "amountDetail": {
+          "discountableAmount": {
+            "currency": "AED",
+            "amount": 2.31
+          },
+          "amount": {
+            "currency": "AED",
+            "amount": 20.65
+          },
+          "vatAmount": {
+            "currency": "AED",
+            "amount": 1.09
+          },
+          "tipAmount": {
+            "currency": "AED",
+            "amount": 0.02
+          }
+        },
+        "goodsDetail": {
+          "body": "Gifts",
+          "categoriesTree": "CT12",
+          "goodsCategory": "GC10",
+          "goodsId": "GI1005",
+          "goodsName": "candy flower",
+          "price": {
+            "currency": "AED",
+            "amount": 10.87
+          },
+          "quantity": 2,
+          "showUrl": "http://www.yourshop.com/index.htm"
+        },
+        "terminalDetail": {
+          "operatorId": "OP10001",
+          "storeId": "SI1002",
+          "terminalId": "TI10000",
+          "merchantName": "candy home",
+          "storeName": "lovely house"
         }
+      },
+      "paySceneCode": "JSAPI"
     }
+  }
 }
 ```
+
+## Response Codes
+
+Certainly! Here's the translated error code table in English, keeping the original table format for clarity and professionalism:
+
+| **Code** | **Message**                 | **Cause**                                      | **Workaround**                          |
+|----------|-----------------------------|--------------------------------------------------|----------------------------------------|
+| 0        | SUCCESS                     | Request successful                               | —                                      |
+| 400      | INVALID_PARAMETER           | Invalid request parameters                       | Adjust request parameters              |
+| 400      | REQUESTTIME_TOO_EARLY       | Request time is too far in the past              | Adjust request time                    |
+| 400      | REQUESTTIME_TOO_LATER       | Request time is too far in the future            | Adjust request time                    |
+| 402      | RATE_LIMIT_REJECT           | Too many requests                                | Reduce request frequency               |
+| 403      | UNAUTHORIZED                | API not authorized                               | Contact PayBy                          |
+| 404      | SERVICE_NOT_AVAILABLE       | API service unavailable                          | Contact PayBy                          |
+| 500      | SYSTEM_ERROR                | Internal system error                            | Contact PayBy and retry later          |
+| 504      | SERVICE_TIMEOUT             | Service timeout                                  | Retry later                            |
+| 601      | RISK_FAIL                   | Risk control validation failed                   | Adjust business logic                  |
+| 62001    | ORDER_PAID                  | Order already paid; cannot be canceled           | Use a different merchant order number  |
+| 62002    | ORDER_FAILURE               | Cancellation attempted on a failed order         | Use a different merchant order number  |
+| 62003    | ORDER_SETTLED               | Cancellation attempted on a settled order        | Use a different merchant order number  |
+| 62004    | MERCHANT_ORDER_NO_NOT_EXIST| Merchant order number does not exist             | Check and correct the merchant order number |
+| 62035    | ORDER_NO_NOT_EXIST          | PayBy order number does not exist                | Check and correct the PayBy order number     |
 
