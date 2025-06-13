@@ -5,13 +5,13 @@ toc_max_heading_level: 6
 import TransferToOrder from './_transfer-to-order.mdx'
 
 
-# Asynchronous notification
+# Asynchronous Notification
 
 If the `notifyUrl` parameter is passed in the order creation request to receive payment notifications, PayBy will send a message to the address when the order status changes from `CREATED` to `SUCCESS` or ` FAILURE`.
 
 <br/>
 
- **<font color = '#f19938'>Notice </font>**
+ **<font color = '#f19938'>Notice</font>**
 
 1.  <font color = 'black'>In this scenario, the request is sent by PayBy to the merchant, and the merchant needs to send response to PayBy.</font>
 2.  After receiving the notification, please return the success message, otherwise PayBy will try to send multiple times. The maximum number of attempts is 7. The interval time between each attempt is as follows:  2 minutes, 10 minutes, 10  minutes, 1 hour, 2 hours, 6 hours, and 15 hours. 
@@ -19,9 +19,9 @@ If the `notifyUrl` parameter is passed in the order creation request to receive 
 
 <br/>
 
-### Request
+## Request
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -39,7 +39,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -79,15 +79,15 @@ The parameter is deprecated.
 
 <br/>
 
-#### Notification sample
+### Notification Sample
 
 ```json
-Http Header
+// Http Header
 {
     "Content-Type": "application/json; charset=UTF-8"
 }
 
-Http Body
+// Http Body
 {
     "_input_charset": "UTF-8",
     "notify_id": "202004170007501041",
@@ -120,16 +120,13 @@ Http Body
 ```
 
 
-
-
-
-### Response 
+## Response 
 
 Please reply `success` after receiving the notification, otherwise PayBy will send the notification repeatedly for the same order.
 
 <br/>
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -141,7 +138,7 @@ Example value: application/json
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -151,15 +148,15 @@ Example value: Success
 
 <br/>
 
-#### Response sample
+### Response Sample
 
 ```json
-Http Header
+// Http Header
 {
  "Content-Type": "application/json; charset=UTF-8" 
 }
 
-Http Body
+// Http Body
 {
     "response":"SUCCESS"
 }
