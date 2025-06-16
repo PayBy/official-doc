@@ -6,13 +6,13 @@ toc_max_heading_level: 6
 import ResponseHead from "../Refund/_response-head.mdx";
 import FundoutAbilityList from './_fundout-ability-list.mdx'
 
-# Get fund out ability
+# Payout Capability
 
 Before using the `Transfer to bank` API, please use this API to retrieve the supported payout methods and which parameters need to be passed for each payout method.
 
 <br/>
 
-### API URL
+## API URL
 
 UAT : https://uat.test2pay.com/sgs/api/transfer/getFundoutAbilityList
 
@@ -20,9 +20,9 @@ Production : https://api.payby.com/sgs/api/transfer/getFundoutAbilityList
 
 <br/>
 
-### Request
+## Request
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -36,7 +36,7 @@ import RequestHeader from '../_request-header.mdx'
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -48,7 +48,7 @@ Example value: 1581493898000
 
 <br/>
 
-#### Request sample
+### Request Sample
 
 ```json
 Http Header
@@ -67,9 +67,9 @@ Http Body
 
 <br/>
 
-### Response
+## Response
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -79,7 +79,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -108,7 +108,7 @@ If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`
 
 <br/>
 
-#### Response sample
+### Response Sample
 
 ```json
 Http Header
@@ -165,3 +165,19 @@ Http Body
     }
 }
 ```
+
+## Response Codes
+
+
+| **Code** | **Message**              | **Cause**                                 | **Solution**                     |
+|----------|--------------------------|-------------------------------------------|----------------------------------|
+| 0        | SUCCESS                  | Success                                   | —                                |
+| 400      | INVALID_PARAMETER        | Invalid request parameters                | Adjust request parameters        |
+| 400      | REQUESTTIME_TOO_EARLY   | Request time is too far in the past       | Adjust request time              |
+| 400      | REQUESTTIME_TOO_LATER   | Request time is too far in the future     | Adjust request time              |
+| 402      | RATE_LIMIT_REJECT        | Too many requests                         | Reduce request frequency         |
+| 403      | UNAUTHORIZED             | API not authorized                        | Contact PayBy                    |
+| 404      | SERVICE_NOT_AVAILABLE    | API service unavailable                   | Contact PayBy                    |
+| 500      | SYSTEM_ERROR             | System error                              | Contact PayBy and retry later    |
+| 504      | SERVICE_TIMEOUT          | Service timeout                           | Retry later                      |
+| 601      | RISK_FAIL                | Risk control validation failed            | Adjust business logic            |
