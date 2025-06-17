@@ -158,9 +158,19 @@
 
 - **beneficiaryType**   <font color = ' #7d8793'>String</font>
 
-  In this payout method, what type of code is used to identify the beneficiary account or the bank to which the beneficiary account belongs.
+  The format or classification of the identifier used to recognize the beneficiary's account or the financial institution that holds the account. This could refer to account numbers, IBANs, SWIFT/BIC codes, or other standardized identifiers depending on the payout method and destination country. By default, it is IBAN.
 
   Example value: IBAN, BBAN.
+
+  Maximum length: `16`
+  
+  <br/>
+
+- **purposeCode**   <font color = ' #7d8793'>String</font>
+
+  A short alphanumeric code used to classify the nature of a financial transaction. It tells banks and regulatory authorities why the money is being transferred—whether it's for goods, services, investments, salaries, loans, or other reasons.
+
+  Example value: COM(commercial payment), SRV(payment for services).
 
   Maximum length: `16`
   
