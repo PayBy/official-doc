@@ -6,7 +6,9 @@ toc_max_heading_level: 6
 import ResponseHead from "../Refund/_response-head.mdx";
 import FundoutAbilityList from './_fundout-ability-list.mdx'
 
-# Query Payout Capability
+
+# Payout Capability
+
 
 Before using the `Transfer to bank` API, please use this API to retrieve the supported payout methods and which parameters need to be passed for each payout method.
 
@@ -30,7 +32,6 @@ import RequestHeader from '../_request-header.mdx'
 
 <details>
   <summary>Attributes</summary>
-
   <RequestHeader/>
 </details>
 
@@ -38,13 +39,13 @@ import RequestHeader from '../_request-header.mdx'
 
 ### Http Body
 
----
 
 **requestTime** <font color = ' #7d8793'>Timestamp</font> <font color = '#f19938'>Required</font>
-<br>
+<br/>
 | **Field Name** | **Variable Name** | **Required** | **Type**       | **Example Value** | **Description** |
 |----------------|-------------------|--------------|----------------|-------------------|------------------|
 | Request Time   | `requestTime`     | Mandatory    | Timestamp(3)   | 1581493898000     | The timestamp when the order request is initiated. If the request time differs from the current system time by more than 15 minutes, the request will be rejected. This helps prevent duplicate or outdated order submissions due to timeouts. |
+
 
 ### Request Sample
 
@@ -62,14 +63,9 @@ import RequestHeader from '../_request-header.mdx'
     "requestTime": 1585142880000
 }
 ```
-
-<br/>
-
+ 
 ## Response
-
 ### Http Header
-
----
 
 
 | **Field Name**     | **Variable Name**   | **Required** | **Type**     | **Example Value** | **Description**     |
@@ -79,8 +75,6 @@ import RequestHeader from '../_request-header.mdx'
 | Merchant ID        | `Partner-Id`        | Mandatory    | String(12)   |       See the response sample below for a reference.             | The unique identifier of merchant.   |
 
 
-<br/>
-
 ### Http Body
 
 ---
@@ -89,7 +83,7 @@ import RequestHeader from '../_request-header.mdx'
 
 <details>
   <summary>Attributes</summary>
-  <ResponseHead />
+  <ResponseHead/>
 </details>
 <br/>
 
@@ -105,7 +99,7 @@ If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`
   
 <details open={true}>
   <summary>Attributes of each item in the list</summary>
-  <FundoutAbilityList />
+  <FundoutAbilityList/>
 </details>
 
 <br/>
@@ -168,18 +162,18 @@ If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`
     }
 }
 ```
-## Error Code
 
+## Response Codes
 
-| **Code** | **Message**             | **Cause**                                 | **Solution**                  |
-|----------|-------------------------|-------------------------------------------|-------------------------------|
-| 0        | SUCCESS                 | Request succeeded                         | —                             |
-| 400      | INVALID_PARAMETER       | Invalid request parameters                | Adjust the request parameters |
-| 400      | REQUESTTIME_TOO_EARLY  | Request time is too far in the past       | Adjust the request time       |
-| 400      | REQUESTTIME_TOO_LATER  | Request time is too far in the future     | Adjust the request time       |
-| 402      | RATE_LIMIT_REJECT      | Too many requests                         | Reduce request frequency      |
-| 403      | UNAUTHORIZED            | API not authorized                        | Contact PayBy                 |
-| 404      | SERVICE_NOT_AVAILABLE  | API service unavailable                   | Contact PayBy                 |
-| 500      | SYSTEM_ERROR            | System error                              | Contact PayBy and retry later |
-| 504      | SERVICE_TIMEOUT         | Service timeout                           | Retry later                   |
-| 601      | RISK_FAIL               | Risk control validation failed            | Adjust business logic         |
+| **Code** | **Message**              | **Cause**                                 | **Solution**                     |
+|----------|--------------------------|-------------------------------------------|----------------------------------|
+| 0        | SUCCESS                  | Success                                   | —                                |
+| 400      | INVALID_PARAMETER        | Invalid request parameters                | Adjust request parameters        |
+| 400      | REQUESTTIME_TOO_EARLY    | Request time is too far in the past       | Adjust request time              |
+| 400      | REQUESTTIME_TOO_LATER    | Request time is too far in the future     | Adjust request time              |
+| 402      | RATE_LIMIT_REJECT        | Too many requests                         | Reduce request frequency         |
+| 403      | UNAUTHORIZED             | API not authorized                        | Contact PayBy                    |
+| 404      | SERVICE_NOT_AVAILABLE    | API service unavailable                   | Contact PayBy                    |
+| 500      | SYSTEM_ERROR             | System error                              | Contact PayBy and retry later    |
+| 504      | SERVICE_TIMEOUT          | Service timeout                           | Retry later                      |
+| 601      | RISK_FAIL                | Risk control validation failed            | Adjust business logic            |

@@ -12,7 +12,7 @@ Retrieves the order details with order number or merchant order number.
 
 <br/>
 
-### API URL
+## API URL
 
 UAT : https://uat.test2pay.com/sgs/api/transfer/getTransferToBankOrder
 
@@ -20,9 +20,9 @@ Production : https://api.payby.com/sgs/api/transfer/getTransferToBankOrder
 
 <br/>
 
-### Request
+## Request
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -35,7 +35,7 @@ import RequestHeader from '../_request-header.mdx'
 </details>
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -49,31 +49,23 @@ Example value: 1581493898000
 
 **bizContent**   <font color = ' #7d8793'>Object</font>  
 
-You can use either `refundMerchantOrderNo`  or `orderNo` to specify an order. But you can't use the two parameters at the same time.
+Use `merchantOrderNo` to specify an order.
 
-- **refundMerchantOrderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+- **merchantOrderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
-  The merchant's reference number of the request. Used to track every request.
+  The merchant's reference number of a specific transfer order..
 
-  Example value: M965739182419
+  Example value: Me23484
 
   Maximum length: `64`
   
   <br/>
 
-- **orderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
-  The PayBy's unique identify number of the order. 
-
-  Example value: 131658300517875854
-
-  <br/>
-
-
-#### Request sample
+### Request Sample
 
 ```json
-Http Header
+// Http Header
 {
     "Content-Language": "en",
     "Content-Type": "application/json",
@@ -81,7 +73,7 @@ Http Header
     "sign": "RXF8WmC67QSnr62l3oU33fjpUvAo6Yrgvk05c/vYLtmHRGMoAH4qSnap2pto3mY7KgyP5wkNUsyQXJ/ZwbfccSONLb5zA7Z7q74IsOwdJw3BKXxVWr4tfjkA02Pfcp0cZWjE/Y8jTcbtgdc5VI90LNmkgPWbrSlDbNW8p3NlhnKg+Xfl95SgMBPF9afttsU/2a5jLnZXSVcXoSthxpJ6XkZwd45+jhOjBguT+IC8uLVSNRvwDisRGgf9PYv39OH6ITEhbY2sgjkdzBZBOZlt7awy2vkMEsePsuafwrNhuz7xzjj55PzNzk8+zCUu/791OhC/eFUyGimtDw5mX9cyQw=="
 }
 
-Http Body
+// Http Body
 {
     "body": {
         "bizContent": {
@@ -93,9 +85,9 @@ Http Body
 ```
 <br/>
 
-### Response
+## Response
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -105,7 +97,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -133,15 +125,15 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
   </details>
 
 
-#### Response sample
+### Response Sample
 
 ```json
-Http Header
+// Http Header
 {
     "sign": "VvlCywDHE0Pi35ypeJymje1GWHbDPhy3UJqPZTLnM0QqFa3QW+Yzc25kgsrB9t58c2oRdWo+stcvMhOeOgbrXNOhLAECD5bpSr2L1xEVhowd1k8tNlq+w2WhzUM0A77YVO2wapqqtBvsFi09o/ix7gCyX+850oLLxEEbbBR48fufVJxcOQ4y7bdkSufd+9gY4vdcJYMmnToSVQ72ObekhyZiXhT5zfnHjbFYGGpRXh/HvDiE+OGdTDYmHH4Ui+funH9kCg291/pWIV8Yp0hIQJ29cuJyCYsm1brkLopU1eak7fgculNo5SnCZH9nTIHYsIQtsMAXgI8q0MecBR2ovw=="
 }
 
-Http Body
+// Http Body
 {
     "head": {
         "applyStatus": "SUCCESS",
@@ -171,9 +163,30 @@ Http Body
             "product": "Transfer To Bank",
             "requestTime": 1585133415287,
             "status": "SUCCESS",
-            "swiftCode": "BBMEAEAD"
+            "swiftCode": "BBMEAEAD",
+            "bankReference": "2000000111101"
         }
     }
 }
 ```
+
+## Response Code
+
+The following response codes are used for the `status` field:
+
+
+| **Code** | **Message**                  | **Cause**                                      | **Solution**                      |
+|----------|------------------------------|------------------------------------------------|-----------------------------------|
+| 0        | SUCCESS                      | Success                                        |                                   |
+| 400      | INVALID_PARAMETER            | Invalid parameters                             | Adjust the request parameters     |
+| 400      | REQUESTTIME_TOO_EARLY        | Request time is too far in the past            | Adjust the request time           |
+| 400      | REQUESTTIME_TOO_LATER        | Request time is too far in the future          | Adjust the request time           |
+| 402      | RATE_LIMIT_REJECT            | Too many requests in a short period            | Reduce request frequency          |
+| 403      | UNAUTHORIZED                 | API not authorized                             | Contact PayBy                     |
+| 404      | SERVICE_NOT_AVAILABLE        | API service unavailable                        | Contact PayBy                     |
+| 500      | SYSTEM_ERROR                 | System error                                   | Contact PayBy and retry later     |
+| 504      | SERVICE_TIMEOUT              | Service timeout                                | Retry later                       |
+| 601      | RISK_FAIL                    | Risk control validation failed                 | Adjust the business logic         |
+| 62004    | MERCHANT_ORDER_NO_NOT_EXIST  | The order with the given merchant order number does not exist | Check and correct the merchant order number |
+
 

@@ -6,24 +6,22 @@ toc_max_heading_level: 6
 import AcquireOrder from "./OrderCreation/_acquire-order.mdx";
 
 
+# Asynchronous Notification
+## Overview
 
-# Asynchronous notification
+After a successful payment, PayBy sends the payment result and user information to the merchant via a data stream. The merchant system must receive, process, and respond to this notification according to the API specifications.
 
-If the `notifyUrl` parameter is passed in the order creation request to receive payment notifications, PayBy will send a message to the address when the order status changes from `CREATED` to `SUCCESS` or ` FAILURE`.
+**<span style={{color:"#f19938"}}>Note</span>**
 
-<br/>
-
-**<span style={{color:"#f19938"}}>Notice</span>**
-
-1.  <font color = 'black'>In this scenario, the request is sent by PayBy to the merchant, and the merchant needs to send response to PayBy.</font>
-2.  After receiving the notification, please return the success message, otherwise PayBy will try to send multiple times. The maximum number of attempts is 7. The interval time between each attempt is as follows:  2 minutes, 10 minutes, 10  minutes, 1 hour, 2 hours, 6 hours, and 15 hours. 
-6.  The notification request is signed by payBy side. The merchant must verify the notification signature before processing the content.
+- Duplicate Notifications: The same notification may be sent multiple times. The merchant system must be able to handle duplicate messages correctly and idempotently.
+- Retry Mechanism: If PayBy does not receive a valid or timely response from the merchant, it will consider the notification failed and retry delivery. The default retry schedule is up to 7 attempts at the following intervals (in minutes): 2, 10, 10, 60, 120, 360, 900. However, successful delivery is not guaranteed.
+- Order Status Uncertainty: If the order status is unclear or no notification is received, merchants are advised to actively query the order status using the appropriate API.
 
 <br/>
 
-### Request
+## Request
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -41,7 +39,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -81,7 +79,7 @@ The parameter is deprecated.
 
 <br/>
 
-#### Request sample
+### Request Sample
 
 ```json
 Http Header
@@ -163,15 +161,13 @@ Http Body
 }
 ```
 
-
-
-### Response 
+## Response 
 
 Please reply `success` after receiving the notification, otherwise PayBy will send the notification repeatedly for the same order.
 
 <br/>
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -183,7 +179,7 @@ Example value: application/json
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -193,7 +189,7 @@ Example value: Success
 
 <br/>
 
-#### Response sample
+### Response Sample
 
 ```json
 Http Header

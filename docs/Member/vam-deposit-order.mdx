@@ -1,0 +1,68 @@
+---
+sidebar_position: 2
+toc_max_heading_level: 6
+---
+
+# VAM Deposit Notification
+
+## Overview
+
+When a VAM deposit occurs, PayBy sends the relevant deposit information to the merchant via a data stream. The merchant must process the notification and respond according to the specifications outlined in this document.
+
+---
+
+> **Note:**
+
+> 1. **Duplicate Notifications**: The same notification may be sent multiple times. Merchant systems must be able to handle duplicate notifications correctly. 
+> 2. **Retry Mechanism**: If PayBy does not receive a valid response or if the response times out, the notification is considered failed and will be retried. The default retry schedule is as follows (in minutes): `2, 10, 10, 60, 120, 360, 900`. However, successful delivery is not guaranteed.
+> 3. **Order Status Uncertainty**: If the order status is unclear or the merchant has not received a payment result notification from PayBy, it is recommended to actively query the order status using the designated API.
+
+---
+
+## Notification Payload
+
+| Field Name     | Variable Name      | Required | Type             | Example Value | Description |
+|----------------|--------------------|----------|------------------|----------------|-------------|
+| Deposit Order  | `vamDepositOrder`  | Yes      | `VamDepositOrder`| -              | Contains deposit details |
+
+
+## Sample Notification
+
+```json
+// Http Header
+{
+    "Content-Type": "application/json; charset=UTF-8"
+}
+
+// Http Body
+{
+    "notify_time": "20241224061738",
+    "vamDepositOrder": {
+        "remitterInfo": "MR HUA JIANG",
+        "amount": {
+            "amount": 3000,
+            "currency": "AED"
+        },
+        "orderNo": "131727701521486397",
+        "referenceNo": "UFOC0HQ008",
+        "senderBankCode": "BBMEAEADXXX",
+        "depositDetails": "REF AEV260832YLQ4K5D FIS 56057df891a0449584dc5c8d84a6a138",
+        "transactionTime": 1727701521000,
+        "status": "SUCCESS"
+    },
+    "_input_charset": "UTF-8",
+    "notify_timestamp": 1735006658869,
+    "notify_id": "202409300013926551"
+}
+```
+
+
+## Response Format
+
+Upon receiving the notification, the merchant must respond with:
+
+```json
+{"response": "SUCCESS"}
+```
+
+Any other response will be treated as a failure.

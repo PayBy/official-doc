@@ -7,7 +7,7 @@ import BizContent from './_biz-content.mdx'
 import ResponseHead from '../Refund/_response-head.mdx'
 import TransferToBankOrder from './_transfer-to-bank-order.mdx'
 
-# Transfer to bank
+# Transfer to Bank
 
 > **Note:** Before using this API, please use `Get fund out ability` API to retrieve the supported payout methods and which parameters need to be passed for each payout method. If the currency of received amount is not AED, please use the `Rate Calculator` API to get the latest exchange rate.
 
@@ -197,5 +197,29 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 | SUCCESS      | Successful          |
 | FAILURE      | Failed              |
 | BANK_FAIL    | Bank Rejected       |
+
+
+## Response Codes
+
+
+| **Code** | **Message**                             | **Cause**                          | **Workaround**         |
+|---------|------------------------------------------|------------------------------------------------|----------------------------------|
+| 0       | SUCCESS                                  | Success                                         |                                  |
+| 400     | INVALID_PARAMETER                        | Parameter error                                 | Adjust request parameters        |
+| 400     | REQUESTTIME_TOO_EARLY                    | Request time is too early compared to current   | Adjust request time              |
+| 400     | REQUESTTIME_TOO_LATER                    | Request time is too late compared to current    | Adjust request time              |
+| 402     | RATE_LIMIT_REJECT                        | Requests are too frequent                       | Reduce request frequency         |
+| 403     | UNAUTHORIZED                             | API not authorized                              | Contact PayBy                    |
+| 404     | SERVICE_NOT_AVAILABLE                    | API service unavailable                         | Contact PayBy                    |
+| 500     | SYSTEM_ERROR                             | System error                                    | Contact PayBy, try again later   |
+| 504     | SERVICE_TIMEOUT                          | Service timeout                                 | Try again later                  |
+| 601     | RISK_FAIL                                | Risk control verification failed                | Adjust business logic            |
+| 62002   | ORDER_FAILURE                            | Order has failed                                | Adjust merchant order number     |
+| 62016   | MERCHANT_ORDER_NO_EXIST                  | Same order number with different business params| Adjust order number              |
+| 62026   | PRODUCT_IS_NOT_APPLIED                   | Product not applied                             | Apply for the product            |
+| 62028   | ORDER_SUCCESS                            | Order already successful                        | Adjust merchant order number     |
+| 62029   | ORDER_CREATED                            | Order already created                           | Adjust merchant order number     |
+| 62094   | THE_ENTERED_COUNTRY_CODE_IS_INVALID      | Country code validation failed                  | Adjust request parameters        |
+| 62095   | THE_ENTERED_CITY_CODE_IS_INVALID         | City code validation failed                     | Adjust request parameters        |
 
 

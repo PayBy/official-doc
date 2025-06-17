@@ -62,10 +62,6 @@
 
   You can use this parameter if you want to specify the refund amount of different sharing accounts in the request. Note that only if the `refundSharingAmount` is **true**, this parameter takes effect.
 
-  Note:
-
-  If the parameter **withholdAndRemitFee**  is used in the order creation request, when a refund is initiated, only the proportional refund can be made, and the refund amount of each sharing account cannot be specified.
-
   The attributes of each item in the list are:
 
   - **sharingIdentitySeqId**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
@@ -84,10 +80,11 @@
 
     `PHONE_NO`. Transfer through mobile phone number.
 
-    `MEMBER_ID`. Transfer through PayBy member id.
+    `MEMBER_ID`. Transfer through PayBy member ID.
 
+    `BOTIM_ID`. Transfer through BOTIM user ID.
 
-    Maximum length: `20`
+     Maximum length: `64`
 
     <br/>
 
@@ -99,13 +96,15 @@
 
     For `MEMBER_ID`, example value: 100006514321
 
-    Maximum length: `20`
+    Maximum length: `200`
 
     <br/>
 
   - **sharingMemo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
     Add some description to this operation.
+
+    Maximum length: `128`
 
     <br/>
 
@@ -114,6 +113,18 @@
     The amount you plan to refund from this id.
 
     <br/>
+
+  - **withholdAndRemitFee** <font color = ' #7d8793'>Boolean</font>
+
+     Indicates whether the transaction fee is withheld and remitted on behalf of the split party. It may appear at most once across all split entries, or not at all. If omitted, it is assumed that no fee withholding policy is applied by default.
+
+    Example value: true, false
+  
+    **Note:**
+
+    If the parameter **withholdAndRemitFee**  is used in the order creation request, when a refund is initiated, only the proportional refund can be made, and the refund amount of each sharing account cannot be specified.
+
+  <br />
 
 - **notifyUrl** <font color = ' #7d8793'>String</font>
 
@@ -134,6 +145,8 @@
   Maximum length: `200`
 
   <br />
+
+
 
 - **reason** <font color = ' #7d8793'>String</font>
 
