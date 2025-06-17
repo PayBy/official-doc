@@ -7,7 +7,7 @@ import BizContent from './_biz-content.mdx'
 import ResponseHead from '../Refund/_response-head.mdx'
 import TransferToBankOrder from './_transfer-to-bank-order.mdx'
 
-# Transfer to bank
+# Transfer to Bank
 
 Before using this API, please use `Get fund out ability` API to retrieve the supported payout methods and which parameters need to be passed for each payout method.
 
@@ -15,7 +15,7 @@ If the currency of received amount is not AED, please use the `Rate Calculator` 
 
 <br/>
 
-### API URL
+## API URL
 
 UAT : https://uat.test2pay.com/sgs/api/transfer/placeTransferToBankOrder
 
@@ -23,9 +23,9 @@ Production : https://api.payby.com/sgs/api/transfer/placeTransferToBankOrder
 
 <br/>
 
-### Request
+## Request
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -39,7 +39,7 @@ import RequestHeader from '../_request-header.mdx'
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -59,23 +59,23 @@ Example value: 1581493898000
   </details>
 <br/>
 
-#### Beneficiary type
+### Beneficiary Type
 
 Required and optional fields for different beneficiary types.
 
-|          | holderName | iban      | swiftCode | beneficiaryAddress | accountNo | bankName | fedwireCode | branchName | intermediaryBank |
-| -------- | ---------- | --------- | --------- | ------------------ | --------- | -------- | ----------- | ---------- | ---------------- |
-| IBAN     | Required   | Required  | Optional  | Required           | Forbidden | Optional | Forbidden   | Optional   | Optional         |
-| BBAN     | Required   | Forbidden | Required  | Required           | Required  | Optional | Forbidden   | Optional   | Optional         |
-| FED_WIRE | Required   | Forbidden | Forbidden | Required           | Required  | Optional | Required    | Optional   | Optional         |
+|          | holderName | iban      | swiftCode | beneficiaryAddress | accountNo | bankName | fedwireCode | branchName | intermediaryBank | purposeCode |
+| -------- | ---------- | --------- | --------- | ------------------ | --------- | -------- | ----------- | ---------- | ---------------- | ----------- |
+| IBAN     | Required   | Required  | Optional  | Required           | Forbidden | Optional | Forbidden   | Optional   | Optional         | Optional    |
+| BBAN     | Required   | Forbidden | Required  | Required           | Required  | Optional | Forbidden   | Optional   | Optional         | Optional    |
+| FED_WIRE | Required   | Forbidden | Forbidden | Required           | Required  | Optional | Required    | Optional   | Optional         | Optional    |
 
 <br/>
 
 
-#### Request sample
+### Request Sample
 
 ```json
-Http Header
+// Http Header
 {
     "Content-Language": "en",
     "Content-Type": "application/json",
@@ -83,7 +83,7 @@ Http Header
     "sign": "S5Wr6x9Po1SX3nm4kRJyTueUMbnmsPGMlMjc3PcoyNyP0G5BuRAwauYjTJLeto6Bu1+893zCGmj201mjrvcXP4v/uMzQxRav5PBMp9VuQ+3dOFGclQAwr8cFAKuBDHhGAAkw1iVpdC8ZZLGl/jRUv3PCiZh6VyOLnrK7ZIevB/TetQSzCmN1xDIQo8mpDYz7YY/jSzYBnD17ePvkr4qQOWNUh7FF2nd29lo9KOQl5tJVoqT/D+PVSlZeuGr+wxBYCAyGqbVXXSAGcwF1egF6ISLJ29jpHcX/LACXxF/uf5cdzbudwPB2X0wtRw9WnowY3RUq34sidoF4DIShXVFHAg=="
 }
 
-Http Body
+// Http Body
 {
     "bizContent":{
         "amount":{
@@ -105,9 +105,9 @@ Http Body
 
 <br/>
 
-### Response
+## Response
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -117,7 +117,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -145,7 +145,7 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 
 <br/>
 
-#### Response sample
+### Response Sample
 
 ```json
 Http Header
@@ -190,4 +190,28 @@ Http Body
     }
 }
 ```
+
+## Response Codes
+
+
+| **Code** | **Message**                             | **Cause**                          | **Workaround**         |
+|---------|------------------------------------------|------------------------------------------------|----------------------------------|
+| 0       | SUCCESS                                  | Success                                         |                                  |
+| 400     | INVALID_PARAMETER                        | Parameter error                                 | Adjust request parameters        |
+| 400     | REQUESTTIME_TOO_EARLY                    | Request time is too early compared to current   | Adjust request time              |
+| 400     | REQUESTTIME_TOO_LATER                    | Request time is too late compared to current    | Adjust request time              |
+| 402     | RATE_LIMIT_REJECT                        | Requests are too frequent                       | Reduce request frequency         |
+| 403     | UNAUTHORIZED                             | API not authorized                              | Contact PayBy                    |
+| 404     | SERVICE_NOT_AVAILABLE                    | API service unavailable                         | Contact PayBy                    |
+| 500     | SYSTEM_ERROR                             | System error                                    | Contact PayBy, try again later   |
+| 504     | SERVICE_TIMEOUT                          | Service timeout                                 | Try again later                  |
+| 601     | RISK_FAIL                                | Risk control verification failed                | Adjust business logic            |
+| 62002   | ORDER_FAILURE                            | Order has failed                                | Adjust merchant order number     |
+| 62016   | MERCHANT_ORDER_NO_EXIST                  | Same order number with different business params| Adjust order number              |
+| 62026   | PRODUCT_IS_NOT_APPLIED                   | Product not applied                             | Apply for the product            |
+| 62028   | ORDER_SUCCESS                            | Order already successful                        | Adjust merchant order number     |
+| 62029   | ORDER_CREATED                            | Order already created                           | Adjust merchant order number     |
+| 62094   | THE_ENTERED_COUNTRY_CODE_IS_INVALID      | Country code validation failed                  | Adjust request parameters        |
+| 62095   | THE_ENTERED_CITY_CODE_IS_INVALID         | City code validation failed                     | Adjust request parameters        |
+
 
