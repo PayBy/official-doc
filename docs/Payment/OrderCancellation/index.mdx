@@ -7,7 +7,9 @@ import AcquireOrder from "../OrderCreation/_acquire-order.mdx";
 import RequestHeader from '../../_request-header.mdx'
 import ResponseHead from '../../Refund/_response-head.mdx'
 
-# Cancel order
+# Cancel Order
+
+## Overview
 
 If the payment result is not returned for a long time, you can use this interface to cancel the order. However, PayBy only supports cancellations when the order is in the `CREATED` status, and the order status will be updated to `FAILURE` after PayBy processed the cancellation request successfully.
 
@@ -130,7 +132,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
   <br/>
 
-### Response sample
+### Response Sample
 
 ```json
 // Http Header
