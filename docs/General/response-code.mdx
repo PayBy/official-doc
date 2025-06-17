@@ -6,13 +6,13 @@ slug: /response-code
 
 
 
-# Response code
+# Response Codes
 
 The response returned by PayBy will contain the response code and message. Different codes represent different meanings, below is a list of possible codes, along with additional information about how to resolve them. 
 
 <br/>
 
-### Global 
+## Global 
 
 | code | msg                   | Description                                                  |
 | :--- | --------------------- | ------------------------------------------------------------ |
@@ -29,9 +29,9 @@ The response returned by PayBy will contain the response code and message. Diffe
 
 <br/>
 
-### Payment & Refund
+## Payment & Refund
 
-#### Create order
+### Create Order
 
 | code  | msg                               | Description                                                  |
 | ----- | --------------------------------- | ------------------------------------------------------------ |
@@ -53,6 +53,9 @@ The response returned by PayBy will contain the response code and message. Diffe
 | 62036 | MERCHANT_DEVICE_NOT_EXIST         | This device doesn't exist in merchant account                |
 | 62037 | DEVICE_ACCESS_FORBIDDEN           | This device is forbidden to access                           |
 | 62042 | MISSING_AUTH_PROTOCOL_NO          | Missing authProtocolNo                                       |
+| 62043 | MISSING_BUSINESS_TYPE          | Missing businessType. Please adjust the request parameters.     |
+| 62044 | INVALID_BUSINESS_TYPE          | The businessType is invalid. Please adjust the request parameters.     |
+| 62085 | MISSING_PROTOCOL_SCENE_CODE       | Missing protocol scene code. Please adjust the request parameters. |
 | 62047 | MISSING_AUTH_TOKEN                | Missing authToken                                            |
 | 62048 | MISSING_UNIQUE_DEVICE             | Missing uniqueDevice                                         |
 | 62049 | MISSING_CARD_NO                   | Missing cardNo                                               |
@@ -84,10 +87,14 @@ The response returned by PayBy will contain the response code and message. Diffe
 | 62079 | MISSING_CARD_NO_CARD_TOKEN        | cardToken and cardNo cannot be empty at the same time        |
 | 62080 | MISSING_EWALLET_CODE              | Missing eWalletCode                                          |
 | 62081 | INVALID_EWALLET_CODE              | Invalid eWalletCode, please check the enumerated values      |
+| 62086 | INVALID_PAYEEMID                  | The PayeeMid is invalid. Please check and adjust the request parameters |
+| 62087 | INVALID_TYPE                      | The type is invalid. Please check and adjust the request parameters |
+| 62088 | MISSING_UNIQUE_ID                 | Missing uniqueId, please check and adjust the request parameters |
+| 62089 | INVALID_EXPIRED_TIME              | The expiredTime is invalid, please check and adjust the request parameterss |
 
 <br/>
 
-#### Cancel order
+### Cancel Order
 
 | code  | msg                         | Description                                                  |
 | ----- | --------------------------- | ------------------------------------------------------------ |
@@ -99,7 +106,7 @@ The response returned by PayBy will contain the response code and message. Diffe
 
 <br/>
 
-#### Revoke order
+### Revoke Order
 <div className='full-width-table-container'>
 
 | code  | msg                         | Description                                                  |
@@ -113,24 +120,27 @@ The response returned by PayBy will contain the response code and message. Diffe
 </div>
 <br/>
 
-#### Refund order
+### Refund Order
 
 | code  | msg                            | Description                                                  |
 | ----- | ------------------------------ | ------------------------------------------------------------ |
 | 62002 | ORDER_FAILURE                  | Refund order request cannot be executed when order is in this state |
 | 62004 | MERCHANT_ORDER_NO_NOT_EXIST    | Merchant order number does not exist, please check the parameter |
 | 62006 | REFUND_AMOUNT_EXCEEDED         | Refund amount exceeds refundable amount                      |
+| 62007 | REFUND_MERCHANT_ORDER_NO_NOT_EXIST         | The refund merchant order number does not exist. Please check and update the request parameters  |
 | 62015 | ORDER_NOT_PAID                 | Refund order request cannot be executed when order is in this state |
 | 62017 | REFUND_MERCHANT_ORDER_NO_EXIST | The refund merchant order number has generated a refund order |
+| 62030 | ORDER_BANK_FAIL                | The order has been refunded, please adjust the merchant order number |
 | 62035 | ORDER_NO_NOT_EXIST             | The order number of payment does not exist,  please check the parameter |
 | 62036 | MERCHANT_DEVICE_NOT_EXIST      | This device doesn't exist in merchant account                |
 | 62038 | INVALID_SECONDARY_MERCHANT     | The parameter secondary merchant must be the same with that of the payment order |
 | 62040 | ACQUIRE_ORDER_REVOKED          | The payment order has been revoked and cannot be refunded    |
 | 62045 | REFUND_REJECTED                | Request is rejected                                          |
+| 62084 | REFUND_SHARING_MEMBER_MISMATCH | The refund sharing details on member ID do not match. Please review and update your request parameters. |
 
 <br/>
 
-#### Retrieve checkout URL
+### Retrieve Checkout URL
 
 <div className='full-width-table-container'>
 
@@ -142,7 +152,7 @@ The response returned by PayBy will contain the response code and message. Diffe
 
 <br/>
 
-#### Retrieve order detail
+### Retrieve Order Detail
 
 | code  | msg                         | Description                                                  |
 | ----- | --------------------------- | ------------------------------------------------------------ |
@@ -151,9 +161,16 @@ The response returned by PayBy will contain the response code and message. Diffe
 
 <br/>
 
-### Fundout
+### Sharing
 
-#### Transfer
+| code  | msg                         | Description                                                  |
+| ----- | --------------------------- | ------------------------------------------------------------ |
+| 62083 | SHARING_MEMBER_NOT_EXIST | The sharing member ID do not exist. Please review and update your request parameters. |
+
+
+## Fundout
+
+### Transfer
 
 | code  | msg                        | Description                                                  |
 | ----- | -------------------------- | ------------------------------------------------------------ |
@@ -168,7 +185,7 @@ The response returned by PayBy will contain the response code and message. Diffe
 
 <br/>
 
-#### Transfer to bank
+### Transfer to Bank
 
 <div className='full-width-table-container'>
 
@@ -185,7 +202,7 @@ The response returned by PayBy will contain the response code and message. Diffe
 
 
 
-#### Transaction failure reason
+### Transaction Failure Causes
 
 <div className='full-width-table-container'>
 
@@ -199,7 +216,7 @@ The response returned by PayBy will contain the response code and message. Diffe
 
 </div>
 
-#### Retrieve order detail
+### Retrieve Order Detail
 
 | code  | msg                         | Description                                                  |
 | ----- | :-------------------------- | ------------------------------------------------------------ |
@@ -208,9 +225,9 @@ The response returned by PayBy will contain the response code and message. Diffe
 
 <br/>
 
-### Card
+## Card
 
-#### Unbind card
+### Unbind Card
 <div className='full-width-table-container'>
 
 | code  | msg            | Description                        |
@@ -220,7 +237,7 @@ The response returned by PayBy will contain the response code and message. Diffe
 
 <br/>
 
-#### Retrieve card detail
+### Retrieve Card Detail
 
 
 <div className='full-width-table-container'>
@@ -232,11 +249,12 @@ The response returned by PayBy will contain the response code and message. Diffe
 
 <br/>
 
-### Reconciliation
+## Reconciliation
 
-#### Download statements
+### Download Statements
 
 | code  | msg                 | Description                                                  |
 | ----- | ------------------- | ------------------------------------------------------------ |
 | 62013 | STATEMENT_NOT_EXIST | Statement not generated. Please wait a few minutes or check if the date being passed is a future date. |
+| 62014 | STATEMENT_NOT_GENERATED | Statement not generated. Please download the statement after the specified time set by the merchant. | 
 

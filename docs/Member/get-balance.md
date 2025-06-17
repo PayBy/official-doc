@@ -12,16 +12,15 @@ The GetBalance API allows merchants to query their account balance, providing de
 This API is used to query the member account balance.
 
 
-
-### API URL
+## API URL
 
 UAT : https://uat.test2pay.com/sgs/api/member/getBalance
 
 Production : https://api.payby.com/sgs/api/member/getBalance
 
 
-
-## Http Header
+## Request Parameters
+### Http Header
 
 | Field Name          | Variable Name | Required | Type       | Example Value | Description   |
 |---------------------|---------------|----------|------------|---------------|---------------|
@@ -29,42 +28,39 @@ Production : https://api.payby.com/sgs/api/member/getBalance
 | sign                | Sign          | Required | String     |               |               |
 | Partner-Id          |               | Required | String(12) |               |               |
 
-## Http Body
+### Http Body
 
 | Field Name        | Variable Name | Required | Type                | Example Value   | Description           |
 |-------------------|---------------|----------|---------------------|-----------------|-----------------------|
 | When requested    | requestTime   | Required | Timestamp(3)        | 1581493898000   |                       |
 | Business          | bizContent    | Required | GetMemberBalanceRequest |             |                       |
 
-## GetMemberBalanceRequest
+#### GetMemberBalanceRequest
 
 | Field Name | Variable Name | Required | Type   | Example Value | Description |
 |------------|----------------|----------|--------|---------------|-------------|
 | Currency   | currencyCode   | Required | String | AED           |             |
 
 
-## Request Sample
+### Request Sample
 
-### Http Header
 ```json
+Http Header
 {
-  "Content-Language": "en",
-  "Content-Type": "application/json",
-  "Partner-Id": "200000018128",
-  "sign": "RXF8WmC67QSnr62l3oU33fjpUvAo6Yr9vk05c/vYLtmHRGMoAH4qSnap2pto3mY7KgyP5wkNUsyQXJ/ZwbfcSONLb5zA77q74lsOwdJw3BKXxVWr4tfjkA02Pfcp0cZWjE/Y8jTcbtgdc5Vl90LNmkgPWbrSlDbNW8p3NIhnKg+Xfl95SgMBPF9afftsU/2a5jLnZXSVcXoSthxpJ6XkZwd45+jhOjBguT+lC8uLVSNRvwDisRGgf9PYv39OH6lTEhbY2sgjkdZBZBOZlt7awy2vkMEsePsuafwrNhuz7xzjj55PzNzk8+zCUu/791OhC/eFUyGimtDw5mX9cyQw=="
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "Partner-Id": "200000018128",
+    "sign": "RXF8WmC67QSnr62l3oU33fjpUvAo6Yrgvk05c/vYLtmHRGMoAH4qSnap2pto3mY7KgyP5wkNUsyQXJ/ZwbfccSONLb5zA7Z7q74IsOwdJw3BKXxVWr4tfjkA02Pfcp0cZWjE/Y8jTcbtgdc5VI90LNmkgPWbrSlDbNW8p3NlhnKg+Xfl95SgMBPF9afttsU/2a5jLnZXSVcXoSthxpJ6XkZwd45+jhOjBguT+IC8uLVSNRvwDisRGgf9PYv39OH6ITEhbY2sgjkdzBZBOZlt7awy2vkMEsePsuafwrNhuz7xzjj55PzNzk8+zCUu/791OhC/eFUyGimtDw5mX9cyQw=="
 }
 
-
+Http Body
 {
-  "bizContent": {
-    "currencyCode": "AED"
-  },
-  "requestTime": 1708485334645
+    "bizContent":{
+        "currencyCode":"AED"
+    },
+    "requestTime":1708485334645
 }
-
-
 ```
-
 
 
 ## Response Parameters
@@ -101,43 +97,38 @@ The body field in the Http Body is returned only when applyStatus is SUCCESS and
 
 ### Sample Response
 
-#### Http Header
-
 ```json
+// Http Header
 {
-  "sign": "nDdCIX1tAyV3qcX/Epay6AXFNRGSsWd8ysWO9SgwPrNTetSePLA9C39mGp6qRbjJeqXLEnYLwSkBu5eKdtvXX3HtiGLi2kvRYjfYpTCjXdVL2Pncv2w+ghjHe2jL988ilk7q5AjAgdtXNphpHTcTes9pk6W3bVCbvjiH6atOfExUZt91L1LmPGELT1IJm/IFW3w4KLh0Gxs7FzDPi9RDFUemObNlRzV8kCtkWahvPgs/hBnS69GyYDKN7ihQX2iUiLP239wI6IA+VG/ZZKHPhLs8bbuOS+LKWORlp6jRt+JsAx7c/O1tRNyOnHKxPRKJ8bVTohEp39yUz/HwG8oA=="
+	"sign": "nDdClX1tAyV3qcX/Epay6AXFNRGSsWd8ysWO9SgwPrNTetSePLA9C39mGp6qRbjJeqXLEnYLwSkBu5eKdtyVX3tflGLiV2kvRjVfYpTCjXdVL2Pcnv2w+ghjHe2jL988iklk7q5AjAgdtXNphpHcTes9pk6W3bVCbvijH6at0fExUtZ91L1LrnPGELT1IJm/lFW3w4KLh0Gxs7FzDPI9RDfUemObNlRzV8kCtkWahwPgs/hBnS69GyYDKN7ihQX2UiLuP239wl6IA+VG/ZZKHPhLs8bbuOS+LKWORIp6jRt+JsAx7c/Ot1RNyOnHKxPRKJ8bVTohEp39yUz/HwG8oA=="
 }
 
+// Http Body
 {
-  "body": {
-    "balanceList": [
-      {
-        "availableBalance": {
-          "amount": 897993.88,
-          "currency": "AED"
-        }
-      }
-    ],
-    "memberId": "200000030907"
-  },
-  "head": {
-    "applyStatus": "SUCCESS",
-    "code": "0",
-    "msg": "SUCCESS",
-    "success": true,
-    "traceCode": "375099"
-  }
+    "body":{
+        "balanceList":[
+            {
+                "availableBalance":{
+                    "amount":897993.88,
+                    "currency":"AED"
+                }
+            }
+        ],
+        "memberId":"200000030907"
+    },
+    "head":{
+        "applyStatus":"SUCCESS",
+        "code":"0",
+        "msg":"SUCCESS",
+        "success":true,
+        "traceCode":"375099"
+    }
 }
-
-
-
 ```
 
+#### Response Codes
 
-
-#### Return Code
-
-| code   | msg                        | reason                                 | solution                       |
+| Code   | Message                    | Cause                                | Workaround                       |
 |--------|----------------------------|----------------------------------------|--------------------------------|
 | 0      | SUCCESS                    | success                                |                                |
 | 400    | INVALID_PARAMETER          | Parameter error                        | Adjusting request parameters   |

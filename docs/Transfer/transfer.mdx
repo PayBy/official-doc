@@ -14,7 +14,7 @@ This interface provides merchants with the ability to transfer funds to the PayB
 
 <br/>
 
-#### API URL
+## API URL
 
 UAT : https://uat.test2pay.com/sgs/api/transfer/placeTransferOrder
 
@@ -22,9 +22,9 @@ Production : https://api.payby.com/sgs/api/transfer/placeTransferOrder
 
 <br/>
 
-### Request
+## Request
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -36,7 +36,7 @@ Production : https://api.payby.com/sgs/api/transfer/placeTransferOrder
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -56,10 +56,10 @@ Example value: 1581493898000
   </details>
 <br/>
 
-#### Request sample
+### Request Sample
 
 ```json
-Http Header
+// Http Header
 {
     "Content-Language": "en",
     "Content-Type": "application/json",
@@ -67,7 +67,7 @@ Http Header
     "sign": "ODOK+d0os7q0FTWNKGTr6Yt3FlO6alfvIp+IhHfudxQZnAwU5FiTWvFVqgthcsvmIR5uYpcg8PT+ZMpaGnsyicmIDfutmUOh1qVwHddkWeUJr0/Mz8kZu01nyaBOaK3Onc6eR/oUnaVRnkelJIkY1T64+DWiihzcLHgsjIThpeYay/mEf8hajKlg2ciXyWpQiA1BOPA7VwQRlBArOA0FTMjJU02uWVj4eqHeBa4lED/p5hJGfSwmSWKMZ1QjqeJzFk1mpTyVLjPZLVltSxPsj/WSpRPXrVE9qKJxekiDVgalhtqB+/LKSMx4+Bb9z0zp2u8II3oTtaPGwwRtylyxdA=="
 }
 
-Http Body
+// Http Body
 {
     "bizContent": {
         "amount": {
@@ -87,9 +87,9 @@ Http Body
 
 <br/>
 
-### Response
+## Response
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -99,7 +99,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -129,15 +129,15 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 
 <br/>
 
-#### Response sample
+### Response Sample
 
 ```json
-Http Header
+// Http Header
 {
     "sign": "WzVWAdy4Z+tMhgqtuxle+R9P3R3Yn5uMeICj8jIFTBpfReJLviZY9Z5tecWpjXM8ESaxkhn052hE1TSYXncCzB0A/lFwwbP/ylJTw5y1kvhN8BMyO55kl7y1MRCwhNc5VrEFx96SJN1MvrpbzIxuLkf12GXoqXVO3VG9eKv+iErfPlEJ/7iYcjn7EI7s5Dk0iZ9jVvlK3CxSuJQkUmVz0UGHJBjd/912z54YjxAOdlxRmT4In9L2UXQZppihj79wf2xaH3Z1Pde3K4O1quFMbRXsHWvixIpsMcrfkOUoribXFo7e5+fMbEsIGA3t1EJNw7nKavmb3IrkP9CrW3Hfnw=="
 }
 
-Http Body
+// Http Body
 {
     "head": {
         "applyStatus": "SUCCESS",
@@ -172,4 +172,28 @@ Http Body
     }
 }
 ```
+
+## Response Codes
+
+
+| **Code**  | **Message**                        | **Cause**                                                                 | **Workaround**                        |
+|-------|--------------------------------|------------------------------------------------------------------------|----------------------------------|
+| 0     | SUCCESS                        | Success                                                                |                                  |
+| 400   | INVALID_PARAMETER              | Invalid parameter                                                      | Adjust request parameters        |
+| 400   | REQUESTTIME_TOO_EARLY         | Request time is too far in the past                                    | Adjust request time              |
+| 400   | REQUESTTIME_TOO_LATER         | Request time is too far in the future                                  | Adjust request time              |
+| 402   | RATE_LIMIT_REJECT             | Too many requests                                                      | Reduce request frequency         |
+| 403   | UNAUTHORIZED                   | API not authorized                                                     | Contact PayBy                    |
+| 404   | SERVICE_NOT_AVAILABLE         | API service unavailable                                                | Contact PayBy                    |
+| 500   | SYSTEM_ERROR                  | System error                                                           | Contact PayBy and retry later    |
+| 504   | SERVICE_TIMEOUT               | Service timeout                                                        | Retry later                      |
+| 601   | RISK_FAIL                     | Risk control validation failed                                         | Adjust business logic            |
+| 62002 | ORDER_FAILURE                 | Order has failed                                                       | Adjust merchant order number     |
+| 62016 | MERCHANT_ORDER_NO_EXIST      | Duplicate order number with different business parameters              | Adjust order number              |
+| 62020 | PAYERMID_PAYEEMID_ARE_SAME   | Payer and payee are the same                                           | Adjust payer or payee            |
+| 62023 | NAME_NOT_MATCH               | Payee name does not match                                              | Correct the payee name           |
+| 62026 | PRODUCT_IS_NOT_APPLIED       | Product not applied for                                                | Apply for the product            |
+| 62027 | BENEFICIARY_NOT_EXIST        | Payee does not exist                                                   | Adjust the payee                 |
+| 62028 | ORDER_SUCCESS                | Order has already succeeded                                            | Adjust merchant order number     |
+| 62029 | ORDER_CREATED                | Order has already been created                                         | Adjust merchant order number     |
 
