@@ -6,7 +6,9 @@ toc_max_heading_level: 6
 import ResponseHead from "../Refund/_response-head.mdx";
 import FundoutAbilityList from './_fundout-ability-list.mdx'
 
+
 # Payout Capability
+
 
 Before using the `Transfer to bank` API, please use this API to retrieve the supported payout methods and which parameters need to be passed for each payout method.
 
@@ -41,17 +43,16 @@ import RequestHeader from '../_request-header.mdx'
 ---
 
 **requestTime** <font color = ' #7d8793'>Timestamp</font> <font color = '#f19938'>Required</font>
+<br>
+| **Field Name** | **Variable Name** | **Required** | **Type**       | **Example Value** | **Description** |
+|----------------|-------------------|--------------|----------------|-------------------|------------------|
+| Request Time   | `requestTime`     | Mandatory    | Timestamp(3)   | 1581493898000     | The timestamp when the order request is initiated. If the request time differs from the current system time by more than 15 minutes, the request will be rejected. This helps prevent duplicate or outdated order submissions due to timeouts. |
 
-Request time of the order. If the request time is more than 15 minutes away from the current time, the request will be rejected. This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.
-
-Example value: 1581493898000
-
-<br/>
 
 ### Request Sample
 
 ```json
-Http Header
+// Http Header
 {
     "Content-Language": "en",
     "Content-Type": "application/json",
@@ -59,7 +60,7 @@ Http Header
     "sign": "S5Wr6x9Po1SX3nm4kRJyTueUMbnmsPGMlMjc3PcoyNyP0G5BuRAwauYjTJLeto6Bu1+893zCGmj201mjrvcXP4v/uMzQxRav5PBMp9VuQ+3dOFGclQAwr8cFAKuBDHhGAAkw1iVpdC8ZZLGl/jRUv3PCiZh6VyOLnrK7ZIevB/TetQSzCmN1xDIQo8mpDYz7YY/jSzYBnD17ePvkr4qQOWNUh7FF2nd29lo9KOQl5tJVoqT/D+PVSlZeuGr+wxBYCAyGqbVXXSAGcwF1egF6ISLJ29jpHcX/LACXxF/uf5cdzbudwPB2X0wtRw9WnowY3RUq34sidoF4DIShXVFHAg=="
 }
 
-Http Body
+// Http Body
 {
     "requestTime": 1585142880000
 }
@@ -73,9 +74,13 @@ Http Body
 
 ---
 
-**sign** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
 
-When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
+| **Field Name**     | **Variable Name**   | **Required** | **Type**     | **Example Value** | **Description**     |
+|--------------------|---------------------|--------------|--------------|-------------------|----------------------|
+| Content   | `Content-Language`  | Optional     | String(10)   | en                | `en` = English       |
+| Signature          | `Sign`              | Mandatory     | String       |        See the response sample below for a reference.           | PayBy signs each response using its private key. Merchants verify the signature using PayBy’s public key to ensure the response is authentic and not tampered with.  |
+| Merchant ID        | `Partner-Id`        | Mandatory    | String(12)   |       See the response sample below for a reference.             | The unique identifier of merchant.   |
+
 
 <br/>
 
@@ -96,7 +101,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 **<font color = '#f19938'>Notice</font>**
 
 Body is returned only when `applystatus` = `success`, and `code` = `0`.
-If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
+If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check the error against the error code table in the last section of this page and try again.
 
 - **fundoutAbilityList** <font color = ' #7d8793'>List</font>
 
@@ -111,12 +116,13 @@ If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`
 ### Response Sample
 
 ```json
-Http Header
+// Http Header
 {
     "sign": "Yv+C2lOQmfERdm5GF9b2V4Y98HmX/6CFyconeOW36AoPqcb7InRcP9E5GnvJLfMoCScuNP4FBdJ5tJpL0A7yPHUMfxARi05jFRSMG97JJazDbWTbRkNM1ZupmTubhUvxvRCgvJp1k0c5yrHph+F+++W5eYho92xnkNgd62BS27i0iDRGzGSmsaPpK7MFcdlvnbbnmDZZJ0LH6RhYiJLYKl+znllQx3jNfCRjV28o22FZ35Q43mZTsS4uAZWbZ/KfaqWoV3sN62Cjj8DSg3mD6GCGWSVbxLq58DUxAq+6GwJ7Gj0Dc9nMXP3gnFW7dodQ9AjL2iHnH6Zh1Pw2D5/ung=="
+    "partner-id": "200000429066"
 }
 
-Http Body
+// Http Body
 {
     "head":{
         "applyStatus":"SUCCESS",
@@ -166,6 +172,7 @@ Http Body
 }
 ```
 
+
 ## Response Codes
 
 
@@ -181,3 +188,4 @@ Http Body
 | 500      | SYSTEM_ERROR             | System error                              | Contact PayBy and retry later    |
 | 504      | SERVICE_TIMEOUT          | Service timeout                           | Retry later                      |
 | 601      | RISK_FAIL                | Risk control validation failed            | Adjust business logic            |
+

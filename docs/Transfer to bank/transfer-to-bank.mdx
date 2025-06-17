@@ -9,9 +9,7 @@ import TransferToBankOrder from './_transfer-to-bank-order.mdx'
 
 # Transfer to Bank
 
-Before using this API, please use `Get fund out ability` API to retrieve the supported payout methods and which parameters need to be passed for each payout method.
-
-If the currency of received amount is not AED, please use the `Rate Calculator` API to get the latest exchange rate.
+> **Note:** Before using this API, please use `Get fund out ability` API to retrieve the supported payout methods and which parameters need to be passed for each payout method. If the currency of received amount is not AED, please use the `Rate Calculator` API to get the latest exchange rate.
 
 <br/>
 
@@ -148,12 +146,12 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 ### Response Sample
 
 ```json
-Http Header
+// Http Header
 {
     "sign": "Yv+C2lOQmfERdm5GF9b2V4Y98HmX/6CFyconeOW36AoPqcb7InRcP9E5GnvJLfMoCScuNP4FBdJ5tJpL0A7yPHUMfxARi05jFRSMG97JJazDbWTbRkNM1ZupmTubhUvxvRCgvJp1k0c5yrHph+F+++W5eYho92xnkNgd62BS27i0iDRGzGSmsaPpK7MFcdlvnbbnmDZZJ0LH6RhYiJLYKl+znllQx3jNfCRjV28o22FZ35Q43mZTsS4uAZWbZ/KfaqWoV3sN62Cjj8DSg3mD6GCGWSVbxLq58DUxAq+6GwJ7Gj0Dc9nMXP3gnFW7dodQ9AjL2iHnH6Zh1Pw2D5/ung=="
 }
 
-Http Body
+// Http Body
 {
     "head": {
         "applyStatus": "SUCCESS",
@@ -190,6 +188,16 @@ Http Body
     }
 }
 ```
+## Status Code
+
+
+| **Status**   | **Description**     |
+|--------------|---------------------|
+| CREATED      | Created             |
+| SUCCESS      | Successful          |
+| FAILURE      | Failed              |
+| BANK_FAIL    | Bank Rejected       |
+
 
 ## Response Codes
 
