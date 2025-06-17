@@ -37,15 +37,28 @@
 - **Required**: No  
 - **Type**: `TransferToBankPaymentInfo` object  
 - **Example**: `-`  
-- **Description**: Detailed payment information.
+- **Description**: Detailed information about the payment processing, especially related to fees and timing
 
 `TransferToBankPaymentInfo`
 
 | Field Name         | Variable Name     | Required | Type           | Example | Description                      |
 |--------------------|-------------------|----------|----------------|---------|----------------------------------|
-| Payer Fee Amount   | payerFeeAmount    | Optional | Money          | -       |                                  |
-| Estimated Arrival Time | arrivalTime    | Optional | Timestamp(3)   |         | Estimated time of fund arrival  |
+| Payer Fee Amount   | payerFeeAmount    | Optional | Money          | -       | The fee charged to the sender (payer), including amount and currency.                                 |
+| Estimated Arrival Time | arrivalTime    | Optional | Timestamp(3)   |         | Timestamp when the funds were expected to arrive or did arrive.  |
 
+Example:
+
+	```
+	"paymentInfo": {
+                "arrivalTime": 1585133416000,
+                "payerFeeAmount": {
+                    "amount": 0,
+                    "currency": "AED"
+                }
+            }
+	```
+
+	<br />
 
 
 #### **Amount (`amount`)**
@@ -180,8 +193,7 @@
 - **Example**: `COM`  
 - **Description**: Code indicating the purpose of the transaction.
 
-`purposeCode`
-
+=======
 | Name | Description                                                  |
 | ---- | ------------------------------------------------------------ |
 | COM  | Commission                                                   |
@@ -195,3 +207,5 @@
 | INS  | Insurance services                                           |
 | ITS  | Computer services                                            |
 | OAT  | Own account transfer                                         |
+
+
