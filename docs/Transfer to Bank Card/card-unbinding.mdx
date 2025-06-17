@@ -1,0 +1,114 @@
+---
+sidebar_position: 3
+toc_max_heading_level: 6
+---
+
+# Card Unbinding
+
+## Overview
+
+This interface invalidates a saved card token. Once unbound, the card token becomes invalid and cannot be queried or used for future transactions.
+
+## API URL
+
+- **Staging URL**: `https://uat.test2pay.com/sgs/api/acquire2/removeSaveCard`
+- **Production URL**: `https://api.payby.com/sgs/api/acquire2/removeSaveCard`
+
+## Request
+
+### HTTP Header
+
+| Field Name       | Variable Name    | Required | Type       | Example Value | Description                         |
+| ---------------- | ---------------- | -------- | ---------- | ------------- | ----------------------------------- |
+| Content Language | Content-Language | Optional | String(10) | en            | Language for content (en = English) |
+| Signature        | Sign             | Required | String     | -             | Request signature                   |
+| Partner ID       | Partner-Id       | Required | String(12) | -             | Merchant identifier                 |
+
+### HTTP Body
+
+| Field Name       | Variable Name | Required | Type             | Example Value | Description                       |
+| ---------------- | ------------- | -------- | ---------------- | ------------- | --------------------------------- |
+| Request Time     | requestTime   | Required | Timestamp(3)     | 1581493898000 | Request timestamp in milliseconds |
+| Business Content | bizContent    | Required | CardIndexRequest | -             | Business request content          |
+| Card Token       | cardToken     | Required | String           | M818494241569 | Token of the card to unbind       |
+
+### Request Sample
+
+#### HTTP Header
+
+```json
+{
+    "Content-Language": "en",
+    "Content-Type": "application/json",
+    "Partner-Id": "200000018128",
+    "sign": "RXF8WmC67QSnr62l3oU33fjpUvAo6Yrgvk05c/vYLtmHRGMoAH4qSnap2pto3mY7KgyP5wkNUsyQXJ/ZwbfccSONLb5zA7Z7q74IsOwdJw3BKXxVWr4tfjkA02Pfcp0cZWjE/Y8jTcbtgdc5VI90LNmkgPWbrSlDbNW8p3NlhnKg+Xfl95SgMBPF9afttsU/2a5jLnZXSVcXoSthxpJ6XkZwd45+jhOjBguT+IC8uLVSNRvwDisRGgf9PYv39OH6ITEhbY2sgjkdzBZBOZlt7awy2vkMEsePsuafwrNhuz7xzjj55PzNzk8+zCUu/791OhC/eFUyGimtDw5mX9cyQw=="
+}
+```
+
+#### HTTP Body
+
+```json
+{
+  "requestTime": 1581406091642,
+  "bizContent": {
+    "cardToken": "M818494241569"
+  }
+}
+```
+
+## Response
+
+### HTTP Header
+
+| Field Name | Variable Name | Required | Type   | Example Value | Description        |
+| ---------- | ------------- | -------- | ------ | ------------- | ------------------ |
+| Signature  | Sign          | Required | String | -             | Response signature |
+
+> **Note**: The body field in the HTTP Body is only returned when applyStatus is SUCCESS and code is 0.
+
+### HTTP Body
+
+| Field Name      | Variable Name | Required | Type           | Example Value | Description                 |
+| --------------- | ------------- | -------- | -------------- | ------------- | --------------------------- |
+| Response Header | head          | Required | ResponseHeader | -             | Response header information |
+| Response Body   | body          | Optional | Void           | -             | Response body content       |
+
+### Response Sample
+
+#### HTTP Header
+
+```json
+{
+    "sign": "nDdClX1tAyV3qcX/Epay6AXFNRGSsWd8ysWO9SgwPrNTetSePLA9C39mGp6qRbjJeqXLEnYLwSkBu5eKdtyVX3tflGLiV2kvRjVfYpTCjXdVL2Pcnv2w+ghjHe2jL988iklk7q5AjAgdtXNphpHcTes9pk6W3bVCbvijH6at0fExUtZ91L1LrnPGELT1IJm/lFW3w4KLh0Gxs7FzDPI9RDfUemObNlRzV8kCtkWahwPgs/hBnS69GyYDKN7ihQX2UiLuP239wl6IA+VG/ZZKHPhLs8bbuOS+LKWORIp6jRt+JsAx7c/Ot1RNyOnHKxPRKJ8bVTohEp39yUz/HwG8oA=="
+}
+```
+
+#### HTTP Body
+
+```json
+{
+    "head":{
+        "applyStatus":"SUCCESS",
+        "code":"0",
+        "msg":"SUCCESS",
+        "success":true,
+        "traceCode":"811883"
+    }
+}
+```
+
+## Response Codes
+
+| Code  | Message               | Cause                                             | Workaround                   |
+| ----- | --------------------- | -------------------------------------------------- | -------------------------- |
+| 0     | SUCCESS               | Operation successful                               | -                          |
+| 400   | INVALID_PARAMETER     | Parameter error                                    | Adjust request parameters  |
+| 400   | REQUESTTIME_TOO_EARLY | Request time is too early compared to current time | Adjust request time        |
+| 400   | REQUESTTIME_TOO_LATER | Request time is too late compared to current time  | Adjust request time        |
+| 402   | RATE_LIMIT_REJECT     | Request frequency too high                         | Reduce request frequency   |
+| 403   | UNAUTHORIZED          | API not authorized                                 | Contact PayBy              |
+| 404   | SERVICE_NOT_AVAILABLE | API service unavailable                            | Contact PayBy              |
+| 500   | SYSTEM_ERROR          | System error                                       | Contact PayBy, retry later |
+| 504   | SERVICE_TIMEOUT       | Service timeout                                    | Retry later                |
+| 601   | RISK_FAIL             | Risk control validation failed                     | Adjust business logic      |
+| 62078 | CARD_NOT_EXIST        | Incorrect cardToken or card already unbound        | Adjust request parameters  |
