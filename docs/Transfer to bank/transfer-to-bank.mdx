@@ -9,13 +9,11 @@ import TransferToBankOrder from './_transfer-to-bank-order.mdx'
 
 # Transfer to bank
 
-Before using this API, please use `Get fund out ability` API to retrieve the supported payout methods and which parameters need to be passed for each payout method.
-
-If the currency of received amount is not AED, please use the `Rate Calculator` API to get the latest exchange rate.
+> **Note:** Before using this API, please use `Get fund out ability` API to retrieve the supported payout methods and which parameters need to be passed for each payout method. If the currency of received amount is not AED, please use the `Rate Calculator` API to get the latest exchange rate.
 
 <br/>
 
-### API URL
+## API URL
 
 UAT : https://uat.test2pay.com/sgs/api/transfer/placeTransferToBankOrder
 
@@ -23,9 +21,9 @@ Production : https://api.payby.com/sgs/api/transfer/placeTransferToBankOrder
 
 <br/>
 
-### Request
+## Request
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -39,7 +37,7 @@ import RequestHeader from '../_request-header.mdx'
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -59,23 +57,23 @@ Example value: 1581493898000
   </details>
 <br/>
 
-#### Beneficiary type
+### Beneficiary Type
 
 Required and optional fields for different beneficiary types.
 
-|          | holderName | iban      | swiftCode | beneficiaryAddress | accountNo | bankName | fedwireCode | branchName | intermediaryBank |
-| -------- | ---------- | --------- | --------- | ------------------ | --------- | -------- | ----------- | ---------- | ---------------- |
-| IBAN     | Required   | Required  | Optional  | Required           | Forbidden | Optional | Forbidden   | Optional   | Optional         |
-| BBAN     | Required   | Forbidden | Required  | Required           | Required  | Optional | Forbidden   | Optional   | Optional         |
-| FED_WIRE | Required   | Forbidden | Forbidden | Required           | Required  | Optional | Required    | Optional   | Optional         |
+|          | holderName | iban      | swiftCode | beneficiaryAddress | accountNo | bankName | fedwireCode | branchName | intermediaryBank | purposeCode |
+| -------- | ---------- | --------- | --------- | ------------------ | --------- | -------- | ----------- | ---------- | ---------------- | ----------- |
+| IBAN     | Required   | Required  | Optional  | Required           | Forbidden | Optional | Forbidden   | Optional   | Optional         | Optional    |
+| BBAN     | Required   | Forbidden | Required  | Required           | Required  | Optional | Forbidden   | Optional   | Optional         | Optional    |
+| FED_WIRE | Required   | Forbidden | Forbidden | Required           | Required  | Optional | Required    | Optional   | Optional         | Optional    |
 
 <br/>
 
 
-#### Request sample
+### Request Sample
 
 ```json
-Http Header
+// Http Header
 {
     "Content-Language": "en",
     "Content-Type": "application/json",
@@ -83,7 +81,7 @@ Http Header
     "sign": "S5Wr6x9Po1SX3nm4kRJyTueUMbnmsPGMlMjc3PcoyNyP0G5BuRAwauYjTJLeto6Bu1+893zCGmj201mjrvcXP4v/uMzQxRav5PBMp9VuQ+3dOFGclQAwr8cFAKuBDHhGAAkw1iVpdC8ZZLGl/jRUv3PCiZh6VyOLnrK7ZIevB/TetQSzCmN1xDIQo8mpDYz7YY/jSzYBnD17ePvkr4qQOWNUh7FF2nd29lo9KOQl5tJVoqT/D+PVSlZeuGr+wxBYCAyGqbVXXSAGcwF1egF6ISLJ29jpHcX/LACXxF/uf5cdzbudwPB2X0wtRw9WnowY3RUq34sidoF4DIShXVFHAg=="
 }
 
-Http Body
+// Http Body
 {
     "bizContent":{
         "amount":{
@@ -105,9 +103,9 @@ Http Body
 
 <br/>
 
-### Response
+## Response
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -117,7 +115,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -145,15 +143,15 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 
 <br/>
 
-#### Response sample
+### Response Sample
 
 ```json
-Http Header
+// Http Header
 {
     "sign": "Yv+C2lOQmfERdm5GF9b2V4Y98HmX/6CFyconeOW36AoPqcb7InRcP9E5GnvJLfMoCScuNP4FBdJ5tJpL0A7yPHUMfxARi05jFRSMG97JJazDbWTbRkNM1ZupmTubhUvxvRCgvJp1k0c5yrHph+F+++W5eYho92xnkNgd62BS27i0iDRGzGSmsaPpK7MFcdlvnbbnmDZZJ0LH6RhYiJLYKl+znllQx3jNfCRjV28o22FZ35Q43mZTsS4uAZWbZ/KfaqWoV3sN62Cjj8DSg3mD6GCGWSVbxLq58DUxAq+6GwJ7Gj0Dc9nMXP3gnFW7dodQ9AjL2iHnH6Zh1Pw2D5/ung=="
 }
 
-Http Body
+// Http Body
 {
     "head": {
         "applyStatus": "SUCCESS",
@@ -190,4 +188,14 @@ Http Body
     }
 }
 ```
+## Status Code
+
+
+| **Status**   | **Description**     |
+|--------------|---------------------|
+| CREATED      | Created             |
+| SUCCESS      | Successful          |
+| FAILURE      | Failed              |
+| BANK_FAIL    | Bank Rejected       |
+
 
