@@ -10,13 +10,16 @@ import BizContent from './_biz-content.mdx'
 import RequestHeader from '../_request-header.mdx'
 
 
-# Refund order
+# Refund Order
+## Overview
 
-Refunds a payment order that has been completed. You can refund either the full amount or a part of the payment amount. Funds will be refunded to the credit or debit card that was originally charged.
+Merchants may initiate a full or partial refund within a specified period after an order is created, due to reasons attributable to either the customer or the merchant. Upon receipt and successful verification of the refund request, PayBy will process the refund to the customer’s account via the original payment method (credit card or debit card), in accordance with the applicable refund policy.
+
+> **Note:** Refunds can only be processed for orders placed within the last 180 days. For example, if the order was created at 1:01:01 AM on January 1st, a refund can be issued within the following 180 days. 
 
 <br/>
 
-### API URL
+## API URL
 
 UAT : https://uat.test2pay.com/sgs/api/acquire2/refund/placeOrder
 
@@ -24,9 +27,9 @@ Production : https://api.payby.com/sgs/api/acquire2/refund/placeOrder
 
 <br/>
 
-### Request 
+## Request 
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -38,7 +41,7 @@ Production : https://api.payby.com/sgs/api/acquire2/refund/placeOrder
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -60,10 +63,10 @@ Example value: 1581493898000
 <br/>
 
 
-#### Request sample
+### Request Sample
 
 ```json
-Http Header
+// Http Header
 {
     "Content-Language": "en",
     "Content-Type": "application/json",
@@ -71,27 +74,51 @@ Http Header
     "Partner-Id": "200000000888"
 }
 
-Http Body
+// Http Body
 {
-    "requestTime": 1581405399656,
-    "bizContent": {
-        "refundMerchantOrderNo": "M818494241569",
-        "originMerchantOrderNo": "M965739182419",
-        "amount": {
-            "currency": "AED",
-            "amount": 0.01
-        },
-        "operatorName": "zxy",
-        "reason": "refund"
-    }
+  "requestTime": 1581405399656,
+  "bizContent": {
+    "merchantOrderNo": "M818494241569",
+    "originMerchantOrderNo": "M965739182419",
+    "amount": {
+      "currency": "AED",
+      "amount": 0.01
+    },
+    "refundSharingAmount":true,
+    "operatorName": "zxy",
+    "reason": "refund",
+    "reserved": "order desc",
+    "sharingParamList":[
+            {
+                "sharingAmount":{
+                    "amount":1,
+                    "currency":"AED"
+                },
+                "sharingIdentity":"Q/HF/NMMCJHYy9Kf88GHJ9wusUJohFwgNIOJo1ZVWF8CqlPsKrcHwqtDQC2oAcHuRX9CH/V+w9A+0tTKWQFyYsEV/mdxNlxs3dzWinUXoS3TsDWUXHUZ9vun3MPA6fMdJ9/3IPcxgJwL0wnqjL7h2oBKoNWHeZlDxGa9pYsy+YWtM0KpGs3YLzeqorRFxdcerXi0m0TPfynCZw54Go/wCSOL85jpIItV1C6Np09PUwPo/dS7b8hgjrm82V8Xh43IMX/svf+Q/SKiUWLvG6MsgsJLQYWcO9PwAIkvw1JVsQrZsqt631pU5u87vI4zAAKZAuujzKG3fL1kpj/QhDdXlQ==",
+                "sharingIdentitySeqId":1,
+                "sharingIdentityType":"PHONE_NO",
+                "sharingMemo":"bouns"
+            },
+            {
+                "sharingAmount":{
+                    "amount":1,
+                    "currency":"AED"
+                },
+                "sharingIdentity":"yMJ5a66KNby5S+TfCp3shACYst9ZeMUWLQrBTn05+ctFw82xJc8CbelAp25XlQOmzfOGkt6Jmxhjb+yCeRZfA3GM5rydFP6t/eT+7DiTT73VVSEeugGhktmOGEUzxv5rIAe3BDnvKELGqXGrolhZGn3JhAk6tqUlLrtzq+pH1AdPpWAtQbstKII2vkMx4leEYEQE0CH6lAj9OtbpWvnXsxRj+PKSolNXl2YsU0l12jAjNY1oYUeVsl9XwZjpjUsr8rm6rMdVNt1hiutL0YLdsazEiBwrf+xCLVSxnj4KfLmpPkAqx7Jy09lnBOduVUhBfPpSbywaF/PMlun6C6F05Q==",
+                "sharingIdentitySeqId":2,
+                "sharingIdentityType":"MEMBER_ID",
+                "sharingMemo":"cashback"
+            }
+        ]
+  }
 }
 ```
 
 <br/>
 
-### Response
+## Response
 
-#### Http Header
+### Http Header
 
 ---
 
@@ -101,7 +128,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
 <br/>
 
-#### Http Body
+### Http Body
 
 ---
 
@@ -143,7 +170,7 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
        
        <br/>
 
-#### Response sample
+### Response Sample
 
 ```json
 Http Header
@@ -184,4 +211,32 @@ Http Body
     }
 }
 ```
+## Response Codes
+
+
+| **Code** | **Message**                                | **Cause**                                                                 | **Workaround**                          |
+|----------|--------------------------------------------|---------------------------------------------------------------------------|---------------------------------------|
+| 0        | SUCCESS                                    | Success                                                                   |                                       |
+| 400      | INVALID_PARAMETER                          | Invalid parameter                                                         | Adjust request parameters             |
+| 400      | REQUESTTIME_TOO_EARLY                      | Request time is too far in the past                                       | Adjust request time                   |
+| 400      | REQUESTTIME_TOO_LATER                      | Request time is too far in the future                                     | Adjust request time                   |
+| 402      | RATE_LIMIT_REJECT                          | Requests are too frequent                                                 | Reduce request frequency              |
+| 403      | UNAUTHORIZED                               | API not authorized                                                        | Contact PayBy                         |
+| 404      | SERVICE_NOT_AVAILABLE                      | API service unavailable                                                   | Contact PayBy                         |
+| 500      | SYSTEM_ERROR                               | System error                                                              | Contact PayBy and retry later         |
+| 504      | SERVICE_TIMEOUT                            | Service timeout                                                           | Retry later                           |
+| 601      | RISK_FAIL                                  | Risk control verification failed                                          | Adjust business logic                 |
+| 62002    | ORDER_FAILURE                              | Refund attempted on a failed order                                        | Modify merchant order number          |
+| 62004    | MERCHANT_ORDER_NO_NOT_EXIST                | Order with the merchant order number does not exist                       | Modify merchant order number          |
+| 62006    | REFUND_AMOUNT_EXCEEDED                     | Refund amount exceeds refundable amount (original amount - refunded - pending refunds) | Adjust refund amount                  |
+| 62015    | ORDER_NOT_PAID                             | Refund attempted on an unpaid order                                       | Adjust business logic                 |
+| 62017    | REFUND_MERCHANT_ORDER_NO_EXIST             | Refund request with same order number but different business parameters   | Modify refund merchant order number   |
+| 62035    | ORDER_NO_NOT_EXIST                         | Order with the PayBy order number does not exist                          | Modify PayBy order number             |
+| 62036    | MERCHANT_DEVICE_NOT_EXIST                  | Merchant device does not exist                                            | Modify sub-merchant number or device ID |
+| 62038    | INVALID_SECONDARY_MERCHANT                 | Refund sub-merchant does not match original acquiring merchant            | Modify sub-merchant number            |
+| 62040    | ACQUIRE_ORDER_REVOKED                      | Order has been reversed                                                   | Modify merchant order number          |
+| 62045    | REFUND_REJECTED                            | Refund was rejected                                                       | Adjust business logic                 |
+| 62083    | SHARING_MEMBER_NOT_EXIST                   | Split payment member does not exist                                       | Adjust request parameters             |
+| 62084    | REFUND_SHARING_MEMBER_MISMATCH             | Refund split member does not match                                        | Adjust request parameters             |
+
 
