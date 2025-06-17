@@ -34,10 +34,12 @@ This interface allows you to adjust the expiration time for existing orders. The
 
 ### UpdateExpiredTimeRequest
 
-| Field Name            | Variable Name   | Required | Type         | Example       | Description                                                  |
-| --------------------- | --------------- | -------- | ------------ | ------------- | ------------------------------------------------------------ |
-| Merchant Order Number | merchantOrderNo | Required | String       | M965739182419 | Unique order identifier from merchant system                 |
-| Expired Time          | expiredTime     | Required | Timestamp(3) | 1581412155966 | New expiration time in milliseconds (must be within 15 days) |
+
+| Field Name        | Variable Name   | Required | Type         | Example | Description                                                  |
+| ----------------- | --------------- | -------- | ------------ | ------- | ------------------------------------------------------------ |
+| Merchant Order No | merchantOrderNo | Optional | String(64)   | M965739182419   | Either `merchantOrderNo` or `orderNo` must be provided, but not both. |
+| PayBy Order No    | orderNo         | Optional | String(32)   |    131404956265007836     |                                                              |
+| Expired Time      | expiredTime     | Required | Timestamp(3) |   1581412155966      |    New expiration time in milliseconds (must be within 15 days)       |
 
 ### Request Sample
 
