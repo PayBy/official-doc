@@ -4,42 +4,42 @@ sidebar_position: 2
 
 
 
-# Statement  parameters
+# Statement  Parameters
 
 <br/>
 
-### File Format
+## File Format
 
 If the request to download statement is successful, you will get a zip file containing two csv files, a transaction statement and a settlement statement.
 
 <br/>
 
-#### Zip file name
+### Zip File Name
 
-| File name format                               | Example                                               |
+| File Name Format                               | Example                                               |
 | ---------------------------------------------- | ----------------------------------------------------- |
 | PartnerId_dateTransaction_Settle_Statement.zip | 200000054800_20210112Transaction_Settle_Statement.zip |
 
 <br/>
 
-#### Content file name
+### Content File Name
 
-| Content name format                   | Example                                    |
+| Content Name Format                   | Example                                    |
 | ------------------------------------- | ------------------------------------------ |
 | Purchase_Statement_date_no.csv        | Purchase_Statement_13012021_001.csv        |
 | Purchase_Settle_Statement_date_no.csv | Purchase_Settle_Statement_13012021_001.csv |
 
 <br/>
 
-**<font color = '#f19938'>Notice </font>**
+**<font color = '#f19938'>Notice</font>**
 
 1. The Purchase_Statement file contains all transactions that were paid successfully on the billing date, excluding orders that are not paid.
 2. The PURCHASE_SETTLE_STATEMENT file contains all settlement orders for the settlement time on the billing day.
-4. The content of a single file in the CSV format does not exceed 50,000 lines. If it's more than 50,000 lines, it will generate the next numbered file. The numbering starts from 001.
+3. The content of a single file in the CSV format does not exceed 50,000 lines. If it's more than 50,000 lines, it will generate the next numbered file. The numbering starts from 001.
 
 <br/>
 
-### Transaction statement
+## Transaction Statement
 
 The format of the transaction statement is as follows:
 
@@ -49,7 +49,7 @@ The format of the transaction statement is as follows:
 
 <br/>
 
-#### Example
+### Example
 
 ```
 mid:200000054800|periodNo:20210113|startTime:2021-01-12 00:00|endTime:2021-01-13 01:00|totalCount:14
@@ -59,7 +59,7 @@ paidTime|transactionType|totalAmount|orderCurrency|productName|paySceneCode|merc
 
 <br/>
 
-#### Header
+### Header
 
 | Variable Desc.     | Desc.     |
 | ---------- | -------- |
@@ -71,7 +71,7 @@ paidTime|transactionType|totalAmount|orderCurrency|productName|paySceneCode|merc
 
 <br/>
 
-#### Fields of each row
+### Fields of Each Row
 
 | Variable Desc.                | Desc.                                |
 | --------------------- | ----------------------------------- |
@@ -97,7 +97,7 @@ paidTime|transactionType|totalAmount|orderCurrency|productName|paySceneCode|merc
 
 
 
-### Settlement statement
+## Settlement Statement
 
 The format of the settlement statement is as follows:
 
@@ -105,9 +105,7 @@ The format of the settlement statement is as follows:
 2. The second line is the table header for the specific data.
 3. The third line and the following are the specific data content.
 
-
-
-#### Example
+### Example
 
 ```
 mid:200000054800|settlePeriodNo:20210113|startTime:2021-01-12 00:00|endTime:2021-01-13 01:00|openingAmount:AED 1.00|totalCount:33|totalCredit:AED 472.70|totalDebit:AED 333.21|totalComm:AED 14.92|totalVAT:AED 0.75|settleToBank:AED 139.49 success|stayAmount:AED 1.00
@@ -117,7 +115,7 @@ settledTIme|transactionType|direction|settlementAmount|orderCurrency|productName
 
 
 
-#### Header
+### Header
 
 | Variable Desc.         | Desc.                 |
 | -------------- | -------------------- |
@@ -136,7 +134,7 @@ settledTIme|transactionType|direction|settlementAmount|orderCurrency|productName
 
 
 
-#### Fields of each row
+### Fields of Each Row
 
 | Variable Desc.                | Desc.                                |
 | --------------------- | ----------------------------------- |
