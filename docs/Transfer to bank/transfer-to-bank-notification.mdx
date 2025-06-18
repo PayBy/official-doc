@@ -5,13 +5,13 @@ toc_max_heading_level: 6
 import TransferToBankOrder from './_transfer-to-bank-order.mdx'
 
 
-# Asynchronous notification
+# Asynchronous Notification
 
 Once a transfer to a bank account is processed, PayBy will send the result to the merchant. The merchant must handle the notification and respond accordingly. The actual time the funds arrive depends on the settlement times of the receiving bank.
 
 <br/>
 
- **<font color = '#f19938'>Notice</font>**
+ **<font color = '#f19938'>Note</font>**
 
   1. Duplicate Notifications: The same notification may be sent multiple times. Your system must be able to handle duplicate notifications correctly.
 
@@ -26,8 +26,6 @@ Once a transfer to a bank account is processed, PayBy will send the result to th
 ## Request
 
 ### Http Header
-
----
 
 <details>
   <summary>Attributes</summary>
@@ -199,5 +197,3 @@ Example value: Success
 | 62103  | QUERY_API_UNAVAILABLE           | Query API is currently unavailable                                          | Retry later                  |
 | 62094  | THE_ENTERED_COUNTRY_CODE_IS_INVALID | Invalid country code                                                   | Adjust request parameters    |
 | 62095  | THE_ENTERED_CITY_CODE_IS_INVALID    | Invalid city code                                                      | Adjust request parameters    |
-
-
