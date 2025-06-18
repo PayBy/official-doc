@@ -1,0 +1,26 @@
+**`TransferBankCardOrder`**
+
+| **Field Name**         | **Variable Name**      | **Required** | **Type**       | **Example Value**       | **Description**                                      |
+|------------------------|------------------------|--------------|----------------|--------------------------|------------------------------------------------------|
+| Request Time           | `requestTime`          | Required     | Timestamp(3)   | 1581493898000            |                                                      |
+| Merchant Order Number  | `merchantOrderNo`      | Required     | String(64)     | S10000                   |                                                      |
+| PayBy Order Number     | `orderNo`              | Required     | String(32)     | O1000                    |                                                      |
+| Product Name           | `product`              | Required     | String(200)    | Transfer Bank Card       |                                                      |
+| Order Status           | `status`               | Required     |                | -                        |                                                      |
+| Amount                 | `amount`               | Required     | Money          |                          |                                                      |
+| Account Holder Type    | `accountHolderType`    | Required     | String(16)     | INDIVIDUAL               | INDIVIDUAL<br>CORPORATE                              |
+| First Name             | `firstName`            | Optional     | String(200)    |                          | SHA256 of original text, required if INDIVIDUAL      |
+| Last Name              | `lastName`             | Optional     | String(200)    |                          | SHA256 of original text, required if INDIVIDUAL      |
+| Middle Name            | `middleName`           | Optional     | String(200)    |                          | SHA256 of original text                              |
+| Company Name           | `companyName`          | Optional     | String(200)    |                          | SHA256 of original text, required if CORPORATE       |
+| Card Number            | `cardNumber`           | Required     | String(64)     |                          | SHA256 of original text                              |
+| Expiry Month           | `expiryMonth`          | Required     | String(2)      |                          |                                                      |
+| Expiry Year            | `expiryYear`           | Required     | String(4)      |                          |                                                      |
+| Payment Memo           | `memo`                 | Optional     | String(128)    |                          |                                                      |
+| Notification URL       | `notifyUrl`            | Optional     | String(200)    |                          |                                                      |
+| Failure Description    | `failDes`              | Optional     | String(200)    | -                        | Reason for order failure                             |
+| Bank Reference Number  | `bankReference`        | Optional     | String(128)    |                          |                                                      |
+| Payer Fee Amount       | `payerFeeAmount`       | Required     | Money          | -                        |                                                      |
+| Fee Payer ID           | `payerFeeMemberId`     | Required     | String(32)     | -                        | ID of the party paying the fee                       |
+| Payment Time           | `paidTime`             | Required     | Date           | -                        | Time of deduction                                    |
+| Refund Time            | `refundedTime`         | Optional     | Date           |                          | Time of refund                                       |

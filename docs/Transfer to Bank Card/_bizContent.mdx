@@ -1,0 +1,16 @@
+**`bizContent`**
+
+| Field Name            | Parameter Name    | Required | Type        | Example                         | Description                                                  |
+| --------------------- | ----------------- | -------- | ----------- | ------------------------------- | ------------------------------------------------------------ |
+| Account Holder Type   | accountHolderType | Required | String(16)  | INDIVIDUAL                      | Account holder type: `INDIVIDUAL` or `CORPORATE`             |
+| Merchant Order Number | merchantOrderNo   | Required | String(64)  | Me23484                         | Unique order identifier from merchant                        |
+| First Name            | firstName         | Optional | String(50)  | -                               | **Encrypted field**. Account holder's first name. Required when `accountHolderType` is `INDIVIDUAL` |
+| Last Name             | lastName          | Optional | String(50)  | -                               | **Encrypted field**. Account holder's last name. Required when `accountHolderType` is `INDIVIDUAL` |
+| Middle Name           | middleName        | Optional | String(50)  | -                               | **Encrypted field**. Account holder's middle name            |
+| Company Name          | companyName       | Optional | String(50)  | Liwa Street off Khaliffa Street | **Encrypted field**. Company name. Required when `accountHolderType` is `CORPORATE`. Must be a valid legal name. Cannot be a single character, all numeric, or all punctuation |
+| Transfer Amount       | amount            | Required | Money       | 12.34                           | Amount to transfer                                           |
+| Payment Memo          | memo              | Optional | String(50)  | Bonus                           | Transfer description or note                                 |
+| Notification URL      | notifyUrl         | Optional | String(200) | -                               | URL to receive transfer status notifications                 |
+| Expiry Year           | expiryYear        | Required | String(4)   | 2025                            | **Encrypted field**. Card expiration year. Must be current year or later |
+| Expiry Month          | expiryMonth       | Required | String(2)   | 12                              | **Encrypted field**. Card expiration month (1-12). Combined year and month must be current month or later |
+| Card Number           | cardNumber        | Required | String(50)  | -                               | **Encrypted field**. Card number (12-19 digits, numeric only) |

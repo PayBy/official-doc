@@ -1,0 +1,7 @@
+**Response Header**
+
+| **Field Name**     | **Variable Name** | **Required** | **Type**      | **Example** | **Description**                                                                 |
+|--------------------|-------------------|--------------|----------------|-------------------|---------------------------------------------------------------------------------|
+| Request Status     | `applyStatus`     | Required     | String(16)     | SUCCESS           | SUCCESS – Application successful<br/>FAIL – Application failed<br/>ERROR – Exception occurred |
+| Return Error Code  | `code`            | Required     | String(10)     | 0                 | Return code                                                                     |
+| Return Message     | `msg`             | Optional     | String(200)    | -                 | Return message                                                                  |
