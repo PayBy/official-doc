@@ -7,9 +7,9 @@ toc_max_heading_level: 6
 
 # Get Balance
 
-The GetBalance API allows merchants to query their account balance, providing detailed information about available, frozen, and total balance amounts.
+The `getBalance` interface allows merchants to query their account balance, providing detailed information about available, frozen, and total balance amounts.
 
-This API is used to query the member account balance.
+This interface is used to query the member account balance.
 
 
 ## API URL
@@ -19,25 +19,25 @@ UAT : https://uat.test2pay.com/sgs/api/member/getBalance
 Production : https://api.payby.com/sgs/api/member/getBalance
 
 
-## Request Parameters
+## Request
 ### Http Header
 
-| Field Name          | Variable Name | Required | Type       | Example Value | Description   |
+| Field Name          | Variable Name | Required | Type       | Example | Description   |
 |---------------------|---------------|----------|------------|---------------|---------------|
-| Content-Language    |               | Optional | String(10) | in            | en-English    |
+| Content-Language    |               | Optional | String(10) | en            | en-English    |
 | sign                | Sign          | Required | String     |               |               |
 | Partner-Id          |               | Required | String(12) |               |               |
 
 ### Http Body
 
-| Field Name        | Variable Name | Required | Type                | Example Value   | Description           |
+| Field Name        | Variable Name | Required | Type                | Example   | Description           |
 |-------------------|---------------|----------|---------------------|-----------------|-----------------------|
 | When requested    | requestTime   | Required | Timestamp(3)        | 1581493898000   |                       |
 | Business          | bizContent    | Required | GetMemberBalanceRequest |             |                       |
 
 #### GetMemberBalanceRequest
 
-| Field Name | Variable Name | Required | Type   | Example Value | Description |
+| Field Name | Variable Name | Required | Type   | Example | Description |
 |------------|----------------|----------|--------|---------------|-------------|
 | Currency   | currencyCode   | Required | String | AED           |             |
 
@@ -63,7 +63,7 @@ Http Body
 ```
 
 
-## Response Parameters
+## Response
 
 ### Http Header
 
@@ -71,7 +71,7 @@ Http Body
 |-----------------|----------------|----------|--------|---------------|-------------|
 | sign            | Sign           | Required | String |               |             |
 
-The body field in the Http Body is returned only when applyStatus is SUCCESS and code is 0.
+The body field in the Http Body is returned only when `applyStatus` is `SUCCESS` and code is `0`.
 
 ### Http Body
 
@@ -95,7 +95,7 @@ The body field in the Http Body is returned only when applyStatus is SUCCESS and
 
 
 
-### Sample Response
+### Response Sample
 
 ```json
 // Http Header
@@ -126,7 +126,7 @@ The body field in the Http Body is returned only when applyStatus is SUCCESS and
 }
 ```
 
-#### Response Codes
+## Response Codes
 
 | Code   | Message                    | Cause                                | Workaround                       |
 |--------|----------------------------|----------------------------------------|--------------------------------|
