@@ -27,7 +27,7 @@ This interface allows merchants to retrieve detailed results of bank card transf
 | Signature        | Sign             | Required | String     | -       | Request signature for authentication           |
 | Partner ID       | Partner-Id       | Required | String(12) | -       | Merchant identifier                            |
 
-### HTTP Body Parameters
+### HTTP Body
 
 | Field Name       | Parameter Name | Required | Type                          | Example       | Description                       |
 | ---------------- | -------------- | -------- | ----------------------------- | ------------- | --------------------------------- |
@@ -40,13 +40,13 @@ This interface allows merchants to retrieve detailed results of bank card transf
 - **Example**: `1581493898000`  
 - **Description**: Time the request was initiated.
 
-#### Business Content Parameters (`GetTransferBankCardRequest`)
+#### Business Content (`GetTransferBankCardRequest`)
 
 | Field Name            | Parameter Name  | Required | Type       | Example | Description                                  |
 | --------------------- | --------------- | -------- | ---------- | ------- | -------------------------------------------- |
 | Merchant Order Number | merchantOrderNo | Required | String(64) | Me23484 | Unique order identifier from merchant system |
 
-### Request Example
+### Request Sample
 
 #### HTTP Headers
 
@@ -82,7 +82,7 @@ This interface allows merchants to retrieve detailed results of bank card transf
 | Signature        | Sign             | Required | String     | -       | Response signature for verification            |
 | Partner ID       | Partner-Id       | Required | String(12) | -       | Merchant identifier                            |
 
-### HTTP Body Parameters
+### HTTP Body
 
 | Field Name      | Parameter Name | Required | Type                             | Example | Description                              |
 | --------------- | -------------- | -------- | -------------------------------- | ------- | ---------------------------------------- |
@@ -98,7 +98,7 @@ This interface allows merchants to retrieve detailed results of bank card transf
 
 #### Response Body
 
-Transfer Order Response (`PlaceTransferToBankOrderResponse`)
+**Transfer Order Response (`PlaceTransferToBankOrderResponse`)**
 
 | Field Name                 | Parameter Name        | Required | Type                  | Example | Description                     |
 | -------------------------- | --------------------- | -------- | --------------------- | ------- | ------------------------------- |
@@ -109,7 +109,7 @@ Transfer Order Response (`PlaceTransferToBankOrderResponse`)
     <TransferBankCardOrder/>
   </details>
 
-### Response Example
+### Response Sample
 
 #### HTTP Headers
 
