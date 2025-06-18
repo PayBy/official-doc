@@ -24,9 +24,9 @@ Production : https://api.payby.com/sgs/api/member/getBalance
 
 | Field Name          | Variable Name | Required | Type       | Example | Description   |
 |---------------------|---------------|----------|------------|---------------|---------------|
-| Content-Language    |               | Optional | String(10) | en            | en-English    |
-| sign                | Sign          | Required | String     |               |               |
-| Partner-Id          |               | Required | String(12) |               |               |
+| Content Language    | Content-Language  | Optional | String(10) | en            | English    |
+| Signature           | Sign          | Required | String     |               |               |
+| ID of Merchant      | Partner-Id      | Required | String(12) |               |               |
 
 ### Http Body
 
@@ -69,16 +69,16 @@ Http Body
 
 | Field Name      | Variable Name | Required | Type   | Example Value | Description |
 |-----------------|----------------|----------|--------|---------------|-------------|
-| sign            | Sign           | Required | String |               |             |
+| Signature            | sign           | Required | String |               |             |
 
-The body field in the Http Body is returned only when `applyStatus` is `SUCCESS` and code is `0`.
+The body field in the Http Body is returned only when `applyStatus` is `SUCCESS` and `code` is `0`.
 
 ### Http Body
 
 | Field Name          | Variable Name      | Required | Type           | Example Value | Description |
 |---------------------|--------------------|----------|----------------|---------------|-------------|
-| Response header     |                    | Required | ResponseHeader |               |             |
-| Response body       |                    | Optional | MemberBalance  |               |             |
+| Response header     |   head             | Required | ResponseHeader |               |             |
+| Response body       |   body             | Optional | MemberBalance  |               |             |
 
 ### MemberBalance
 
