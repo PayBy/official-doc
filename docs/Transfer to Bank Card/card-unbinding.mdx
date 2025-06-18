@@ -18,7 +18,7 @@ This interface invalidates a saved card token. Once unbound, the card token beco
 
 ### HTTP Header
 
-| Field Name       | Variable Name    | Required | Type       | Example Value | Description                         |
+| Field Name       | Variable Name    | Required | Type       | Example | Description                         |
 | ---------------- | ---------------- | -------- | ---------- | ------------- | ----------------------------------- |
 | Content Language | Content-Language | Optional | String(10) | en            | Language for content (en = English) |
 | Signature        | Sign             | Required | String     | -             | Request signature                   |
@@ -26,7 +26,7 @@ This interface invalidates a saved card token. Once unbound, the card token beco
 
 ### HTTP Body
 
-| Field Name       | Variable Name | Required | Type             | Example Value | Description                       |
+| Field Name       | Variable Name | Required | Type             | Example | Description                       |
 | ---------------- | ------------- | -------- | ---------------- | ------------- | --------------------------------- |
 | Request Time     | requestTime   | Required | Timestamp(3)     | 1581493898000 | Request timestamp in milliseconds |
 | Business Content | bizContent    | Required | CardIndexRequest | -             | Business request content          |
@@ -60,15 +60,15 @@ This interface invalidates a saved card token. Once unbound, the card token beco
 
 ### HTTP Header
 
-| Field Name | Variable Name | Required | Type   | Example Value | Description        |
+| Field Name | Variable Name | Required | Type   | Example | Description        |
 | ---------- | ------------- | -------- | ------ | ------------- | ------------------ |
 | Signature  | Sign          | Required | String | -             | Response signature |
 
-> **Note**: The body field in the HTTP Body is only returned when applyStatus is SUCCESS and code is 0.
+> **Note**: The body field in the HTTP Body is only returned when `applyStatus` is `SUCCESS` and `code` is `0`.
 
 ### HTTP Body
 
-| Field Name      | Variable Name | Required | Type           | Example Value | Description                 |
+| Field Name      | Variable Name | Required | Type           | Example | Description                 |
 | --------------- | ------------- | -------- | -------------- | ------------- | --------------------------- |
 | Response Header | head          | Required | ResponseHeader | -             | Response header information |
 | Response Body   | body          | Optional | Void           | -             | Response body content       |

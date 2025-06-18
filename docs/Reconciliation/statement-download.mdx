@@ -28,7 +28,7 @@ Merchants can use this interface to download historical financial reports. The d
   2. PayBy generates the previous day’s statements shortly after the merchant’s configured settlement cutoff time—typically within 10 minutes. It is recommended to download the statements at least 30 minutes after the cutoff.  
   3. All monetary values in the statements are denominated in **AED (Dirhams)**.
 ---
-<br/>
+
 
 ## API URL
 
@@ -36,27 +36,19 @@ UAT : https://uat.test2pay.com/sgs/api/acquire2/download/getOrderStatement
 
 Production : https://api.payby.com/sgs/api/acquire2/download/getOrderStatement
 
-<br/>
 
 ## Request 
 
 ### Http Header
 
----
-
 <details>
   <summary>Attributes</summary>
-
   <RequestHeader/>
 </details>
 
-<br/>
-
 ### Http Body
 
----
-
-**requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+**requestTime**   <font color = '#7d8793'>Timestamp</font> <font color = '#f19938'>Required</font>
 
 If the request time is more than 15 minutes away from the current time, the request will be rejected. This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.
 
@@ -64,17 +56,18 @@ Example value: 1581493898000
 
 <br/>
 
-**bizContent**   <font color = ' #7d8793'>Object</font>  
+**bizContent**   <font color = '#7d8793'>Object</font>  
 
-- **statementDate**   <font color = ' #7d8793'> String</font>    <font color = '#f19938'>Required</font>
+- **statementDate**   <font color = '#7d8793'> String</font>  <font color = '#f19938'>Required</font>
 
-  The statement of which day you will download. Format: YYYYMMDD.
+  The statement of which day you will download. 
+
+  Format: YYYYMMDD.
 
   Example value: 20200120
 
   Maximum length: `8`
 
-<br/>
 
 ### Request Sample
 
@@ -98,8 +91,6 @@ Example value: 1581493898000
 }
 ```
 
-<br/>
-
 ## Response
 
 If the request succeeded, the data will be returned as a compressed .zip file. If failed, the standard format of response will be returned.
@@ -110,18 +101,18 @@ If the request succeeded, the data will be returned as a compressed .zip file. I
 
 When a statement download request fails, the API returns an error response with specific headers and body content.
 
-#### HTTP Header Parameters
+#### HTTP Header
 
-| Field Name       | Variable Name    | Required | Type        | Example Value    | Description                                |
+| Field Name       | Variable Name    | Required | Type        | Example    | Description                                |
 | ---------------- | ---------------- | -------- | ----------- | ---------------- | ------------------------------------------ |
 | Content-Language | Content-Language | Optional | String(10)  | en               | Language code (en = English)               |
 | Signature        | Sign             | Required | String      | -                | Digital signature for request verification |
 | Partner ID       | Partner-Id       | Required | String(12)  | -                | Merchant identifier                        |
 | Content Type     | Content-Type     | Required | String(256) | application/json | MIME type of the response content          |
 
-#### HTTP Body Parameters
+#### HTTP Body
 
-| Field Name      | Variable Name | Required | Type           | Example Value | Description                                    |
+| Field Name      | Variable Name | Required | Type           | Example | Description                                    |
 | --------------- | ------------- | -------- | -------------- | ------------- | ---------------------------------------------- |
 | Response Header | head          | Required | ResponseHeader | -             | Contains response status and error information |
 
@@ -154,7 +145,7 @@ When a statement download request succeeds, the API returns the data as a file s
 
 #### HTTP Header Parameters
 
-| Field Name          | Variable Name       | Required | Type   | Example Value                                                | Description                          |
+| Field Name          | Variable Name       | Required | Type   | Example                       | Description                          |
 | ------------------- | ------------------- | -------- | ------ | ------------------------------------------------------------ | ------------------------------------ |
 | Content Disposition | Content-Disposition | Required | String | attachment; filename=200000054800_20210112Transaction_Settle_Statement.zip | File attachment information          |
 | Content Type        | Content-Type        | Required | String | application/zip                                              | MIME type indicating ZIP file format |
@@ -343,6 +334,3 @@ ACCOUNTING_TIME|TXN_NO|PRODUCT|BUSINESS_TYPE|DIRECTION|TXN_AMT|BEFORE_AMT|AFTER_
 | ACCOUNT_TYPE      | Account type              |
 | MERCHANT_ORDER_NO | Merchant order number     |
 | ORDER_NO          | PayBy order number        |
-
-
-

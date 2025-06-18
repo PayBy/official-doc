@@ -18,7 +18,7 @@ This interface returns information about whether a QR code has been scanned by t
 
 ### HTTP Headers
 
-| Field Name       | Parameter Name   | Required | Type       | Example Value | Description                    |
+| Field Name       | Parameter Name   | Required | Type       | Example | Description                    |
 | ---------------- | ---------------- | -------- | ---------- | ------------- | ------------------------------ |
 | Content Language | Content-Language | Optional | String(10) | en            | Language code (en for English) |
 | Signature        | Sign             | Required | String     |               | Request signature              |
@@ -26,14 +26,14 @@ This interface returns information about whether a QR code has been scanned by t
 
 ### HTTP Body
 
-| Field Name       | Parameter Name | Required | Type                     | Example Value | Description                       |
+| Field Name       | Parameter Name | Required | Type                     | Example| Description                       |
 | ---------------- | -------------- | -------- | ------------------------ | ------------- | --------------------------------- |
 | Request Time     | requestTime    | Required | Timestamp(3)             | 1581493898000 | Request timestamp in milliseconds |
 | Business Content | bizContent     | Required | GetCashierUrlInfoRequest | -             | Business request content          |
 
 #### GetCashierUrlInfoRequest
 
-| Field Name | Parameter Name | Required | Type   | Example Value                                                | Description              |
+| Field Name | Parameter Name | Required | Type   | Example                                                | Description              |
 | ---------- | -------------- | -------- | ------ | ------------------------------------------------------------ | ------------------------ |
 | Token URL  | tokenUrl       | Required | String | https://checkout.payby.com/pay-page/main?BIZ_TYPE=202&ft=cd624549f4894d78b0d368e48bb27aae&t=1654519114067 | The cashier URL to query |
 
@@ -65,7 +65,7 @@ This interface returns information about whether a QR code has been scanned by t
 
 ### HTTP Headers
 
-| Field Name | Parameter Name | Required | Type   | Example Value | Description        |
+| Field Name | Parameter Name | Required | Type   | Example | Description        |
 | ---------- | -------------- | -------- | ------ | ------------- | ------------------ |
 | Signature  | Sign           | Required | String |               | Response signature |
 
@@ -73,20 +73,20 @@ This interface returns information about whether a QR code has been scanned by t
 
 >  **Note:** The `body` field in the HTTP response is returned only when `applyStatus` is `SUCCESS` and `code` is `0`.
 
-| Field Name      | Parameter Name | Required | Type                      | Example Value | Description                 |
+| Field Name      | Parameter Name | Required | Type                      | Example | Description                 |
 | --------------- | -------------- | -------- | ------------------------- | ------------- | --------------------------- |
 | Response Header | head           | Required | ResponseHeader            | -             | Response header information |
 | Response Body   | body           | Optional | GetCashierUrlInfoResponse | -             | Response body content       |
 
 #### GetCashierUrlInfoResponse
 
-| Field Name        | Parameter Name | Required | Type  | Example Value | Description                                     |
+| Field Name        | Parameter Name | Required | Type  | Example | Description                                     |
 | ----------------- | -------------- | -------- | ----- | ------------- | ----------------------------------------------- |
 | Payer Information | payer          | Required | Payer | -             | Information about the person making the payment |
 
 #### Payer
 
-| Field Name         | Parameter Name   | Required | Type   | Example Value  | Description                       |
+| Field Name         | Parameter Name   | Required | Type   | Example  | Description                       |
 | ------------------ | ---------------- | -------- | ------ | -------------- | --------------------------------- |
 | Mobile Number Mask | mobileNumberMask | Optional | String | +971-58*****92 | Masked mobile number of the payer |
 

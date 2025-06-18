@@ -1,18 +1,14 @@
 ---
 sidebar_position: 2
+toc_max_heading_level: 6
 ---
 
-
-
-# Statement  Parameters
-
-<br/>
+# Statement Parameters
 
 ## File Format
 
-If the request to download statement is successful, you will get a zip file containing two csv files, a transaction statement and a settlement statement.
+If the request to download statement is successful, you will get a zip file containing two CSV files: a transaction statement and a settlement statement.
 
-<br/>
 
 ### Zip File Name
 
@@ -20,7 +16,6 @@ If the request to download statement is successful, you will get a zip file cont
 | ---------------------------------------------- | ----------------------------------------------------- |
 | PartnerId_dateTransaction_Settle_Statement.zip | 200000054800_20210112Transaction_Settle_Statement.zip |
 
-<br/>
 
 ### Content File Name
 
@@ -29,7 +24,6 @@ If the request to download statement is successful, you will get a zip file cont
 | Purchase_Statement_date_no.csv        | Purchase_Statement_13012021_001.csv        |
 | Purchase_Settle_Statement_date_no.csv | Purchase_Settle_Statement_13012021_001.csv |
 
-<br/>
 
 **<font color = '#f19938'>Notice</font>**
 
@@ -37,7 +31,6 @@ If the request to download statement is successful, you will get a zip file cont
 2. The PURCHASE_SETTLE_STATEMENT file contains all settlement orders for the settlement time on the billing day.
 3. The content of a single file in the CSV format does not exceed 50,000 lines. If it's more than 50,000 lines, it will generate the next numbered file. The numbering starts from 001.
 
-<br/>
 
 ## Transaction Statement
 
@@ -47,7 +40,6 @@ The format of the transaction statement is as follows:
 2. The second line is the specific data table header.
 3. The third line and the following are specific data content.
 
-<br/>
 
 ### Example
 
@@ -57,7 +49,6 @@ paidTime|transactionType|totalAmount|orderCurrency|productName|paySceneCode|merc
 2021-01-12T17:46:36+0400|PAYMENT|60.00|AED|Smart Purchase|QRPAY|210112214643201985620006|131610459203006982|SUCCESS|BALANCE|LLH & Medeor Hospital Administration Office|200000054800|533|ADMIN|268|upload key test merchant1|LLH & Medeor Hospital Administration Office||
 ```
 
-<br/>
 
 ### Header
 
@@ -69,11 +60,10 @@ paidTime|transactionType|totalAmount|orderCurrency|productName|paySceneCode|merc
 | endTime    | End time |
 | totalCount | Total count |
 
-<br/>
 
 ### Fields of Each Row
 
-| Variable Desc.                | Desc.                                |
+| Variable             | Description                                |
 | --------------------- | ----------------------------------- |
 | paidTime              | Payment success time(DD-MM-YYYY HH24:MI:SS) |
 | transactionType       | Transaction type<br/>Enum value:<br/>PAYMENT<br/>REFUND<br/>VOID<br/>DEPOSIT<br/>TRANSFER<br/>EATM<br />ADJUST<br />KIOSK<br />WITHDRAWAL<br />REFUND_SPLIT<br />PAYMENT_SPLIT<br />CHARGE <br/>CHARGEBACK |
@@ -96,7 +86,6 @@ paidTime|transactionType|totalAmount|orderCurrency|productName|paySceneCode|merc
 | reserved              | Reserved                            |
 
 
-
 ## Settlement Statement
 
 The format of the settlement statement is as follows:
@@ -113,11 +102,9 @@ settledTIme|transactionType|direction|settlementAmount|orderCurrency|productName
 2021-01-13T00:18:39+0400|ADJUST|OUT|100.00|AED|||adjustfd059cd19066414d979013fc3a6d2467|804c2f6f-5b9f-41ae-aeaf-380ce624b269|2021-01-13T00:18:39+0400||0.00|AED|0.00|AED|BALANCE|||||||||
 ```
 
-
-
 ### Header
 
-| Variable Desc.         | Desc.                 |
+| Variable        | Description                |
 | -------------- | -------------------- |
 | mid | Member Id |
 | settlePeriodNo | Settle period No.           |
@@ -136,7 +123,7 @@ settledTIme|transactionType|direction|settlementAmount|orderCurrency|productName
 
 ### Fields of Each Row
 
-| Variable Desc.                | Desc.                                |
+| Variable              | Description                               |
 | --------------------- | ----------------------------------- |
 | settledTIme           | Settled time(DD-MM-YYYY HH24:MI:SS)     |
 | transactionType       | Transaction type<br/>Enum value:PAYMENT<br/>PAYMENT<br/>REFUND<br/>VOID<br/>DEPOSIT<br/>TRANSFER<br/>EATM<br />ADJUST<br />KIOSK<br />WITHDRAWAL<br />REFUND_SPLIT<br />PAYMENT_SPLIT<br />CHARGE<br/>CHARGEBACK |
