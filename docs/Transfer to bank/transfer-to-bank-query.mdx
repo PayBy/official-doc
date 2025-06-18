@@ -6,7 +6,7 @@ toc_max_heading_level: 6
 import ResponseHead from '../Refund/_response-head.mdx'
 import TransferToBankOrder from './_transfer-to-bank-order.mdx'
 
-# Retrieve order details
+# Retrieve Order Details
 
 Retrieves the order details with order number or merchant order number.
 
@@ -124,7 +124,6 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
     <TransferToBankOrder />
   </details>
 
-
 ### Response Sample
 
 ```json
@@ -175,7 +174,7 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 The following response codes are used for the `status` field:
 
 
-| **Code** | **Message**                  | **Cause**                                      | **Solution**                      |
+| **Code** | **Message**                  | **Cause**                                      | **Workaround**                      |
 |----------|------------------------------|------------------------------------------------|-----------------------------------|
 | 0        | SUCCESS                      | Success                                        |                                   |
 | 400      | INVALID_PARAMETER            | Invalid parameters                             | Adjust the request parameters     |
