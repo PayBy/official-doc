@@ -5,7 +5,7 @@ toc_max_heading_level: 6
 
 # DYNRQ
 
-## Payment QR Code
+## Merchant-side QR Code
 
 After a customer places an order, a dynamic QR code is generated on the merchant’s interface—whether it’s a website, mobile app, or even a physical terminal like a vending machine. The customer can then scan this code using the PayBy or BOTIM app to complete the payment.
 
