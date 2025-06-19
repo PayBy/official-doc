@@ -7,9 +7,11 @@ toc_max_heading_level: 6
 
 ## Payment QR Code
 
-After the customer places an order, a dynamic code is generated on the merchant's interface - website, mobile app or even a vending machine, and the customer can scan the code by PayBy , BOTIM APP to complete the payment.<br/>
+After a customer places an order, a dynamic QR code is generated on the merchant’s interface—whether it’s a website, mobile app, or even a physical terminal like a vending machine. The customer can then scan this code using the PayBy or BOTIM app to complete the payment.
 
-Some interfaces are not suitable for customers to enter card information, such as vending machines or parking garages, this method can effectively transfer the payment process from the merchant interface to the user's mobile phone. Making payments via QR codes is very secure. It’s because the QR code is nothing but just a tool that is used to exchange information. Any data which is transferred via QR codes is encrypted thus making the payment foolproof secure.
+This method is especially effective in environments where entering card details is impractical or insecure, such as vending machines or parking garages. By shifting the payment process from the merchant’s interface to the customer’s mobile device, it enhances both convenience and security.
+
+QR code payments are inherently secure. The QR code itself serves only as a medium for encrypted data exchange, ensuring that sensitive payment information remains protected throughout the transaction.
 
 ## User Experience
 
