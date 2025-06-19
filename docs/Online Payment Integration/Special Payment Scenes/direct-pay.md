@@ -5,11 +5,11 @@ toc_max_heading_level: 6
 
 # Direct Pay
 
-PayBy provides API for card transactions for merchants to integrate, customers fill in card information on the merchant's page to complete the payment. The card information is encrypted and stored in PayBy and customers can pay by one click next time. This product provides merchants with a more flexible integration method and merchants can have full control of the UI elements.
+PayBy offers a secure and flexible API for merchants to integrate card payment functionality into their platforms. Customers enter their card details directly on the merchant’s interface to complete transactions. All card information is encrypted and securely stored by PayBy, enabling one-click payments for future purchases.
 
-<br/>
+This solution gives merchants full control over the user interface design, allowing for a customized checkout experience while benefiting from PayBy’s secure payment infrastructure. It’s an ideal choice for businesses seeking a seamless and user-friendly card payment integration.
 
-### User experience
+## User Experience
 
 1. The customer confirms to pay for an order on the merchant's website or app.
 2. If the customer is a new payer, he or she enters the card detail (Name, Card Number, CVV) to finish payment. If the customer has paid before and the merchant has stored the card details, just select the stored card and finish payment.
@@ -17,79 +17,70 @@ PayBy provides API for card transactions for merchants to integrate, customers f
 
 ![ue-direct](../pic/ue-directpay.png)
 
-<br/>
+## Integrate the API
+### Case 1: New Payer
 
-### Integrate the API
+1. **Display Card Input Fields**  
+   When the customer confirms payment, display input fields for:  
+   - **Bank Card Number**  
+   - **Expiration Date**  
+   - **Cardholder Name**  
+   - **CVV**  
+   ![card](../pic/cardinfo.png)
 
-#### Case1: New payer
+2. **Create Payment Order**  
+   - Call the [Create Order](/docs/createorder) API.  
+   - Follow the API documentation to construct the request.  
+   - Set the `paySceneCode` parameter to `DIRECTPAY`.
 
- If the customer is a new payer, when the customer confirms to pay, show the **Bank card number**, **Expire date**, **Cardholdername**, **CVV**, etc. input boxes on your page.<br/>
+3. **Payment Processing**  
+   - If the request is successful, PayBy will forward the transaction to the bank and return the payment result to the customer.  
+   - Ensure the **redirectUrl** parameter is set in your request. After payment, PayBy will redirect the customer to this URL to display a confirmation message.
 
-![card](../pic/cardinfo.png)
+4. **3DS Verification (Optional or Required)**  
+   - In most cases, payment completes after card entry.  
+   - If 3DS verification is required, PayBy will return a verification URL. Redirect the customer to their bank’s authentication page.  
+   - The customer will enter a password or a code sent to their phone. Upon successful verification, the transaction proceeds.
 
+5. **Controlling 3DS Verification**  
+   - Use the `threeDSecure` parameter to indicate whether 3DS verification is required:  
+     - `true`: PayBy returns a verification link.  
+     - `false`: PayBy attempts direct debit.  
+     > **Note**: PayBy may enforce 3DS verification based on its risk control system, even if `false` is passed.
 
+6. **Saving Card for Future Use**  
+   - Set the `saveCard` parameter to `true` to store the card.  
+   - PayBy will return a **cardToken** (card ID), which can be used for future transactions.  
+   - A customer ID can store multiple cards.
 
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `DIRECTPAY` in the **paySceneCode** parameter.<br/>
+7. **Receive Payment Notification**  
+   - If the `notifyUrl` is set in the request, PayBy will send the payment result to this URL after the transaction.
 
-<br/>
+8. **Order Management**  
+   - Use the following APIs to manage the order:  
+     - [Revoke](/docs/revoke)
+     - [Cancel](/docs/cancel)
+     - [Refund](/docs/refund)   
+     - [Retrieve Order Detail](/docs/retrieveorderdetail)
 
-If the request is successful, PayBy will proceed the request to bank and return the payment result to the customer. Create a success page for the URL you provided in the **redirectUrl**  parameter to display order confirmation message to your customer. PayBy will redirect the payer to this page after the payment has been completed on the checkout.<br/>
+### Case 2: Returning Payer Using Saved Card
 
-<br/>
+1. **Card Selection**  
+   If the customer has previously saved a card, allow them to select it from the stored options.  
 
-Usually, the payment can be completed after the user enters the card information, but sometimes the user is required to submit a 3DS verification. In this process, PayBy will return you a URL, and you direct the customer to an authentication page on their bank’s website, and the customer enters a password associated with the card or a code sent to their phone. After successful verification, the transaction proceeds.
+   ![savedcard](../pic/savedcard.png)
 
-<br/>
+3. **Create Payment Order**  
+   - Call the [Create Order](/docs/createorder) API.  
+   - Set the `paySceneCode` parameter to `DIRECTPAY`.  
+   - Pass the selected card’s **cardToken** in the `cardToken` parameter.
 
-If you feel that the customer's transaction requires a higher level of verification, you can actively initiate 3DS verification.The **threeDSecure** parameter is for the merchant to decide whether the transaction requires 3DS verification. If true, PayBy will return the verification link; if false, PayBy will debit the payment directly after submitting the payment request. The default is False. Note that, if PayBy's risk control system identifies that the transaction requires 3DS verification, even if the merchant passes false, the payer will be required for 3DS verification.
+4. **Receive Payment Notification**  
+   - If the `notifyUrl` is set, PayBy will send the payment result to the specified URL.
 
-<br/>
-
-The payer's card information can be saved for future use. In the parameter **saveCard**, if pass true, PayBy will return the ID of the card, so that the card ID can be passed directly instead of the card information when another transaction is made. A customer id can save multiple cards in PayBy.
-
-<br/>
-
-If the **notifyUrl** is set in the order creation request, after the transaction, PayBy will send payment result to the url.<br/>
-
-<br/>
-
-To change order status, you can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
-
-<br/>
-
-To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.<br/>
-
-<br/>
-
-#### Case2: Use saved card
-
-If the customer has paid before and the merchant has stored the card details, he or she can select the stored card and finish payment.
-
-![savedcard](../pic/savedcard.png)
-
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `DIRECTPAY` in the **paySceneCode** parameter.
-
-<br/>
-
-When the customer's card is successfully saved in PayBy, PayBy will return the **cardToken**,  the unique identification number in PayBy. After the customer selects a card, pass this card's token in the **cardToken** parameter. 
-
-<br/>
-
-To change order status, you can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
-
-<br/>
-
-If the **notifyUrl** is set in the order creation request, after the transaction, PayBy will send payment result to the url.
-
-<br/>
-
-To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
-
-<br/>
-
-
-
-
-
-
-
+5. **Order Management**  
+   - Use the following APIs to manage the order:  
+     - [Revoke](/docs/revoke)
+     - [Cancel](/docs/cancel)
+     - [Refund](/docs/refund)   
+     - [Retrieve Order Detail](/docs/retrieveorderdetail)
