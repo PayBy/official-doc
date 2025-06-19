@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-toc_max_heading_level: 6
+toc_max_heading_level: 3
 ---
 
 # E-wallet
@@ -42,7 +42,7 @@ Currently, PayBy supports the following e-wallets:
 - This page should display an order confirmation message to the customer.
 - After the payment is completed via the e-wallet, PayBy will automatically redirect the customer to this success page.
 
-### Asynchronous notification
+### Asynchronous Notification
 
 If the **notifyUrl** is set in the order creation request, after the transaction, PayBy will send payment result to the url.
 
