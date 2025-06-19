@@ -9,7 +9,7 @@ The iFrame Payment Page is a webpage prepared by PayBy that can be embedded with
 
 Unlike the Hosted Paypage, using the iFrame Paypage ensures that customers remain on your website when making a payment, potentially reducing the payment failure rate. Additionally, integrating the iFrame Paypage within your site provides greater flexibility.
 
-### User Experience
+## User Experience
 
 1. When customers are ready to complete their payment, your application creates a new order creation request.
 2. The PayBy returns a URL that can be rendered in the container on your checkout page.
@@ -23,15 +23,15 @@ Unlike the Hosted Paypage, using the iFrame Paypage ensures that customers remai
 ---
 
 
-### Integrate the API
+## Integrate the API
 
-#### Load PayBy JS SDK
+### Load PayBy JS SDK
 
 ```
 <script async src="https://checkout.payby.com/sdk/payby-sdk.umd.js"></script>
 ```
 
-#### Get `tokenUrl`
+### Get `tokenUrl`
 
 When the customer confirms to pay, call the [Create order](/docs/createorder) API, follow the API description to create a request. Pass `PAYPAGE` in the **paySceneCode** parameter.
 
@@ -43,7 +43,7 @@ If the request is successful, PayBy will return a token url that can be rendered
 
 ---
 
-#### Create an iFrame
+### Create an iFrame
 
 Use `PayBy.createIframe` with `tokenUrl` to create an iFrame within a predefined div element.
 
@@ -97,7 +97,7 @@ window.PayBy.createIframe({
 
 ```
 
-### 3DS Verification Handling
+## 3DS Verification Handling
 
 - **URL Handling**: If redirectURI is a URL, redirect the user to this URL for 3DS verification.
 - **Form Handling**: If redirectURI is an HTML form, render the form on your page and let it auto-submit for 3DS verification.
@@ -132,22 +132,22 @@ window.PayBy.createIframe({
   - Handles failed payment processing within the iFrame.  
   - The merchant's website should display an error message based on the `msg` parameter in PayBy's response to inform the user of the specific issue.
 
-#### Redirect URL
+### Redirect URL
 
 Create a success page for the URL you provided in the **redirectUrl**  parameter to display order confirmation message to your customer. PayBy will redirect the payer to this page after the payment has been completed on the checkout.
 
-#### Asynchronous Notification
+### Asynchronous Notification
 
 If the **notifyUrl** is set in the order creation request, after the transaction, PayBy will send payment result to the url.
 
-#### Change Order Status
+### Change Order Status
 
 You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
 
-#### Retrieve Order Detail
+### Retrieve Order Detail
 
 To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
 
-### Set Payment Method
+## Set Payment Method
 
 On the paypage, by default, all payment methods activated by the merchant in PayBy will be listed. To adjust the order of payment methods or temporarily disable some payment methods for the payer, configure it in Payment Methods. [Payment Methods](https://b.payby.com/payment-methods).
