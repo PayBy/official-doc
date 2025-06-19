@@ -5,56 +5,57 @@ toc_max_heading_level: 6
 
 # E-wallet
 
-Display one or more E-wallet icons supported by PayBy on your mobile application’s checkout page. After your customer selects an E-wallet, they will be redirected to that E-wallet app to complete the payment. Currently, our supported wallets are BOTIM and PayBy APP.
+Display one or more supported e-wallet icons on your mobile application’s checkout page to offer customers a seamless payment experience. Once a customer selects an e-wallet, they will be redirected to the corresponding app to complete the transaction.
 
-<br/>
-
-### User experience
+Currently, PayBy supports the following e-wallets:
+- BOTIM
+- PayBy App
+  
+## User Experience
 
 1. When customers are ready to complete their payment, your application creates a new order creation request.
 2. The PayBy returns a URL that your APP can revoke the E-wallet's checkout through deeplink method.
 3. Customers enter their payment details on the payment page and complete the transaction.
-4. Upon successful payment, customers are redirected to the merchant's success page.<br/>
+4. Upon successful payment, customers are redirected to the merchant's success page.
 
 ![ue-ewallet](../pic/ue-ewallet.png)
 
+## Integrate the API
+### Initiate E-Wallet Payment via PayBy
 
+#### Step 1: Display E-Wallet Options
+- When the customer confirms their intent to pay, render the list of available e-wallets.
+- The selection and order of e-wallets are determined by the merchant and stored on the merchant's server.
+- The merchant app must query the merchant's server to retrieve this list when the customer initiates payment.
 
-<br/>
+#### Step 2: Create Payment Order
+- Call the [Create order](/docs/createorder) API.
+- Construct the request according to the API documentation.
+- Set the `paySceneCode` parameter to `EWALLET`.
 
-### Integrate the API
+#### Step 3: Handle API Response
+- If the API request is successful, PayBy will return a **deeplink**.
+- Use this deeplink to redirect the customer to the selected e-wallet for payment.
 
-#### Create order
+#### Step 4: Redirect to Success Page
+- Create a success page at the URL specified in the `redirectUrl` parameter.
+- This page should display an order confirmation message to the customer.
+- After the payment is completed via the e-wallet, PayBy will automatically redirect the customer to this success page.
 
-When the customer confirms to pay, render the E-wallet list for the customer to choose from. Which wallets and order of wallets the customers see is determined by the merchant and stored in the merchant's server. When customers initiate payments, the merchant app query from the merchant's server.<br/>
+### Asynchronous notification
 
-Call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `EWALLET` in the **paySceneCode** parameter.<br/>
+If the **notifyUrl** is set in the order creation request, after the transaction, PayBy will send payment result to the url.
 
-If the request is successful, PayBy will return a deeplink to redirect the customer to the target ewallet.<br/>
-
-Create a success page for the URL you provided in the **redirectUrl**  parameter to display order confirmation message to your customer. PayBy will redirect the payer to this page after the payment has been completed on the checkout.
-
-<br/>
-
-#### Asynchronous notification
-
-If the **notifyUrl** is set in the order creation request, after the transaction, PayBy will send payment result to the url.<br/>
-
-<br/>
-
-#### Change Order Status
+### Change Order Status
 
 You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
 
-<br/>
-
-#### Retrieve Order
+### Retrieve Order
 
 To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
 
 ![ewalletflow](../pic/ewallet.png)
 
-<br/>
 
 
 

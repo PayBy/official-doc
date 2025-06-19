@@ -5,15 +5,13 @@ toc_max_heading_level: 6
 
 # QRPAY 
 
-**Customer presented QR code**
+## Customer-side QR Code
 
-QRPAY is the Customer-Presented QR code payment. When the total transaction amount is confirmed in the your POS system at checkout, your customer opens PayBy or BOTIM app to present QR code. The cashier in your shop scans this code with a QR code scanner, finalizing the transaction. QR Pay is suitable for in-person payment collection in stores such as department stores, restaurants, etc. <br/>
+QRPAY is a customer-presented QR code payment method designed for seamless in-person transactions. At checkout, once the total transaction amount is confirmed in your POS system, the customer opens the PayBy or BOTIM app and displays a QR code. The cashier then scans this code using a standard QR code scanner to complete the payment.
 
-If your store is already equipped with barcode scanners and you don't plan to use other types of hardware, integrating this payment product can help you reach out to users who have PayBy or BOTIM apps installed.
+QRPAY is ideal for physical retail environments such as department stores, restaurants, and other service-oriented businesses. If your store is already equipped with barcode scanners and you do not intend to invest in additional hardware, integrating QRPAY offers a convenient way to accept payments from users of the PayBy and BOTIM apps, expanding your reach and enhancing customer experience
 
-<br/>
-
-### User experience
+## User Experience
 
 1. The customer opens PayBy or BOTIM app to present QR code.
 2. The cashier confirms the payment amount, generates a payment order in the merchant’s system to place order in PayBy.
@@ -23,43 +21,44 @@ If your store is already equipped with barcode scanners and you don't plan to us
 
 ![ueqrpay](../pic/ue-qrpay.png)
 
-<br/>
+## Integrate the API
 
-### Integrate the API
+### Initiate Payment via QR Code Using PayBy
 
-#### Create order
+1. **Customer Confirmation**  
+   Wait for the customer to confirm their intent to proceed with the payment.
 
-When the customer confirms to pay, call the [Create order](/docs/createorder) API,  follow the API description to create a request. Pass `QRPAY` in the **paySceneCode** parameter.
+2. **Create Order Request**  
+   Call the [Create Order](/docs/createorder) API.  
+   - Construct the request according to the API documentation.  
+   - Set the `paySceneCode` parameter to `QRPAY`.
 
-<br/>
+3. **Receive Token URL**  
+   If the API request is successful, PayBy will return a `tokenUrl`.
 
-If the request is successful, PayBy will return the **tokenUrl**. The merchant's server needs to convert the URL into an QRcode image and display it to customers on its interface.
+4. **Generate and Display QR Code**  
+   - Convert the `tokenUrl` into a QR code image.  
+   - Display the QR code on the merchant’s interface for the customer to scan.
 
-<br/>
+5. **Payment Notification**  
+   After the customer completes the payment:  
+   - PayBy will notify the result to either the PayBy server or the BOTIM app.  
+   - The customer will see the payment result within the app.
 
-After the payment the PayBy server will notify the result to PayBy or BOTIM  app, and the customer will see the payment result on the app.
+### Asynchronous Notification
 
-<br/>
+If the **notifyUrl** is set in the order creation request, after the transaction, PayBy will send the payment result to the url.
 
-#### Asynchronous notification
-
-If the **notifyUrl** is set in the order creation request, after the transaction, PayBy will send payment result to the url.<br/>
-
-<br/>
-
-#### Change Order Status
+### Change Order Status
 
 You can initiate [Revoke](/docs/revoke), [Cancel](/docs/cancel), [Refund](/docs/refund) and other operations on the created order.
 
-<br/>
-
-#### Retrieve Order
+### Retrieve Order
 
 To retrieve the order detail, call the [Retrieve Order Detail](/docs/retrieveorderdetail) API.
 
 ![dynqyflow](../pic/dynqr.png)
 
-<br/>
 
 
 
