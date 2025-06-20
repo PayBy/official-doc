@@ -64,4 +64,10 @@ const sidebars = {
             'Online Payment Integration/test-case.mdx',
             // Plugins folder contains only subfolders; add their docs if needed
           ],
-       
+        },
+      ],
+    },
+  ],
+};
+
+module.exports = sidebars;
