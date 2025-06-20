@@ -1,5 +1,4 @@
 ---
-title: Create Order
 id: createOrder 
 sidebar_position: 1
 toc_max_heading_level: 6
@@ -73,16 +72,13 @@ export function SwitchProduct() {
 ​        <ProductComponent />
 ​      </details>
 ​    </div>
-  );
-}
+  
 
-
+# Create Order
 ## Overview
 
 The merchant system first calls this API to generate a prepayment order in the PayBy service backend. Once a valid token (order session identifier) is returned, the payment process can then be initiated.
 
-
-<br/>
 
 ## API URL
 
@@ -90,7 +86,6 @@ UAT : https://uat.test2pay.com/sgs/api/acquire2/placeOrder
 
 Production : https://api.payby.com/sgs/api/acquire2/placeOrder
 
-<br/>
 
 ## Request
 
@@ -119,7 +114,6 @@ If the same request is submitted more than once, the timestamp from the initial 
   <RequestHeader/>
 </details>
 
-<br/>
 
 ### Http Body
 
@@ -131,7 +125,6 @@ Request time of the order. If the request time is more than 15 minutes away from
 
 Example value: 1581493898000
 
-<br />
 
 **bizContent** <span style={{color:" #7d8793"}}>Object</span>
 
@@ -145,7 +138,6 @@ The attributes are:
 
   Maximum length: `64`
 
- <br/>
 
 - **subject** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
 
@@ -155,7 +147,6 @@ The attributes are:
 
   Maximum length: `12`
 
-  <br/>
 
 - **totalAmount** <span style={{color:" #7d8793"}}>Money</span> <span style={{color:"#f19938"}}>Required</span>
 
