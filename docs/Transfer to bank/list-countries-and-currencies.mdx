@@ -41,10 +41,11 @@ import RequestHeader from '../_request-header.mdx'
 
 
 **requestTime** <font color = ' #7d8793'>Timestamp</font> <font color = '#f19938'>Required</font>
-<br/>
-| **Field Name** | **Variable Name** | **Required** | **Type**       | **Example Value** | **Description** |
-|----------------|-------------------|--------------|----------------|-------------------|------------------|
-| Request Time   | `requestTime`     | Mandatory    | Timestamp(3)   | 1581493898000     | The timestamp when the order request is initiated. If the request time differs from the current system time by more than 15 minutes, the request will be rejected. This helps prevent duplicate or outdated order submissions due to timeouts. |
+
+| **Field Name** | **Variable Name** | **Required** | **Type**     | **Example Value** | **Description** |
+|----------------|-------------------|--------------|--------------|-------------------|------------------|
+| Request Time   | `requestTime`     | Mandatory    | Timestamp(3) | 1581493898000     | The timestamp when the order request is initiated. If the request time differs from the current system time by more than 15 minutes, the request will be rejected. This helps prevent duplicate or outdated order submissions due to timeouts. |
+
 
 
 ### Request Sample
