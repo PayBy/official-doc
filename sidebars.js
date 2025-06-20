@@ -4,80 +4,64 @@
  * NOTE: This may not include all files/folders—see GitHub for the full list.
  */
 
+// @ts-check
+
+/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   tutorialSidebar: [
     {
       type: 'category',
       label: 'General',
       items: [
-        // You can add specific docs inside General here, e.g. 'General/intro'
+        'General/integration-guide',
+        'General/response-code',
+        'General/test-accounts',
+        // Add more docs from General if needed
       ],
     },
     {
       type: 'category',
       label: 'Member',
       items: [
-        // Add docs from Member folder
+        'Member/get-balance.mdx',
+        'Member/vam-deposit-order.mdx',
+        // Add more docs from Member folder
       ],
     },
     {
       type: 'category',
       label: 'Online Payment Integration',
       items: [
-        // Add docs from Online Payment Integration folder
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Payment',
-      items: [
-        // Add docs from Payment folder
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Refund',
-      items: [
-        // Add docs from Refund folder
-      ],
-    },
-    {
-      type: 'category',
-      label: 'SDKs',
-      items: [
-        // Add docs from SDKs folder
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Transfer to bank',
-      items: [
-        // Add docs from Transfer to bank folder
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Transfer',
-      items: [
-        // Add docs from Transfer folder
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Transfer to Bank Card',
-      items: [
-        // Add docs from Transfer to Bank Card folder
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Reconciliation',
-      items: [
-        // Add docs from Reconciliation folder
-      ],
-    },
-    // '_request-header' removed as requested
-  ],
-};
-
-module.exports = sidebars;
+        {
+          type: 'category',
+          label: 'Online Payment Integration',
+          items: [
+            'Online Payment Integration/overview.md',
+            {
+              type: 'category',
+              label: 'Checkout',
+              items: [
+                'Online Payment Integration/Checkout/hosted-paypage.md',
+                'Online Payment Integration/Checkout/iframe-paypage.md',
+                'Online Payment Integration/Checkout/inapp-sdk-android.md',
+                'Online Payment Integration/Checkout/inapp-sdk-ios.md',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Special Payment Scenes',
+              items: [
+                'Online Payment Integration/Special Payment Scenes/_auto-debit.md',
+                'Online Payment Integration/Special Payment Scenes/cash-top-up.md',
+                'Online Payment Integration/Special Payment Scenes/direct-pay.md',
+                'Online Payment Integration/Special Payment Scenes/dynrq.md',
+                'Online Payment Integration/Special Payment Scenes/ewallet.md',
+                'Online Payment Integration/Special Payment Scenes/jsapi.md',
+                'Online Payment Integration/Special Payment Scenes/qrpay.md',
+              ],
+            },
+            'Online Payment Integration/best-practice.md',
+            'Online Payment Integration/test-case.mdx',
+            // Plugins folder contains only subfolders; add their docs if needed
+          ],
+       
