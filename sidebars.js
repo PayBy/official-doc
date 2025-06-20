@@ -47,7 +47,7 @@ const sidebars = {
               type: 'category',
               label: 'Special Payment Scenes',
               items: [
-                'Online Payment Integration/Special Payment Scenes/_auto-debit',
+                
                 'Online Payment Integration/Special Payment Scenes/cash-top-up',
                 'Online Payment Integration/Special Payment Scenes/direct-pay',
                 'Online Payment Integration/Special Payment Scenes/dynrq',
@@ -71,14 +71,14 @@ const sidebars = {
               type: 'category',
               label: 'OrderCreation',
               items: [
-                'Payment/OrderCreation/index'
+                'Payment/OrderCreation/create-order'
               ],
             },
 {
               type: 'category',
               label: 'OrderCancellation',
               items: [
-                'Payment/OrderCancellation/index',
+                'Payment/OrderCancellation/cancel-order',
               ],
             },
 
