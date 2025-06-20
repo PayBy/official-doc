@@ -47,7 +47,7 @@ const sidebars = {
               type: 'category',
               label: 'Special Payment Scenes',
               items: [
-                'Online Payment Integration/Special Payment Scenes/_auto-debit',
+                'Online Payment Integration/Special Payment Scenes/_auto-debit.md',
                 'Online Payment Integration/Special Payment Scenes/cash-top-up',
                 'Online Payment Integration/Special Payment Scenes/direct-pay',
                 'Online Payment Integration/Special Payment Scenes/dynrq',
@@ -65,8 +65,8 @@ const sidebars = {
       type: 'category',
       label: 'Payment',
       items: [
-        'Payment/OrderCreation/index',
-        'Payment/OrderCancellation/index',
+        'Payment/OrderCreation/index.mdx',
+        'Payment/OrderCancellation/index.mdx',
         'Payment/adjust-order-expiry-time',
         'Payment/chargeback-notif',
         'Payment/get-cashier-url',
@@ -82,8 +82,8 @@ const sidebars = {
       type: 'category',
       label: 'Refund',
       items: [
-        'Refund/refund-order-initiate',
-        'Refund/refund-order-query',
+        'Refund/order-refund',
+        'Refund/order-refund-query',
         'Refund/refund-result-notification',
         // Add more docs from Refund folder
       ],
@@ -134,9 +134,9 @@ const sidebars = {
       type: 'category',
       label: 'SDKs',
       items: [
-        'SDKs/inapp',
-        'SDKs/online-JAVA',
-        'SDKs/online-PHP',
+        'SDKs/inapp.md',
+        'SDKs/online-JAVA.md',
+        'SDKs/online-php.md',
       ],
     },
     // '_request-header' removed as requested
