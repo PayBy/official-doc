@@ -71,7 +71,7 @@ const sidebars = {
               type: 'category',
               label: 'OrderCreation',
               items: [
-                'Payment/OrderCreation/create-order'
+                'Payment/OrderCreation/create-order',
               ],
             },
 {
