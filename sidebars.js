@@ -7,8 +7,7 @@
 // @ts-check
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
-const sidebars = {
-  tutorialSidebar: [
+tutorialSidebar: [
     {
       type: 'category',
       label: 'General',
@@ -67,14 +66,14 @@ const sidebars = {
       items: [
         
         
-{
+    {
               type: 'category',
               label: 'OrderCreation',
               items: [
                 'Payment/OrderCreation/create-order',
               ],
             },
-{
+    {
               type: 'category',
               label: 'OrderCancellation',
               items: [
@@ -156,6 +155,6 @@ const sidebars = {
     },
     // '_request-header' removed as requested
   ],
-};
+
 
 module.exports = sidebars;
