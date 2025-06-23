@@ -9,22 +9,115 @@ toc_max_heading_level: 6
 
 When a VAM deposit occurs, PayBy sends the relevant deposit information to the merchant via a data stream. The merchant must process the notification and respond according to the specifications outlined in this document.
 
----
+> Note:
 
-> **Note:**
+> 1. Duplicate Notifications: The same notification may be sent multiple times. Merchant systems must be able to handle duplicate notifications correctly. 
+> 2. Retry Mechanism: If PayBy does not receive a valid response or if the response times out, the notification is considered failed and will be retried. The default retry schedule is as follows (in minutes): `2, 10, 10, 60, 120, 360, 900`. However, successful delivery is not guaranteed.
+> 3. Order Status Uncertainty: If the order status is unclear or the merchant has not received a payment result notification from PayBy, it is recommended to actively query the order status using the designated API.
 
-> 1. **Duplicate Notifications**: The same notification may be sent multiple times. Merchant systems must be able to handle duplicate notifications correctly. 
-> 2. **Retry Mechanism**: If PayBy does not receive a valid response or if the response times out, the notification is considered failed and will be retried. The default retry schedule is as follows (in minutes): `2, 10, 10, 60, 120, 360, 900`. However, successful delivery is not guaranteed.
-> 3. **Order Status Uncertainty**: If the order status is unclear or the merchant has not received a payment result notification from PayBy, it is recommended to actively query the order status using the designated API.
-
----
 
 ## Notification Payload
 
-| Field Name     | Variable Name      | Required | Type             | Example | Description |
-|----------------|--------------------|----------|------------------|----------------|-------------|
-| Deposit Order  | `vamDepositOrder`  | Yes      | `VamDepositOrder`| -              | Contains deposit details |
+### HTTP Header
 
+- Content-Type  
+  - Description: Specifies the media type and character encoding of the request body.  
+  - Type: `string`  
+  - Required: Yes  
+  - Example: `"application/json; charset=UTF-8"`
+
+
+### HTTP Body
+
+- notify_time
+  - Description: Time when the notification was sent, in `yyyyMMddHHmmss` format.  
+  - Type: `string`  
+  - Required: Yes  
+  - Example: `"20241224061738"`
+
+- vamDepositOrder  
+  - Description: Object containing deposit order details.  
+  - Type: `object`  
+  - Required: Yes  
+  - Example: See nested fields below.
+
+  - remitterInfo
+    - Description: Name of the person sending the deposit.  
+    - Type: `string`  
+    - Required: Yes  
+    - Example: `"MR HUA JIANG"`
+
+  - amount 
+    - Description: Object containing the deposit amount and currency.  
+    - Type: `object`  
+    - Required: Yes  
+    - Example: See nested fields below.
+
+    - amount 
+      - Description: The numeric value of the deposit.  
+      - Type: `number`  
+      - Required: Yes  
+      - Example: `3000`
+
+    - currency  
+      - Description: Currency code of the deposit.  
+      - Type: `string`  
+      - Required: Yes  
+      - Example: `"AED"`
+
+  - orderNo 
+    - Description: Unique identifier for the deposit order.  
+    - Type: `string`  
+    - Required: Yes  
+    - Example: `"131727701521486397"`
+
+  - referenceNo  
+    - Description: Reference number for tracking or reconciliation.  
+    - Type: `string`  
+    - Required: Yes  
+    - Example: `"UFOC0HQ008"`
+
+  - senderBankCode  
+    - Description: SWIFT code of the sender’s bank.  
+    - Type: `string`  
+    - Required: Yes  
+    - Example: `"BBMEAEADXXX"`
+
+  - depositDetails  
+    - Description: Additional details or remarks about the deposit.  
+    - Type: `string`  
+    - Required: No  
+    - Example: `"REF AEV260832YLQ4K5D FIS 56057df891a0449584dc5c8d84a6a138"`
+
+  - transactionTime  
+    - Description: Timestamp of the transaction in milliseconds since epoch.  
+    - Type: `number`  
+    - Required: Yes  
+    - Example: `1727701521000`
+
+  - status  
+    - Description: Status of the deposit transaction.  
+    - Type: `string`  
+    - Required: Yes  
+    - Example: `"SUCCESS"`
+
+- _input_charset  
+  - Description: Character encoding used in the request.  
+  - Type: `string`  
+  - Required: Yes  
+  - Example: `"UTF-8"`
+
+- notify_timestamp  
+  - Description: Timestamp when the notification was generated, in milliseconds since epoch.  
+  - Type: `number`  
+  - Required: Yes  
+  - Example: `1735006658869`
+
+- notify_id  
+  - Description: Unique identifier for the notification.  
+  - Type: `string`  
+  - Required: Yes  
+  - Example: `"202409300013926551"`
 
 ## Notification Sample
 
