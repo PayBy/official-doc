@@ -18,21 +18,65 @@ In the event of a chargeback, PayBy sends the relevant chargeback information to
 
 ## Notification Parameters
 
-| Field Name       | Variable Name       | Required | Type                | Example | Description                               |
-| ---------------- | ------------------- | -------- | ------------------- | ------------- | ----------------------------------------- |
-| Chargeback Order | `acquireChargeback` | Yes      | `AcquireChargeback` | -             | Contains details of the chargeback order. |
+**Chargeback Order**  
+- **Variable Name**: `acquireChargeback`  
+- **Required**: Yes  
+- **Type**: `AcquireChargeback`  
+- **Example**: *(none provided)*  
+- **Description**: Contains details of the chargeback order.
 
 ### AcquireChargeback
 
-| Field Name        | Variable Name    | Required | Type         | Example       | Description |
-| ----------------- | ---------------- | -------- | ------------ | ------------- | ----------- |
-| Chargeback Time   | chargebackTime   | Required | Timestamp(3) | 1581493898000 |             |
-| Merchant Order No | merchantOrderNo  | Required | String(64)   | S10000        |             |
-| PayBy Order No    | orderNo          | Required | String(32)   | O1000         |             |
-| Payment Amount    | payAmount        | Required | Money        | -             |             |
-| Chargeback Amount | chargebackAmount | Required | Money        | -             |             |
-| Case Type         | caseType         | Required | String(200)  | -             |             |
-| Partner ID        | partnerId        | Required | String(200)  | 200000003232  |             |
+- **Chargeback Time**  
+  - **Variable Name**: `chargebackTime`  
+  - **Required**: Yes  
+  - **Type**: `Timestamp(3)`  
+  - **Example**: `1581493898000`  
+  - **Description**: The timestamp indicating when the chargeback was initiated.
+
+
+- **Merchant Order No**  
+  - **Variable Name**: `merchantOrderNo`  
+  - **Required**: Yes  
+  - **Type**: `String(64)`  
+  - **Example**: `S10000`  
+  - **Description**: Unique identifier for the merchant's original order.
+
+- **PayBy Order No**  
+  - **Variable Name**: `orderNo`  
+  - **Required**: Yes  
+  - **Type**: `String(32)`  
+  - **Example**: `O1000`  
+  - **Description**: Unique identifier for the PayBy transaction order.
+
+- **Payment Amount**  
+  - **Variable Name**: `payAmount`  
+  - **Required**: Yes  
+  - **Type**: `Money`  
+  - **Example**: *(none provided)*  
+  - **Description**: Total amount originally paid in the transaction.
+
+- **Chargeback Amount**  
+  - **Variable Name**: `chargebackAmount`  
+  - **Required**: Yes  
+  - **Type**: `Money`  
+  - **Example**: *(none provided)*  
+  - **Description**: Amount being reversed or refunded due to the chargeback.
+
+- **Case Type**  
+  - **Variable Name**: `caseType`  
+  - **Required**: Yes  
+  - **Type**: `String(200)`  
+  - **Example**: *(none provided)*  
+  - **Description**: Classification of the chargeback case, such as fraud, dispute, or duplicate transaction.
+
+- **Partner ID**  
+  - **Variable Name**: `partnerId`  
+  - **Required**: Yes  
+  - **Type**: `String(200)`  
+  - **Example**: `200000003232`  
+  - **Description**: Identifier for the partner or merchant associated with the transaction.
+
 
 ## Response Parameters
 
