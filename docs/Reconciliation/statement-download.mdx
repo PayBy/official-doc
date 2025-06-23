@@ -54,7 +54,6 @@ If the request time is more than 15 minutes away from the current time, the requ
 
 Example value: 1581493898000
 
-<br/>
 
 **bizContent**   <font color = '#7d8793'>Object</font>  
 
@@ -95,26 +94,48 @@ Example value: 1581493898000
 
 If the request succeeded, the data will be returned as a compressed .zip file. If failed, the standard format of response will be returned.
 
-<br/>
-
 ### Case 1: Response to Failed Statement Download Request
 
 When a statement download request fails, the API returns an error response with specific headers and body content.
 
 #### HTTP Header
 
-| Field Name       | Variable Name    | Required | Type        | Example    | Description                                |
-| ---------------- | ---------------- | -------- | ----------- | ---------------- | ------------------------------------------ |
-| Content-Language | Content-Language | Optional | String(10)  | en               | Language code (en = English)               |
-| Signature        | Sign             | Required | String      | -                | Digital signature for request verification |
-| Partner ID       | Partner-Id       | Required | String(12)  | -                | Merchant identifier                        |
-| Content Type     | Content-Type     | Required | String(256) | application/json | MIME type of the response content          |
+- **Content-Language**  
+   - **Variable Name**: `Content-Language`  
+   - **Required**: Optional  
+   - **Type**: `String(10)`  
+   - **Example**: `en`  
+   - **Description**: Language code (e.g., `en` for English)
+
+- **Signature**  
+   - **Variable Name**: `Sign`  
+   - **Required**: Required  
+   - **Type**: `String`  
+   - **Example**: `-`  
+   - **Description**: Digital signature for request verification
+
+- **Partner ID**  
+   - **Variable Name**: `Partner-Id`  
+   - **Required**: Required  
+   - **Type**: `String(12)`  
+   - **Example**: `-`  
+   - **Description**: Merchant identifier
+
+- **Content Type**  
+   - **Variable Name**: `Content-Type`  
+   - **Required**: Required  
+   - **Type**: `String(256)`  
+   - **Example**: `application/json`  
+   - **Description**: MIME type of the response content
 
 #### HTTP Body
 
-| Field Name      | Variable Name | Required | Type           | Example | Description                                    |
-| --------------- | ------------- | -------- | -------------- | ------------- | ---------------------------------------------- |
-| Response Header | head          | Required | ResponseHeader | -             | Contains response status and error information |
+**Response Header**  
+- **Variable Name**: `head`  
+- **Required**: Required  
+- **Type**: `ResponseHeader`  
+- **Example**: `-`  
+- **Description**: Contains response status and error information
 
 #### Failed Request Response Example
 
@@ -145,10 +166,19 @@ When a statement download request succeeds, the API returns the data as a file s
 
 #### HTTP Header Parameters
 
-| Field Name          | Variable Name       | Required | Type   | Example                       | Description                          |
-| ------------------- | ------------------- | -------- | ------ | ------------------------------------------------------------ | ------------------------------------ |
-| Content Disposition | Content-Disposition | Required | String | attachment; filename=200000054800_20210112Transaction_Settle_Statement.zip | File attachment information          |
-| Content Type        | Content-Type        | Required | String | application/zip                                              | MIME type indicating ZIP file format |
+- **Content Disposition**  
+   - **Variable Name**: `Content-Disposition`  
+   - **Required**: Required  
+   - **Type**: `String`  
+   - **Example**: `attachment; filename=200000054800_20210112Transaction_Settle_Statement.zip`  
+   - **Description**: File attachment information
+
+- **Content Type**  
+   - **Variable Name**: `Content-Type`  
+   - **Required**: Required  
+   - **Type**: `String`  
+   - **Example**: `application/zip`  
+   - **Description**: MIME type indicating ZIP file format
 
 #### File Structure and Naming Convention
 
