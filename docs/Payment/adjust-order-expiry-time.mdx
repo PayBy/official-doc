@@ -2,6 +2,7 @@
 sidebar_position: 8
 toc_max_heading_level: 6
 ---
+import ResponseHead from '../_request-header.mdx'
 
 # Adjust Order Expiration Time
 
@@ -11,35 +12,53 @@ This interface allows you to adjust the expiration time for existing orders. The
 
 ## API URL
 
-**Testing URL:** `https://uat.test2pay.com/sgs/api/acquire2/updateExpiredTime`
+Testing URL: `https://uat.test2pay.com/sgs/api/acquire2/updateExpiredTime`
 
-**Production URL:** `https://api.payby.com/sgs/api/acquire2/updateExpiredTime`
+Production URL: `https://api.payby.com/sgs/api/acquire2/updateExpiredTime`
 
 ## Request
 
 ### HTTP Headers
 
-| Field Name       | Variable Name    | Required | Type       | Example | Description                          |
-| ---------------- | ---------------- | -------- | ---------- | ------- | ------------------------------------ |
-| Content Language | Content-Language | Optional | String(10) | en      | Language preference (en for English) |
-| Signature        | Sign             | Required | String     | -       | Request signature for authentication |
-| Partner ID       | Partner-Id       | Required | String(12) | -       | Merchant identifier                  |
+<details>
+  <summary>Attributes</summary>
+  <RequestHeader/>
+</details>
 
 ### HTTP Body
 
-| Field Name       | Variable Name | Required | Type                     | Example       | Description                                 |
-| ---------------- | ------------- | -------- | ------------------------ | ------------- | ------------------------------------------- |
-| Request Time     | requestTime   | Required | Timestamp(3)             | 1581493898000 | Timestamp of the request in milliseconds    |
-| Business Content | bizContent    | Required | UpdateExpiredTimeRequest | -             | Contains the business-specific request data |
+- Request Time
+  - Variable Name: `requestTime`
+  - Required: Yes
+  - Type: `Timestamp(3)`
+  - Example: `1581493898000`
+  - Description: Timestamp of the request in milliseconds
 
-### UpdateExpiredTimeRequest
-
-
-| Field Name        | Variable Name   | Required | Type         | Example | Description                                                  |
-| ----------------- | --------------- | -------- | ------------ | ------- | ------------------------------------------------------------ |
-| Merchant Order No | merchantOrderNo | Optional | String(64)   | M965739182419   | Either `merchantOrderNo` or `orderNo` must be provided, but not both. |
-| PayBy Order No    | orderNo         | Optional | String(32)   |    131404956265007836     |                                                              |
-| Expired Time      | expiredTime     | Required | Timestamp(3) |   1581412155966      |    New expiration time in milliseconds (must be within 15 days)       |
+- Business Content
+  - Variable Name: `bizContent`
+  - Required: Yes
+  - Type: `UpdateExpiredTimeRequest`
+  - Description: Contains the business-specific request data
+    - Merchant Order No
+      - Variable Name: `merchantOrderNo`
+      - Required: No
+      - Type: `String(64)`
+      - Example: `M965739182419`
+      - Description: Either `merchantOrderNo` or `orderNo` must be provided, but not both.
+  
+    - PayBy Order No
+      - Variable Name: `orderNo`
+      - Required: No
+      - Type: `String(32)`
+      - Example: `131404956265007836`
+      - Description: *(none)*
+  
+    - Expired Time
+      - Variable Name: `expiredTime`
+      - Required: Yes
+      - Type: `Timestamp(3)`
+      - Example: `1581412155966`
+      - Description: New expiration time in milliseconds (must be within 15 days)
 
 ### Request Sample
 
@@ -70,24 +89,32 @@ This interface allows you to adjust the expiration time for existing orders. The
 
 ### HTTP Headers
 
-| Field Name | Variable Name | Required | Type   | Example | Description                         |
-| ---------- | ------------- | -------- | ------ | ------- | ----------------------------------- |
-| Signature  | sign          | Required | String | -       | Response signature for verification |
+Signature
+  - Variable Name: `sign`
+  - Required: Yes
+  - Type: `String`
+  - Description: Response signature for verification
 
 > **Note:** The body field in the HTTP response is only returned when applyStatus is SUCCESS and code is 0.
 
 ### HTTP Body
 
-| Field Name      | Variable Name | Required | Type             | Example | Description                                       |
-| --------------- | ------------- | -------- | ---------------- | ------- | ------------------------------------------------- |
-| Response Header | head          | Required | ResponseHeader   | -       | Contains response status information              |
-| Response Body   | body          | Optional | GetOrderResponse | -       | Contains order details when request is successful |
+- Response Header
+  - Variable Name: `head`
+  - Required: Yes
+  - Type: `ResponseHeader`
+  - Description: Contains response status information
 
-### GetOrderResponse
-
-| Field Name        | Variable Name | Required | Type         | Example | Description                                              |
-| ----------------- | ------------- | -------- | ------------ | ------- | -------------------------------------------------------- |
-| Order Information | acquireOrder  | Required | AcquireOrder | -       | Complete order details including updated expiration time |
+- Response Body
+  - Variable Name: `body`
+  - Required: No
+  - Type: `GetOrderResponse`
+  - Description: Contains order details when request is successful
+    - Order Information
+      - Variable Name: `acquireOrder`
+      - Required: Yes
+      - Type: `AcquireOrder`
+      - Description: Complete order details including updated expiration time
 
 ### Response Sample
 
