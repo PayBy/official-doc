@@ -3,7 +3,7 @@ sidebar_position: 1
 toc_max_heading_level: 6
 ---
 
-
+import RequestHeader from '../_request-header.mdx'
 
 # Get Balance
 
@@ -14,33 +14,37 @@ This interface is used to query the member account balance.
 
 ## API URL
 
-UAT : https://uat.test2pay.com/sgs/api/member/getBalance
-
-Production : https://api.payby.com/sgs/api/member/getBalance
+- UAT : https://uat.test2pay.com/sgs/api/member/getBalance
+- Production : https://api.payby.com/sgs/api/member/getBalance
 
 
 ## Request
 ### Http Header
 
-| Field Name          | Variable Name | Required | Type       | Example | Description   |
-|---------------------|---------------|----------|------------|---------------|---------------|
-| Content Language    | Content-Language  | Optional | String(10) | en            | English    |
-| Signature           | Sign          | Required | String     |               |               |
-| ID of Merchant      | Partner-Id      | Required | String(12) |               |               |
+<details>
+  <summary>Attributes</summary>
+  <RequestHeader/>
+</details>  
 
 ### Http Body
 
-| Field Name        | Variable Name | Required | Type                | Example   | Description           |
-|-------------------|---------------|----------|---------------------|-----------------|-----------------------|
-| When requested    | requestTime   | Required | Timestamp(3)        | 1581493898000   |                       |
-| Business          | bizContent    | Required | GetMemberBalanceRequest |             |                       |
+Request Time
+	- Variable Name: `requestTime`
+	- Required: Yes
+	- Type: `Timestamp(3)`
+	- Example: `1581493898000`
 
-#### GetMemberBalanceRequest
+Business Content
+- Variable Name: `bizContent`
+- Required: Yes
+- Type: `GetMemberBalanceRequest`
 
-| Field Name | Variable Name | Required | Type   | Example | Description |
-|------------|----------------|----------|--------|---------------|-------------|
-| Currency   | currencyCode   | Required | String | AED           |             |
-
+  `GetMemberBalanceRequest`:
+  - Currency
+    - Variable Name: `currencyCode`
+    - Required: Yes
+    - Type: `String`
+    - Example: `AED`
 
 ### Request Sample
 
@@ -67,33 +71,68 @@ Http Body
 
 ### Http Header
 
-| Field Name      | Variable Name | Required | Type   | Example Value | Description |
-|-----------------|----------------|----------|--------|---------------|-------------|
-| Signature            | sign           | Required | String |               |             |
+Signature
+- Variable Name: `sign`
+- Required: Yes
+- Type: `String`
 
-The body field in the Http Body is returned only when `applyStatus` is `SUCCESS` and `code` is `0`.
+> **Note**:  The **body** field in the HTTP Body is returned **only when**:
+	- `applyStatus` is `SUCCESS`
+	- `code` is `0`
 
-### Http Body
+### HTTP Body
 
-| Field Name          | Variable Name      | Required | Type           | Example Value | Description |
-|---------------------|--------------------|----------|----------------|---------------|-------------|
-| Response header     |   head             | Required | ResponseHeader |               |             |
-| Response body       |   body             | Optional | MemberBalance  |               |             |
+#### Head
 
-### MemberBalance
+- Apply Status
+	- Variable Name: `applyStatus`
+	- Type: `String`
+	- Example Value: `"SUCCESS"`
 
-| Field Name              | Variable Name  | Required | Type  | Example Value | Description |
-|-------------------------|----------------|----------|-------|---------------|-------------|
-| Member ID               | memberId       | Required | String| 200000018128  |             |
-| Order information       | balanceList    | Required | List  |               |             |
+- Code
+	- Variable Name: `code`
+	- Type: `String`
+	- Example Value: `"0"`
 
-### Balance
+- Message
+	- Variable Name: `msg`
+	- Type: `String`
+	- Example Value: `"SUCCESS"`
 
-| Field Name         | Variable Name     | Required | Type  | Example Value | Description |
-|--------------------|-------------------|----------|-------|---------------|-------------|
-| Available Balance  | availableBalance  | Required | Money |               |             |
+- Success
+	- Variable Name: `success`
+	- Type: `Boolean`
+	- Example Value: `true`
 
+- Trace Code
+	- Variable Name: `traceCode`
+	- Type: `String`
+	- Example Value: `"375099"`
 
+#### Body
+
+- Member ID
+	- Variable Name: `memberId`
+	- Type: `String`
+	- Example Value: `"200000030907"`
+
+- Balance List
+	- Variable Name: `balanceList`
+	- Type: `Array of Balance Objects`
+
+  - Available Balance
+	  - Variable Name: `availableBalance`
+	  - Type: `Object`
+
+    - Amount
+      - Variable Name: `amount`
+      - Type: `Number`
+      - Example Value: `897993.88`
+
+    - Currency
+      - Variable Name: `currency`
+      - Type: `String`
+      - Example Value: `"AED"`
 
 ### Response Sample
 
