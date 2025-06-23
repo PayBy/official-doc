@@ -1,150 +1,97 @@
 - **refundMerchantOrderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
-
-	The merchant's reference number of the request. Used to track every request.
-
-	Example value: 1581493898000
-
-	Maximum length: `64`
-
-	<br/>
+	- The merchant's reference number of the request. Used to track every request.
+	- Example value: 1581493898000
+	- Maximum length: `64`
 
 - **orderNo** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
-
-  The PayBy's unique identification number of the refund order.
-
-  Example value: M965739182419
-
-  Maximum length: `64`
-
-  <br />
+	- The PayBy's unique identification number of the refund order.
+	- Example value: M965739182419
+	- Maximum length: `64`
 
 - **originMerchantOrderNo** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
-
-  The merchant order number of the payment order, which the merchant needs to refund.
-
-  Example value: M965739182419
-
-  Maximum length: `64`
-
-  <br />
+	- The merchant order number of the payment order, which the merchant needs to refund.
+	- Example value: M965739182419
+	- Maximum length: `64`
 
 - **status** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
-
-  The status of the refund order. The possible values are:
-
-  `CREATED`. PayBy's server accepts the refund request.
-
-  `REFUNDED_SETTLED`. Refund amount have been deducted from the merchant's account.
-
-  `SUCCESS`. If payment method is balance, the refund has reached the payer's payment account. If payment method is bank card, the bank has started processing this refund and the fund will take some time to reach the payer's bank account.
-
-  `FAILURE`. Refund order failed
-
-  <br />
+	
+	The status of the refund order. The possible values are:
+	- `CREATED`. PayBy's server accepts the refund request.
+	- `REFUNDED_SETTLED`. Refund amount have been deducted from the merchant's account.
+	- `SUCCESS`. If payment method is balance, the refund has reached the payer's payment account. If payment method is bank card, the bank has started processing this refund and the fund will take some time to reach the payer's bank account.
+	- `FAILURE`. Refund order failed
 
 - **amount** <font color = ' #7d8793'>Money</font> <font color = '#f19938'>Required</font>
 
-  The amount to refund.
-
-  <br />
+	The amount to refund.
 
 - **feeRefunded** <font color = ' #7d8793'>Money</font>
 
-  In this refund, the transaction fee PayBy needs to refund.
-
-  <br />
+	In this refund, the transaction fee PayBy needs to refund.
 
 - **sharingInfoList** <font color = ' #7d8793'>List</font>
 
-  If a refund occurs before the sharing amount is settled into the receiver's account, the receiver will actually receive less funds than the requested amount in the payment order. In this list PayBy will return the original requested sharing amount and the receiver actually obtained.
+	If a refund occurs before the sharing amount is settled into the receiver's account, the receiver will actually receive less funds than the requested amount in the payment order. In this list PayBy will return the original requested sharing amount and the receiver actually obtained.
 
-  The attributes of each item in the list are:
+	The attributes of each item in the list are:
 
-  - **sharingIdentitySeqId**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
+	- **sharingIdentitySeqId**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
 
-    You can pass multiple account ids to split the payment amount, in order to distinguish them, the serial number is needed. Please start with 1, then 2, 3, 4, etc.
+		You can pass multiple account ids to split the payment amount, in order to distinguish them, the serial number is needed. Please start with 1, then 2, 3, 4, etc.
 
-    Example value: `1`
+		Example value: `1`
 
-    <br/>
+	- **sharingMid**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
-  - **sharingMid**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+		If the **sharingIdentityType** and **sharingIdentity** passed in the request can correspond to a member id that already exists in the PayBy system, in the response PayBy will return the member id.
 
-    If the **sharingIdentityType** and **sharingIdentity** passed in the request can correspond to a member id that already exists in the PayBy system, in the response PayBy will return the member id.
+	- **sharingMemo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
-    <br/>
+		Add some description to this operation.
 
-  - **sharingMemo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+	- **sharingAmount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
 
-    Add some description to this operation.
+		The amount you plan to split to this id.
 
-    <br/>
+	- **sharingSettledAmount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
 
-  - **sharingAmount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
+		The amount of fund the sharing account finally received. If any refund occurs before settlement, the **sharingSettledAmount** will be different from the original **sharingAmount**.
 
-    The amount you plan to split to this id.
+	- **notifyUrl** <font color = ' #7d8793'>String</font>
 
-    <br/>
+		- The merchant's reference number of the request. Used to track every request.
+  		- Maximum length: `200`
 
-  - **sharingSettledAmount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
+	- **reason** <font color = ' #7d8793'>String</font>
 
-    The amount of fund the sharing account finally received. If any refund occurs before settlement, the **sharingSettledAmount** will be different from the original **sharingAmount**.
+		- Reason for refund.
+		- Maximum length: `64`
 
-    <br/>
+	- **secondaryMerchantId** <font color = ' #7d8793'>String</font>
 
-- **notifyUrl** <font color = ' #7d8793'>String</font>
+  		If you are a platform and the transaction was made at a merchant under your platform, you can use this parameter to allocate the funds collected. To learn more about this feature please contact PayBy. The secondary merchant id represents the merchant's member id on your platform.
 
-  The merchant's reference number of the request. Used to track every request.
+		Maximum length: `200`
 
-  Maximum length: `200`
+	- **deviceId** <font color = ' #7d8793'>String</font>
 
-  <br />
+		If the transaction wad made on a terminal or virtual device, the device id can be passed for transaction data statistics.
 
-- **reason** <font color = ' #7d8793'>String</font>
+		> **Note:** This parameter must be passed if you are using the secondary merchant function, this parameter must be passed.
 
-  Reason for refund.
+  		Maximum length: `200`
 
-  Maximum length: `64`
+	- **failCode** <font color = ' #7d8793'>String</font>
 
-  <br />
+		- If the order status is `FAILURE`, the code to identify the exact reason.
+		- Example value: 62002
 
-- **secondaryMerchantId** <font color = ' #7d8793'>String</font>
+	- **failDes** <font color = ' #7d8793'>String</font>
 
-  If you are a platform and the transaction was made at a merchant under your platform, you can use this parameter to allocate the funds collected. To learn more about this feature please contact PayBy. The secondary merchant id represents the merchant's member id on your platform.
+		- If the order status is `FAILURE`, the failure reason.
+		- Example value: Failed orders cannot be cancelled or refunded
 
-  Maximum length: `200`
+	- **reserved** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
 
-  <br />
-
-- **deviceId** <font color = ' #7d8793'>String</font>
-
-  If the transaction wad made on a terminal or virtual device, the device id can be passed for transaction data statistics.
-  Note that this parameter must be passed if you are using the secondary merchant function, this parameter must be passed.
-
-  Maximum length: `200`
-
-  <br />
-
-- **failCode** <font color = ' #7d8793'>String</font>
-
-  If the order status is `FAILURE`, the code to identify the exact reason.
-
-  Example value: 62002
-
-  <br />
-
-- **failDes** <font color = ' #7d8793'>String</font>
-
-  If the order status is `FAILURE`, the failure reason.
-
-  Example value: Failed orders cannot be cancelled or refunded
-
-  <br />
-
-- **reserved** <font color = ' #7d8793'>String</font> <font color = '#f19938'>Required</font>
-
-  The PayBy's unique identify number of the order.
-
-  Example value: 131658300517875854
-
-  <br />
+		- The PayBy's unique identify number of the order.
+		- Example value: 131658300517875854

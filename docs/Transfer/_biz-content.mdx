@@ -1,78 +1,44 @@
 - **merchantOrderNo**   <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
-
-  The merchant's reference number of the request. Used to track every request.
-
-  Example value: M965739182419
-
-  Maximum length: `64`
-  
-  <br/>
+  - The merchant's reference number of the request. Used to track every request.
+  - Example value: M965739182419
+  - Maximum length: `64`
 
 - **beneficiaryIdentityType**   <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
-
-  The fund can be transferred to the beneficiary through mobile phone number, PayBy member id or BOTIM member id.
-
-  The possible values are: 
-
-  `PHONE_NO`. Transfer through mobile phone number.
-
-  `MEMBER_ID`. Transfer through PayBy member id.
-
+  - The fund can be transferred to the beneficiary through mobile phone number, PayBy member id or BOTIM member id.
+  - The possible values are: 
+    - `PHONE_NO`. Transfer through mobile phone number.
+    - `MEMBER_ID`. Transfer through PayBy member id.
 
   Maximum length: `20`
-  
-  <br/>
 
 - **beneficiaryIdentity**   <font color = ' #7d8793'>String</font>  <font color = '#f19938'>Required</font>
-
-  After selecting the beneficiary identity type, what value should be passed. 
-
-  The parameter needs to be encrypted when passed, and SHA-256 algorithm is recommended.
-
-  For `PHONE_NO`, example value: +971-585812345
-
-  For `MEMBER_ID`, example value: 100006514321
+  - After selecting the beneficiary identity type, what value should be passed. 
+  - The parameter needs to be encrypted when passed, and SHA-256 algorithm is recommended.
+  - For `PHONE_NO`, example value: +971-585812345
+  - For `MEMBER_ID`, example value: 100006514321
 
   Maximum length: `20`
-  
-  <br/>
 
 - **beneficiaryFullName**   <font color = ' #7d8793'>String</font>   
-
-  If the parameter is passed, PayBy will verify whether the parameter is consistent with the beneficiary's KYC information. If not, the transfer will fail. If the parameter is not passed, PayBy will not perform verification.
-
-  The parameter needs to be encrypted when passed, and SHA-256 algorithm is recommended.
-
-  Maximum length: `100`
-
-  <br/>
+  - If the parameter is passed, PayBy will verify whether the parameter is consistent with the beneficiary's KYC information. If not, the transfer will fail. If the parameter is not passed, PayBy will not perform verification.
+  - The parameter needs to be encrypted when passed, and SHA-256 algorithm is recommended.
+  - Maximum length: `100`
 
 - **amount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
 
-  How much AED do you want to transfer. The currency code must be `AED`.
+  The amount of AED to transfer. The currency code must be `AED`.
 
   | Type of Limit                  | Amount     |
   | ------------------------------ | ---------- |
   | Maximum Amount per transaction | AED 10,000 |
 
-  **Note:** Due to the quota limit, if the beneficiary's account balance + the transfer amount > 20,000, the transfer will fail.
-
-  <br/>
+  > **Note:** Due to the quota limit, if the beneficiary's account balance + the transfer amount > 20,000, the transfer will fail.
 
 - **memo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
-
-  The description of this transfer.
-
-  Maximum length: `200`
-  
-  <br/>
+  - The description of this transfer.
+  - Maximum length: `200`
 
 - **notifyUrl**   <font color = ' #7d8793'>String</font>
-
-  To receive asynchronous notifications of order status updates, you can pass the notify URL.
-
-  Example value: https://www.yoursite.com
-
-  Maximum length: `200`
-  
-  <br/>
+  - To receive asynchronous notifications of order status updates, you can pass the notify URL.
+  - Example value: https://www.yoursite.com
+  - Maximum length: `200`

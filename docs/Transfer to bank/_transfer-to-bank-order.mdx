@@ -1,12 +1,9 @@
 
----
-
 - **Request Time (`requestTime`)**
 	- **Required**: Yes  
 	- **Type**: Timestamp (milliseconds, 3-digit precision)  
 	- **Example**: `1581493898000`  
 	- **Description**: Time the request was initiated.
-
 
 - **Merchant Order Number (`merchantOrderNo`)**
 	- **Required**: Yes  
@@ -14,13 +11,11 @@
 	- **Example**: `S10000`  
 	- **Description**: Unique identifier for the merchant's order.
 
-
 - **PayBy Order Number (`orderNo`)**
 	- **Required**: Yes  
 	- **Type**: String (max 32 characters)  
 	- **Example**: `O1000`  
 	- **Description**: Unique identifier for the PayBy transaction.
-
 
 - **Product Name (`product`)**
 	- **Required**: Yes  
@@ -28,13 +23,11 @@
 	- **Example**: `Transfer To Bank`  
 	- **Description**: Name of the product or service.
 
-
 - **Order Status (`status`)**
 	- **Required**: Yes  
 	- **Type**: *(unspecified)*  
 	- **Example**: `-`  
 	- **Description**: Current status of the order.
-
 
 - **Payment Information (`paymentInfo`)**
 	- **Required**: No  
@@ -64,13 +57,11 @@
 		```
 	- **Description**: Detailed information about the payment processing, especially related to fees and timing.
 
-
 - **Amount (`amount`)**
 	- **Required**: Yes  
 	- **Type**: Money  
 	- **Example**: *(empty)*  
 	- **Description**: Transaction amount.
-
 
 - **Beneficiary Name (`holderName`)**
 	- **Required**: Yes  
@@ -78,13 +69,11 @@
 	- **Example**: *(empty)*  
 	- **Description**: SHA-256 hash of the original name.
 
-
 - **IBAN (`Iban`)**
 	- **Required**: Yes  
 	- **Type**: String (max 64 characters)  
 	- **Example**: *(empty)*  
 	- **Description**: SHA-256 hash of the original IBAN.
-
 
 - **SWIFT Code (`swiftCode`)**
 	- **Required**: No  
@@ -92,13 +81,11 @@
 	- **Example**: *(empty)*  
 	- **Description**: SWIFT code of the beneficiary bank.
 
-
 - **Payment Memo (`memo`)**
 	- **Required**: No  
 	- **Type**: String (max 128 characters)  
 	- **Example**: *(empty)*  
 	- **Description**: Remarks or notes for the payment.
-
 
 - **Notification URL (`notifyUrl`)**
 	- **Required**: No  
@@ -106,13 +93,11 @@
 	- **Example**: *(empty)*  
 	- **Description**: URL for backend notifications.
 
-
 - **Failure Description (`failDes`)**
 	- **Required**: No  
 	- **Type**: String (max 200 characters)  
 	- **Example**: `-`  
 	- **Description**: Reason for order failure.
-
 
 - **Beneficiary Address (`beneficiaryAddress`)**
 	- **Required**: No  
@@ -120,13 +105,11 @@
 	- **Example**: *(empty)*  
 	- **Description**: SHA-256 hash of the original address.
 
-
 - **Bank Reference (`bankReference`)**
 	- **Required**: No  
 	- **Type**: String (max 128 characters)  
 	- **Example**: *(empty)*  
 	- **Description**: Reference number associated with the bank.
-
 
 - **Payout Amount (`fundoutAmount`)**
 	- **Required**: No  
@@ -134,13 +117,11 @@
 	- **Example**: *(empty)*  
 	- **Description**: Amount credited to the beneficiary.
 
-
 - **Exchange Rate (`rate`)**
 	- **Required**: No  
 	- **Type**: BigDecimal  
 	- **Example**: *(empty)*  
 	- **Description**: Exchange rate used for the transaction.
-
 
 - **Network Code (`networkCode`)**
 	- **Required**: Yes  
@@ -148,20 +129,17 @@
 	- **Example**: `LOCAL`  
 	- **Description**: Financial network used.
 
-
 - **Country Code (`countryCode`)**
 	- **Required**: No  
 	- **Type**: String (max 16 characters)  
 	- **Example**: `-`  
 	- **Description**: Country code of the beneficiary bank.
 
-
 - **Bank Name (`bankName`)**
 	- **Required**: No  
 	- **Type**: String (max 50 characters)  
 	- **Example**: `-`  
 	- **Description**: Name of the beneficiary bank.
-
 
 - **Fedwire Code (`fedwireCode`)**
 	- **Required**: No  
@@ -175,13 +153,11 @@
 	- **Example**: `-`  
 	- **Description**: SWIFT code of the intermediary bank.
 
-
 - **Branch Name (`branchName`)**
 	- **Required**: No  
 	- **Type**: String (max 35 characters)  
 	- **Example**: *(empty)*  
 	- **Description**: Name of the bank branch.
-
 
 - **Beneficiary Type (`beneficiaryType`)**
 	- **Required**: Yes  
@@ -189,26 +165,25 @@
 	- **Example**: `IBAN`  
 	- **Description**: Type of beneficiary account.
 
-
 - **Purpose Code (`purposeCode`)**
 	- **Required**: No  
 	- **Type**: String (max 16 characters)  
 	- **Example**: `COM`  
 	- **Description**: Code indicating the purpose of the transaction.
 
+	<br/>
+	
+	| Name | Description                                                  |
+	| ---- | ------------------------------------------------------------ |
+	| COM  | Commission                                                   |
+	| FIS  | Financial services                                           |
+	| GDS  | Goods Bought or Sold                                         |
+	| GMS  | Processing repair and maintenance services on goods          |
+	| GOS  | Government goods and services embassies etc.                 |
+	| GRI  | Government related income taxes, tariffs, capital transfers, etc. |
+	| IFS  | Information services                                         |
+	| IGT  | Inter group transfer                                         |
+	| INS  | Insurance services                                           |
+	| ITS  | Computer services                                            |
+	| OAT  | Own account transfer                                         |
 
-		| Name | Description                                                  |
-		| ---- | ------------------------------------------------------------ |
-		| COM  | Commission                                                   |
-		| FIS  | Financial services                                           |
-		| GDS  | Goods Bought or Sold                                         |
-		| GMS  | Processing repair and maintenance services on goods          |
-		| GOS  | Government goods and services embassies etc.                 |
-		| GRI  | Government related income taxes, tariffs, capital transfers, etc. |
-		| IFS  | Information services                                         |
-		| IGT  | Inter group transfer                                         |
-		| INS  | Insurance services                                           |
-		| ITS  | Computer services                                            |
-		| OAT  | Own account transfer                                         |
-
----

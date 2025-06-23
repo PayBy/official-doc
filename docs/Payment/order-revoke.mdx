@@ -32,33 +32,23 @@ If the merchant is unsure whether the transaction was successfully processed by 
 - If the transaction was not successful, the order will be closed.
 
 
-<br/>
-
 ## API URL
 
 UAT: https://uat.test2pay.com/sgs/api/acquire2/revokeOrder
 
 Production: https://api.payby.com/sgs/api/acquire2/revokeOrder
 
-<br/>
 
 ## Request
 
 ### Http Header
 
----
-
 <details>
   <summary>Attributes</summary>
-
   <RequestHeader/>
 </details>
 
-<br/>
-
 ### Http Body
-
----
 
 **requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
 
@@ -66,7 +56,6 @@ If the request time is more than 15 minutes away from the current time, the requ
 
 Example value: 1581493898000
 
-<br/>
 
 **bizContent**   <font color = ' #7d8793'>Object</font>  
 
@@ -80,7 +69,6 @@ Example value: 1581493898000
 
   Maximum length: `64`
   
-  <br/>
 
 - **orderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
@@ -88,7 +76,6 @@ Example value: 1581493898000
 
   Example value: 131658300517875854
   
-  <br/>
 
 ### Request Sample
 
@@ -114,25 +101,19 @@ Example value: 1581493898000
 
 ### Http Header
 
----
-
 **sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
 
 When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
 
-<br/>
 
 ### Http Body
-
----
 
 **head** 
 
   <details>
     <summary>Attributes</summary>
-    <ResponseHead />
+    <ResponseHead/>
   </details>
-<br/>
 
 **body** 
 
@@ -145,10 +126,9 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 
   <details open={true}>
   <summary>Attributes</summary>
-    <AcquireOrder />
+    <AcquireOrder/>
   </details>
 
-<br/>
 
 ### Response Sample
 

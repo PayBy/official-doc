@@ -2,17 +2,22 @@
 sidebar_position: 1
 toc_max_heading_level: 6
 ---
+
+import ResponseHeader from './_response-header.mdx'
+import RequestHeader from '../_request-header.mdx'
+import TransferBankCardOrder from './_transfer-bank-card-order.mdx'
+import BizContent from './_bizContent.mdx'
+
 # Verify Bank Card Payout Eligibility
 
 ## Overview
 
 The Verify Bank Card Payout Eligibility API validates whether a bank card meets the requirements for payout operations. This endpoint allows merchants to check card eligibility before initiating transfer requests, helping ensure successful payout transactions.
 
-## Endpoint Information
+## API URL
 
-**UAT Environment:** `https://uat.test2pay.com/sgs/api/transfer/verifyBankCardPayoutEligibility`
-
-**Production Environment:** `https://api.payby.com/sgs/api/transfer/verifyBankCardPayoutEligibility`
+- **UAT Environment:** `https://uat.test2pay.com/sgs/api/transfer/verifyBankCardPayoutEligibility`
+- **Production Environment:** `https://api.payby.com/sgs/api/transfer/verifyBankCardPayoutEligibility`
 
 **HTTP Method:** POST
 
@@ -20,24 +25,33 @@ The Verify Bank Card Payout Eligibility API validates whether a bank card meets 
 
 ### HTTP Headers
 
-| Field Name | Variable Name | Required | Type | Example | Description |
-|------------|---------------|----------|------|---------|-------------|
-| Content Language | Content-Language | Optional | String(10) | en | Language for response content. Use "en" for English |
-| Signature | Sign | Required | String | - | Request signature for authentication |
-| Partner ID | Partner-Id | Required | String(12) | - | Merchant identifier |
+  <details open={true}>
+  <summary>Attributes</summary>
+    <RequestHeader/>
+  </details>
 
 ### HTTP Body
 
-| Field Name | Variable Name | Required | Type | Example | Description |
-|------------|---------------|----------|------|---------|-------------|
-| Request Time | requestTime | Required | Timestamp(3) | 1581493898000 | Unix timestamp in milliseconds |
-| Business Content | bizContent | Required | VerifyBankCardPayoutEligibilityRequest | - | Main request payload containing card verification details |
+**Request Time**  
+- **Variable Name:** `requestTime`  
+- **Required:** Yes  
+- **Type:** `Timestamp(3)`  
+- **Example:** `1581493898000`  
+- **Description:** Unix timestamp in milliseconds  
 
-### VerifyBankCardPayoutEligibilityRequest
+**Business Content**  
+- **Variable Name:** `bizContent`  
+    - **Card Number**  
+        - **Variable Name**: `cardNumber`  
+        - **Required**: Required  
+        - **Type**: `String(50)`  
+        - **Example**: `-`  
+        - **Description**: Encrypted card number for verification. Must be 12–19 numeric characters when decrypted
+- **Required:** Yes  
+- **Type:** `VerifyBankCardPayoutEligibilityRequest`  
+- **Example:** *N/A*  
+- **Description:** Main request payload containing card verification details  
 
-| Field Name | Variable Name | Required | Type | Example | Description |
-|------------|---------------|----------|------|---------|-------------|
-| Card Number | cardNumber | Required | String(50) | - | Encrypted card number for verification. Must be 12-19 numeric characters when decrypted |
 
 ## Request Sample
 
@@ -63,33 +77,32 @@ The Verify Bank Card Payout Eligibility API validates whether a bank card meets 
 
 ### HTTP Headers
 
-| Field Name | Variable Name | Required | Type | Example | Description |
-|------------|---------------|----------|------|---------|-------------|
-| Content Language | Content-Language | Optional | String(10) | en | Language for response content. Use "en" for English |
-| Signature | Sign | Required | String | - | Response signature for verification |
-| Partner ID | Partner-Id | Required | String(12) | - | Merchant identifier |
+  <details open={true}>
+  <summary>Attributes</summary>
+    <ResponseHeader/>
+  </details>
 
 ### HTTP Body
 
-| Field Name | Variable Name | Required | Type | Example | Description |
-|------------|---------------|----------|------|---------|-------------|
-| Response Header | head | Required | ResponseHeader | - | Standard response header containing status information |
-| Response Body | body | Optional | VerifyBankCardPayoutEligibilityResponse | - | Card verification result details |
+**Response Body**  
+- **Variable Name:** `body`  
+- **Required:** No  
+- **Type:** `VerifyBankCardPayoutEligibilityResponse`  
+- **Example:** *N/A*  
+- **Description:** Card verification result details  
 
-### VerifyBankCardPayoutEligibilityResponse
+  **Card Payout Type**  
+  - **Variable Name:** `cardPayoutsType`  
+  - **Required:** Yes  
+  - **Type:** `CardPayoutsType`  
+  - **Example:** `STANDARD`  
+  - **Description:** Indicates the payout capability of the verified card  
 
-| Field Name | Variable Name | Required | Type | Example | Description |
-|------------|---------------|----------|------|---------|-------------|
-| Card Payout Type | cardPayoutsType | Required | CardPayoutsType | STANDARD | Indicates the payout capability of the verified card |
-
-### CardPayoutsType Values
-
-| Code | Description |
-|------|-------------|
-| UNKNOWN | Card payout capability cannot be determined |
-| NOT_SUPPORTED | Card does not support payout operations |
-| FAST_FUNDS | Card supports expedited payout processing |
-| STANDARD | Card supports standard payout processing |
+    **CardPayoutsType Values**  
+    - **UNKNOWN:** Card payout capability cannot be determined  
+    - **NOT_SUPPORTED:** Card does not support payout operations  
+    - **FAST_FUNDS:** Card supports expedited payout processing  
+    - **STANDARD:** Card supports standard payout processing  
 
 ## Response Sample
 
