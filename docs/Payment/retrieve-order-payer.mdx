@@ -13,33 +13,22 @@ import AcquireOrderPayer from './_acquire-order-payer.mdx'
 
 Retrieves the order payer with order number or merchant order number.
 
-<br/>
-
-### API URL
+## API URL
 
 UAT: https://uat.test2pay.com/sgs/api/acquire2/getOrderPayer
 
 Production: https://api.payby.com/sgs/api/acquire2/getOrderPayer
 
-<br/>
+## Request
 
-### Request
-
-#### Http Header
-
----
+### Http Header
 
 <details>
   <summary>Attributes</summary>
-
   <RequestHeader/>
 </details>
 
-<br/>
-
-#### Http Body
-
----
+### Http Body
 
 **requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
 
@@ -47,7 +36,6 @@ If the request time is more than 15 minutes away from the current time, the requ
 
 Example value: 1581493898000
 
-<br/>
 
 **bizContent**   <font color = ' #7d8793'>Object</font>
 
@@ -61,7 +49,6 @@ You can use either `merchantOrderNo`  or `orderNo` to specify an order. But you 
 
   Maximum length: `64`
 
-  <br/>
 
 - **orderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
@@ -69,7 +56,6 @@ You can use either `merchantOrderNo`  or `orderNo` to specify an order. But you 
 
   Example value: 131658300517875854
 
-  <br/>
 
 #### Request Sample
 
@@ -91,23 +77,16 @@ Http Body
 }
 ```
 
-<br/>
 
 ### Response
 
 #### Http Header
 
----
-
 **sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
 
 When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
 
-<br/>
-
 #### Http Body
-
----
 
 **head**
 
@@ -115,7 +94,6 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
     <summary>Attributes</summary>
     <ResponseHead />
   </details>
-<br/>
 
 **body**
 
@@ -130,8 +108,6 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
   <summary>Attributes</summary>
   <AcquireOrderPayer />
   </details>
-
-<br/>
 
 #### Response Sample
 
