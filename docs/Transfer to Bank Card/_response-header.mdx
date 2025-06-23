@@ -1,7 +1,35 @@
 **Response Header**
 
-| **Field Name**     | **Variable Name** | **Required** | **Type**      | **Example** | **Description**                                                                 |
-|--------------------|-------------------|--------------|----------------|-------------------|---------------------------------------------------------------------------------|
-| Request Status     | `applyStatus`     | Required     | String(16)     | SUCCESS           | SUCCESS – Application successful<br/>FAIL – Application failed<br/>ERROR – Exception occurred |
-| Return Error Code  | `code`            | Required     | String(10)     | 0                 | Return code                                                                     |
-| Return Message     | `msg`             | Optional     | String(200)    | -                 | Return message                                                                  |
+---
+
+- **Request Status**
+  - **Variable Name**: `applyStatus`  
+  - **Required**: Yes  
+  - **Type**: String(16)  
+  - **Example**: `SUCCESS`  
+  - **Description**:  
+    - `SUCCESS` – Application successful  
+    - `FAIL` – Application failed  
+    - `ERROR` – Exception occurred
+
+- **Return Error Code**
+  - **Variable Name**: `code`  
+  - **Required**: Yes  
+  - **Type**: String(10)  
+  - **Example**: `0`  
+  - **Description**: Return code
+
+- **Return Message**
+  - **Variable Name**: `msg`  
+  - **Required**: No  
+  - **Type**: String(200)  
+  - **Example**: `-`  
+  - **Description**: Return message
+
+---
+
+
+
+
+
+---
