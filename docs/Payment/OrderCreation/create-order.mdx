@@ -30,9 +30,8 @@ The merchant system first calls this API to generate a prepayment order in the P
 
 ## API URL
 
-UAT : https://uat.test2pay.com/sgs/api/acquire2/placeOrder
-
-Production : https://api.payby.com/sgs/api/acquire2/placeOrder
+- UAT : https://uat.test2pay.com/sgs/api/acquire2/placeOrder
+- Production : https://api.payby.com/sgs/api/acquire2/placeOrder
 
 
 ## Request
@@ -54,18 +53,13 @@ If the same request is submitted more than once, the timestamp from the initial 
 
 ### Http Header
 
----
-
 <details>
   <summary>Attributes</summary>
 
   <RequestHeader/>
 </details>
 
-
 ### Http Body
-
----
 
 **requestTime** <span style={{color:" #7d8793"}}>Timestamp</span> <span style={{color:"#f19938"}}>Required</span>
 
@@ -106,7 +100,6 @@ The attributes are:
 
     Example value: 12.34
 
-   <br/>
 
   - **currency** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
 
@@ -114,7 +107,6 @@ The attributes are:
 
   Example value: AED
 
- <br/>
 
 - **expiredTime** <span style={{color:" #7d8793"}}>Timestamp</span>
 
@@ -124,7 +116,6 @@ The attributes are:
 
   Example value: 1581493898000
 
- <br/>
 
 - **payeeMid** <span style={{color:" #7d8793"}}>String</span>
 
@@ -134,16 +125,14 @@ The attributes are:
 
   Maximum length: `12`
 
- <br/>
 
 - **paySceneCode** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}>Required</span>
 
-  Payment scene you are going to use. The possible values are `PAYPAGE`, `INAPP`, `EWALLET`, `DYNQR`, `QRPAY`, `JSAPI`, `AUTODEBIT`, `DIRECTPAY`, etc.<br/>
+  Payment scene you are going to use. The possible values are `PAYPAGE`, `INAPP`, `EWALLET`, `DYNQR`, `QRPAY`, `JSAPI`, `AUTODEBIT`, `DIRECTPAY`, etc.
 
   Select from the drop down to get parameters that need to be passed in different scenarios.
   
-  <SwitchProduct />
-
+  <SwitchProduct/>
 
 - **sharingParamList** <span style={{color:" #7d8793"}}>List</span> 
 
@@ -157,7 +146,6 @@ The attributes are:
   
     Example value: `1`
   
-    <br/>
   
   - **sharingIdentityType**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
   
@@ -172,7 +160,6 @@ The attributes are:
   
     Maximum length: `20`
   
-    <br/>
   
   - **sharingIdentity**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
   
@@ -184,31 +171,26 @@ The attributes are:
   
     Maximum length: `20`
   
-    <br/>
   
   - **sharingMemo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
   
     Add some description to this operation.
   
-    <br/>
   
   - **sharingAmount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
   
     The amount you plan to split to this id.
   
-    <br/>
     
   - **withholdAndRemitFee**   <font color = ' #7d8793'>Boolean</font>    
   
-    Whether this sharing account pay the PayBy transaction fee. If `true`, the final amount this sharing account received is : [**sharingAmount** - PayBy transaction fee].
+    Whether this sharing account pay the PayBy transaction fee. If `true`, the final amount this sharing account received is : `[**sharingAmount** - PayBy transaction fee]`.
   
-    Note:
+    > **Note:**
     
-    If there are multiple sharing accounts in this order request, at most one can pass `true` in this parameter, otherwise the request will fail.
+    - If there are multiple sharing accounts in this order request, at most one can pass `true` in this parameter, otherwise the request will fail.
+    - If this parameter is used, when a refund is initiated, only the proportional refund can be made, and the refund amount of each sharing account cannot be specified.
     
-    If this parameter is used, when a refund is initiated, only the proportional refund can be made, and the refund amount of each sharing account cannot be specified.
-    
-    <br/>
   
 - **promotionInfoList** <span style={{color:" #7d8793"}}>List</span>
 
@@ -222,7 +204,6 @@ The attributes are:
 
       Maximum length: `64`
   
-      <br/>
 
     - **settleFlag**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
   
@@ -232,7 +213,6 @@ The attributes are:
 
       Examples: YES, NO
   
-      <br/>
 
 - **notifyUrl** <span style={{color:" #7d8793"}}>String</span>
 
@@ -242,7 +222,6 @@ The attributes are:
 
   Maximum length: `200`
 
-<br />
 
 - **secondaryMerchantId** <span style={{color:" #7d8793"}}>String</span>
 
@@ -250,7 +229,6 @@ The attributes are:
 
   Maximum length: `200`
 
-<br />
 
 - **deviceId** <span style={{color:" #7d8793"}}>String</span>
 
@@ -259,7 +237,6 @@ The attributes are:
 
   Maximum length: `200`
 
-<br />
 
 - **accessoryContent**
 
@@ -270,7 +247,6 @@ The attributes are:
     <AccessoryContent/> 
   </details>
 
-<br/>
 
 ### Request Sample
 
@@ -366,7 +342,6 @@ The attributes are:
 }
 ```
 
-<br />
 
 ## Response
 
@@ -374,17 +349,13 @@ The `interActionParams` field is returned only when the order status is `CREATED
 
 ### Http Header
 
----
 
 **sign** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
 
 When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
 
-<br />
 
 ### Http Body
-
----
 
 **head**
 
@@ -392,11 +363,10 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
     <summary>Attributes</summary>
     <ResponseHead />
   </details>
-<br/>
 
 **body**
 
-**Notice **:Body is returned only when `applystatus` = `success`, and `code` = `0`. If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
+> **Notice:** Body is returned only when `applystatus` = `success`, and `code` = `0`. If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
 
 - **acquireOrder** <span style={{color:" #7d8793"}}>Object</span>
 
@@ -405,7 +375,6 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
     <AcquireOrder />
   </details>
 
-  <br/>
 
 - **interactionParams**
 
@@ -427,7 +396,6 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
     `PAYANDSIGN`. A link that redirects the payer to the checkout within the APP.
 
-    <br />
 
   - **deepLink** <span style={{color:" #7d8793"}}>String</span>
 
@@ -435,7 +403,6 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
     When the payer chooses to open another e-wallet for payment at the merchant's payment page, PayBy will return a link to redirect the payer to the e-wallet's checkout.
 
-    <br />
 
   - **threeDSecureDom** <span style={{color:" #7d8793"}}>String</span>
 
@@ -443,22 +410,18 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
     If the merchant decides or PayBy's risk control system recognizes that the transaction requires 3DS verification, the 3DS verification link will be returned.
 
-    <br />
   
-  > The `AUTODEBIT` and `QRPAY ` payment scene don't have `interactionParams`.
+  > **Note:** The `AUTODEBIT` and `QRPAY ` payment scene don't have `interactionParams`.
 
-<br/>
 
 ### Response Sample
 
 <ResponseExample/>
 
-<br/>
-
 ## Response Codes
 
 
-| Code  | Message                                      | Reason                                                       | Solution                                    |
+| Code  | Message                                      | Cause                                                       | Workaround                                    |
 |-------|----------------------------------------------|--------------------------------------------------------------|---------------------------------------------|
 | 0     | SUCCESS                                      | Success                                                      |                                             |
 | 400   | INVALID_PARAMETER                            | Parameter error                                              | Adjust request parameters                   |
