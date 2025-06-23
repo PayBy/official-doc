@@ -1,16 +1,89 @@
 **`bizContent`**
 
-| Field Name            | Parameter Name    | Required | Type        | Example                         | Description                                                  |
-| --------------------- | ----------------- | -------- | ----------- | ------------------------------- | ------------------------------------------------------------ |
-| Account Holder Type   | accountHolderType | Required | String(16)  | INDIVIDUAL                      | Account holder type: `INDIVIDUAL` or `CORPORATE`             |
-| Merchant Order Number | merchantOrderNo   | Required | String(64)  | Me23484                         | Unique order identifier from merchant                        |
-| First Name            | firstName         | Optional | String(50)  | -                               | **Encrypted field**. Account holder's first name. Required when `accountHolderType` is `INDIVIDUAL` |
-| Last Name             | lastName          | Optional | String(50)  | -                               | **Encrypted field**. Account holder's last name. Required when `accountHolderType` is `INDIVIDUAL` |
-| Middle Name           | middleName        | Optional | String(50)  | -                               | **Encrypted field**. Account holder's middle name            |
-| Company Name          | companyName       | Optional | String(50)  | Liwa Street off Khaliffa Street | **Encrypted field**. Company name. Required when `accountHolderType` is `CORPORATE`. Must be a valid legal name. Cannot be a single character, all numeric, or all punctuation |
-| Transfer Amount       | amount            | Required | Money       | 12.34                           | Amount to transfer                                           |
-| Payment Memo          | memo              | Optional | String(50)  | Bonus                           | Transfer description or note                                 |
-| Notification URL      | notifyUrl         | Optional | String(200) | -                               | URL to receive transfer status notifications                 |
-| Expiry Year           | expiryYear        | Required | String(4)   | 2025                            | **Encrypted field**. Card expiration year. Must be current year or later |
-| Expiry Month          | expiryMonth       | Required | String(2)   | 12                              | **Encrypted field**. Card expiration month (1-12). Combined year and month must be current month or later |
-| Card Number           | cardNumber        | Required | String(50)  | -                               | **Encrypted field**. Card number (12-19 digits, numeric only) |
+---
+
+- **Account Holder Type**
+  - **Parameter Name**: `accountHolderType`  
+  - **Required**: Yes  
+  - **Type**: String(16)  
+  - **Example**: `INDIVIDUAL`  
+  - **Description**: Account holder type: `INDIVIDUAL` or `CORPORATE`
+
+- **Merchant Order Number**
+  - **Parameter Name**: `merchantOrderNo`  
+  - **Required**: Yes  
+  - **Type**: String(64)  
+  - **Example**: `Me23484`  
+  - **Description**: Unique order identifier from merchant
+
+- **First Name**
+  - **Parameter Name**: `firstName`  
+  - **Required**: No  
+  - **Type**: String(50)  
+  - **Example**: `-`  
+  - **Description**: Encrypted field. Account holder's first name. Required when `accountHolderType` is `INDIVIDUAL`
+
+- **Last Name**
+  - **Parameter Name**: `lastName`  
+  - **Required**: No  
+  - **Type**: String(50)  
+  - **Example**: `-`  
+  - **Description**: Encrypted field. Account holder's last name. Required when `accountHolderType` is `INDIVIDUAL`
+
+- **Middle Name**
+  - **Parameter Name**: `middleName`  
+  - **Required**: No  
+  - **Type**: String(50)  
+  - **Example**: `-`  
+  - **Description**: Encrypted field. Account holder's middle name
+
+- **Company Name**
+  - **Parameter Name**: `companyName`  
+  - **Required**: No  
+  - **Type**: String(50)  
+  - **Example**: `Liwa Street off Khaliffa Street`  
+  - **Description**: Encrypted field. Company name. Required when `accountHolderType` is `CORPORATE`. Must be a valid legal name. Cannot be a single character, all numeric, or all punctuation
+
+- **Transfer Amount**
+  - **Parameter Name**: `amount`  
+  - **Required**: Yes  
+  - **Type**: Money  
+  - **Example**: `12.34`  
+  - **Description**: Amount to transfer
+
+- **Payment Memo**
+  - **Parameter Name**: `memo`  
+  - **Required**: No  
+  - **Type**: String(50)  
+  - **Example**: `Bonus`  
+  - **Description**: Transfer description or note
+
+- **Notification URL**
+  - **Parameter Name**: `notifyUrl`  
+  - **Required**: No  
+  - **Type**: String(200)  
+  - **Example**: `-`  
+  - **Description**: URL to receive transfer status notifications
+
+- **Expiry Year**
+  - **Parameter Name**: `expiryYear`  
+  - **Required**: Yes  
+  - **Type**: String(4)  
+  - **Example**: `2025`  
+  - **Description**: Encrypted field. Card expiration year. Must be current year or later
+
+- **Expiry Month**
+  - **Parameter Name**: `expiryMonth`  
+  - **Required**: Yes  
+  - **Type**: String(2)  
+  - **Example**: `12`  
+  - **Description**: Encrypted field. Card expiration month (1–12). Combined year and month must be current month or later
+
+- **Card Number**
+  - **Parameter Name**: `cardNumber`  
+  - **Required**: Yes  
+  - **Type**: String(50)  
+  - **Example**: `-`  
+  - **Description**: Encrypted field. Card number (12–19 digits, numeric only)
+
+---

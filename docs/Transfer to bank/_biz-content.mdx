@@ -1,134 +1,127 @@
-#### **Merchant Order Number (`merchantOrderNo`)**
-- **Required**: Yes  
-- **Type**: String (max 64 characters)  
-- **Example**: `Me23484`  
-- **Description**: Unique identifier for the merchant's order.
+
+---
+
+- **Merchant Order Number (`merchantOrderNo`)**
+  - **Required**: Yes  
+  - **Type**: String (max 64 characters)  
+  - **Example**: `Me23484`  
+  - **Description**: Unique identifier for the merchant's order.
 
 
-#### **Beneficiary Name (`holderName`)**
-- **Required**: Yes  
-- **Type**: String (max 100 characters)  
-- **Example**: `Bruce Lee`  
-- **Description**: Name of the beneficiary. Transmitted securely (encrypted).
+- **Beneficiary Name (`holderName`)**
+  - **Required**: Yes  
+  - **Type**: String (max 100 characters)  
+  - **Example**: `Bruce Lee`  
+  - **Description**: Name of the beneficiary. Transmitted securely (encrypted).
+
+- **IBAN (`iban`)**
+  - **Required**: No  
+  - **Type**: String (max 34 characters)  
+  - **Example**: `-`  
+  - **Description**: International Bank Account Number. Transmitted securely (encrypted).
+
+- **SWIFT Code (`swiftCode`)**
+  - **Required**: No  
+  - **Type**: String (max 11 characters)  
+  - **Example**: `ARABAEADDER`  
+  - **Description**: Improves accuracy if provided.
 
 
-#### **IBAN (`iban`)**
-- **Required**: No  
-- **Type**: String (max 34 characters)  
-- **Example**: `-`  
-- **Description**: International Bank Account Number. Transmitted securely (encrypted).
+- **Beneficiary Address (`beneficiaryAddress`)**
+  - **Required**: No  
+  - **Type**: String (max 140 characters)  
+  - **Example**: `Liwa Street off Khaliffa Street`  
+  - **Description**: Transmitted securely.  
+    If the bank account is personal, this field is required.  
+    The combined length of `holderName` and `beneficiaryAddress` must not exceed 140 characters, or the transfer may fail.
+
+- **Amount (`amount`)**
+  - **Required**: Yes  
+  - **Type**: Money  
+  - **Example**: `12.34`  
+  - **Description**: Payment amount for the transaction.
+
+- **Payment Memo (`memo`)**
+  - **Required**: Yes  
+  - **Type**: String (max 128 characters)  
+  - **Example**: `Bonus`  
+  - **Description**: Remarks or notes for the payment.
+
+- **Notification URL (`notifyUrl`)**
+  - **Required**: No  
+  - **Type**: String (max 200 characters)  
+  - **Example**: `-`  
+  - **Description**: URL for receiving backend notifications.
+
+- **Account Number (`accountNo`)**
+  - **Required**: No  
+  - **Type**: String (max 64 characters)  
+  - **Example**: `2000000000001`  
+  - **Description**: Transmitted securely (available since v2.1).
+
+- **Network Code (`networkCode`)**
+  - **Required**: No  
+  - **Type**: String (max 16 characters)  
+  - **Example**: `LOCAL`  
+  - **Description**: Defaults to `LOCAL` (available since v2.1).
+
+- **Bank Name (`bankName`)**
+  - **Required**: No  
+  - **Type**: String (max 50 characters)  
+  - **Example**: *(empty)*  
+  - **Description**: Name of the bank.
+
+- **Country Code (`countryCode`)**
+  - **Required**: No  
+  - **Type**: String (max 16 characters)  
+  - **Example**: `AE`  
+  - **Description**: Defaults to `AE` (available since v2.1).
 
 
-#### **SWIFT Code (`swiftCode`)**
-- **Required**: No  
-- **Type**: String (max 11 characters)  
-- **Example**: `ARABAEADDER`  
-- **Description**: Improves accuracy if provided.
+- **City Code (`cityCode`)**
+  - **Required**: No  
+  - **Type**: String (max 16 characters)  
+  - **Example**: *(empty)*  
+  - **Description**: Available since v2.3.
 
 
-#### **Beneficiary Address (`beneficiaryAddress`)**
-- **Required**: No  
-- **Type**: String (max 140 characters)  
-- **Example**: `Liwa Street off Khaliffa Street`  
-- **Description**: Transmitted securely.  
-  If the bank account is personal, this field is required.  
-  The combined length of `holderName` and `beneficiaryAddress` must not exceed 140 characters, or the transfer may fail.
+- **Payout Currency (`fundoutCurrencyCode`)**
+  - **Required**: No  
+  - **Type**: String (max 16 characters)  
+  - **Example**: `AED`  
+  - **Description**: Defaults to `AED` (available since v2.1).
 
 
-#### **Amount (`amount`)**
-- **Required**: Yes  
-- **Type**: Money  
-- **Example**: `12.34`  
-- **Description**: Payment amount for the transaction.
+- **Fedwire Code (`fedwireCode`)**
+  - **Required**: No  
+  - **Type**: String (max 9 characters)  
+  - **Example**: `-`  
+  - **Description**: Fedwire code (available since v2.1).
 
 
-#### **Payment Memo (`memo`)**
-- **Required**: Yes  
-- **Type**: String (max 128 characters)  
-- **Example**: `Bonus`  
-- **Description**: Remarks or notes for the payment.
+- **Branch Name (`branchName`)**
+  - **Required**: No  
+  - **Type**: String (max 35 characters)  
+  - **Example**: `-`  
+  - **Description**: Name of the bank branch.
 
 
-#### **Notification URL (`notifyUrl`)**
-- **Required**: No  
-- **Type**: String (max 200 characters)  
-- **Example**: `-`  
-- **Description**: URL for receiving backend notifications.
+- **Intermediary Bank (`intermediaryBank`)**
+  - **Required**: No  
+  - **Type**: String (max 11 characters)  
+  - **Example**: `-`  
+  - **Description**: Intermediary bank code (available since v2.1).
 
+- **Beneficiary Type (`beneficiaryType`)**
+  - **Required**: No  
+  - **Type**: String (max 16 characters)  
+  - **Example**: `IBAN`  
+  - **Description**: Defaults to `IBAN` (available since v2.1).
 
-#### **Account Number (`accountNo`)**
-- **Required**: No  
-- **Type**: String (max 64 characters)  
-- **Example**: `2000000000001`  
-- **Description**: Transmitted securely (available since v2.1).
+- **Purpose Code (`purposeCode`)**
+  - **Required**: No  
+  - **Type**: String (max 16 characters)  
+  - **Example**: `COM`  
+  - **Description**: Code indicating the purpose of the transaction.
 
-
-#### **Network Code (`networkCode`)**
-- **Required**: No  
-- **Type**: String (max 16 characters)  
-- **Example**: `LOCAL`  
-- **Description**: Defaults to `LOCAL` (available since v2.1).
-
-
-#### **Bank Name (`bankName`)**
-- **Required**: No  
-- **Type**: String (max 50 characters)  
-- **Example**: *(empty)*  
-- **Description**: Name of the bank.
-
-
-#### **Country Code (`countryCode`)**
-- **Required**: No  
-- **Type**: String (max 16 characters)  
-- **Example**: `AE`  
-- **Description**: Defaults to `AE` (available since v2.1).
-
-
-#### **City Code (`cityCode`)**
-- **Required**: No  
-- **Type**: String (max 16 characters)  
-- **Example**: *(empty)*  
-- **Description**: Available since v2.3.
-
-
-#### **Payout Currency (`fundoutCurrencyCode`)**
-- **Required**: No  
-- **Type**: String (max 16 characters)  
-- **Example**: `AED`  
-- **Description**: Defaults to `AED` (available since v2.1).
-
-
-#### **Fedwire Code (`fedwireCode`)**
-- **Required**: No  
-- **Type**: String (max 9 characters)  
-- **Example**: `-`  
-- **Description**: Fedwire code (available since v2.1).
-
-
-#### **Branch Name (`branchName`)**
-- **Required**: No  
-- **Type**: String (max 35 characters)  
-- **Example**: `-`  
-- **Description**: Name of the bank branch.
-
-
-#### **Intermediary Bank (`intermediaryBank`)**
-- **Required**: No  
-- **Type**: String (max 11 characters)  
-- **Example**: `-`  
-- **Description**: Intermediary bank code (available since v2.1).
-
-
-#### **Beneficiary Type (`beneficiaryType`)**
-- **Required**: No  
-- **Type**: String (max 16 characters)  
-- **Example**: `IBAN`  
-- **Description**: Defaults to `IBAN` (available since v2.1).
-
-
-#### **Purpose Code (`purposeCode`)**
-- **Required**: No  
-- **Type**: String (max 16 characters)  
-- **Example**: `COM`  
-- **Description**: Code indicating the purpose of the transaction.
-
+---
