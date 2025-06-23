@@ -12,7 +12,6 @@ import FundoutAbilityList from './_fundout-ability-list.mdx'
 
 Before using the `Transfer to bank` API, please use this API to retrieve the supported payout methods and which parameters need to be passed for each payout method.
 
-<br/>
 
 ## API URL
 
@@ -20,7 +19,6 @@ UAT : https://uat.test2pay.com/sgs/api/transfer/getFundoutAbilityList
 
 Production : https://api.payby.com/sgs/api/transfer/getFundoutAbilityList
 
-<br/>
 
 ## Request
 
@@ -35,18 +33,14 @@ import RequestHeader from '../_request-header.mdx'
   <RequestHeader/>
 </details>
 
-<br/>
-
 ### Http Body
-
 
 **requestTime** <font color = ' #7d8793'>Timestamp</font> <font color = '#f19938'>Required</font>
 
-| **Field Name** | **Variable Name** | **Required** | **Type**     | **Example Value** | **Description** |
-|----------------|-------------------|--------------|--------------|-------------------|------------------|
-| Request Time   | `requestTime`     | Mandatory    | Timestamp(3) | 1581493898000     | The timestamp when the order request is initiated. If the request time differs from the current system time by more than 15 minutes, the request will be rejected. This helps prevent duplicate or outdated order submissions due to timeouts. |
-
-
+- **Required**: Mandatory  
+- **Type**: Timestamp(3)  
+- **Example**: `1581493898000`  
+- **Description**: The timestamp when the order request is initiated. If the request time differs from the current system time by more than 15 minutes, the request will be rejected. This helps prevent duplicate or outdated order submissions due to timeouts.
 
 ### Request Sample
 
@@ -68,12 +62,23 @@ import RequestHeader from '../_request-header.mdx'
 ## Response
 ### Http Header
 
+- **Content (`Content-Language`)**  
+  - **Required**: Optional  
+  - **Type**: String(10)  
+  - **Example**: `en`  
+  - **Description**: `en` = English  
 
-| **Field Name**     | **Variable Name**   | **Required** | **Type**     | **Example Value** | **Description**     |
-|--------------------|---------------------|--------------|--------------|-------------------|----------------------|
-| Content   | `Content-Language`  | Optional     | String(10)   | en                | `en` = English       |
-| Signature          | `Sign`              | Mandatory     | String       |        See the response sample below for a reference.           | PayBy signs each response using its private key. Merchants verify the signature using PayBy’s public key to ensure the response is authentic and not tampered with.  |
-| Merchant ID        | `Partner-Id`        | Mandatory    | String(12)   |       See the response sample below for a reference.             | The unique identifier of merchant.   |
+- **Signature (`Sign`)**  
+  - **Required**: Mandatory  
+  - **Type**: String  
+  - **Example**: See the response sample below for a reference.  
+  - **Description**: PayBy signs each response using its private key. Merchants verify the signature using PayBy’s public key to ensure the response is authentic and not tampered with.  
+
+- **Merchant ID (`Partner-Id`)**  
+  - **Required**: Mandatory  
+  - **Type**: String(12)  
+  - **Example**: See the response sample below for a reference.  
+  - **Description**: The unique identifier of the merchant.  
 
 
 ### Http Body

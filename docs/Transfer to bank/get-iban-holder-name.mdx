@@ -3,6 +3,9 @@ sidebar_position: 6
 toc_max_heading_level: 6
 ---
 
+import BizContent from './_biz-content.mdx'
+import RequestHeader from '../_request-header.mdx'
+
 # Query IBAN Holder Name
 
 ## Overview
@@ -18,25 +21,43 @@ This API verifies whether a provided account holder's name matches the correspon
 
 ### HTTP Headers
 
-| Field Name       | Parameter Name     | Required | Type       | Example       | Description              |
-|------------------|--------------------|----------|------------|---------------|--------------------------|
-| Content Language | Content-Language   | Optional | String(10) | `en`          | Language code (e.g., English). |
-| Signature        | Sign               | Required | String     |               | Digital signature for the request. |
-| Merchant ID      | Partner-Id         | Required | String(12) |               | Unique merchant identifier. |
+<details>
+  <summary>Attributes</summary>
+  <RequestHeader/>
+</details>  
 
 ### HTTP Body
 
-| Field Name   | Parameter Name | Required | Type                     | Example        | Description       |
-|--------------|----------------|----------|--------------------------|----------------|-------------------|
-| Request Time | requestTime    | Required | Timestamp (milliseconds) | 1581493898000  | Epoch time in milliseconds. |
-| Business Content | bizContent | Required | GetIbanHolderNameRequest | -              | Business payload.  |
+- **requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+
+    Request time of the order. If the request time is more than 15 minutes away from the current time, the request will be rejected. This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.
+
+    Example value: 1581493898000
+
+
+- **bizContent**   <font color = ' #7d8793'>Object</font>  
+
+  <details open={true}>
+  <summary>Attributes</summary>
+    <BizContent/>
+  </details>
+
 
 #### GetIbanHolderNameRequest
 
-| Field Name    | Parameter Name | Required | Type        | Example | Description       |
-|---------------|----------------|----------|-------------|---------|-------------------|
-| Holder Name   | holderName     | Required | String(256) |         | Encrypted account holder name. |
-| IBAN          | iban           | Required | String(256) |         | Encrypted IBAN number. |
+- **Holder Name**  
+    - **Parameter Name**: `holderName`  
+    - **Required**: Yes  
+    - **Type**: `String(256)`  
+    - **Example**: *(none provided)*  
+    - **Description**: Encrypted account holder name.
+
+- **IBAN**  
+    - **Parameter Name**: `iban`  
+    - **Required**: Yes  
+    - **Type**: `String(256)`  
+    - **Example**: *(none provided)*  
+    - **Description**: Encrypted IBAN number.
 
 
 ### Request Sample
@@ -67,25 +88,32 @@ Http Body
 
 ### HTTP Headers
 
-| Field Name       | Parameter Name     | Required | Type       | Example | Description              |
-|------------------|--------------------|----------|------------|---------|--------------------------|
-| Content Language | Content-Language   | Optional | String(10) | `en`    | Language code (e.g., English). |
-| Signature        | Sign               | Required | String     |         | Digital signature of the response. |
-| Merchant ID      | Partner-Id         | Required | String(12) |         | Unique merchant identifier. |
+<details>
+  <summary>Attributes</summary>
+  <RequestHeader/>
+</details>  
 
 ### HTTP Body
 
-| Field Name   | Parameter Name | Required | Type                      | Example | Description       |
-|--------------|----------------|----------|---------------------------|---------|-------------------|
-| Response Head| head           | Required | ResponseHeader            | -       | Response metadata. |
-| Response Body| body           | Optional | GetIbanHolderNameResponse | -       | Core response payload. |
+- **Response Head**  
+    - **Parameter Name**: `head`  
+    - **Required**: Yes  
+    - **Type**: `ResponseHeader`  
+    - **Example**: *(none provided)*  
+    - **Description**: Response metadata.
 
-#### GetIbanHolderNameResponse
-
-| Field Name     | Parameter Name   | Required | Type           | Example | Description                        |
-|----------------|------------------|----------|----------------|---------|------------------------------------|
-| IBAN Info      | ibanHolderName   | Required | IbanHolderName | -       | Contains the name match result.    |
-
+- **Response Body**  
+    - **Parameter Name**: `body`  
+    - **Required**: No  
+    - **Type**: `GetIbanHolderNameResponse`  
+        - **IBAN Info**  
+            - **Parameter Name**: `ibanHolderName`  
+            - **Required**: Yes  
+            - **Type**: `IbanHolderName`  
+            - **Example**: *(none provided)*  
+            - **Description**: Contains the name match result.
+            - **Example**: *(none provided)*  
+            - **Description**: Core response payload.
 
 ### Response Sample
 
@@ -112,7 +140,6 @@ Http Body
     }
 }
 ```
-
 
 ## Return Codes
 
