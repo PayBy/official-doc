@@ -25,8 +25,8 @@ This interface allows merchants to transfer funds from their account to a specif
 
 ## API URL
 
-- **Staging Environment**: `https://uat.test2pay.com/sgs/api/transfer/placeTransferToBankCard`
-- **Production Environment**: `https://api.payby.com/sgs/api/transfer/placeTransferToBankCard`
+- Staging Environment: `https://uat.test2pay.com/sgs/api/transfer/placeTransferToBankCard`
+- Production Environment: `https://api.payby.com/sgs/api/transfer/placeTransferToBankCard`
 
 ## Request
 
@@ -39,13 +39,13 @@ This interface allows merchants to transfer funds from their account to a specif
 
 ### HTTP Body
 
-- **Request Time (`requestTime`)**
-  - **Required**: Yes  
-  - **Type**: Timestamp (milliseconds, 3-digit precision)  
-  - **Example**: `1581493898000`  
-  - **Description**: Time the request was initiated.
+- Request Time (`requestTime`)
+  - Required: Yes  
+  - Type: Timestamp (milliseconds, 3-digit precision)  
+  - Example: `1581493898000`  
+  - Description: Time the request was initiated.
 
-- **Business Content (`bizContent`)**
+- Business Content (`bizContent`)
 
   <details open={true}>
   <summary>Attributes</summary>
@@ -87,14 +87,13 @@ This interface allows merchants to transfer funds from their account to a specif
 
 ### HTTP Body
 
-**Order Information**  
-- **Parameter Name**: `transferBankCardOrder`  
-- **Required**: Required  
-- **Type**: `TransferBankCardOrder`  
-- **Example**: `-`  
-- **Description**: Complete transfer order details
+Order Information  
+- Parameter Name: `transferBankCardOrder`  
+- Required: Required  
+- Type: `TransferBankCardOrder`   
+- Description: Complete transfer order details
 
-**`TransferBankCardOrder`**
+`TransferBankCardOrder`
 
 <details open={true}>
 <summary>Attributes</summary>
