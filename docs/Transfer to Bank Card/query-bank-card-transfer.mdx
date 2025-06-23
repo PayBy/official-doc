@@ -5,6 +5,7 @@ toc_max_heading_level: 6
 
 import ResponseHeader from './_response-header.mdx'
 import TransferBankCardOrder from './_transfer-bank-card-order.mdx'
+import RequestHeader from '../_request-header.mdx'
 
 # Retrieve Order Details
 
@@ -21,30 +22,33 @@ This interface allows merchants to retrieve detailed results of bank card transf
 
 ### HTTP Headers
 
-| Field Name       | Parameter Name   | Required | Type       | Example | Description                                    |
-| ---------------- | ---------------- | -------- | ---------- | ------- | ---------------------------------------------- |
-| Content Language | Content-Language | Optional | String(10) | en      | Language for response content (en for English) |
-| Signature        | Sign             | Required | String     | -       | Request signature for authentication           |
-| Partner ID       | Partner-Id       | Required | String(12) | -       | Merchant identifier                            |
+  <details open={true}>
+  <summary>Attributes</summary>
+    <RequestHeader/>
+  </details>                         |
 
 ### HTTP Body
 
-| Field Name       | Parameter Name | Required | Type                          | Example       | Description                       |
-| ---------------- | -------------- | -------- | ----------------------------- | ------------- | --------------------------------- |
-| Request Time     | requestTime    | Required | Timestamp(3)                  | 1581493898000 | Request timestamp in milliseconds |
-| Business Content | bizContent     | Required | GetTransferToBankOrderRequest | -             | Business-specific request content |
+- **Request Time**  
+    - **Parameter Name**: `requestTime`  
+    - **Required**: Required  
+    - **Type**: `Timestamp(3)`  
+    - **Example**: `1581493898000`  
+    - **Description**: Request timestamp in milliseconds
 
-#### Request Time (`requestTime`)
-- **Required**: Yes  
-- **Type**: Timestamp (milliseconds, 3-digit precision)  
-- **Example**: `1581493898000`  
-- **Description**: Time the request was initiated.
+- **Business Content**  
+    - **Parameter Name**: `bizContent`
+        - **Merchant Order Number**  
+            - **Parameter Name**: `merchantOrderNo`  
+            - **Required**: Required  
+            - **Type**: `String(64)`  
+            - **Example**: `Me23484`  
+            - **Description**: Unique order identifier from merchant system
+    - **Required**: Required  
+    - **Type**: `GetTransferToBankOrderRequest`  
+    - **Example**: `-`  
+    - **Description**: Business-specific request content
 
-#### Business Content (`GetTransferBankCardRequest`)
-
-| Field Name            | Parameter Name  | Required | Type       | Example | Description                                  |
-| --------------------- | --------------- | -------- | ---------- | ------- | -------------------------------------------- |
-| Merchant Order Number | merchantOrderNo | Required | String(64) | Me23484 | Unique order identifier from merchant system |
 
 ### Request Sample
 
@@ -74,35 +78,14 @@ This interface allows merchants to retrieve detailed results of bank card transf
 
 ## Response
 
-### HTTP Headers
-
-| Field Name       | Parameter Name   | Required | Type       | Example | Description                                    |
-| ---------------- | ---------------- | -------- | ---------- | ------- | ---------------------------------------------- |
-| Content Language | Content-Language | Optional | String(10) | en      | Language for response content (en for English) |
-| Signature        | Sign             | Required | String     | -       | Response signature for verification            |
-| Partner ID       | Partner-Id       | Required | String(12) | -       | Merchant identifier                            |
-
-### HTTP Body
-
-| Field Name      | Parameter Name | Required | Type                             | Example | Description                              |
-| --------------- | -------------- | -------- | -------------------------------- | ------- | ---------------------------------------- |
-| Response Header | head           | Required | ResponseHeader                   | -       | Response metadata and status information |
-| Response Body   | body           | Optional | PlaceTransferToBankOrderResponse | -       | Transfer order details                   |
-
-#### Response Header
+### HTTP Header
 
   <details open={true}>
   <summary>Attributes</summary>
     <ResponseHeader/>
   </details>
 
-#### Response Body
-
-**Transfer Order Response (`PlaceTransferToBankOrderResponse`)**
-
-| Field Name                 | Parameter Name        | Required | Type                  | Example | Description                     |
-| -------------------------- | --------------------- | -------- | --------------------- | ------- | ------------------------------- |
-| Transfer Order Information | transferBankCardOrder | Required | TransferBankCardOrder | -       | Complete transfer order details |
+### HTTP Body
 
  <details open={true}>
   <summary>Attributes</summary>
