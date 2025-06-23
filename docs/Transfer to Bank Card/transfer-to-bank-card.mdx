@@ -4,6 +4,7 @@ toc_max_heading_level: 6
 ---
 
 import ResponseHeader from './_response-header.mdx'
+import RequestHeader from '../_request-header.mdx'
 import TransferBankCardOrder from './_transfer-bank-card-order.mdx'
 import BizContent from './_bizContent.mdx'
 
@@ -31,26 +32,20 @@ This interface allows merchants to transfer funds from their account to a specif
 
 ### HTTP Headers
 
-| Field Name | Parameter Name   | Required | Type       | Example | Description                          |
-| ---------- | ---------------- | -------- | ---------- | ------- | ------------------------------------ |
-| Language   | Content-Language | Optional | String(10) | en      | Language preference (en for English) |
-| Signature  | sign             | Required | String     |         | Request signature                    |
-| Partner ID | Partner-Id       | Required | String(12) |         | Merchant identifier                  |
+  <details open={true}>
+  <summary>Attributes</summary>
+    <RequestHeader/>
+  </details>
 
 ### HTTP Body
 
-| Field Name       | Parameter Name | Required | Type                         | Example       | Description                       |
-| ---------------- | -------------- | -------- | ---------------------------- | ------------- | --------------------------------- |
-| Request Time     | requestTime    | Required | Timestamp(3)                 | 1581493898000 | Request timestamp in milliseconds |
-| Business Content | bizContent     | Required | PlaceTransferBankCardRequest | -             | Transfer request details          |
+- **Request Time (`requestTime`)**
+  - **Required**: Yes  
+  - **Type**: Timestamp (milliseconds, 3-digit precision)  
+  - **Example**: `1581493898000`  
+  - **Description**: Time the request was initiated.
 
-#### **Request Time (`requestTime`)**
-- **Required**: Yes  
-- **Type**: Timestamp (milliseconds, 3-digit precision)  
-- **Example**: `1581493898000`  
-- **Description**: Time the request was initiated.
-
-#### **Business Content (`bizContent`)**
+- **Business Content (`bizContent`)**
 
   <details open={true}>
   <summary>Attributes</summary>
@@ -85,38 +80,26 @@ This interface allows merchants to transfer funds from their account to a specif
 
 ### HTTP Headers
 
-| Field Name | Parameter Name   | Required | Type       | Example | Description                          |
-| ---------- | ---------------- | -------- | ---------- | ------- | ------------------------------------ |
-| Language   | Content-Language | Optional | String(10) | en      | Language preference (en for English) |
-| Signature  | Sign             | Required | String     |         | Response signature                   |
-| Partner ID | Partner-Id       | Required | String(12) |         | Merchant identifier                  |
-
-### HTTP Body
-
-| Field Name      | Parameter Name | Required | Type                          | Example | Description                 |
-| --------------- | -------------- | -------- | ----------------------------- | ------- | --------------------------- |
-| Response Header | head           | Required | ResponseHeader                | -       | Response status information |
-| Response Body   | body           | Optional | PlaceTransferBankCardResponse | -       | Transfer order details      |
-
-#### Response Header
-
   <details open={true}>
   <summary>Attributes</summary>
     <ResponseHeader/>
   </details>
 
-#### Response Body
+### HTTP Body
 
-**`PlaceTransferToBankOrderResponse` Object**
+**Order Information**  
+- **Parameter Name**: `transferBankCardOrder`  
+- **Required**: Required  
+- **Type**: `TransferBankCardOrder`  
+- **Example**: `-`  
+- **Description**: Complete transfer order details
 
-| Field Name        | Parameter Name        | Required | Type                  | Example | Description                     |
-| ----------------- | --------------------- | -------- | --------------------- | ------- | ------------------------------- |
-| Order Information | transferBankCardOrder | Required | TransferBankCardOrder | -       | Complete transfer order details |
+**`TransferBankCardOrder`**
 
-  <details open={true}>
-  <summary>Attributes</summary>
-    <TransferBankCardOrder/>
-  </details>
+<details open={true}>
+<summary>Attributes</summary>
+  <TransferBankCardOrder/>
+</details>
 
 ### Response Sample
 
