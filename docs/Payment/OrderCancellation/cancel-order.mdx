@@ -15,41 +15,28 @@ If the payment result is not returned for a long time, you can use this interfac
 
 If the order status has been updated to `PAID_SUCCESS` or `SETTLED` when the cancellation was initiated, PayBy will reject this  request. It is recommended to use `Revoke` or `Refund` interface.  
 
-<br/>
 
 ## API URL
 
-UAT: https://uat.test2pay.com/sgs/api/acquire2/cancelOrder
-
-Production: https://api.payby.com/sgs/api/acquire2/cancelOrder
-
-<br/>
+- UAT: https://uat.test2pay.com/sgs/api/acquire2/cancelOrder
+- Production: https://api.payby.com/sgs/api/acquire2/cancelOrder
 
 ## Request 
 
 ### Http Header
 
----
-
 <details>
   <summary>Attributes</summary>
-
   <RequestHeader/>
 </details>
 
-<br/>
-
 ### Http Body
-
----
 
 **requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
 
 If the request time is more than 15 minutes away from the current time, the request will be rejected. This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.
 
 Example value: 1581493898000
-
-<br/>
 
 **bizContent**   <font color = ' #7d8793'>Object</font>  
 
@@ -63,15 +50,11 @@ Example value: 1581493898000
 
   Maximum length: `64`
 
-<br/>
-
 - **orderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
   The PayBy's unique identification number of the order. 
 
   Example value: 131658300517875854
-
-<br/>
 
 ### Request Sample
 
@@ -93,23 +76,16 @@ Example value: 1581493898000
 }
 ```
 
-<br/>
-
 ## Response
 
 ### Http Header
 
----
 
 **sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
 
 When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
 
-<br/>
-
 ### Http Body
-
----
 
 **head** 
 
@@ -117,11 +93,10 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
     <summary>Attributes</summary>
     <ResponseHead />
   </details>
-<br/>
 
 **body** 
 
-**Note:** Body is returned only when `applystatus` = `success`, and `code` = `0`. If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
+> **Note:** Body is returned only when `applystatus` = `success`, and `code` = `0`. If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
 
 - **acquireOrder** <span style={{color:" #7d8793"}}>Object</span>
 
@@ -129,8 +104,6 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
   <summary>Attributes</summary>
     <AcquireOrder />
   </details>
-
-  <br/>
 
 ### Response Sample
 
@@ -210,7 +183,6 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
 ## Response Codes
 
-Certainly! Here's the translated error code table in English, keeping the original table format for clarity and professionalism:
 
 | **Code** | **Message**                 | **Cause**                                      | **Workaround**                          |
 |----------|-----------------------------|--------------------------------------------------|----------------------------------------|
