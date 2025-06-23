@@ -1,134 +1,121 @@
-**`TransferBankCardOrder`**
+`TransferBankCardOrder`
 
-- **Request Time (`requestTime`)**  
-  - **Required**: Yes  
-  - **Type**: Timestamp(3)  
-  - **Example**: `1581493898000`  
-  - **Description**: —  
+- Request Time (`requestTime`)  
+  - Required: Yes  
+  - Type: Timestamp(3)  
+  - Example: `1581493898000`  
 
-- **Merchant Order Number (`merchantOrderNo`)**  
-  - **Required**: Yes  
-  - **Type**: String(64)  
-  - **Example**: `S10000`  
-  - **Description**: —  
+- Merchant Order Number (`merchantOrderNo`)  
+  - Required: Yes  
+  - Type: String(64)  
+  - Example: `S10000`  
 
-- **PayBy Order Number (`orderNo`)**  
-  - **Required**: Yes  
-  - **Type**: String(32)  
-  - **Example**: `O1000`  
-  - **Description**: —  
+- PayBy Order Number (`orderNo`)  
+  - Required: Yes  
+  - Type: String(32)  
+  - Example: `O1000`  
 
-- **Product Name (`product`)**  
-  - **Required**: Yes  
-  - **Type**: String(200)  
-  - **Example**: `Transfer Bank Card`  
-  - **Description**: —  
+- Product Name (`product`)  
+  - Required: Yes  
+  - Type: String(200)  
+  - Example: `Transfer Bank Card`  
 
-- **Order Status (`status`)**  
-  - **Required**: Yes  
-  - **Type**: —  
-  - **Example**: `-`  
-  - **Description**: —  
+- Order Status (`status`)  
+  - Required: Yes  
+  - Type: String 
+  - Example: `CREATED`, `SUCCESS`, `FAILURE`, `BANK_FAIL`
+  - Description: The status of order
 
-- **Amount (`amount`)**  
-  - **Required**: Yes  
-  - **Type**: Money  
-  - **Example**: —  
-  - **Description**: —  
+- Amount (`amount`)  
+  - Required: Yes  
+  - Type: Money  
 
-- **Account Holder Type (`accountHolderType`)**  
-  - **Required**: Yes  
-  - **Type**: String(16)  
-  - **Example**: `INDIVIDUAL`  
-  - **Description**: `INDIVIDUAL` or `CORPORATE`  
+- Account Holder Type (`accountHolderType`)  
+  - Required: Yes  
+  - Type: String(16)  
+  - Example: `INDIVIDUAL`  
+  - Description: `INDIVIDUAL` or `CORPORATE`  
 
-- **First Name (`firstName`)**  
-  - **Required**: Optional  
-  - **Type**: String(200)  
-  - **Example**: —  
-  - **Description**: SHA256 of original text, required if `INDIVIDUAL`  
+- First Name (`firstName`)  
+  - Required: Optional  
+  - Type: String(200)  
+  - Description: SHA256 of original text, required if `INDIVIDUAL`  
 
-- **Last Name (`lastName`)**  
-  - **Required**: Optional  
-  - **Type**: String(200)  
-  - **Example**: —  
-  - **Description**: SHA256 of original text, required if `INDIVIDUAL`  
+- Last Name (`lastName`)  
+  - Required: Optional  
+  - Type: String(200)  
+  - Description: SHA256 of original text, required if `INDIVIDUAL`  
 
-- **Middle Name (`middleName`)**  
-  - **Required**: Optional  
-  - **Type**: String(200)  
-  - **Example**: —  
-  - **Description**: SHA256 of original text  
+- Middle Name (`middleName`)  
+  - Required: Optional  
+  - Type: String(200)  
+  - Description: SHA256 of original text  
 
-- **Company Name (`companyName`)**  
-  - **Required**: Optional  
-  - **Type**: String(200)  
-  - **Example**: —  
-  - **Description**: SHA256 of original text, required if `CORPORATE`  
+- Company Name (`companyName`)  
+  - Required: Optional  
+  - Type: String(200)  
+  - Description: SHA256 of original text, required if `CORPORATE`  
 
-- **Card Number (`cardNumber`)**  
-  - **Required**: Yes  
-  - **Type**: String(64)  
-  - **Example**: —  
-  - **Description**: SHA256 of original text  
+- Card Number (`cardNumber`)  
+  - Required: Yes  
+  - Type: String(64)  
+  - Description: SHA256 of original text  
 
-- **Expiry Month (`expiryMonth`)**  
-  - **Required**: Yes  
-  - **Type**: String(2)  
-  - **Example**: —  
-  - **Description**: —  
+- Expiry Month (`expiryMonth`)  
+  - Required: Yes  
+  - Type: String(2)  
+  - Example: `09` 
+  - Description: The card's expiration month of the expiration year. The number must between 1 and 12, and the year + month should be larger or equal to current month.
 
-- **Expiry Year (`expiryYear`)**  
-  - **Required**: Yes  
-  - **Type**: String(4)  
-  - **Example**: —  
-  - **Description**: —  
+- Expiry Year (`expiryYear`)  
+  - Required: Yes  
+  - Type: String(4)  
+  - Example: `2027` 
+  - Description: The card's expiration year
 
-- **Payment Memo (`memo`)**  
-  - **Required**: Optional  
-  - **Type**: String(128)  
-  - **Example**: —  
-  - **Description**: —  
+- Payment Memo (`memo`)  
+  - Required: Optional  
+  - Type: String(128)  
+  - Example: `Bonus`
 
-- **Notification URL (`notifyUrl`)**  
-  - **Required**: Optional  
-  - **Type**: String(200)  
-  - **Example**: —  
-  - **Description**: —  
+- Notification URL (`notifyUrl`)  
+  - Required: Optional  
+  - Type: String(200)  
+  - Example: `http://yoursite.com/api/notification` 
+  - Description: The URL where the merchant receives notifications
 
-- **Failure Description (`failDes`)**  
-  - **Required**: Optional  
-  - **Type**: String(200)  
-  - **Example**: `-`  
-  - **Description**: Reason for order failure  
+- Failure Description (`failDes`)  
+  - Required: Optional  
+  - Type: String(200)  
+  - Example: `-`  
+  - Description: Cause of order failure  
 
-- **Bank Reference Number (`bankReference`)**  
-  - **Required**: Optional  
-  - **Type**: String(128)  
-  - **Example**: —  
-  - **Description**: —  
+- Bank Reference Number (`bankReference`)  
+  - Required: Optional  
+  - Type: String(128)   
 
-- **Payer Fee Amount (`payerFeeAmount`)**  
-  - **Required**: Yes  
-  - **Type**: Money  
-  - **Example**: `-`  
-  - **Description**: —  
+- Payer Fee Amount (`payerFeeAmount`)  
+  - Required: Yes  
+  - Type: Money  
+  - Example: `{
+                "amount": 0,
+                "currency": "AED"
+            },`  
+  - Description: The fee paid by the payer 
 
-- **Fee Payer ID (`payerFeeMemberId`)**  
-  - **Required**: Yes  
-  - **Type**: String(32)  
-  - **Example**: `-`  
-  - **Description**: ID of the party paying the fee  
+- Fee Payer ID (`payerFeeMemberId`)  
+  - Required: Yes  
+  - Type: String(32)  
+  - Example: `200000429066`  
+  - Description: ID of the party paying the fee  
 
-- **Payment Time (`paidTime`)**  
-  - **Required**: Yes  
-  - **Type**: Date  
-  - **Example**: `-`  
-  - **Description**: Time of deduction  
+- Payment Time (`paidTime`)  
+  - Required: Yes  
+  - Type: Date  
+  - Description: Time of deduction  
 
-- **Refund Time (`refundedTime`)**  
-  - **Required**: Optional  
-  - **Type**: Date  
-  - **Example**: —  
-  - **Description**: Time of refund  
+- Refund Time (`refundedTime`)  
+  - Required: Optional  
+  - Type: Date  
+  - Description: Time of refund  
 
