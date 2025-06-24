@@ -45,19 +45,11 @@ This API verifies whether a provided account holder's name matches the correspon
 
 #### GetIbanHolderNameRequest
 
-- **Holder Name**  
-    - **Parameter Name**: `holderName`  
-    - **Required**: Yes  
-    - **Type**: `String(256)`  
-    - **Example**: *(none provided)*  
-    - **Description**: Encrypted account holder name.
+- **holderName** <font color='#7d8793'>String(256)</font> <font color='#f19938'>Required</font>  
+  - Encrypted account holder name.
 
-- **IBAN**  
-    - **Parameter Name**: `iban`  
-    - **Required**: Yes  
-    - **Type**: `String(256)`  
-    - **Example**: *(none provided)*  
-    - **Description**: Encrypted IBAN number.
+- **iban** <font color='#7d8793'>String(256)</font> <font color='#f19938'>Required</font>  
+  - Encrypted IBAN number.
 
 
 ### Request Sample
@@ -95,25 +87,14 @@ Http Body
 
 ### HTTP Body
 
-- **Response Head**  
-    - **Parameter Name**: `head`  
-    - **Required**: Yes  
-    - **Type**: `ResponseHeader`  
-    - **Example**: *(none provided)*  
-    - **Description**: Response metadata.
+- **head** <font color='#7d8793'>ResponseHeader</font> <font color='#f19938'>Required</font>  
+  - Response metadata.
 
-- **Response Body**  
-    - **Parameter Name**: `body`  
-    - **Required**: No  
-    - **Type**: `GetIbanHolderNameResponse`  
-        - **IBAN Info**  
-            - **Parameter Name**: `ibanHolderName`  
-            - **Required**: Yes  
-            - **Type**: `IbanHolderName`  
-            - **Example**: *(none provided)*  
-            - **Description**: Contains the name match result.
-            - **Example**: *(none provided)*  
-            - **Description**: Core response payload.
+- **body** <font color='#7d8793'>GetIbanHolderNameResponse</font>  
+  - Core response payload.
+
+  - **ibanHolderName** <font color='#7d8793'>IbanHolderName</font> <font color='#f19938'>Required</font>  
+    - Contains the name match result.
 
 ### Response Sample
 
@@ -143,7 +124,7 @@ Http Body
 
 ## Return Codes
 
-| Code  | Message                | Reason                            | Solution                     |
+| Code  | Message                | Cause                            | Workaround                     |
 |-------|------------------------|-----------------------------------|------------------------------|
 | 0     | SUCCESS                | Success                           | -                            |
 | 400   | INVALID_PARAMETER      | Invalid parameter                 | Adjust request parameters.  |
