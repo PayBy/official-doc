@@ -6,10 +6,11 @@ toc_max_heading_level: 6
 import BizContent from './_biz-content.mdx'
 import ResponseHead from '../4_Refund/_response-head.mdx'
 import TransferToBankOrder from './_transfer-to-bank-order.mdx'
+import RequestHeader from '../_request-header.mdx'
 
 # Transfer to Bank
 
-> **Note:** Before using this API, please use `Get fund out ability` API to retrieve the supported payout methods and which parameters need to be passed for each payout method. If the currency of received amount is not AED, please use the `Rate Calculator` API to get the latest exchange rate.
+> **Note:** Before using this API, please use [Payout Capability](./list-countries-and-currencies.mdx) API to retrieve the supported payout methods and which parameters need to be passed for each payout method. If the currency of received amount is not AED, please use the [Rate Calculator](./rate-calculator.mdx) API to get the latest exchange rate.
 
 
 ## API URL
@@ -20,8 +21,6 @@ import TransferToBankOrder from './_transfer-to-bank-order.mdx'
 ## Request
 
 ### Http Header
-
-import RequestHeader from '../_request-header.mdx'
 
 <details>
   <summary>Attributes</summary>
