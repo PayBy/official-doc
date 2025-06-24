@@ -1,266 +1,140 @@
 import CardInfo from "./_card-info.mdx";
 
-- **requestTime** <span style={{color:" #7d8793"}}>Timestamp</span> <span style={{color:"#f19938"}}>Required</span>
+- **requestTime** <font color='#7d8793'>Timestamp</font> <font color='#f19938'>Required</font>  
+  - Request time passed by the merchant when placing the order.  
+  - Example value: `1581493898000`
 
-  Request time passed by the merchant when placing the order.
+- **merchantOrderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - The merchant's reference number of the request. Used to track every request.  
+  - Example value: `M965739182419`  
+  - Maximum length: `64`
 
-  Example value: 1581493898000
+- **orderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - The PayBy's unique identification number of the order.  
+  - Example value: `131658300517875854`
 
-<br />
+- **status** <font color='#7d8793'>Enum</font> <font color='#f19938'>Required</font>  
+  - The possible values are:  
+    - `CREATED`: The order has been created.  
+    - `PAID_SUCCESS`: The order has been successfully paid.  
+    - `SETTLED`: The order has been paid and the fund has been settled to merchant's account.  
+    - `FAILURE`: The order has been cancelled or expired.
 
-- **merchantOrderNo** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
+- **paymentInfo** <font color='#7d8793'>Object</font>  
+  - Detailed payment information including fees and timestamps.
 
-  The merchant's reference number of the request. Used to track every request.
+  - **paidAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+    - The amount actually paid by the user. If a discount is used, it will differ from the order amount.
 
-  Example value: M965739182419
+  - **paidTime** <font color='#7d8793'>Timestamp</font> <font color='#f19938'>Required</font>  
+    - Payer's successful payment time.  
+    - Example value: `1581493898000`
 
-  Maximum length: `64`
+  - **payerMid** <font color='#7d8793'>String</font>  
+    - Payer's member ID in the wallet (BOTIM or PayBy).  
+    - Example value: `200001200101`
 
-  <br />
+  - **payerFeeAmount** <font color='#7d8793'>Money</font>  
+    - Transaction fee charged to the payer.
 
-- **orderNo** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
+  - **payeeFeeAmount** <font color='#7d8793'>Money</font>  
+    - Transaction fee charged to the payee.
 
-  The PayBy's unique identification number of the order.
+  - **payChannel** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+    - Payment channel used by the payer.  
+    - Possible values: `BANKCARD`, `INSTALLMENT`, `EWALLET`, etc.
 
-  Example value: 131658300517875854
+  - **settlementAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+    - Actual funds received by the payee after deductions.
 
-  <br />
+  - **cardInfo**  
+    - <details>
+        <summary>This object may be returned only for `DIRECTPAY` payment scene. The attributes are:</summary>
+        <CardInfo/>
+      </details>
 
-- **status** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}>Required</span>
+- **product** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Product name related to the payment scene. Used for internal classification.  
+  - Example value: `Basic Payment Gateway`
 
-  The possible values are:
+- **totalAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+  - The order amount intended to collect from the payer.
 
-  `CREATED`. The order has been created.
+- **payeeMid** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Payee's member ID in PayBy.  
+  - Example value: `200001200101`
 
-  `PAID_SUCCESS`. The order has been successfully paid.
+- **expiredTime** <font color='#7d8793'>Timestamp</font> <font color='#f19938'>Required</font>  
+  - Order expiration time.  
+  - Example value: `1581493898000`
 
-  `SETTLED`. The order has been paid and the fund has been settled to merchant's account.
+- **notifyUrl** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - URL to receive asynchronous notifications of order status updates.  
+  - Example value: `https://www.yoursite.com`
 
-  `FAILURE`. The order has been cancelled or expired.
+- **sharingInfoList** <font color='#7d8793'>List</font>  
+  - Sharing information for split payments.
 
-  <br />
+  - **sharingIdentitySeqId** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+    - Serial number for multiple account IDs.  
+    - Example value: `1`
 
-- **paymentInfo** <span style={{color:" #7d8793"}}>Object</span>
+  - **sharingMid** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+    - Member ID returned if identity matches an existing PayBy member.
 
-  - **paidAmount** <span style={{color:" #7d8793"}}>Money</span> <span style={{color:"#f19938"}}>Required</span>
+  - **sharingMemo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+    - Description of the sharing operation.
 
-    The amount actually paid by the user. If a discount is used, it will be different from the order amount.
+  - **sharingAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+    - Amount planned to be split to this ID.
 
-  <br />
+  - **sharingSettledFeeAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+    - Transaction fee charged to this sharing account if applicable.
 
-  - **paidTime** <span style={{color:" #7d8793"}}>TimeStamp</span> <span style={{color:"#f19938"}}>Required</span>
+  - **sharingSettledAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+    - Actual amount received by this ID.
 
-    Payer's successful payment time
+  - **withholdAndRemitFee** <font color='#7d8793'>Boolean</font>  
+    - Indicates whether this sharing account pays the transaction fee.  
+    - Only one account can have `true` in this field per request.
+  
+- **subject** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Description of this order.  
+  - Example value: `iPhone`
 
-    Example value: 1581493898000
+- **accessoryContent** <font color='#7d8793'>String</font>  
+  - Used for storing additional information about the order.
 
-  <br />
+- **paySceneCode** <font color='#7d8793'>Enum</font> <font color='#f19938'>Required</font>  
+  - Payment scene used to create the order.  
+  - Possible values: `PAYPAGE`, `INAPP`, `EWALLET`, `DYNQR`, `QRPAY`, `JSAPI`, `AUTODEBIT`, `DIRECTPAY`, etc.
 
-  - **payerMid** <span style={{color:" #7d8793"}}>String</span>
+- **paySceneParams** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Different payment scenarios need to pass different scenario parameters.
 
-    If the payer uses a BOTIM or Pay By wallet for payment, `payerMid` represents the payer's member ID in the wallet.
+- **deviceId** <font color='#7d8793'>String</font>  
+  - If the transaction was made on a terminal or virtual device, the device ID can be passed for transaction data statistics.  
+  - **Note**: This parameter must be passed if you are using the secondary merchant function.
 
-    Example value: 200001200101
+- **secondaryMerchantId** <font color='#7d8793'>String</font>  
+  - If you are a platform and the transaction was made at a merchant under your platform, you can use this parameter to allocate the funds collected.  
+  - The secondary merchant ID represents the merchant's member ID on your platform.  
+  - Maximum length: `200`
 
-  <br />
+- **failCode** <font color='#7d8793'>String</font>  
+  - If the order status is `FAILURE`, the code to identify the exact reason.  
+  - Example value: `504`
 
-  - **payerFeeAmount** <span style={{color:" #7d8793"}}>Money</span>
+- **failDes** <font color='#7d8793'>String</font>  
+  - If the order status is `FAILURE`, the failure reason.  
+  - Example value: `SERVICE_TIMEOUT`
 
-    If the order transaction fee is set to be charged from the payer, `payerFeeAmount` represents the actual amount of the transaction fee.
+- **revoked** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - If `true`, it means that the payment has been made but then cancelled.
 
-    <br />
+- **reserved** <font color='#7d8793'>String</font>  
+  - Merchant's notes for the order.  
+  - Example value: `June campaign order.`  
+  - Maximum length: `200`
 
-  - **payeeFeeAmount** <span style={{color:" #7d8793"}}>Money</span>
 
-    If the order transaction fee is set to be charged from the payee, `payeeFeeAmount` represents the actual amount of the transaction fee.
-
-    <br />
-
-  - **payChannel** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
-
-    The payment channel used by the payer. The possible values are`BANKCARD`, `INSTALLMENT`, `EWALLET`, etc.
-
-  <br />
-
-  - **settlementAmount** <span style={{color:" #7d8793"}}>Money</span> <span style={{color:"#f19938"}}>Required</span>
-
-    The actual funds the payee can receive after deducting transactions fees and amount for other reasons.
-
-  <br />
-
-  - **cardInfo**
-    <details>
-      <summary>This object may be returned only for `DIRECTPAY` payment scene.The attributes are:</summary>
-      <CardInfo />
-    </details>
-
-<br />
-
-- **product** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
-
-  The product name related to the payment scene parameter used in the order. This product name is only used for PayBy internal classification.
-
-  Example value: Basic Payment Gateway
-
-  <br />
-
-- **totalAmount** <span style={{color:" #7d8793"}}>Money</span> <span style={{color:"#f19938"}}>Required</span>
-
-  The order amount intended to collect from the payer.
-
-
-<br />
-
-- **payeeMid** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
-
-  The payee's member ID in PayBy.
-
-  Example value: 200001200101
-
-  <br />
-
-- **expiredTime** <span style={{color:" #7d8793"}}>TimeStamp</span> <span style={{color:"#f19938"}}>Required</span>
-
-  The order expiration time, after which the payment cannot be completed.
-
-  Example value: 1581493898000
-
-  <br />
-
-- **notifyUrl** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
-
-  To receive asynchronous notifications of order status updates, the merchant can pass the notify URL in the request to place order.
-
-  Example value: https://www.yoursite.com
-
-  <br />
-
-- **sharingInfoList** <span style={{color:" #7d8793"}}>List</span> 
-
-  If the sharing information is passed in the request, PayBy will return the actual amount received by each sharing account.
-
-  The attributes of each item in the list are:
-
-  - **sharingIdentitySeqId**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
-
-    You can pass multiple account ids to split the payment amount, in order to distinguish them, the serial number is needed. Please start with 1, then 2, 3, 4, etc.
-
-    Example value: `1`
-
-    <br/>
-
-  - **sharingMid**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
-
-    If the **sharingIdentityType** and **sharingIdentity** passed in the request can be corresponded to a member id that already exists in the PayBy system, in the response PayBy will return the member id.
-
-    <br/>
-
-  - **sharingMemo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
-
-    Add some description to this operation.
-
-    <br/>
-
-  - **sharingAmount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
-
-    The amount you plan to split to this id.
-
-    <br/>
-    
-  - **sharingSettledFeeAmount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
-
-    If the **withholdAndRemitFee** is `true`, which means that this sharing account should pay the PayBy transaction fee, the **sharingSettledFeeAmount** represents the transaction fee PayBy charged in this order.
-
-    <br/>
-    
-  - **sharingSettledAmount**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
-
-    The amount this id actually received. If the order is not settled in real-time and a refund occurs before settlement, or this id should pay the PayBy transaction fee, the requested amount will be different from the actual amout received.
-
-    <br/>
-    
-  - **withholdAndRemitFee**   <font color = ' #7d8793'>Boolean</font>  
-
-    The values passed in the request.  This parameter means that whether this sharing account pay the PayBy transaction fee. If `true`, the final amount this sharing account will receive is : [**sharingAmount** - PayBy transaction fee].
-
-    Note that if there are multiple sharing accounts in this order request, at most one can pass `true` in this parameter, otherwise the request will fail.
-    
-    <br/>
-    
-    
-
-- **subject** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
-
-  Description of this order.
-
-  Example value: iPhone.
-
-  <br />
-
-- **accessoryContent** <span style={{color:" #7d8793"}}>String</span>
-
-  Used for storing additional information about the order.
-
-
-<br />
-
-- **paySceneCode** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}>Required</span>
-
-  Payment scene used to create the order. The possible values are `PAYPAGE`, `INAPP`, `EWALLET`, `DYNQR`, `QRPAY`, `JSAPI`, `AUTODEBIT`, `DIRECTPAY`, etc.
-
-  <br />
-
-- **paySceneParams** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
-
-  Different payment scenarios need to pass different scenario parameters.
-
-<br />
-
-- **deviceId** <span style={{color:" #7d8793"}}>String</span>
-
-  If the transaction was made on a terminal or virtual device, the device id can be passed for transaction data statistics.
-  Note that this parameter must be passed if you are using the secondary merchant function.
-
-
-<br />
-
-- **secondaryMerchantId** <span style={{color:" #7d8793"}}>String</span>
-
-  If you are a platform and the transaction was made at a merchant under your platform, you can use this parameter to allocate the funds collected. To learn more about this feature please contact PayBy. The secondary merchant id represents the merchant's member id on your platform.
-
-  Maximum length: `200`
-
-  <br />
-
-- **failCode** <span style={{color:" #7d8793"}}>String</span>
-
-  If the order status is `FAILURE`, the code to identify the exact reason.
-
-  Example value: 504
-
-  <br />
-
-- **failDes** <span style={{color:" #7d8793"}}>String</span>
-
-  If the order status is `FAILURE`, the failure reason.
-
-  Example value: SERVICE_TIMEOUT
-
-
-<br />
-
-- **revoked** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
-
-  If true, it means that the payment has been made but then cancelled.
-
-  <br />
-
-- **reserved** <span style={{color:" #7d8793"}}>String</span>
-
-  Merchant's notes for the order.
-
-  Example value: June campaign order.
-
-  Maximum length: `200`
-
-<br />
