@@ -1,85 +1,54 @@
 
-- **Account Holder Type**
-  - **Parameter Name**: `accountHolderType`  
-  - **Required**: Yes  
-  - **Type**: String(16)  
-  - **Example**: `INDIVIDUAL`  
-  - **Description**: Account holder type: `INDIVIDUAL` or `CORPORATE`
+- **accountHolderType** <font color='#7d8793'>String(16)</font> <font color='#f19938'>Required</font>  
+  - Account holder type: `INDIVIDUAL` or `CORPORATE`  
+  - Example value: `INDIVIDUAL`
 
-- **Merchant Order Number**
-  - **Parameter Name**: `merchantOrderNo`  
-  - **Required**: Yes  
-  - **Type**: String(64)  
-  - **Example**: `Me23484`  
-  - **Description**: Unique order identifier from merchant
+- **merchantOrderNo** <font color='#7d8793'>String(64)</font> <font color='#f19938'>Required</font>  
+  - Unique order identifier from the merchant.  
+  - Example value: `Me23484`
 
-- **First Name**
-  - **Parameter Name**: `firstName`  
-  - **Required**: No  
-  - **Type**: String(50)  
-  - **Example**: `-`  
-  - **Description**: Encrypted field. Account holder's first name. Required when `accountHolderType` is `INDIVIDUAL`
+- **firstName** <font color='#7d8793'>String(50)</font>  
+  - Encrypted field. Account holder's first name.  
+  - Required when `accountHolderType` is `INDIVIDUAL`  
+  - Example value: `-`
 
-- **Last Name**
-  - **Parameter Name**: `lastName`  
-  - **Required**: No  
-  - **Type**: String(50)  
-  - **Example**: `-`  
-  - **Description**: Encrypted field. Account holder's last name. Required when `accountHolderType` is `INDIVIDUAL`
+- **lastName** <font color='#7d8793'>String(50)</font>  
+  - Encrypted field. Account holder's last name.  
+  - Required when `accountHolderType` is `INDIVIDUAL`  
+  - Example value: `-`
 
-- **Middle Name**
-  - **Parameter Name**: `middleName`  
-  - **Required**: No  
-  - **Type**: String(50)  
-  - **Example**: `-`  
-  - **Description**: Encrypted field. Account holder's middle name
+- **middleName** <font color='#7d8793'>String(50)</font>  
+  - Encrypted field. Account holder's middle name.  
+  - Example value: `-`
 
-- **Company Name**
-  - **Parameter Name**: `companyName`  
-  - **Required**: No  
-  - **Type**: String(50)  
-  - **Example**: `Liwa Street off Khaliffa Street`  
-  - **Description**: Encrypted field. Company name. Required when `accountHolderType` is `CORPORATE`. Must be a valid legal name. Cannot be a single character, all numeric, or all punctuation
+- **companyName** <font color='#7d8793'>String(50)</font>  
+  - Encrypted field. Company name.  
+  - Required when `accountHolderType` is `CORPORATE`.  
+  - Must be a valid legal name. Cannot be a single character, all numeric, or all punctuation.  
+  - Example value: `Liwa Street off Khaliffa Street`
 
-- **Transfer Amount**
-  - **Parameter Name**: `amount`  
-  - **Required**: Yes  
-  - **Type**: Money  
-  - **Example**: `12.34`  
-  - **Description**: Amount to transfer
+- **amount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+  - Amount to transfer.  
+  - Example value: `12.34`
 
-- **Payment Memo**
-  - **Parameter Name**: `memo`  
-  - **Required**: No  
-  - **Type**: String(50)  
-  - **Example**: `Bonus`  
-  - **Description**: Transfer description or note
+- **memo** <font color='#7d8793'>String(50)</font>  
+  - Transfer description or note.  
+  - Example value: `Bonus`
 
-- **Notification URL**
-  - **Parameter Name**: `notifyUrl`  
-  - **Required**: No  
-  - **Type**: String(200)  
-  - **Example**: `-`  
-  - **Description**: URL to receive transfer status notifications
+- **notifyUrl** <font color='#7d8793'>String(200)</font>  
+  - URL to receive transfer status notifications.  
+  - Example value: `-`
 
-- **Expiry Year**
-  - **Parameter Name**: `expiryYear`  
-  - **Required**: Yes  
-  - **Type**: String(4)  
-  - **Example**: `2025`  
-  - **Description**: Encrypted field. Card expiration year. Must be current year or later
+- **expiryYear** <font color='#7d8793'>String(4)</font> <font color='#f19938'>Required</font>  
+  - Encrypted field. Card expiration year.  
+  - Must be current year or later.  
+  - Example value: `2025`
 
-- **Expiry Month**
-  - **Parameter Name**: `expiryMonth`  
-  - **Required**: Yes  
-  - **Type**: String(2)  
-  - **Example**: `12`  
-  - **Description**: Encrypted field. Card expiration month (1–12). Combined year and month must be current month or later
+- **expiryMonth** <font color='#7d8793'>String(2)</font> <font color='#f19938'>Required</font>  
+  - Encrypted field. Card expiration month (1–12).  
+  - Combined year and month must be current month or later.  
+  - Example value: `12`
 
-- **Card Number**
-  - **Parameter Name**: `cardNumber`  
-  - **Required**: Yes  
-  - **Type**: String(50)  
-  - **Example**: `-`  
-  - **Description**: Encrypted field. Card number (12–19 digits, numeric only)
-
+- **cardNumber** <font color='#7d8793'>String(50)</font> <font color='#f19938'>Required</font>  
+  - Encrypted field. Card number (12–19 digits, numeric only).  
+  - Example value: `-`
