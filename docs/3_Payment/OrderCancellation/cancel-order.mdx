@@ -32,29 +32,22 @@ If the order status has been updated to `PAID_SUCCESS` or `SETTLED` when the can
 
 ### Http Body
 
-**requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
+- **requestTime** <font color='#7d8793'>Timestamp</font> <font color='#f19938'>Required</font>  
+  - If the request time is more than 15 minutes away from the current time, the request will be rejected.  
+  - This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.  
+  - Example value: `1581493898000`
 
-If the request time is more than 15 minutes away from the current time, the request will be rejected. This parameter is used to prevent repeated requests for orders that should have been cancelled due to timeouts.
+- **bizContent** <font color='#7d8793'>Object</font>  
+  > **Note:** Use either `merchantOrderNo` or `orderNo` to specify an order, but never both at the same time.
 
-Example value: 1581493898000
+  - **merchantOrderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+    - The merchant's reference number of the request. Used to track every request.  
+    - Example value: `M965739182419`  
+    - Maximum length: `64`
 
-**bizContent**   <font color = ' #7d8793'>Object</font>  
-
-> **Note:** Use either `merchantOrderNo` or `orderNo` to specify an order, but never both at the same time.
-
-- **merchantOrderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
-
-  The merchant's reference number of the request. Used to track every request.
-
-  Example value: M965739182419
-
-  Maximum length: `64`
-
-- **orderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
-
-  The PayBy's unique identification number of the order. 
-
-  Example value: 131658300517875854
+  - **orderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+    - The PayBy's unique identification number of the order.  
+    - Example value: `131658300517875854`
 
 ### Request Sample
 
@@ -102,7 +95,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
   <details open={true}>
   <summary>Attributes</summary>
-    <AcquireOrder />
+    <AcquireOrder/>
   </details>
 
 ### Response Sample
