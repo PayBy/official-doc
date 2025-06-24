@@ -99,44 +99,30 @@ When a statement download request fails, the API returns an error response with 
 
 #### HTTP Header
 
-- **Content-Language**  
-   - **Variable Name**: `Content-Language`  
-   - **Required**: Optional  
-   - **Type**: `String(10)`  
-   - **Example**: `en`  
-   - **Description**: Language code (e.g., `en` for English)
 
-- **Signature**  
-   - **Variable Name**: `Sign`  
-   - **Required**: Required  
-   - **Type**: `String`  
-   - **Example**: `-`  
-   - **Description**: Digital signature for request verification
+- **Content-Language** &lt;font color='#7d8793'&gt;String(10)&lt;/font&gt; &lt;font color='#f19938'&gt;Optional&lt;/font&gt;  
+  - Language code (e.g., `en` for English).  
+  - Example value: `en`  
 
-- **Partner ID**  
-   - **Variable Name**: `Partner-Id`  
-   - **Required**: Required  
-   - **Type**: `String(12)`  
-   - **Example**: `-`  
-   - **Description**: Merchant identifier
+- **Sign** &lt;font color='#7d8793'&gt;String&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+  - Digital signature for request verification.  
+  - Example value: `-`  
 
-- **Content Type**  
-   - **Variable Name**: `Content-Type`  
-   - **Required**: Required  
-   - **Type**: `String(256)`  
-   - **Example**: `application/json`  
-   - **Description**: MIME type of the response content
+- **Partner-Id** &lt;font color='#7d8793'&gt;String(12)&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+  - Merchant identifier.  
+  - Example value: `-`  
+
+- **Content-Type** &lt;font color='#7d8793'&gt;String(256)&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+  - MIME type of the response content.  
+  - Example value: `application/json`  
+
 
 #### HTTP Body
 
-**Response Header**  
-- **Variable Name**: `head`  
-- **Required**: Required  
-- **Type**: `ResponseHeader`  
-- **Example**: `-`  
-- **Description**: Contains response status and error information
+- **head** &lt;font color='#7d8793'&gt;ResponseHeader&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+  - Contains response status and error information.  
+  - Example value: `-`  
 
-#### Failed Request Response Example
 
 ##### HTTP Header
 
@@ -165,19 +151,13 @@ When a statement download request succeeds, the API returns the data as a file s
 
 #### HTTP Header Parameters
 
-- **Content Disposition**  
-   - **Variable Name**: `Content-Disposition`  
-   - **Required**: Required  
-   - **Type**: `String`  
-   - **Example**: `attachment; filename=200000054800_20210112Transaction_Settle_Statement.zip`  
-   - **Description**: File attachment information
+- **Content-Disposition** &lt;font color='#7d8793'&gt;String&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+  - File attachment information.  
+  - Example value: `attachment; filename=200000054800_20210112Transaction_Settle_Statement.zip`  
 
-- **Content Type**  
-   - **Variable Name**: `Content-Type`  
-   - **Required**: Required  
-   - **Type**: `String`  
-   - **Example**: `application/zip`  
-   - **Description**: MIME type indicating ZIP file format
+- **Content-Type** &lt;font color='#7d8793'&gt;String&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+  - MIME type indicating ZIP file format.  
+  - Example value: `application/zip`  
 
 #### File Structure and Naming Convention
 
