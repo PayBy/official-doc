@@ -1,31 +1,16 @@
 
-- **Request Status**
-  - **Variable Name**: `applyStatus`  
-  - **Required**: Yes  
-  - **Type**: String(16)  
-  - **Example**: `SUCCESS`  
-  - **Description**:  
-    - `SUCCESS` – Application successful  
-    - `FAIL` – Application failed  
-    - `ERROR` – Exception occurred
+- **applyStatus** <font color='#7d8793'>String(16)</font> <font color='#f19938'>Required</font>  
+  - Request status result.  
+  - Example value: `SUCCESS`  
+  - Possible values:  
+    - `SUCCESS`: Application successful  
+    - `FAIL`: Application failed  
+    - `ERROR`: Exception occurred
 
-- **Return Error Code**
-  - **Variable Name**: `code`  
-  - **Required**: Yes  
-  - **Type**: String(10)  
-  - **Example**: `0`  
-  - **Description**: Return code
+- **code** <font color='#7d8793'>String(10)</font> <font color='#f19938'>Required</font>  
+  - Return error code.  
+  - Example value: `0`
 
-- **Return Message**
-  - **Variable Name**: `msg`  
-  - **Required**: No  
-  - **Type**: String(200)  
-  - **Example**: `-`  
-  - **Description**: Return message
-
-
-
-
-
-
----
+- **msg** <font color='#7d8793'>String(200)</font>  
+  - Return message.  
+  - Example value: `-`
