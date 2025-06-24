@@ -5,11 +5,12 @@ toc_max_heading_level: 6
 
 import ResponseHead from "../4_Refund/_response-head.mdx";
 import FundoutAbilityList from './_fundout-ability-list.mdx'
+import RequestHeader from '../_request-header.mdx'
 
 
 # Payout Capability
 
-Before using the `Transfer to bank` API, please use this API to retrieve the supported payout methods and which parameters need to be passed for each payout method.
+> **Note:** Before using the [Transfer to Bank](./transfer-to-bank.mdx) API, use this API to retrieve the supported payout methods and which parameters need to be passed for each payout method.
 
 
 ## API URL
@@ -17,12 +18,9 @@ Before using the `Transfer to bank` API, please use this API to retrieve the sup
 - UAT: https://uat.test2pay.com/sgs/api/transfer/getFundoutAbilityList
 - Production: https://api.payby.com/sgs/api/transfer/getFundoutAbilityList
 
-
 ## Request
 
 ### Http Header
-
-import RequestHeader from '../_request-header.mdx'
 
 <details>
   <summary>Attributes</summary>
@@ -76,7 +74,6 @@ import RequestHeader from '../_request-header.mdx'
   - **Example**: See the response sample below for a reference.  
   - **Description**: The unique identifier of the merchant.  
 
-
 ### Http Body
 
 **head**
@@ -91,16 +88,15 @@ import RequestHeader from '../_request-header.mdx'
 **<font color = '#f19938'>Notice</font>**
 
 Body is returned only when `applystatus` = `success`, and `code` = `0`.
+
 If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check the error against the error code table in the last section of this page and try again.
 
-- **fundoutAbilityList** <font color = ' #7d8793'>List</font>
+**fundoutAbilityList** <font color = ' #7d8793'>List</font>
 
-  
 <details open={true}>
-  <summary>Attributes of each item in the list</summary>
-  <FundoutAbilityList/>
+<summary>Attributes of each item in the list</summary>
+<FundoutAbilityList/>
 </details>
-
 
 ### Response Sample
 
@@ -163,7 +159,7 @@ If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`
 
 ## Response Codes
 
-| **Code** | **Message**              | **Cause**                                 | **Solution**                     |
+| **Code** | **Message**              | **Cause**                                 | **Workaround**                   |
 |----------|--------------------------|-------------------------------------------|----------------------------------|
 | 0        | SUCCESS                  | Success                                   | —                                |
 | 400      | INVALID_PARAMETER        | Invalid request parameters                | Adjust request parameters        |
