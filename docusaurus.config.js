@@ -28,26 +28,25 @@ const config = {
     locales: ['en'],
   },
   plugins: [
-  [
-    '@docusaurus/plugin-content-docs',
-    {
-      id: 'demos',
-      routeBasePath: 'demos',
-      path: 'demos',
-    },
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        /**
+         * 多实例插件必填。
+         */
+        id: 'demos',
+        /**
+         * 你的网站上博客的 URL 路由。
+         * *请务必不要*添加末尾斜杠。
+         */
+        routeBasePath: 'demos',
+        /**
+         * 相对于站点目录的文件系统路径。
+         */
+        path: 'demos',
+      },
+    ],
   ],
-  [
-    require.resolve('@cmfcmf/docusaurus-search-local'),
-    {
-      indexDocs: true,
-      indexBlog: false,
-      indexPages: true,
-      language: "en",
-      // Add more options here if needed
-    },
-  ],
-],
-
   presets: [
     [
       'classic',
@@ -71,7 +70,6 @@ const config = {
         },
       }),
     ],
-    
   ],
   customFields: {
     // 把你的自定义环境放在这里
