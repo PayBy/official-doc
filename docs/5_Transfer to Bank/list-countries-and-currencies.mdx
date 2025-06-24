@@ -3,28 +3,24 @@ sidebar_position: 1
 toc_max_heading_level: 6
 ---
 
-import ResponseHead from "../Refund/_response-head.mdx";
+import ResponseHead from "../3_Refund/_response-head.mdx";
 import FundoutAbilityList from './_fundout-ability-list.mdx'
 
 
 # Payout Capability
-
 
 Before using the `Transfer to bank` API, please use this API to retrieve the supported payout methods and which parameters need to be passed for each payout method.
 
 
 ## API URL
 
-UAT : https://uat.test2pay.com/sgs/api/transfer/getFundoutAbilityList
-
-Production : https://api.payby.com/sgs/api/transfer/getFundoutAbilityList
+- UAT: https://uat.test2pay.com/sgs/api/transfer/getFundoutAbilityList
+- Production: https://api.payby.com/sgs/api/transfer/getFundoutAbilityList
 
 
 ## Request
 
 ### Http Header
-
----
 
 import RequestHeader from '../_request-header.mdx'
 
@@ -83,15 +79,12 @@ import RequestHeader from '../_request-header.mdx'
 
 ### Http Body
 
----
-
 **head**
 
 <details>
   <summary>Attributes</summary>
   <ResponseHead/>
 </details>
-<br/>
 
 **body**
 
@@ -108,7 +101,6 @@ If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`
   <FundoutAbilityList/>
 </details>
 
-<br/>
 
 ### Response Sample
 

@@ -5,40 +5,29 @@ toc_max_heading_level: 6
 
 import TransferToOrder from './_transfer-to-order.mdx'
 import BizContent from './_biz-content.mdx'
-import ResponseHead from '../Refund/_response-head.mdx'
+import ResponseHead from '../3_Refund/_response-head.mdx'
 import RequestHeader from '../_request-header.mdx'
 
 # Transfer
 
 This interface provides merchants with the ability to transfer funds to the PayBy user account (Account registered with mobile phone number in PayBy or Botim APP).
 
-<br/>
-
 ## API URL
 
-UAT : https://uat.test2pay.com/sgs/api/transfer/placeTransferOrder
-
-Production : https://api.payby.com/sgs/api/transfer/placeTransferOrder
-
-<br/>
+- UAT: https://uat.test2pay.com/sgs/api/transfer/placeTransferOrder
+- Production: https://api.payby.com/sgs/api/transfer/placeTransferOrder
 
 ## Request
 
 ### Http Header
 
----
-
 <details>
   <summary>Attributes</summary>
-
   <RequestHeader/>
 </details>
 
-<br/>
-
 ### Http Body
 
----
 
 **requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
 
@@ -46,15 +35,14 @@ Request time of the order. If the request time is more than 15 minutes away from
 
 Example value: 1581493898000
 
-<br/>
 
 **bizContent**   <font color = ' #7d8793'>Object</font>  
 
   <details open={true}>
   <summary>Attributes</summary>
-    <BizContent />
+    <BizContent/>
   </details>
-<br/>
+
 
 ### Request Sample
 
@@ -85,23 +73,17 @@ Example value: 1581493898000
 }
 ```
 
-<br/>
-
 ## Response
 
 ### Http Header
 
----
 
 **sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
 
 When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
 
-<br/>
 
 ### Http Body
-
----
 
 **head** 
 
@@ -109,7 +91,6 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
   <summary>Attributes</summary>
     <ResponseHead />
   </details>
-<br/>
 
 **body** 
 
@@ -124,10 +105,8 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 
   <details open={true}>
   <summary>Attributes</summary>
-    <TransferToOrder />
+    <TransferToOrder/>
   </details>
-
-<br/>
 
 ### Response Sample
 
