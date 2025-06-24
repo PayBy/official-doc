@@ -26,38 +26,28 @@ This interface allows you to adjust the expiration time for existing orders. The
 
 ### HTTP Body
 
-- Request Time
-  - Variable Name: `requestTime`
-  - Required: Yes
-  - Type: `Timestamp(3)`
-  - Example: `1581493898000`
-  - Description: Timestamp of the request in milliseconds
 
-- Business Content
-  - Variable Name: `bizContent`
-  - Required: Yes
-  - Type: `UpdateExpiredTimeRequest`
-  - Description: Contains the business-specific request data
-    - Merchant Order No
-      - Variable Name: `merchantOrderNo`
-      - Required: No
-      - Type: `String(64)`
-      - Example: `M965739182419`
-      - Description: Either `merchantOrderNo` or `orderNo` must be provided, but not both.
-  
-    - PayBy Order No
-      - Variable Name: `orderNo`
-      - Required: No
-      - Type: `String(32)`
-      - Example: `131404956265007836`
-      - Description: *(none)*
-  
-    - Expired Time
-      - Variable Name: `expiredTime`
-      - Required: Yes
-      - Type: `Timestamp(3)`
-      - Example: `1581412155966`
-      - Description: New expiration time in milliseconds (must be within 15 days)
+- **requestTime** <font color='#7d8793'>Timestamp(3)</font> <font color='#f19938'>Required</font>  
+  - Timestamp of the request in milliseconds.  
+  - Example value: `1581493898000`
+
+- **bizContent** <font color='#7d8793'>UpdateExpiredTimeRequest</font> <font color='#f19938'>Required</font>  
+  - Contains the business-specific request data.
+
+  - **merchantOrderNo** <font color='#7d8793'>String(64)</font>  
+    - Merchant's reference number of the request.  
+    - Either `merchantOrderNo` or `orderNo` must be provided, but not both.  
+    - Example value: `M965739182419`
+
+  - **orderNo** <font color='#7d8793'>String(32)</font>  
+    - PayBy's unique identification number of the order.  
+    - Example value: `131404956265007836`
+
+  - **expiredTime** <font color='#7d8793'>Timestamp(3)</font> <font color='#f19938'>Required</font>  
+    - New expiration time in milliseconds.  
+    - Must be within 15 days.  
+    - Example value: `1581412155966`
+
 
 ### Request Sample
 
@@ -88,32 +78,23 @@ This interface allows you to adjust the expiration time for existing orders. The
 
 ### HTTP Headers
 
-Signature
-  - Variable Name: `sign`
-  - Required: Yes
-  - Type: `String`
-  - Description: Response signature for verification
 
-> **Note:** The body field in the HTTP response is only returned when applyStatus is SUCCESS and code is 0.
+- **sign** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Response signature for verification.
+
+
+> **Note:** The body field in the HTTP response is only returned when `applyStatus` is `SUCCESS` and `code` is `0`.
 
 ### HTTP Body
 
-- Response Header
-  - Variable Name: `head`
-  - Required: Yes
-  - Type: `ResponseHeader`
-  - Description: Contains response status information
+- **head** <font color='#7d8793'>ResponseHeader</font> <font color='#f19938'>Required</font>  
+  - Contains response status information.
 
-- Response Body
-  - Variable Name: `body`
-  - Required: No
-  - Type: `GetOrderResponse`
-  - Description: Contains order details when request is successful
-    - Order Information
-      - Variable Name: `acquireOrder`
-      - Required: Yes
-      - Type: `AcquireOrder`
-      - Description: Complete order details including updated expiration time
+- **body** <font color='#7d8793'>GetOrderResponse</font>  
+  - Contains order details when the request is successful.
+
+  - **acquireOrder** <font color='#7d8793'>AcquireOrder</font> <font color='#f19938'>Required</font>  
+    - Complete order details including updated expiration time.
 
 ### Response Sample
 

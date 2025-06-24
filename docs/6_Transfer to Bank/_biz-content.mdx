@@ -1,123 +1,78 @@
 
-- **Merchant Order Number (`merchantOrderNo`)**
-  - **Required**: Yes  
-  - **Type**: String (max 64 characters)  
-  - **Example**: `Me23484`  
-  - **Description**: Unique identifier for the merchant's order.
+- **merchantOrderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Unique identifier for the merchant's order.  
+  - Example value: `Me23484`
 
-- **Beneficiary Name (`holderName`)**
-  - **Required**: Yes  
-  - **Type**: String (max 100 characters)  
-  - **Example**: `Bruce Lee`  
-  - **Description**: Name of the beneficiary. Transmitted securely (encrypted).
+- **holderName** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Name of the beneficiary. Transmitted securely (encrypted).  
+  - Example value: `Bruce Lee`
 
-- **IBAN (`iban`)**
-  - **Required**: No  
-  - **Type**: String (max 34 characters)  
-  - **Example**: `-`  
-  - **Description**: International Bank Account Number. Transmitted securely (encrypted).
+- **iban** <font color='#7d8793'>String</font>  
+  - International Bank Account Number. Transmitted securely (encrypted).  
+  - Example value: `-`
 
-- **SWIFT Code (`swiftCode`)**
-  - **Required**: No  
-  - **Type**: String (max 11 characters)  
-  - **Example**: `ARABAEADDER`  
-  - **Description**: Improves accuracy if provided.
+- **swiftCode** <font color='#7d8793'>String</font>  
+  - Improves accuracy if provided.  
+  - Example value: `ARABAEADDER`
 
-
-- **Beneficiary Address (`beneficiaryAddress`)**
-  - **Required**: No  
-  - **Type**: String (max 140 characters)  
-  - **Example**: `Liwa Street off Khaliffa Street`  
-  - **Description**: Transmitted securely.  
+- **beneficiaryAddress** <font color='#7d8793'>String</font>  
+  - Transmitted securely.  
     If the bank account is personal, this field is required.  
-    The combined length of `holderName` and `beneficiaryAddress` must not exceed 140 characters, or the transfer may fail.
+    The combined length of `holderName` and `beneficiaryAddress` must not exceed 140 characters, or the transfer may fail.  
+  - Example value: `Liwa Street off Khaliffa Street`
 
-- **Amount (`amount`)**
-  - **Required**: Yes  
-  - **Type**: Money  
-  - **Example**: `12.34`  
-  - **Description**: Payment amount for the transaction.
+- **amount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+  - Payment amount for the transaction.  
+  - Example value: `12.34`
 
-- **Payment Memo (`memo`)**
-  - **Required**: Yes  
-  - **Type**: String (max 128 characters)  
-  - **Example**: `Bonus`  
-  - **Description**: Remarks or notes for the payment.
+- **memo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Remarks or notes for the payment.  
+  - Example value: `Bonus`
 
-- **Notification URL (`notifyUrl`)**
-  - **Required**: No  
-  - **Type**: String (max 200 characters)  
-  - **Example**: `-`  
-  - **Description**: URL for receiving backend notifications.
+- **notifyUrl** <font color='#7d8793'>String</font>  
+  - URL for receiving backend notifications.  
+  - Example value: `-`
 
-- **Account Number (`accountNo`)**
-  - **Required**: No  
-  - **Type**: String (max 64 characters)  
-  - **Example**: `2000000000001`  
-  - **Description**: Transmitted securely (available since v2.1).
+- **accountNo** <font color='#7d8793'>String</font>  
+  - Transmitted securely (available since v2.1).  
+  - Example value: `2000000000001`
 
-- **Network Code (`networkCode`)**
-  - **Required**: No  
-  - **Type**: String (max 16 characters)  
-  - **Example**: `LOCAL`  
-  - **Description**: Defaults to `LOCAL` (available since v2.1).
+- **networkCode** <font color='#7d8793'>String</font>  
+  - Defaults to `LOCAL` (available since v2.1).  
+  - Example value: `LOCAL`
 
-- **Bank Name (`bankName`)**
-  - **Required**: No  
-  - **Type**: String (max 50 characters)  
-  - **Example**: *(empty)*  
-  - **Description**: Name of the bank.
+- **bankName** <font color='#7d8793'>String</font>  
+  - Name of the bank.  
+  - Example value: *(empty)*
 
-- **Country Code (`countryCode`)**
-  - **Required**: No  
-  - **Type**: String (max 16 characters)  
-  - **Example**: `AE`  
-  - **Description**: Defaults to `AE` (available since v2.1).
+- **countryCode** <font color='#7d8793'>String</font>  
+  - Defaults to `AE` (available since v2.1).  
+  - Example value: `AE`
 
+- **cityCode** <font color='#7d8793'>String</font>  
+  - Available since v2.3.  
+  - Example value: *(empty)*
 
-- **City Code (`cityCode`)**
-  - **Required**: No  
-  - **Type**: String (max 16 characters)  
-  - **Example**: *(empty)*  
-  - **Description**: Available since v2.3.
+- **fundoutCurrencyCode** <font color='#7d8793'>String</font>  
+  - Defaults to `AED` (available since v2.1).  
+  - Example value: `AED`
 
+- **fedwireCode** <font color='#7d8793'>String</font>  
+  - Fedwire code (available since v2.1).  
+  - Example value: `-`
 
-- **Payout Currency (`fundoutCurrencyCode`)**
-  - **Required**: No  
-  - **Type**: String (max 16 characters)  
-  - **Example**: `AED`  
-  - **Description**: Defaults to `AED` (available since v2.1).
+- **branchName** <font color='#7d8793'>String</font>  
+  - Name of the bank branch.  
+  - Example value: `-`
 
+- **intermediaryBank** <font color='#7d8793'>String</font>  
+  - Intermediary bank code (available since v2.1).  
+  - Example value: `-`
 
-- **Fedwire Code (`fedwireCode`)**
-  - **Required**: No  
-  - **Type**: String (max 9 characters)  
-  - **Example**: `-`  
-  - **Description**: Fedwire code (available since v2.1).
+- **beneficiaryType** <font color='#7d8793'>String</font>  
+  - Defaults to `IBAN` (available since v2.1).  
+  - Example value: `IBAN`
 
-
-- **Branch Name (`branchName`)**
-  - **Required**: No  
-  - **Type**: String (max 35 characters)  
-  - **Example**: `-`  
-  - **Description**: Name of the bank branch.
-
-
-- **Intermediary Bank (`intermediaryBank`)**
-  - **Required**: No  
-  - **Type**: String (max 11 characters)  
-  - **Example**: `-`  
-  - **Description**: Intermediary bank code (available since v2.1).
-
-- **Beneficiary Type (`beneficiaryType`)**
-  - **Required**: No  
-  - **Type**: String (max 16 characters)  
-  - **Example**: `IBAN`  
-  - **Description**: Defaults to `IBAN` (available since v2.1).
-
-- **Purpose Code (`purposeCode`)**
-  - **Required**: No  
-  - **Type**: String (max 16 characters)  
-  - **Example**: `COM`  
-  - **Description**: Code indicating the purpose of the transaction.
-
+- **purposeCode** <font color='#7d8793'>String</font>  
+  - Code indicating the purpose of the transaction.  
+  - Example value: `COM`

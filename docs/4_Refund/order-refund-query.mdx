@@ -7,39 +7,26 @@ import ResponseHead from './_response-head.mdx'
 import RefundOrder from './_refund-order.mdx'
 import RequestHeader from '../_request-header.mdx'
 
-
 # Retrieve Refund Order Details
 
 Checks the refund status after submitting the refund request.
 
-<br/>
-
-
 ## API URL
 
-UAT : https://uat.test2pay.com/sgs/api/acquire2/refund/getOrder
-
-Production : https://api.payby.com/sgs/api/acquire2/refund/getOrder
-
-<br/>
+- UAT : https://uat.test2pay.com/sgs/api/acquire2/refund/getOrder
+- Production : https://api.payby.com/sgs/api/acquire2/refund/getOrder
 
 ## Request
 
 ### Http Header
 
----
-
 <details>
   <summary>Attributes</summary>
-
   <RequestHeader/>
 </details>
 
-<br/>
-
 ### Http Body
 
----
 
 **requestTime**   <font color = ' #7d8793'>Timestamp</font>   <font color = '#f19938'>Required</font>
 
@@ -47,7 +34,6 @@ If the request time is more than 15 minutes away from the current time, the requ
 
 Example value: 1581493898000
 
-<br/>
 
 **bizContent**   <font color = ' #7d8793'>Object</font>  
 
@@ -61,7 +47,7 @@ Example value: 1581493898000
 
   Maximum length: `64`
   
-  <br/>
+  
 
 - **orderNo**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
 
@@ -71,8 +57,6 @@ Example value: 1581493898000
 
   Maximum length: `32`
   
-  <br/>
-
 
 ### Request Sample
 
@@ -94,19 +78,15 @@ Example value: 1581493898000
 }
 ```
 
-<br/>
-
 ## Response
 
 ### Http Header
 
----
 
 **sign**   <font color = ' #7d8793'>String</font>   <font color = '#f19938'>Required</font>
 
 When PayBy sends response, PayBy will use its own private key to sign the message, and the merchant uses PayBy 's public key to verify the signature. If the verification is passed, it proves that the response was sent by PayBy and not faked by others.
 
-<br/>
 
 ### Http Body
 
@@ -118,7 +98,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
   <summary>Attributes</summary>
     <ResponseHead />
   </details>
-<br/>
+
 
 **body** 
 
@@ -134,21 +114,19 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
   <summary>Attributes</summary>
     <RefundOrder />
   </details>
-<br/>
+
 - **refundSummary**   <font color = ' #7d8793'>Object</font>
 
   - **acquireAmount**   <font color = ' #7d8793'>Money</font>  <font color = '#f19938'>Required</font>
 
     The payment amount for the payment order.
 
-    <br/>
 
   - **remainRefundAmount**   <font color = ' #7d8793'>Money</font>  <font color = '#f19938'>Required</font>
 
     After this refund, how much refundable amount is left.
     
-    <br/>
-
+    
 ### Response Sample
 
 ```json

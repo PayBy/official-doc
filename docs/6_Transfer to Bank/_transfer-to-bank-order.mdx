@@ -1,189 +1,117 @@
 
-- **Request Time (`requestTime`)**
-	- **Required**: Yes  
-	- **Type**: Timestamp (milliseconds, 3-digit precision)  
-	- **Example**: `1581493898000`  
-	- **Description**: Time the request was initiated.
+- **requestTime** <font color='#7d8793'>Timestamp</font> <font color='#f19938'>Required</font>  
+  - Time the request was initiated.  
+  - Example value: `1581493898000`
 
-- **Merchant Order Number (`merchantOrderNo`)**
-	- **Required**: Yes  
-	- **Type**: String (max 64 characters)  
-	- **Example**: `S10000`  
-	- **Description**: Unique identifier for the merchant's order.
+- **merchantOrderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Unique identifier for the merchant's order.  
+  - Example value: `S10000`
 
-- **PayBy Order Number (`orderNo`)**
-	- **Required**: Yes  
-	- **Type**: String (max 32 characters)  
-	- **Example**: `O1000`  
-	- **Description**: Unique identifier for the PayBy transaction.
+- **orderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Unique identifier for the PayBy transaction.  
+  - Example value: `O1000`
 
-- **Product Name (`product`)**
-	- **Required**: Yes  
-	- **Type**: String (max 200 characters)  
-	- **Example**: `Transfer To Bank`  
-	- **Description**: Name of the product or service.
+- **product** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Name of the product or service.  
+  - Example value: `Transfer To Bank`
 
-- **Order Status (`status`)**
-	- **Required**: Yes  
-	- **Type**: *(unspecified)*  
-	- **Example**: `-`  
-	- **Description**: Current status of the order.
+- **status** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Current status of the order.  
+  - Example value: `-`
 
-- **Payment Information (`paymentInfo`)**
-	- **Required**: No  
-	- **Type**: `TransferToBankPaymentInfo` object:  
-		- **Payer Fee Amount**
-			- **Variable Name**: `payerFeeAmount`  
-			- **Required**: No  
-			- **Type**: Money  
-			- **Example**: `-`  
-			- **Description**: The fee charged to the sender (payer), including amount and currency.
-		
-		- **Estimated Arrival Time**
-			- **Variable Name**: `arrivalTime`  
-			- **Required**: No  
-			- **Type**: Timestamp(3)  
-			- **Example**: `1585133416000`  
-			- **Description**: Timestamp when the funds were expected to arrive or did arrive.
-	- **Example**: 
-		```json
-		"paymentInfo": {
-		    "arrivalTime": 1585133416000,
-		    "payerFeeAmount": {
-		        "amount": 0,
-		        "currency": "AED"
-		    }
-		}
-		```
-	- **Description**: Detailed information about the payment processing, especially related to fees and timing.
+- **paymentInfo** <font color='#7d8793'>TransferToBankPaymentInfo</font>  
+  - Detailed information about the payment processing, especially related to fees and timing.  
+  - Example value:
+    ```json
+    {
+      "arrivalTime": 1585133416000,
+      "payerFeeAmount": {
+        "amount": 0,
+        "currency": "AED"
+      }
+    }
+    ```
 
-- **Amount (`amount`)**
-	- **Required**: Yes  
-	- **Type**: Money  
-	- **Example**: *(empty)*  
-	- **Description**: Transaction amount.
+  - **payerFeeAmount** <font color='#7d8793'>Money</font>  
+    - The fee charged to the sender (payer), including amount and currency.  
+    - Example value: `-`
 
-- **Beneficiary Name (`holderName`)**
-	- **Required**: Yes  
-	- **Type**: String (max 64 characters)  
-	- **Example**: *(empty)*  
-	- **Description**: SHA-256 hash of the original name.
+  - **arrivalTime** <font color='#7d8793'>Timestamp (milliseconds, 3-digit precision)</font>  
+    - Timestamp when the funds were expected to arrive or did arrive.  
+    - Example value: `1585133416000`
 
-- **IBAN (`Iban`)**
-	- **Required**: Yes  
-	- **Type**: String (max 64 characters)  
-	- **Example**: *(empty)*  
-	- **Description**: SHA-256 hash of the original IBAN.
+- **amount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+  - Transaction amount.  
+  - Example value: *(empty)*
 
-- **SWIFT Code (`swiftCode`)**
-	- **Required**: No  
-	- **Type**: String (max 11 characters)  
-	- **Example**: *(empty)*  
-	- **Description**: SWIFT code of the beneficiary bank.
+- **holderName** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - SHA-256 hash of the original name.  
+  - Example value: *(empty)*
 
-- **Payment Memo (`memo`)**
-	- **Required**: No  
-	- **Type**: String (max 128 characters)  
-	- **Example**: *(empty)*  
-	- **Description**: Remarks or notes for the payment.
+- **Iban** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - SHA-256 hash of the original IBAN.  
+  - Example value: *(empty)*
 
-- **Notification URL (`notifyUrl`)**
-	- **Required**: No  
-	- **Type**: String (max 200 characters)  
-	- **Example**: *(empty)*  
-	- **Description**: URL for backend notifications.
+- **swiftCode** <font color='#7d8793'>String</font>  
+  - SWIFT code of the beneficiary bank.  
+  - Example value: *(empty)*
 
-- **Failure Description (`failDes`)**
-	- **Required**: No  
-	- **Type**: String (max 200 characters)  
-	- **Example**: `-`  
-	- **Description**: Reason for order failure.
+- **memo** <font color='#7d8793'>String</font>  
+  - Remarks or notes for the payment.  
+  - Example value: *(empty)*
 
-- **Beneficiary Address (`beneficiaryAddress`)**
-	- **Required**: No  
-	- **Type**: String (max 200 characters)  
-	- **Example**: *(empty)*  
-	- **Description**: SHA-256 hash of the original address.
+- **notifyUrl** <font color='#7d8793'>String</font>  
+  - URL for backend notifications.  
+  - Example value: *(empty)*
 
-- **Bank Reference (`bankReference`)**
-	- **Required**: No  
-	- **Type**: String (max 128 characters)  
-	- **Example**: *(empty)*  
-	- **Description**: Reference number associated with the bank.
+- **failDes** <font color='#7d8793'>String</font>  
+  - Reason for order failure.  
+  - Example value: `-`
 
-- **Payout Amount (`fundoutAmount`)**
-	- **Required**: No  
-	- **Type**: Money  
-	- **Example**: *(empty)*  
-	- **Description**: Amount credited to the beneficiary.
+- **beneficiaryAddress** <font color='#7d8793'>String</font>  
+  - SHA-256 hash of the original address.  
+  - Example value: *(empty)*
 
-- **Exchange Rate (`rate`)**
-	- **Required**: No  
-	- **Type**: BigDecimal  
-	- **Example**: *(empty)*  
-	- **Description**: Exchange rate used for the transaction.
+- **bankReference** <font color='#7d8793'>String</font>  
+  - Reference number associated with the bank.  
+  - Example value: *(empty)*
 
-- **Network Code (`networkCode`)**
-	- **Required**: Yes  
-	- **Type**: String (max 20 characters)  
-	- **Example**: `LOCAL`  
-	- **Description**: Financial network used.
+- **fundoutAmount** <font color='#7d8793'>Money</font>  
+  - Amount credited to the beneficiary.  
+  - Example value: *(empty)*
 
-- **Country Code (`countryCode`)**
-	- **Required**: No  
-	- **Type**: String (max 16 characters)  
-	- **Example**: `-`  
-	- **Description**: Country code of the beneficiary bank.
+- **rate** <font color='#7d8793'>BigDecimal</font>  
+  - Exchange rate used for the transaction.  
+  - Example value: *(empty)*
 
-- **Bank Name (`bankName`)**
-	- **Required**: No  
-	- **Type**: String (max 50 characters)  
-	- **Example**: `-`  
-	- **Description**: Name of the beneficiary bank.
+- **networkCode** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Financial network used.  
+  - Example value: `LOCAL`
 
-- **Fedwire Code (`fedwireCode`)**
-	- **Required**: No  
-	- **Type**: String (max 9 characters)  
-	- **Example**: `-`  
-	- **Description**: Fedwire account code.
+- **countryCode** <font color='#7d8793'>String</font>  
+  - Country code of the beneficiary bank.  
+  - Example value: `-`
 
-- **Intermediary Bank (`intermediaryBank`)**
-	- **Required**: No  
-	- **Type**: String (max 11 characters)  
-	- **Example**: `-`  
-	- **Description**: SWIFT code of the intermediary bank.
+- **bankName** <font color='#7d8793'>String</font>  
+  - Name of the beneficiary bank.  
+  - Example value: `-`
 
-- **Branch Name (`branchName`)**
-	- **Required**: No  
-	- **Type**: String (max 35 characters)  
-	- **Example**: *(empty)*  
-	- **Description**: Name of the bank branch.
+- **fedwireCode** <font color='#7d8793'>String</font>  
+  - Fedwire account code.  
+  - Example value: `-`
 
-- **Beneficiary Type (`beneficiaryType`)**
-	- **Required**: Yes  
-	- **Type**: String (max 16 characters)  
-	- **Example**: `IBAN`  
-	- **Description**: Type of beneficiary account.
+- **intermediaryBank** <font color='#7d8793'>String</font>  
+  - SWIFT code of the intermediary bank.  
+  - Example value: `-`
 
-- **Purpose Code (`purposeCode`)**
-	- **Required**: No  
-	- **Type**: String (max 16 characters)  
-	- **Example**: `COM`  
-	- **Description**: Code indicating the purpose of the transaction.
+- **branchName** <font color='#7d8793'>String</font>  
+  - Name of the bank branch.  
+  - Example value: *(empty)*
 
-	<br/>
-	
-	| Name | Description                                                  |
-	| ---- | ------------------------------------------------------------ |
-	| COM  | Commission                                                   |
-	| FIS  | Financial services                                           |
-	| GDS  | Goods Bought or Sold                                         |
-	| GMS  | Processing repair and maintenance services on goods          |
-	| GOS  | Government goods and services embassies etc.                 |
-	| GRI  | Government related income taxes, tariffs, capital transfers, etc. |
-	| IFS  | Information services                                         |
-	| IGT  | Inter group transfer                                         |
-	| INS  | Insurance services                                           |
-	| ITS  | Computer services                                            |
-	| OAT  | Own account transfer                                         |
+- **beneficiaryType** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Type of beneficiary account.  
+  - Example value: `IBAN`
 
+- **purposeCode** <font color='#7d8793'>String</font>  
+  - Code indicating the purpose of the transaction.  
+  - Example value: `COM`

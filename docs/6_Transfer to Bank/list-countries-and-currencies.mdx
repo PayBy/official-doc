@@ -5,11 +5,12 @@ toc_max_heading_level: 6
 
 import ResponseHead from "../4_Refund/_response-head.mdx";
 import FundoutAbilityList from './_fundout-ability-list.mdx'
+import RequestHeader from '../_request-header.mdx'
 
 
 # Payout Capability
 
-Before using the `Transfer to bank` API, please use this API to retrieve the supported payout methods and which parameters need to be passed for each payout method.
+> **Note:** Before using the [Transfer to Bank](./transfer-to-bank.mdx) API, use this API to retrieve the supported payout methods and which parameters need to be passed for each payout method.
 
 
 ## API URL
@@ -17,12 +18,9 @@ Before using the `Transfer to bank` API, please use this API to retrieve the sup
 - UAT: https://uat.test2pay.com/sgs/api/transfer/getFundoutAbilityList
 - Production: https://api.payby.com/sgs/api/transfer/getFundoutAbilityList
 
-
 ## Request
 
 ### Http Header
-
-import RequestHeader from '../_request-header.mdx'
 
 <details>
   <summary>Attributes</summary>
@@ -31,12 +29,11 @@ import RequestHeader from '../_request-header.mdx'
 
 ### Http Body
 
-**requestTime** <font color = ' #7d8793'>Timestamp</font> <font color = '#f19938'>Required</font>
-
-- **Required**: Mandatory  
-- **Type**: Timestamp(3)  
-- **Example**: `1581493898000`  
-- **Description**: The timestamp when the order request is initiated. If the request time differs from the current system time by more than 15 minutes, the request will be rejected. This helps prevent duplicate or outdated order submissions due to timeouts.
+- **requestTime** <font color='#7d8793'>Timestamp(3)</font> <font color='#f19938'>Required</font>  
+  - The timestamp when the order request is initiated.  
+  - If the request time differs from the current system time by more than 15 minutes, the request will be rejected.  
+  - This helps prevent duplicate or outdated order submissions due to timeouts.  
+  - Example value: `1581493898000`
 
 ### Request Sample
 
@@ -59,23 +56,21 @@ import RequestHeader from '../_request-header.mdx'
 ### Http Header
 
 - **Content (`Content-Language`)**  
-  - **Required**: Optional  
-  - **Type**: String(10)  
-  - **Example**: `en`  
-  - **Description**: `en` = English  
+  &lt;font color='#7d8793'&gt;String(10)&lt;/font&gt; &lt;font color='#f19938'&gt;Optional&lt;/font&gt;  
+  - The language of the content.  
+  - Example value: `en`  
+  - Description: `en` = English  
 
 - **Signature (`Sign`)**  
-  - **Required**: Mandatory  
-  - **Type**: String  
-  - **Example**: See the response sample below for a reference.  
-  - **Description**: PayBy signs each response using its private key. Merchants verify the signature using PayBy’s public key to ensure the response is authentic and not tampered with.  
+  &lt;font color='#7d8793'&gt;String&lt;/font&gt; &lt;font color='#f19938'&gt;Mandatory&lt;/font&gt;  
+  - PayBy signs each response using its private key.  
+  - Merchants verify the signature using PayBy’s public key to ensure the response is authentic and not tampered with.  
+  - Example value: See the response sample below for a reference.  
 
 - **Merchant ID (`Partner-Id`)**  
-  - **Required**: Mandatory  
-  - **Type**: String(12)  
-  - **Example**: See the response sample below for a reference.  
-  - **Description**: The unique identifier of the merchant.  
-
+  &lt;font color='#7d8793'&gt;String(12)&lt;/font&gt; &lt;font color='#f19938'&gt;Mandatory&lt;/font&gt;  
+  - The unique identifier of the merchant.  
+  - Example value: See the response sample below for a reference.  
 
 ### Http Body
 
@@ -91,16 +86,15 @@ import RequestHeader from '../_request-header.mdx'
 **<font color = '#f19938'>Notice</font>**
 
 Body is returned only when `applystatus` = `success`, and `code` = `0`.
+
 If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check the error against the error code table in the last section of this page and try again.
 
-- **fundoutAbilityList** <font color = ' #7d8793'>List</font>
+**fundoutAbilityList** <font color = ' #7d8793'>List</font>
 
-  
 <details open={true}>
-  <summary>Attributes of each item in the list</summary>
-  <FundoutAbilityList/>
+<summary>Attributes of each item in the list</summary>
+<FundoutAbilityList/>
 </details>
-
 
 ### Response Sample
 
@@ -163,7 +157,7 @@ If `applystatus` = `error` or `failed`; or `applystatus` = `success`, `code` !=`
 
 ## Response Codes
 
-| **Code** | **Message**              | **Cause**                                 | **Solution**                     |
+| **Code** | **Message**              | **Cause**                                 | **Workaround**                   |
 |----------|--------------------------|-------------------------------------------|----------------------------------|
 | 0        | SUCCESS                  | Success                                   | —                                |
 | 400      | INVALID_PARAMETER        | Invalid request parameters                | Adjust request parameters        |

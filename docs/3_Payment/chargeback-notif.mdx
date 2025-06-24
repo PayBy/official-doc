@@ -18,65 +18,33 @@ In the event of a chargeback, PayBy sends the relevant chargeback information to
 
 ## Notification Parameters
 
-**Chargeback Order**  
-- **Variable Name**: `acquireChargeback`  
-- **Required**: Yes  
-- **Type**: `AcquireChargeback`  
-- **Example**: *(none provided)*  
-- **Description**: Contains details of the chargeback order.
+- **acquireChargeback** <font color='#7d8793'>AcquireChargeback</font> <font color='#f19938'>Required</font>  
+  - Contains details of the chargeback order.
 
-### AcquireChargeback
+  - **chargebackTime** <font color='#7d8793'>Timestamp(3)</font> <font color='#f19938'>Required</font>  
+    - Timestamp indicating when the chargeback was initiated.  
+    - Example value: `1581493898000`
 
-- **Chargeback Time**  
-  - **Variable Name**: `chargebackTime`  
-  - **Required**: Yes  
-  - **Type**: `Timestamp(3)`  
-  - **Example**: `1581493898000`  
-  - **Description**: The timestamp indicating when the chargeback was initiated.
+  - **merchantOrderNo** <font color='#7d8793'>String(64)</font> <font color='#f19938'>Required</font>  
+    - Unique identifier for the merchant's original order.  
+    - Example value: `S10000`
 
+  - **orderNo** <font color='#7d8793'>String(32)</font> <font color='#f19938'>Required</font>  
+    - Unique identifier for the PayBy transaction order.  
+    - Example value: `O1000`
 
-- **Merchant Order No**  
-  - **Variable Name**: `merchantOrderNo`  
-  - **Required**: Yes  
-  - **Type**: `String(64)`  
-  - **Example**: `S10000`  
-  - **Description**: Unique identifier for the merchant's original order.
+  - **payAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+    - Total amount originally paid in the transaction.
 
-- **PayBy Order No**  
-  - **Variable Name**: `orderNo`  
-  - **Required**: Yes  
-  - **Type**: `String(32)`  
-  - **Example**: `O1000`  
-  - **Description**: Unique identifier for the PayBy transaction order.
+  - **chargebackAmount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
+    - Amount being reversed or refunded due to the chargeback.
 
-- **Payment Amount**  
-  - **Variable Name**: `payAmount`  
-  - **Required**: Yes  
-  - **Type**: `Money`  
-  - **Example**: *(none provided)*  
-  - **Description**: Total amount originally paid in the transaction.
+  - **caseType** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
+    - Classification of the chargeback case, such as fraud, dispute, or duplicate transaction.
 
-- **Chargeback Amount**  
-  - **Variable Name**: `chargebackAmount`  
-  - **Required**: Yes  
-  - **Type**: `Money`  
-  - **Example**: *(none provided)*  
-  - **Description**: Amount being reversed or refunded due to the chargeback.
-
-- **Case Type**  
-  - **Variable Name**: `caseType`  
-  - **Required**: Yes  
-  - **Type**: `String(200)`  
-  - **Example**: *(none provided)*  
-  - **Description**: Classification of the chargeback case, such as fraud, dispute, or duplicate transaction.
-
-- **Partner ID**  
-  - **Variable Name**: `partnerId`  
-  - **Required**: Yes  
-  - **Type**: `String(200)`  
-  - **Example**: `200000003232`  
-  - **Description**: Identifier for the partner or merchant associated with the transaction.
-
+  - **partnerId** <font color='#7d8793'>String(200)</font> <font color='#f19938'>Required</font>  
+    - Identifier for the partner or merchant associated with the transaction.  
+    - Example value: `200000003232`
 
 ## Response Parameters
 

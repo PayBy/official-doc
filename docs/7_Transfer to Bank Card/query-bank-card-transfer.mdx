@@ -25,30 +25,21 @@ This interface allows merchants to retrieve detailed results of bank card transf
   <details open={true}>
   <summary>Attributes</summary>
     <RequestHeader/>
-  </details>                         |
+  </details>                         
 
 ### HTTP Body
 
-- **Request Time**  
-    - **Parameter Name**: `requestTime`  
-    - **Required**: Required  
-    - **Type**: `Timestamp(3)`  
-    - **Example**: `1581493898000`  
-    - **Description**: Request timestamp in milliseconds
+- **requestTime** &lt;font color='#7d8793'&gt;Timestamp(3)&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+  - Request timestamp in milliseconds.  
+  - Example value: `1581493898000`  
 
-- **Business Content**  
-    - **Parameter Name**: `bizContent`
-        - **Merchant Order Number**  
-            - **Parameter Name**: `merchantOrderNo`  
-            - **Required**: Required  
-            - **Type**: `String(64)`  
-            - **Example**: `Me23484`  
-            - **Description**: Unique order identifier from merchant system
-    - **Required**: Required  
-    - **Type**: `GetTransferToBankOrderRequest`  
-    - **Example**: `-`  
-    - **Description**: Business-specific request content
+- **bizContent** &lt;font color='#7d8793'&gt;GetTransferToBankOrderRequest&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+  - Business-specific request content.  
+  - Example value: `-`  
 
+  - **merchantOrderNo** &lt;font color='#7d8793'&gt;String(64)&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+    - Unique order identifier from merchant system.  
+    - Example value: `Me23484`  
 
 ### Request Sample
 

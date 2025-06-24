@@ -20,104 +20,69 @@ When a VAM deposit occurs, PayBy sends the relevant deposit information to the m
 
 ### HTTP Header
 
-- Content-Type  
-  - Description: Specifies the media type and character encoding of the request body.  
-  - Type: `string`  
-  - Required: Yes  
-  - Example: `"application/json; charset=UTF-8"`
-
+- **Content-Type** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Specifies the media type and character encoding of the request body.  
+  - Example value: `"application/json; charset=UTF-8"`
 
 ### HTTP Body
 
-- notify_time
-  - Description: Time when the notification was sent, in `yyyyMMddHHmmss` format.  
-  - Type: `string`  
-  - Required: Yes  
-  - Example: `"20241224061738"`
+- **notify_time** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Time when the notification was sent, in `yyyyMMddHHmmss` format.  
+  - Example value: `"20241224061738"`
 
-- vamDepositOrder  
-  - Description: Object containing deposit order details.  
-  - Type: `object`  
-  - Required: Yes  
-  - Example: See nested fields below.
+- **vamDepositOrder** <font color='#7d8793'>Object</font> <font color='#f19938'>Required</font>  
+  - Object containing deposit order details.
 
-  - remitterInfo
-    - Description: Name of the person sending the deposit.  
-    - Type: `string`  
-    - Required: Yes  
-    - Example: `"MR HUA JIANG"`
+  - **remitterInfo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+    - Name of the person sending the deposit.  
+    - Example value: `"MR HUA JIANG"`
 
-  - amount 
-    - Description: Object containing the deposit amount and currency.  
-    - Type: `object`  
-    - Required: Yes  
-    - Example: See nested fields below.
+  - **amount** <font color='#7d8793'>Object</font> <font color='#f19938'>Required</font>  
+    - Object containing the deposit amount and currency.
 
-    - amount 
-      - Description: The numeric value of the deposit.  
-      - Type: `number`  
-      - Required: Yes  
-      - Example: `3000`
+    - **amount** <font color='#7d8793'>Number</font> <font color='#f19938'>Required</font>  
+      - Numeric value of the deposit.  
+      - Example value: `3000`
 
-    - currency  
-      - Description: Currency code of the deposit.  
-      - Type: `string`  
-      - Required: Yes  
-      - Example: `"AED"`
+    - **currency** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+      - Currency code of the deposit.  
+      - Example value: `"AED"`
 
-  - orderNo 
-    - Description: Unique identifier for the deposit order.  
-    - Type: `string`  
-    - Required: Yes  
-    - Example: `"131727701521486397"`
+  - **orderNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+    - Unique identifier for the deposit order.  
+    - Example value: `"131727701521486397"`
 
-  - referenceNo  
-    - Description: Reference number for tracking or reconciliation.  
-    - Type: `string`  
-    - Required: Yes  
-    - Example: `"UFOC0HQ008"`
+  - **referenceNo** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+    - Reference number for tracking or reconciliation.  
+    - Example value: `"UFOC0HQ008"`
 
-  - senderBankCode  
-    - Description: SWIFT code of the sender’s bank.  
-    - Type: `string`  
-    - Required: Yes  
-    - Example: `"BBMEAEADXXX"`
+  - **senderBankCode** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+    - SWIFT code of the sender’s bank.  
+    - Example value: `"BBMEAEADXXX"`
 
-  - depositDetails  
-    - Description: Additional details or remarks about the deposit.  
-    - Type: `string`  
-    - Required: No  
-    - Example: `"REF AEV260832YLQ4K5D FIS 56057df891a0449584dc5c8d84a6a138"`
+  - **depositDetails** <font color='#7d8793'>String</font>  
+    - Additional details or remarks about the deposit.  
+    - Example value: `"REF AEV260832YLQ4K5D FIS 56057df891a0449584dc5c8d84a6a138"`
 
-  - transactionTime  
-    - Description: Timestamp of the transaction in milliseconds since epoch.  
-    - Type: `number`  
-    - Required: Yes  
-    - Example: `1727701521000`
+  - **transactionTime** <font color='#7d8793'>Number</font> <font color='#f19938'>Required</font>  
+    - Timestamp of the transaction in milliseconds since epoch.  
+    - Example value: `1727701521000`
 
-  - status  
-    - Description: Status of the deposit transaction.  
-    - Type: `string`  
-    - Required: Yes  
-    - Example: `"SUCCESS"`
+  - **status** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+    - Status of the deposit transaction.  
+    - Example value: `"SUCCESS"`
 
-- _input_charset  
-  - Description: Character encoding used in the request.  
-  - Type: `string`  
-  - Required: Yes  
-  - Example: `"UTF-8"`
+- **_input_charset** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Character encoding used in the request.  
+  - Example value: `"UTF-8"`
 
-- notify_timestamp  
-  - Description: Timestamp when the notification was generated, in milliseconds since epoch.  
-  - Type: `number`  
-  - Required: Yes  
-  - Example: `1735006658869`
+- **notify_timestamp** <font color='#7d8793'>Number</font> <font color='#f19938'>Required</font>  
+  - Timestamp when the notification was generated, in milliseconds since epoch.  
+  - Example value: `1735006658869`
 
-- notify_id  
-  - Description: Unique identifier for the notification.  
-  - Type: `string`  
-  - Required: Yes  
-  - Example: `"202409300013926551"`
+- **notify_id** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
+  - Unique identifier for the notification.  
+  - Example value: `"202409300013926551"`
 
 ## Notification Sample
 

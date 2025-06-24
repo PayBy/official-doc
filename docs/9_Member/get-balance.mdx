@@ -28,23 +28,13 @@ This interface is used to query the member account balance.
 
 ### Http Body
 
-Request Time
-	- Variable Name: `requestTime`
-	- Required: Yes
-	- Type: `Timestamp(3)`
-	- Example: `1581493898000`
+- **requestTime** &lt;font color='#7d8793'&gt;Timestamp(3)&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+  - Example value: `1581493898000`  
 
-Business Content
-- Variable Name: `bizContent`
-- Required: Yes
-- Type: `GetMemberBalanceRequest`
+- **bizContent** &lt;font color='#7d8793'&gt;GetMemberBalanceRequest&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
 
-  `GetMemberBalanceRequest`:
-  - Currency
-    - Variable Name: `currencyCode`
-    - Required: Yes
-    - Type: `String`
-    - Example: `AED`
+  - **currencyCode** &lt;font color='#7d8793'&gt;String&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+    - Example value: `AED`  
 
 ### Request Sample
 
@@ -71,10 +61,8 @@ Http Body
 
 ### Http Header
 
-Signature
-- Variable Name: `sign`
-- Required: Yes
-- Type: `String`
+
+- **sign** &lt;font color='#7d8793'&gt;String&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
 
 > **Note**:  The **body** field in the HTTP Body is returned **only when**:
 	- `applyStatus` is `SUCCESS`
@@ -84,55 +72,35 @@ Signature
 
 #### Head
 
-- Apply Status
-	- Variable Name: `applyStatus`
-	- Type: `String`
-	- Example Value: `"SUCCESS"`
+- **applyStatus** &lt;font color='#7d8793'&gt;String&lt;/font&gt;  
+  - Example value: `"SUCCESS"`  
 
-- Code
-	- Variable Name: `code`
-	- Type: `String`
-	- Example Value: `"0"`
+- **code** &lt;font color='#7d8793'&gt;String&lt;/font&gt;  
+  - Example value: `"0"`  
 
-- Message
-	- Variable Name: `msg`
-	- Type: `String`
-	- Example Value: `"SUCCESS"`
+- **msg** &lt;font color='#7d8793'&gt;String&lt;/font&gt;  
+  - Example value: `"SUCCESS"`  
 
-- Success
-	- Variable Name: `success`
-	- Type: `Boolean`
-	- Example Value: `true`
+- **success** &lt;font color='#7d8793'&gt;Boolean&lt;/font&gt;  
+  - Example value: `true`  
 
-- Trace Code
-	- Variable Name: `traceCode`
-	- Type: `String`
-	- Example Value: `"375099"`
+- **traceCode** &lt;font color='#7d8793'&gt;String&lt;/font&gt;  
+  - Example value: `"375099"`  
 
 #### Body
 
-- Member ID
-	- Variable Name: `memberId`
-	- Type: `String`
-	- Example Value: `"200000030907"`
+- **memberId** &lt;font color='#7d8793'&gt;String&lt;/font&gt;  
+  - Example value: `"200000030907"`  
 
-- Balance List
-	- Variable Name: `balanceList`
-	- Type: `Array of Balance Objects`
+- **balanceList** &lt;font color='#7d8793'&gt;Array of Balance Objects&lt;/font&gt;  
 
-  - Available Balance
-	  - Variable Name: `availableBalance`
-	  - Type: `Object`
+  - **availableBalance** &lt;font color='#7d8793'&gt;Object&lt;/font&gt;  
 
-    - Amount
-      - Variable Name: `amount`
-      - Type: `Number`
-      - Example Value: `897993.88`
+    - **amount** &lt;font color='#7d8793'&gt;Number&lt;/font&gt;  
+      - Example value: `897993.88`  
 
-    - Currency
-      - Variable Name: `currency`
-      - Type: `String`
-      - Example Value: `"AED"`
+    - **currency** &lt;font color='#7d8793'&gt;String&lt;/font&gt;  
+      - Example value: `"AED"`  
 
 ### Response Sample
 
