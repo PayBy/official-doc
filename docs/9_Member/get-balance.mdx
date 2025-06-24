@@ -28,13 +28,13 @@ This interface is used to query the member account balance.
 
 ### Http Body
 
-- **requestTime** &lt;font color='#7d8793'&gt;Timestamp(3)&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
-  - Example value: `1581493898000`  
+- **requestTime** <font color='#7d8793'>Timestamp(3)</font> <font color='#f19938'>Required</font>
+	- Example value: `1581493898000`
 
-- **bizContent** &lt;font color='#7d8793'&gt;GetMemberBalanceRequest&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+- **bizContent** <font color='#7d8793'>GetMemberBalanceRequest</font> <font color='#f19938'>Required</font>
 
-  - **currencyCode** &lt;font color='#7d8793'&gt;String&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
-    - Example value: `AED`  
+	- **currencyCode** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>
+		- Example value: AED
 
 ### Request Sample
 
@@ -62,7 +62,7 @@ Http Body
 ### Http Header
 
 
-- **sign** &lt;font color='#7d8793'&gt;String&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+**sign** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>
 
 > **Note**:  The **body** field in the HTTP Body is returned **only when**:
 	- `applyStatus` is `SUCCESS`
@@ -72,35 +72,37 @@ Http Body
 
 #### Head
 
-- **applyStatus** &lt;font color='#7d8793'&gt;String&lt;/font&gt;  
+- **applyStatus** <font color='#7d8793'>String</font>  
   - Example value: `"SUCCESS"`  
 
-- **code** &lt;font color='#7d8793'&gt;String&lt;/font&gt;  
+- **code** <font color='#7d8793'>String</font>  
   - Example value: `"0"`  
 
-- **msg** &lt;font color='#7d8793'&gt;String&lt;/font&gt;  
+- **msg** <font color='#7d8793'>String</font>  
   - Example value: `"SUCCESS"`  
 
-- **success** &lt;font color='#7d8793'&gt;Boolean&lt;/font&gt;  
+- **success** <font color='#7d8793'>Boolean</font>  
   - Example value: `true`  
 
-- **traceCode** &lt;font color='#7d8793'&gt;String&lt;/font&gt;  
+- **traceCode** <font color='#7d8793'>String</font>  
   - Example value: `"375099"`  
+
 
 #### Body
 
-- **memberId** &lt;font color='#7d8793'&gt;String&lt;/font&gt;  
+- **memberId** <font color='#7d8793'>String</font>  
   - Example value: `"200000030907"`  
 
-- **balanceList** &lt;font color='#7d8793'&gt;Array of Balance Objects&lt;/font&gt;  
+- **balanceList** <font color='#7d8793'>Array of Balance Objects</font>  
 
-  - **availableBalance** &lt;font color='#7d8793'&gt;Object&lt;/font&gt;  
+  - **availableBalance** <font color='#7d8793'>Object</font>  
 
-    - **amount** &lt;font color='#7d8793'&gt;Number&lt;/font&gt;  
+    - **amount** <font color='#7d8793'>Number</font>  
       - Example value: `897993.88`  
 
-    - **currency** &lt;font color='#7d8793'&gt;String&lt;/font&gt;  
+    - **currency** <font color='#7d8793'>String</font>  
       - Example value: `"AED"`  
+
 
 ### Response Sample
 
