@@ -83,22 +83,23 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
   <details>
     <summary>Attributes</summary>
-    <ResponseHead />
+    <ResponseHead/>
   </details>
 
 **body**
 
-**<font color = '#f19938'>Notice </font>**
+> **<font color = '#f19938'>Notice </font>**
 
-Body is returned only when `applystatus` = `success`, and `code` = `0`.
-If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
+  - Body is returned only when `applystatus` = `success`, and `code` = `0`.
+  
+  - If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=`0` , that indicates an error. Please check errors and try again.
 
-- **payer** <span style={{color:" #7d8793"}}>Object</span>
+**payer** <span style={{color:" #7d8793"}}>Object</span>
 
-  <details open={true}>
-  <summary>Attributes</summary>
-  <AcquireOrderPayer />
-  </details>
+<details>
+<summary>Attributes</summary>
+<AcquireOrderPayer/>
+</details>
 
 #### Response Sample
 
