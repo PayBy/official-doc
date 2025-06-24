@@ -39,13 +39,11 @@ This interface allows merchants to transfer funds from their account to a specif
 
 ### HTTP Body
 
-- Request Time (`requestTime`)
-  - Required: Yes  
-  - Type: Timestamp (milliseconds, 3-digit precision)  
-  - Example: `1581493898000`  
-  - Description: Time the request was initiated.
+- **requestTime** &lt;font color='#7d8793'&gt;Timestamp &lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+  - Time the request was initiated.  
+  - Example value: `1581493898000`  
 
-- Business Content (`bizContent`)
+- **bizContent**:
 
   <details open={true}>
   <summary>Attributes</summary>
@@ -87,18 +85,15 @@ This interface allows merchants to transfer funds from their account to a specif
 
 ### HTTP Body
 
-Order Information  
-- Parameter Name: `transferBankCardOrder`  
-- Required: Required  
-- Type: `TransferBankCardOrder`   
-- Description: Complete transfer order details
+- **transferBankCardOrder** &lt;font color='#7d8793'&gt;TransferBankCardOrder&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+  - Complete transfer order details.  
 
-`TransferBankCardOrder`
+**TransferBankCardOrder**:
 
-<details open={true}>
-<summary>Attributes</summary>
-  <TransferBankCardOrder/>
-</details>
+  <details open={true}>
+  <summary>Attributes</summary>
+    <TransferBankCardOrder/>
+  </details>
 
 ### Response Sample
 
