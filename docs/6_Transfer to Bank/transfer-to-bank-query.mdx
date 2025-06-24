@@ -131,7 +131,8 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
                 "currency": "AED"
             },
             "holderName": "00d74f270d2251e8fa6e7f3b1ea06bd3b5f32dfe4719f9df60982c55b24e4898",
-            "iban": "1fc44f25c178c422f705054c669cfa6133f6dc8e1fe24b3d96f847667db8b92c", 			"beneficiaryAddress": "ec36f7ed0f1095595da9a506c1cb352c9b89b69c4ceb2c562128c7241661afde",
+            "iban": "1fc44f25c178c422f705054c669cfa6133f6dc8e1fe24b3d96f847667db8b92c", 			
+            "beneficiaryAddress": "ec36f7ed0f1095595da9a506c1cb352c9b89b69c4ceb2c562128c7241661afde",
             "memo": "Your memo",
             "merchantOrderNo": "M536433721888",
             "notifyUrl": "http://www.yoursite.com",
@@ -153,7 +154,7 @@ If `applystatus` = `error` or `failed`;  or `applystatus` = `success`, `code` !=
 }
 ```
 
-## Response Code
+## Response Codes
 
 The following response codes are used for the `status` field:
 
@@ -171,5 +172,3 @@ The following response codes are used for the `status` field:
 | 504      | SERVICE_TIMEOUT              | Service timeout                                | Retry later                       |
 | 601      | RISK_FAIL                    | Risk control validation failed                 | Adjust the business logic         |
 | 62004    | MERCHANT_ORDER_NO_NOT_EXIST  | The order with the given merchant order number does not exist | Check and correct the merchant order number |
-
-
