@@ -32,15 +32,15 @@ The Verify Bank Card Payout Eligibility API validates whether a bank card meets 
 
 ### HTTP Body
 
-- **requestTime** &lt;font color='#7d8793'&gt;Timestamp(3)&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+- **requestTime** <font color='#7d8793'>Timestamp(3)</font> <font color='#f19938'>Required</font>  
   - Unix timestamp in milliseconds.  
   - Example value: `1581493898000`  
 
-- **bizContent** &lt;font color='#7d8793'&gt;VerifyBankCardPayoutEligibilityRequest&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+- **bizContent** <font color='#7d8793'>VerifyBankCardPayoutEligibilityRequest</font> <font color='#f19938'>Required</font>  
   - Main request payload containing card verification details.  
   - Example value: *N/A*  
 
-  - **cardNumber** &lt;font color='#7d8793'&gt;String(50)&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+  - **cardNumber** <font color='#7d8793'>String(50)</font> <font color='#f19938'>Required</font>  
     - Encrypted card number for verification.  
     - Must be 12–19 numeric characters when decrypted.  
     - Example value: `-`  
@@ -76,12 +76,11 @@ The Verify Bank Card Payout Eligibility API validates whether a bank card meets 
 
 ### HTTP Body
 
-
-- **body** &lt;font color='#7d8793'&gt;VerifyBankCardPayoutEligibilityResponse&lt;/font&gt; &lt;font color='#f19938'&gt;Optional&lt;/font&gt;  
+- **body** <font color='#7d8793'>VerifyBankCardPayoutEligibilityResponse</font> <font color='#f19938'>Optional</font>  
   - Card verification result details.  
   - Example value: *N/A*  
 
-  - **cardPayoutsType** &lt;font color='#7d8793'&gt;CardPayoutsType&lt;/font&gt; &lt;font color='#f19938'&gt;Required&lt;/font&gt;  
+  - **cardPayoutsType** <font color='#7d8793'>CardPayoutsType</font> <font color='#f19938'>Required</font>  
     - Indicates the payout capability of the verified card.  
     - Example value: `STANDARD`  
 
@@ -90,7 +89,6 @@ The Verify Bank Card Payout Eligibility API validates whether a bank card meets 
     - **NOT_SUPPORTED**: Card does not support payout operations  
     - **FAST_FUNDS**: Card supports expedited payout processing  
     - **STANDARD**: Card supports standard payout processing  
-
 
 ## Response Sample
 
