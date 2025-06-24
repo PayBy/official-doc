@@ -1,6 +1,6 @@
 {
-  "label": "Transfer to bank",
-  "position": 11,
+  "label": "Transfer to Bank",
+  "position": 6,
   "link": {
     "description": "Transfer fund to a bank accout."
   }
