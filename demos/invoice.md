@@ -4,13 +4,16 @@ sidebar_position: 8
 
 # Invoice
 
-Create and send an invoice in minutes and choose to send your invoice via email, mobile number or shared link. After opening the invoice, your customer will be redirected to the hosted paypage to complete the payment.
+Create and send invoices in just minutes. You can deliver them via **email**, **mobile number**, or a **shared link**. Once your customer opens the invoice, they’ll be redirected to a secure **hosted paypage** to complete the payment.
 
-<br/>
+---
 
-Here is a sample, please use the bank account and PayBy account of test environment version to experience the payment process. Find the apk and account [here](/demos/testaccount).
+## Try the Demo
 
-<br/>
+Use the sample link below to experience the invoice payment flow:
 
-Sample Link: https://uat-paypage.test2pay.com/invoice?linkId=U3IvUz
+- Sample Invoice Link  *(Please open on a mobile browser for best results)*: https://uat-paypage.test2pay.com/invoice?linkId=U3IvUz
+
+- For testing, use the **PayBy app** and **bank account** credentials from the test environment.  
+  Find the APK and account details [here](/demos/testaccount).
 

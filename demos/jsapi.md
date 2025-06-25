@@ -4,18 +4,24 @@ sidebar_position: 6
 
 # JSAPI
 
-The product is to invoke BOTIM & PayBy built-in checkout. The merchant has an mobile website, when the customer opens the webpage in BOTIM through a message, the built-in checkout will be invoked to complete the order and purchase process.
+The **JSAPI** feature allows merchants to invoke the **built-in checkout** of **BOTIM** and **PayBy** directly from a mobile website. When a customer opens the merchant’s webpage via a message in the BOTIM app, the checkout process is triggered seamlessly, enabling quick and secure payment.
 
-<br/>
+---
 
-Sample:
+## Demo Experience
 
 ![jsapi](./pic/demojsapi.png)
 
-<br/>**Step 1**: Use PayBy app of test environment to scan the code above. Find the apk and account [here](/demos/testaccount).
+---
 
-<br/>
+## Step-by-Step Guide
 
-**Step 2**: You will be redirected to built-in checkout. Enter the password and complete the payment. If your customer opens your website in BOTIM app and pay, it's the same payment process.
+1. **Scan the QR Code**  
+   Use the **PayBy app (test environment)** to scan the code above.  
+   Find the APK and test account details [here](/demos/testaccount).
 
-<br/>
+2. **Complete the Payment**  
+   You’ll be redirected to the built-in checkout screen. Enter your password to finalize the transaction.
+
+> **Note:** *If your customer opens your website within the BOTIM app, the same built-in checkout flow will be triggered automatically.*
+
