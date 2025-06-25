@@ -5,13 +5,12 @@ id: paylink
 
 # Paylink
 
-Add the product and set the amount to generate a permanent link that can be repeatedly paid. You can put it on the website to share it on social media. 
+Create a **permanent payment link** by adding a product and setting an amount. This link can be reused for multiple payments and easily shared on your **website** or **social media platforms**.
 
-<br/>
+---
 
-Here is a sample, please use the bank account or PayBy account of test environment version to experience the payment process. Find the apk and account [here](/demos/testaccount).
+## Try the Demo
 
-<br/>
-
-Sample Link: https://uat-paypage.test2pay.com/paylink?linkId=20220909000000071
+- Sample Paylink *(Best viewed on a mobile browser)*: https://uat-paypage.test2pay.com/paylink?linkId=20220909000000071
+- To simulate the payment process, use the **PayBy app** or **bank account** credentials from the test environment. Find the APK and account details [here](/demos/testaccount).
 
