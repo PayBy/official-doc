@@ -56,7 +56,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          remarkPlugins: [mdxMermaid],
+          remarkPlugins: [require.resolve('mdx-mermaid')],
         },
         blog: {
           showReadingTime: true,
@@ -96,7 +96,7 @@ const config = {
             to: '/demos/overview',
             label: 'Demos',
             position: 'right',
-            activeBaseRegex: `/community/`,
+            activeBaseRegex: `/demos/`,
           },
         ],
       },
@@ -108,11 +108,11 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      /* algolia: {
+      algolia: {
    appId: 'MVWWMIWZ6I',
    apiKey: '3165d45e81d9ddffba1b3abc8cfeff4c',
    indexName: 'developers-payby',
- }, */
+ },
     }),
 };
 
