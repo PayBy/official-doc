@@ -5,22 +5,22 @@ toc_max_heading_level: 6
 slug: /createorder
 ---
 
-import AcquireOrder from "./_acquire-order.mdx";
+import AcquireOrder from "./OrderCreation/_acquire-order.mdx";
 import { useState } from "react";
-import AccessoryContent from './_accessory-content.mdx';
-import Paypage from "./_paypage.md";
-import E_WALLET from "./_e-wallet.md";
-import AutoDebit from "./_auto-debit.md";
-import DirectPay from "./_direct-pay.md";
-import DYNQR from "./_dynqr.md";
-import JSAPI from "./_jsapi.md";
-import QRPAY from "./_qrpay.md";
-import InAPP from "./_in-app.md";
-import CashTopUp from "./_cashtopup.md";
-import PAYANDSIGN from './_payandsign.md';
-import ResponseExample from './_response-example.md'
-import RequestHeader from '../../_request-header.mdx'
-import ResponseHead from '../../4_Refund/_response-head.mdx'
+import AccessoryContent from './OrderCreation/_accessory-content.mdx';
+import Paypage from "./OrderCreation/_paypage.md";
+import E_WALLET from "./OrderCreation/_e-wallet.md";
+import AutoDebit from "./OrderCreation/_auto-debit.md";
+import DirectPay from "./OrderCreation/_direct-pay.md";
+import DYNQR from "./OrderCreation/_dynqr.md";
+import JSAPI from "./OrderCreation/_jsapi.md";
+import QRPAY from "./OrderCreation/_qrpay.md";
+import InAPP from "./OrderCreation/_in-app.md";
+import CashTopUp from "./OrderCreation/_cashtopup.md";
+import PAYANDSIGN from './OrderCreation/_payandsign.md';
+import ResponseExample from './OrderCreation/_response-example.md'
+import RequestHeader from '../_request-header.mdx'
+import ResponseHead from '../4_Refund/_response-head.mdx'
 
 # Create Order
 ## Overview
@@ -55,7 +55,6 @@ If the same request is submitted more than once, the timestamp from the initial 
 
 <details>
   <summary>Attributes</summary>
-
   <RequestHeader/>
 </details>
 
@@ -103,42 +102,42 @@ The attributes are:
 
   - **currency** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
 
-  The code to identify the order currency. Currently only AED is supported.
+    The code to identify the order currency. Currently only AED is supported.
 
-  Example value: AED
+    Example value: AED
 
 
 - **expiredTime** <span style={{color:" #7d8793"}}>Timestamp</span>
 
-  The order expiration time, after which the payment cannot be completed.
+    The order expiration time, after which the payment cannot be completed.
 
-  The value should not exceed 48 hours after the request time. If no parameter is passed, the default expiration time is 2 hours after the request time.
+    The value should not exceed 48 hours after the request time. If no parameter is passed, the default expiration time is 2 hours after the request time.
 
-  Example value: 1581493898000
+    Example value: 1581493898000
 
 
 - **payeeMid** <span style={{color:" #7d8793"}}>String</span>
 
-  The payee can be another merchant. If no parameter is passed, the default payee is the merchant itself.
+    The payee can be another merchant. If no parameter is passed, the default payee is the merchant itself.
 
-  Example value: 200001200101
+    Example value: 200001200101
 
-  Maximum length: `12`
+    Maximum length: `12`
 
 
 - **paySceneCode** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}>Required</span>
 
-  Payment scene you are going to use. The possible values are `PAYPAGE`, `INAPP`, `EWALLET`, `DYNQR`, `QRPAY`, `JSAPI`, `AUTODEBIT`, `DIRECTPAY`, etc.
+    Payment scene you are going to use. The possible values are `PAYPAGE`, `INAPP`, `EWALLET`, `DYNQR`, `QRPAY`, `JSAPI`, `AUTODEBIT`, `DIRECTPAY`, etc.
 
-  Select from the drop down to get parameters that need to be passed in different scenarios.
+    Select from the drop down to get parameters that need to be passed in different scenarios.
   
-  <SwitchProduct/>
+    <SwitchProduct/>
 
 - **sharingParamList** <span style={{color:" #7d8793"}}>List</span> 
 
-  With every payment, you can split the funds between your merchant account and other PayBy member IDs. For example, a payment of 10 AED, if you share 1 AED to A and 2 AED to B, you will get 7 AED.
+    With every payment, you can split the funds between your merchant account and other PayBy member IDs. For example, a payment of 10 AED, if you share 1 AED to A and 2 AED to B, you will get 7 AED.
 
-  The attributes of each item in the list are:
+    The attributes of each item in the list are:
 
   - **sharingIdentitySeqId**   <font color = ' #7d8793'>Money</font>    <font color = '#f19938'>Required</font>
   
@@ -361,7 +360,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
   <details>
     <summary>Attributes</summary>
-    <ResponseHead />
+    <ResponseHead/>
   </details>
 
 **body**
@@ -372,7 +371,7 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 
   <details open={true}>
   <summary>Attributes</summary>
-    <AcquireOrder />
+    <AcquireOrder/>
   </details>
 
 
@@ -489,5 +488,3 @@ When PayBy sends response, PayBy will use its own private key to sign the messag
 | 62086 | INVALID_PAYEEMID                             | Invalid payeeMid                                             | Contact PayBy                               |
 | 62087 | INVALID_TYPE                                 | Invalid type                                                 | Adjust request parameters                   |
 | 62088 | MISSING_UNIQUE_ID                            | Missing uniqueId                                             | Adjust request parameters                   |
-
-
