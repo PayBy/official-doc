@@ -4,56 +4,54 @@ toc_max_heading_level: 6
 slug: /testaccount
 ---
 
+# Test Apps and Accounts
 
+All applications and accounts listed below are intended **only for testing in the test environment**. They are **not valid for use in the production environment**.
 
-# Test apps and accounts
+---
 
-All applications and accounts on this page are only used for testing in the test environment. Not available in production environment.
+## PayBy App (Android Only)
 
-<br/>
+To test scenarios like **Scan to Pay**, **Display QR Code to Pay**, and more, download the PayBy test app and use the credentials provided below.
 
-### PayBy app [Android only]
-
-To test **scan to pay** or **display QR code to pay** and other scenarios, you need to download the app and use the account below.
-
-- Click to download [Android APK](https://appdownload.payby.com/app-software-download/PAYBY/Payby_4.2.1_2024_09_12_09_59_uat.apk)
-
-- Scan to download Android APK
+- Download [Android APK](https://appdownload.payby.com/app-software-download/PAYBY/Payby_4.2.1_2024_09_12_09_59_uat.apk). 
+- Scan to download:  
 
   ![hostedflow](./pic/download.png)
 
-<br/>
+---
 
-### PayBy app account
+## PayBy App Test Accounts
 
-Use the accounts below to log in to PayBy app.
+Use the following test accounts to log in to the PayBy app:
 
-| Mobile Number    | Verification Code | Payment Password |
-| ---------------- | ----------------- | ---------------- |
-| +971 56 000 0000 | 123456            | 132580           |
-| +971 56 000 0001 | 123456            | 132580           |
-| +971 56 000 0002 | 123456            | 132580           |
-| +971 56 000 0003 | 123456            | 132580           |
-| +971 56 000 0004 | 123456            | 132580           |
-| +971 56 000 0005 | 123456            | 132580           |
-| +971 56 000 0006 | 123456            | 132580           |
-| +971 56 000 0007 | 123456            | 132580           |
-| +971 56 000 0008 | 123456            | 132580           |
-| +971 56 000 0009 | 123456            | 132580           |
+| **Mobile Number**   | **Verification Code** | **Payment Password** |
+|---------------------|------------------------|-----------------------|
+| +971 56 000 0000    | 123456                 | 132580                |
+| +971 56 000 0001    | 123456                 | 132580                |
+| +971 56 000 0002    | 123456                 | 132580                |
+| +971 56 000 0003    | 123456                 | 132580                |
+| +971 56 000 0004    | 123456                 | 132580                |
+| +971 56 000 0005    | 123456                 | 132580                |
+| +971 56 000 0006    | 123456                 | 132580                |
+| +971 56 000 0007    | 123456                 | 132580                |
+| +971 56 000 0008    | 123456                 | 132580                |
+| +971 56 000 0009    | 123456                 | 132580                |
 
-<br/>
+---
 
-### Bank account
+## Bank Account for Card Payment Testing
 
-To try card pay in the test environment, enter the card number and select the case you want to simulate, and your will be redirected to the corresponding result page.
+To simulate card payments in the test environment, use the card details below. You can select a scenario to test different outcomes.
 
 <div className='full-width-table-container'>
 
-| Card Number         | MONTH/YEAR | CVV2 | Simulation Case                      |
+| **Card Number**         | **MONTH/YEAR** | **CVV2** | **Simulation Case**                      |
 | ------------------- | ---------- | ---- | ------------------------------------ |
 | 5123 4500 0000 0008 | 05/31      | 100  | Success<br/>Pending<br/>Failure<br/> |
 
 </div>
+
 
 
 
