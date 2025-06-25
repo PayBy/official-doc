@@ -108,11 +108,11 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      algolia: {
+      /* algolia: {
    appId: 'MVWWMIWZ6I',
    apiKey: '3165d45e81d9ddffba1b3abc8cfeff4c',
    indexName: 'developers-payby',
- },
+ }, */
     }),
 };
 
