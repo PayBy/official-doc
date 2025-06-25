@@ -2,27 +2,31 @@
 sidebar_position: 10
 ---
 
-# Smart code
+# Smart Code
 
-Set the amount to generate a QR code. You can download from PayBy portal and print it and place the materiel in your store where customers can see it. The customer can scan the code by any scanner APP or PayBy to complete the payment.
+Generate a **QR code** by setting a payment amount. You can download the code from the **PayBy portal**, print it, and place it in your store where customers can easily see and scan it.
 
-<br/>
+Customers can scan the QR code using **any scanner app** or the **PayBy app** to complete their payment quickly and securely.
 
-Here is a sample, please use the PayBy app of test environment version to scan the code and experience the payment process. Find the apk and account [here](/demos/testaccount).
+---
 
-<br/>
+## Try the Demo
 
 ![1](./pic/smartcode.png)
 
-<br/>
+---
 
-**Step 1**: Use PayBy app of test environment to scan the code above ( Unable to scan code with camera in test environment). Find the apk and account [here](/demos/testaccount).
+## Step-by-Step Guide
 
-<br/>
+1. **Scan the QR Code**  
+   Use the **PayBy app (test environment)** to scan the code above.  
+   > **Note:** *Camera scanning may not work in the test environment.*  
+   
+   Find the APK and test account details [here](/demos/testaccount).
 
-**Step 2**: You will be redirected to built-in checkout. Enter the password and complete the payment.
+2. **Complete the Payment**  
+   You will be redirected to the built-in checkout screen. Enter your password to finalize the transaction.
 
-<br/>
 
 
 
