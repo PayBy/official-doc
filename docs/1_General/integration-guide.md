@@ -1,6 +1,8 @@
 ---
+id: integration-guide
 sidebar_position: 1
 toc_max_heading_level: 6
+slug: /integration-guide
 ---
 
 # Get Started
