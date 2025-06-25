@@ -2,28 +2,33 @@
 sidebar_position: 6
 ---
 
-# Hosted paypage
+# Hosted Paypage
 
-Iframe Payment Page is a website prepared by PayBy and can be embedded in your website. 
+The **Iframe Payment Page** is a secure checkout interface hosted by **PayBy**, which can be seamlessly embedded into your website to enable smooth payment processing.
 
-<br/>
+---
 
-Sample Link: https://uat-m.test2pay.com/uat/payment?code=PAYPAGE
+## Demo Access
 
-You can also scan code to get the link above:
+- **Sample Link**:  
+  Open Hosted Paypage *(use a mobile browser for best experience)*: https://uat-m.test2pay.com/uat/payment?code=PAYPAGE
 
-![1](./pic/demopaypage.png)
+- **Scan to Access**:  
 
-<br/>
+  ![1](./pic/demopaypage.png)
 
-**Step 1**: Visit the link above.
+---
 
-<br/>
+## Step-by-Step Guide
 
-**Step 2**: If you have opened the page of the link about, enter payment amount and click **Pay Now**.
+1. **Open the Demo Link**  
+   Visit the sample link above to access the hosted payment page.
 
-<br/>
+2. **Enter Payment Details**  
+   Input the payment amount and click **Pay Now**.
 
-**Step 3**: Now you have been redirected to the PayBy hosted checkout page. Please use the bank account and PayBy account of test environment version to experience the payment process. Find the apk and account [here](/demos/testaccount).
+3. **Complete the Transaction**  
+   You will be redirected to the **PayBy hosted checkout** page. Use the test environment’s bank and PayBy account credentials to simulate the payment process.  
 
-<br/>
+   Find the APK and test account details [here](/demos/testaccount).
+
