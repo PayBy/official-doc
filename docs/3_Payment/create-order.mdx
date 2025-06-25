@@ -21,6 +21,60 @@ import ResponseExample from './OrderCreation/_response-example.md'
 import RequestHeader from '../_request-header.mdx'
 import ResponseHead from '../4_Refund/_response-head.mdx'
 
+export const PRODUCTS_ENUM = {
+  PAYPAGE: "PAYPAGE",
+  IN_APP_SDK: "INAPP",
+  E_WALLET: "EWALLET",
+  DYNQR: "DYNQR",
+  QRPAY: "QRPAY",
+  JSAPI: "JSAPI",
+  AUTODEBIT: "AUTODEBIT",
+  DIRECTPAY: "DIRECTPAY",
+  CASHTOPUP:"CASHTOPUP",
+  PAYANDSIGN:"PAYANDSIGN"
+};
+
+export const PRODUCTS_MAP = {
+[PRODUCTS_ENUM.PAYPAGE]: Paypage,
+[PRODUCTS_ENUM.E_WALLET]: E_WALLET,
+[PRODUCTS_ENUM.DYNQR]: DYNQR,
+[PRODUCTS_ENUM.QRPAY]: QRPAY,
+[PRODUCTS_ENUM.JSAPI]: JSAPI,
+[PRODUCTS_ENUM.AUTODEBIT]: AutoDebit,
+[PRODUCTS_ENUM.DIRECTPAY]: DirectPay,
+[PRODUCTS_ENUM.IN_APP_SDK]: InAPP,
+[PRODUCTS_ENUM.CASHTOPUP]:CashTopUp,
+[PRODUCTS_ENUM.PAYANDSIGN]:PAYANDSIGN
+};
+
+export function SwitchProduct() {
+  const [product, setProduct] = useState(PRODUCTS_ENUM.PAYPAGE);
+  const ProductComponent = PRODUCTS_MAP[product];
+  return (<div>
+      <label htmlFor="product" className="">
+        Payscene codes:
+      </label>
+      &nbsp;
+      <select name="product" id="product" value={product} onChange={(e) => setProduct(e.target.value)}>
+        {Object.values(PRODUCTS_ENUM).map((s) => (
+          <option key={s} value={s}>
+            {s}
+          </option>
+        ))}
+      </select>
+      <br />
+      <br />
+​      <b>paySceneParams</b> <span style={{ color: " #7d8793" }}>String</span>
+​      <details open={true}>
+​        <summary>
+​          Attributes
+​        </summary>
+​        <ProductComponent />
+​      </details>
+​    </div>
+  );
+}
+
 # Create Order
 ## Overview
 
@@ -130,7 +184,7 @@ The attributes are:
 
     Select from the drop down to get parameters that need to be passed in different scenarios.
   
-    <SwitchProduct/>
+    <SwitchProduct />
 
 - **sharingParamList** <span style={{color:" #7d8793"}}>List</span> 
 
