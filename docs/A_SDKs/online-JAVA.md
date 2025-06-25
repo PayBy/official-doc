@@ -1,115 +1,101 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 toc_max_heading_level: 6
 ---
 
-# Online payment SDK - JAVA
+# Online Payment SDK - Java
 
-### Description
+## Description
 
 This guide is written for application developers who want to integrate the PayBy payment solution.
 
-<br/>
-
-### SDK Download
+## SDK Download
 
 https://github.com/PayBy/PayBy-java
 
-<br/>
+## Prerequisites
 
-### Pre-Condition
+### JDK Requirements
 
-#### JDK
+JDK versions ≥ 1.8 are required.
 
-Versions ≥ 1.8 are required.
+Execute the validation command on the command line: `java -version`
 
-Executing validation commands on the command line **java -version**, return similar content:
+Expected output:
 
 ```shell
 java version "1.8.0_191"
-
 Java(TM) SE Runtime Environment (build 1.8.0_191-b12)
-
 Java HotSpot(TM) 64-Bit Server VM (build 25.191-b12, mixed mode)
 ```
 
-<br/>
+### Maven Requirements
 
-#### Maven
+Maven versions ≥ 3.0 are required.
 
-Versions ≥ 3.0 are required.
+Execute the validation command on the command line: `mvn –version`
 
-Executing validation commands on the command line **mvn –version**return similar content:
+Expected output:
 
 ```shell
 Apache Maven 3.6.0 (97c98ec64a1fdfee7767ce5ffb20918da4f719f3; 2018-10-25T02:41:47+08:00)
-
 Maven home: D:\apache-maven-3.6.0\bin\..
-
 Java version: 1.8.0_191, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jdk1.8.0_191\jre
-
 Default locale: zh_CN, platform encoding: GBK
-
 OS name: "windows 7", version: "6.1", arch: "amd64", family: "windows"
 ```
 
-<br/>
+### Maven Repository Setup
 
-#### Import maven repository
+Choose between importing a local library or remote library according to your development environment.
 
-Import local library or remote library, choose by yourself according to the user's R & D environment.
+#### Download Dependencies
 
-<br/>
+Clone the repository:
 
-#### Download dependency
-
+```shell
 git clone https://github.com/PayBy/PayBy-java.git
+```
 
-Open download directory: PayBy-java/dependency
+Navigate to the download directory: `PayBy-java/dependency`
 
-<br/>
+#### Install Local Repository
 
-#### Install local repository
-
-Move to the ‘PayBy-java/dependency’ subdirectory.
+Move to the `PayBy-java/dependency` subdirectory and execute:
 
 ```shell
 mvn install:install-file -Dfile=payby-openapi-1.0.17.jar -DpomFile=payby-openapi-1.0.17.pom
 mvn install:install-file -Dfile=payby-sdk-1.3.21.jar -DpomFile=payby-sdk-1.3.21.pom
 ```
 
-<br/>
-
-#### Deploy remote repository
+#### Deploy Remote Repository
 
 ```shell
 mvn deploy:deploy-file -Durl=company maven repository url path -DrepositoryId=repository name -Dfile=payby-openapi-1.0.17.jar -DpomFile=payby-openapi-1.0.17.pom
 mvn deploy:deploy-file -Durl=company maven repository url path -DrepositoryId=repository name -Dfile=payby-sdk-1.3.21.jar -DpomFile=payby-sdk-1.3.21.pom
 ```
 
-<br/>
+#### Project Maven Dependency
 
-#### Project import maven dependency
+Add the following dependency to your project:
 
 ```xml
 <dependency>
     <groupId>com.payby.gateway</groupId>
     <artifactId>payby-sdk</artifactId>
     <version>1.3.21</version>
- </dependency>
+</dependency>
 ```
 
-<br/>
+#### SDK Cascade Dependencies
 
-#### SDK cascade depends on specific content
-
-The specific content varies according to the actual version executed at the project root.
+To view the specific dependency tree, execute at the project root:
 
 ```shell
 mvn dependency:tree
 ```
 
-Get results:
+Expected results:
 
 ```shell
 com.payby.gateway:payby-sdk:jar:1.3.21
@@ -137,13 +123,11 @@ com.payby.gateway:payby-sdk:jar:1.3.21
  \- com.squareup.okhttp3:logging-interceptor:jar:3.11.0:compile
 ```
 
-<br/>
+#### Bouncycastle Version Notes
 
-#### Bouncycastle version special description
+Due to multiple versions of the Bouncycastle Library, we use the following versions:
 
-Because many versions of Bouncycastle Library, The version we use:
-
-```shell
+```xml
 <dependency>
     <groupId>org.bouncycastle</groupId>
     <artifactId>bcprov-jdk15on</artifactId>
@@ -160,19 +144,15 @@ Because many versions of Bouncycastle Library, The version we use:
 </dependency>
 ```
 
-Users can switch to other equivalent Maven library dependencies according to the actual situation.
+Users can switch to other equivalent Maven library dependencies according to their specific requirements.
 
-Using view query provided by mvn dependency.
+Use `mvn dependency:tree` to view dependencies. If your host project uses BC dependencies and conflicts arise, consider using Maven's exclude method to remove the old version.
 
-The host project uses the BC dependency. If there is a conflict, you can consider using the Maven exclude method to remove the old version.
+## Digital Signature
 
-<br/>
+### Preparing Keys
 
-### Digital signature
-
-#### Preparing keys
-
-Recommended operation for private key generation
+Recommended operations for private key generation:
 
 ```shell
 ### Generate private key
@@ -188,21 +168,16 @@ openssl rsa -in PayBy_key.pem -out PayBy_key_public.pem -pubout
 # PayBy_key.pem Private key generated in the 1st step
 # PayBy_key_Private.pem
 openssl pkcs8 -in PayBy_key.pem -topk8 -nocrypt -out PayBy_key_private.pem
-
 ```
 
-<br/>
+### Signature Algorithm
 
-#### Signature algorithm
-
-1. Using SHA256WithRSA for signature algorithm. The merchant itself issues the private key.
+1. Uses SHA256WithRSA for signature algorithm. The merchant issues the private key.
 2. Original signature rule: Requesting the original content of the body.
-3. Using UTF-8 to encode the original content.
-4. Using Base64 to encode the resulting signature.
+3. Uses UTF-8 to encode the original content.
+4. Uses Base64 to encode the resulting signature.
 
-<br/>
-
-#### Encryption Algorithm
+### Encryption Algorithm
 
 1. The encryption algorithm uses RSA public-key encryption, and PayBy issues the public key.
 2. The encrypted field should not be too large, generally more than 200 bytes.
@@ -210,22 +185,18 @@ openssl pkcs8 -in PayBy_key.pem -topk8 -nocrypt -out PayBy_key_private.pem
 4. UTF-8 encoding is used for plaintext.
 5. The encryption result is encoded with Base64.
 
-<br/>
+### Verify Signature Algorithm
 
-#### Verify Signature Algorithm
-
-1. Using SHA256WithRSA to verify the signature algorithm. The RSA public key is downloaded from the PayBy merchant console.
-2. Using Base64 to decode the signature, i.e., decoded_sign_data.
-3. Using UTF-8 to decode the original content, i.e. decoded_content_data.
+1. Uses SHA256WithRSA to verify the signature algorithm. The RSA public key is downloaded from the PayBy merchant console.
+2. Uses Base64 to decode the signature, i.e., decoded_sign_data.
+3. Uses UTF-8 to decode the original content, i.e. decoded_content_data.
 4. Verify signature using parameters as listed (rsa_public_key, decoded_sign_data, decoded_content_data).
 
-<br/>
+## API Description
 
-### API Description
+### Function Descriptions
 
-#### Function Description
-
-**1. PayByClient**
+#### 1. PayByClient
 
 ```java
 public static PayByClient getPayByClient()
@@ -271,9 +242,7 @@ public static List<Pair<String, String>> getFixHeaders() {
 }
 ```
 
-<br/>
-
-**2. Order creation**
+#### 2. Order Creation
 
 ```java
     PayByClient client = getPayByClient();
@@ -317,14 +286,11 @@ public static List<Pair<String, String>> getFixHeaders() {
     Assert.assertTrue(SgsApi.checkResponse(responseWrap));
     PlaceOrderResponse body = responseWrap.getBody();
     System.out.println("placeOrder body=>" + JSON.toJSONString(body));
-
 ```
 
-<br/>
+#### 3. Order Cancellation
 
-**3. Order cancellation**
-
-ByMerchantOrderNo
+**By Merchant Order No**
 
 ```java
     PayByClient client = getPayByClient();
@@ -342,7 +308,7 @@ ByMerchantOrderNo
     System.out.println("cancelOrder body=>" + JSON.toJSONString(body));
 ```
 
-ByOrderNo
+**By Order No**
 
 ```java
     PayByClient client = getPayByClient();
@@ -360,11 +326,9 @@ ByOrderNo
     System.out.println("cancelOrder body=>" + JSON.toJSONString(body));
 ```
 
-<br/>
+#### 4. Order Query
 
-**4. Order query**
-
-ByMerchantOrderNo
+**By Merchant Order No**
 
 ```java
     PayByClient client = getPayByClient();
@@ -382,7 +346,7 @@ ByMerchantOrderNo
     System.out.println("getOrder body=>" + JSON.toJSONString(body));
 ```
 
-ByOrderNo
+**By Order No**
 
 ```java
     PayByClient client = getPayByClient();
@@ -400,11 +364,9 @@ ByOrderNo
     System.out.println("getOrder body=>" + JSON.toJSONString(body));
 ```
 
-<br/>
+#### 5. Order Refund
 
-**5. Order refund**
-
-ByOriginMerchantOrderNo
+**By Origin Merchant Order No**
 
 ```java
     PayByClient client = getPayByClient();
@@ -433,7 +395,7 @@ ByOriginMerchantOrderNo
     System.out.println("refundOrder body=>" + JSON.toJSONString(body));
 ```
 
-ByOriginOrderNo
+**By Origin Order No**
 
 ```java
     PayByClient client = getPayByClient();
@@ -462,11 +424,9 @@ ByOriginOrderNo
     System.out.println("refundOrder body=>" + JSON.toJSONString(body));
 ```
 
-<br/>
+#### 6. Order Refund Query
 
-**6. Order refund query**
-
-By Merchant Order No.
+**By Merchant Order No**
 
 ```java
     PayByClient client = getPayByClient();
@@ -484,7 +444,7 @@ By Merchant Order No.
     System.out.println("getRefundOrder body=>" + JSON.toJSONString(body));
 ```
 
-By Order No.
+**By Order No**
 
 ```java
     PayByClient client = getPayByClient();
@@ -503,9 +463,7 @@ By Order No.
     System.out.println("getRefundOrder body=>" + JSON.toJSONString(body));
 ```
 
-<br/>
-
-**7. Transfer**
+#### 7. Transfer
 
 ```java
     PayByClient client = getPayByClient();
@@ -542,9 +500,7 @@ By Order No.
     System.out.println("transfer body=>" + JSON.toJSONString(body));
 ```
 
-<br/>
-
-**8. Transfer query**
+#### 8. Transfer Query
 
 ```java
     PayByClient client = getPayByClient();
@@ -563,9 +519,7 @@ By Order No.
     System.out.println("getTransferOrder body=>" + JSON.toJSONString(body));
 ```
 
-<br/>
-
-**9. Transfer to bank**
+#### 9. Transfer To Bank
 
 ```java
     PayByClient client = getPayByClient();
@@ -600,9 +554,7 @@ By Order No.
     System.out.println("transfer2bank body=>" + JSON.toJSONString(body));
 ```
 
-<br/>
-
-**10. Transfer to bank query**
+#### 10. Transfer To Bank Query
 
 ```java
     PayByClient client = getPayByClient();
@@ -622,9 +574,7 @@ By Order No.
     System.out.println("getTransferToBankOrder body=>" + JSON.toJSONString(body));
 ```
 
-<br/>
-
-**11. Order revoke**
+#### 11. Order Revoke
 
 ```java
 PayByClient client = getPayByClient();
@@ -642,9 +592,7 @@ PayByClient client = getPayByClient();
         System.out.println("revokeOrder body=>" + JSON.toJSONString(body));
 ```
 
-<br/>
-
-**12. Protocol apply**
+#### 12. Protocol Apply
 
 ```java
  PayByClient client = getPayByClient();
@@ -681,9 +629,7 @@ PayByClient client = getPayByClient();
         System.out.println("applyProtocol body=>" + JSON.toJSONString(body));
 ```
 
-<br/>
-
-**13. Protocol query**
+#### 13. Protocol Query
 
 ```java
  PayByClient client = getPayByClient();
@@ -703,11 +649,9 @@ PayByClient client = getPayByClient();
         System.out.println("getProtocol body=>" + JSON.toJSONString(body));
 ```
 
-<br/>
+#### 14. Result Notification
 
-**14. Result notification**
-
-Verify signature
+**Verify signature**
 
 ```java
     // setting payby publicKey path
@@ -726,7 +670,7 @@ Verify signature
 
 ```
 
-Servlet receives messages
+**Servlet receives messages**
 
 ```java
  @Override
@@ -756,10 +700,9 @@ Servlet receives messages
   }
 ```
 
-<br/>
+#### 15. Download Statement
 
-**15. Download Statement**
-Order Statement
+**Order Statement**
 
 ```java
     GetStatementRequest req = new GetStatementRequest();
@@ -777,7 +720,7 @@ Order Statement
     System.out.println("getOrderStatement file size=>" + responseWrap.getBody().length());
 ```
 
-Fund Statement
+**Fund Statement**
 
 ```java
     GetStatementRequest req = new GetStatementRequest();
@@ -795,9 +738,7 @@ Fund Statement
     System.out.println("getFundStatement file size=>" + responseWrap.getBody().length());
 ```
 
-<br/>
-
-**16. InApp Signature**
+#### 16. InApp Signature
 
 ```java
     InappSignContent content = new InappSignContent();
