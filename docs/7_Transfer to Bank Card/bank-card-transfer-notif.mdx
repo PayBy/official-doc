@@ -24,7 +24,8 @@ The actual arrival time depends on the settlement time of each bank and is subje
    If PayBy receives an invalid response or no response (timeout) from the merchant system during backend notification, it will consider the attempt failed and retry the notification.  
    - **Retry Policy**: Up to 7 attempts  
    - **Retry Intervals**: 2, 10, 10, 60, 120, 360, and 900 minutes  
-   Please note: PayBy does **not guarantee** final delivery success.
+
+   > **Note:** PayBy does **not guarantee** final delivery success.
 
 3. **Unclear Order Status**  
    If the payment result is not received or the order status is unclear, merchants are advised to actively query the order status using the **transfer query interface**.
@@ -39,10 +40,8 @@ The actual arrival time depends on the settlement time of each bank and is subje
 
 The notification request format is the same as ordinary requests, using the HTTP protocol with HTTP headers and a JSON object in the HTTP body.
 
-
 - **transferBankCardOrder** <font color='#7d8793'>TransferBankCardOrder</font> <font color='#f19938'>Required</font>  
   - Contains the details of the bank card transfer order.  
-  - Example value: `-`  
 
 
  <details open={true}>
