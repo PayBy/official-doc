@@ -89,7 +89,7 @@ const config = {
             type: 'doc',
             position: 'right',
             label: 'APIs',
-            docId:'General/integration-guide'
+            docId:'Payment/OrderCreation/createOrder'
           },
           // {to: '/blog', label: 'Blog', position: 'right'},
           {
