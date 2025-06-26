@@ -38,12 +38,10 @@ The Verify Bank Card Payout Eligibility API validates whether a bank card meets 
 
 - **bizContent** <font color='#7d8793'>VerifyBankCardPayoutEligibilityRequest</font> <font color='#f19938'>Required</font>  
   - Main request payload containing card verification details.  
-  - Example value: *N/A*  
 
   - **cardNumber** <font color='#7d8793'>String(50)</font> <font color='#f19938'>Required</font>  
     - Encrypted card number for verification.  
     - Must be 12–19 numeric characters when decrypted.  
-    - Example value: `-`  
 
 ## Request Sample
 
@@ -77,13 +75,12 @@ The Verify Bank Card Payout Eligibility API validates whether a bank card meets 
 
 - **body** <font color='#7d8793'>VerifyBankCardPayoutEligibilityResponse</font> <font color='#f19938'>Optional</font>  
   - Card verification result details.  
-  - Example value: *N/A*  
 
   - **cardPayoutsType** <font color='#7d8793'>CardPayoutsType</font> <font color='#f19938'>Required</font>  
     - Indicates the payout capability of the verified card.  
     - Example value: `STANDARD`  
 
-  - **CardPayoutsType Values**  
+    **CardPayoutsType Values**  
     - UNKNOWN: Card payout capability cannot be determined  
     - NOT_SUPPORTED: Card does not support payout operations  
     - FAST_FUNDS: Card supports expedited payout processing  
