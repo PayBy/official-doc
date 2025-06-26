@@ -79,30 +79,31 @@ Try making a request call to verify whether your configuration is successful. If
 When sending a request to PayBy, the request content includes HTTP Header and HTTP Body. In most requests, the HTTP Header should be formatted as follows:
 
 - **Content-Language** <span style={{color:" #7d8793"}}>String</span>  
-  The language for the response message. Currently, only English is supported.  
-  Example value: <span style={{color:"#7d8793"}}>en</span>  
-  Maximum length: <code>10</code>
+  - The language for the response message. Currently, only English is supported.  
+  - Example value: <span style={{color:"#7d8793"}}>en</span>  
+  - Maximum length: <code>10</code>
 
 - **Content-Type** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>  
-  The media type. Required for operations with a request body.  
-  The value is <span style={{color:"#7d8793"}}>`application/json`</span>.  
-  Example value: <span style={{color:"#7d8793"}}>application/json</span>
+  - The media type. Required for operations with a request body.  
+  - The value is <span style={{color:"#7d8793"}}>`application/json`</span>.  
+  - Example value: <span style={{color:"#7d8793"}}>application/json</span>
 
 - **sign** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>  
-  Sign requests using private-key cryptography.  
-  This allows the payment gateway to verify that an incoming request is from your application.
+  - Sign requests using private-key cryptography.  
+  - This allows the payment gateway to verify that an incoming request is from your application.
 
 - **Partner-Id** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>  
-  The merchant ID of your account.  
-  Example value: <span style={{color:"#7d8793"}}>200001200101</span>  
-  Maximum length: <code>12</code>
+  - The merchant ID of your account.  
+  - Example value: <span style={{color:"#7d8793"}}>200001200101</span>  
+  - Maximum length: <code>12</code>
 
 ### Response Header Format
 
 When PayBy sends a response, the response content includes HTTP Header and HTTP Body. In most responses, the HTTP Header should be formatted as follows:
 
-**sign** (String, Required)
-When PayBy sends a response, PayBy uses its private key to sign the message, and the merchant uses PayBy's public key to verify the signature. Successful verification confirms that the response was sent by PayBy and not forged by others.
+- **sign** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>  
+
+  When PayBy sends a response, it uses its private key to sign the message. The merchant uses PayBy's public key to verify the signature. Successful verification confirms that the response was sent by PayBy and not forged by others.
 
 ### Response Body Header Format
 
@@ -115,14 +116,15 @@ When PayBy sends a response, the response content includes HTTP Header and HTTP 
   - <span style={{color:"#7d8793"}}>`ERROR`</span> – Application error. The signature verification failed. Check whether the private key used for the signature and the public key uploaded on the PayBy portal are a key pair
 
 - **code** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>  
-  Response codes. View the <a href="/docs/response-code">Response Code</a> section to see all possible results.  
-  Example value: <span style={{color:"#7d8793"}}>0</span>
+
+  - Response codes. View the <a href="/docs/response-code">Response Code</a> section to see all possible results.  
+  - Example value: <span style={{color:"#7d8793"}}>0</span>
 
 - **msg** <span style={{color:" #7d8793"}}>String</span>  
-  Description of this code. View the <a href="/docs/response-code">Response Code</a> section to see all possible results.
+  - Description of this code. View the <a href="/docs/response-code">Response Code</a> section to see all possible results.
 
 - **traceCode** <span style={{color:" #7d8793"}}>String</span>  
-  Internal PayBy identifier used to locate errors.
+  - Internal PayBy identifier used to locate errors.
 
 ## Build Your Integration
 
