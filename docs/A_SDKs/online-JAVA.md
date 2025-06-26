@@ -5,7 +5,7 @@ toc_max_heading_level: 6
 
 # Online Payment SDK - Java
 
-## Description
+## Overview
 
 This guide is written for application developers who want to integrate the PayBy payment solution.
 
