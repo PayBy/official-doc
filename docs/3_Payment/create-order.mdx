@@ -127,21 +127,14 @@ The attributes are:
 
 - **merchantOrderNo** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
 
-  The merchant's reference number of the request. Used to track every request.
-
-  Example value: M965739182419
-
-  Maximum length: `64`
-
+  - The merchant's reference number of the request. Used to track every request.
+  - Example value: M965739182419
+  - Maximum length: `64`
 
 - **subject** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>
-
-  Description of this order.
-
-  Example value: iPhone
-
-  Maximum length: `12`
-
+  - Description of this order.
+  - Example value: iPhone
+  - Maximum length: `12`
 
 - **totalAmount** <span style={{color:" #7d8793"}}>Money</span> <span style={{color:"#f19938"}}>Required</span>
 
@@ -208,10 +201,9 @@ The attributes are:
   
     `PHONE_NO`. Transfer through mobile phone number.
   
-    `MEMBER_ID`. Transfer through PayBy member id.
+    `MEMBER_ID`. Transfer through PayBy member id.  
   
-  
-    Maximum length: `20`
+     Maximum length: `20`
   
   
   - **sharingIdentity**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
@@ -237,63 +229,49 @@ The attributes are:
     
   - **withholdAndRemitFee**   <font color = ' #7d8793'>Boolean</font>    
   
-    Whether this sharing account pay the PayBy transaction fee. If `true`, the final amount this sharing account received is : `[**sharingAmount** - PayBy transaction fee]`.
+    Whether this sharing account pay the PayBy transaction fee. If `true`, the final amount this sharing account received is : 
+    `[**sharingAmount** - PayBy transaction fee]`.
   
     > **Note:**
     
     - If there are multiple sharing accounts in this order request, at most one can pass `true` in this parameter, otherwise the request will fail.
     - If this parameter is used, when a refund is initiated, only the proportional refund can be made, and the refund amount of each sharing account cannot be specified.
     
+
+**promotionInfoList** <span style={{color:" #7d8793"}}>List</span>  
+- A list of promotion information.  
+- The attributes in the list are:
+
+  - **appliedRewardId** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>  
+    - Identifier for the applied coupon.  
+    - Maximum length: <code>64</code>
+
+  - **settleFlag** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>  
+    - Indicates whether the transaction should be settled.  
+    - Maximum length: <code>32</code>  
+    - Examples: <span style={{color:"#7d8793"}}>YES</span>, <span style={{color:"#7d8793"}}>NO</span>
+
+- **notifyUrl** <span style={{color:" #7d8793"}}>String</span>  
+  - To receive asynchronous notifications of order status updates, you can pass the notify URL.  
+  - Example value: <span style={{color:"#7d8793"}}>https://www.yoursite.com</span>  
+  - Maximum length: <code>200</code>
+
+- **secondaryMerchantId** <span style={{color:" #7d8793"}}>String</span>  
+  - If you are a platform and the transaction was made at a merchant under your platform, you can use this parameter to allocate the funds collected.     
+  - The secondary merchant ID represents the merchant's member ID on your platform.  
+  - Maximum length: <code>200</code>
+
+  > **Note:** *To learn more about this feature please contact PayBy. *
+
+- **deviceId** <span style={{color:" #7d8793"}}>String</span>  
   
-- **promotionInfoList** <span style={{color:" #7d8793"}}>List</span>
+  - If the transaction was made on a terminal or virtual device, the device id can be passed for transaction data statistics. Note that this parameter must be passed if you are using the secondary merchant function, this parameter must be passed. 
+  - Maximum length: <code>200</code>
 
-  A list of promotion information.
-
-  The attributes in the list are:
-
-    - **appliedRewardId**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
+- **accessoryContent**  
   
-      Identifier for the applied coupon.
-
-      Maximum length: `64`
-  
-
-    - **settleFlag**   <font color = ' #7d8793'>String</font>    <font color = '#f19938'>Required</font>
-  
-      Indicates whether the transaction should be settled.
-
-      Maximum length: `32`
-
-      Examples: YES, NO
-  
-
-- **notifyUrl** <span style={{color:" #7d8793"}}>String</span>
-
-  To receive asynchronous notifications of order status updates, you can pass the notify URL.
-
-  Example value: https://www.yoursite.com
-
-  Maximum length: `200`
-
-
-- **secondaryMerchantId** <span style={{color:" #7d8793"}}>String</span>
-
-  If you are a platform and the transaction was made at a merchant under your platform, you can use this parameter to allocate the funds collected. To learn more about this feature please contact PayBy. The secondary merchant id represents the merchant's member id on your platform.
-
-  Maximum length: `200`
-
-
-- **deviceId** <span style={{color:" #7d8793"}}>String</span>
-
-  If the transaction wad made on a terminal or virtual device, the device id can be passed for transaction data statistics.
-  Note that this parameter must be passed if you are using the secondary merchant function, this parameter must be passed.
-
-  Maximum length: `200`
-
-
-- **accessoryContent**
-
   This can be useful for storing additional information about the order.
+
   
   <details>
     <summary>Attributes</summary>
