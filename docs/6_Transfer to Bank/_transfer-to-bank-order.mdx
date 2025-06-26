@@ -17,11 +17,11 @@
 
 - **status** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
   - Current status of the order.  
-  - Example value: `-`
 
 - **paymentInfo** <font color='#7d8793'>TransferToBankPaymentInfo</font>  
   - Detailed information about the payment processing, especially related to fees and timing.  
   - Example value:
+    
     ```json
     {
       "arrivalTime": 1585133416000,
@@ -34,55 +34,43 @@
 
   - **payerFeeAmount** <font color='#7d8793'>Money</font>  
     - The fee charged to the sender (payer), including amount and currency.  
-    - Example value: `-`
-
+  
   - **arrivalTime** <font color='#7d8793'>Timestamp (milliseconds, 3-digit precision)</font>  
     - Timestamp when the funds were expected to arrive or did arrive.  
     - Example value: `1585133416000`
 
 - **amount** <font color='#7d8793'>Money</font> <font color='#f19938'>Required</font>  
   - Transaction amount.  
-  - Example value: *(empty)*
 
 - **holderName** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
   - SHA-256 hash of the original name.  
-  - Example value: *(empty)*
 
 - **Iban** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
   - SHA-256 hash of the original IBAN.  
-  - Example value: *(empty)*
 
 - **swiftCode** <font color='#7d8793'>String</font>  
   - SWIFT code of the beneficiary bank.  
-  - Example value: *(empty)*
 
 - **memo** <font color='#7d8793'>String</font>  
   - Remarks or notes for the payment.  
-  - Example value: *(empty)*
 
 - **notifyUrl** <font color='#7d8793'>String</font>  
   - URL for backend notifications.  
-  - Example value: *(empty)*
 
 - **failDes** <font color='#7d8793'>String</font>  
   - Reason for order failure.  
-  - Example value: `-`
 
 - **beneficiaryAddress** <font color='#7d8793'>String</font>  
   - SHA-256 hash of the original address.  
-  - Example value: *(empty)*
 
 - **bankReference** <font color='#7d8793'>String</font>  
   - Reference number associated with the bank.  
-  - Example value: *(empty)*
 
 - **fundoutAmount** <font color='#7d8793'>Money</font>  
   - Amount credited to the beneficiary.  
-  - Example value: *(empty)*
 
 - **rate** <font color='#7d8793'>BigDecimal</font>  
   - Exchange rate used for the transaction.  
-  - Example value: *(empty)*
 
 - **networkCode** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
   - Financial network used.  
@@ -90,23 +78,18 @@
 
 - **countryCode** <font color='#7d8793'>String</font>  
   - Country code of the beneficiary bank.  
-  - Example value: `-`
 
 - **bankName** <font color='#7d8793'>String</font>  
   - Name of the beneficiary bank.  
-  - Example value: `-`
 
 - **fedwireCode** <font color='#7d8793'>String</font>  
   - Fedwire account code.  
-  - Example value: `-`
 
 - **intermediaryBank** <font color='#7d8793'>String</font>  
   - SWIFT code of the intermediary bank.  
-  - Example value: `-`
 
 - **branchName** <font color='#7d8793'>String</font>  
   - Name of the bank branch.  
-  - Example value: *(empty)*
 
 - **beneficiaryType** <font color='#7d8793'>String</font> <font color='#f19938'>Required</font>  
   - Type of beneficiary account.  
