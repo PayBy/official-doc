@@ -78,22 +78,24 @@ Try making a request call to verify whether your configuration is successful. If
 
 When sending a request to PayBy, the request content includes HTTP Header and HTTP Body. In most requests, the HTTP Header should be formatted as follows:
 
-**Content-Language** (String)
-The language for the response message. Currently, only English is supported.
-Example value: en
-Maximum length: 10
+- **Content-Language** <span style={{color:" #7d8793"}}>String</span>  
+  The language for the response message. Currently, only English is supported.  
+  Example value: <span style={{color:"#7d8793"}}>en</span>  
+  Maximum length: <code>10</code>
 
-**Content-Type** (String, Required)
-The media type. Required for operations with a request body. The value is `application/json`.
-Example value: application/json
+- **Content-Type** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>  
+  The media type. Required for operations with a request body.  
+  The value is <span style={{color:"#7d8793"}}>`application/json`</span>.  
+  Example value: <span style={{color:"#7d8793"}}>application/json</span>
 
-**sign** (String, Required)
-Sign requests using private-key cryptography. This allows the payment gateway to verify that an incoming request is from your application.
+- **sign** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>  
+  Sign requests using private-key cryptography.  
+  This allows the payment gateway to verify that an incoming request is from your application.
 
-**Partner-Id** (String, Required)
-The merchant ID of your account.
-Example value: 200001200101
-Maximum length: 12
+- **Partner-Id** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>  
+  The merchant ID of your account.  
+  Example value: <span style={{color:"#7d8793"}}>200001200101</span>  
+  Maximum length: <code>12</code>
 
 ### Response Header Format
 
@@ -106,21 +108,21 @@ When PayBy sends a response, PayBy uses its private key to sign the message, and
 
 When PayBy sends a response, the response content includes HTTP Header and HTTP Body. The HTTP Body consists of head and body sections. In most responses, the body should be formatted as follows:
 
-**applyStatus** (Enum, Required)
-The result of the request. Possible values are:
-- `SUCCESS` - Application successful
-- `FAIL` - Application failed. Check the `code` and `msg` for the exact reason
-- `ERROR` - Application error. The signature verification failed. Check whether the private key used for the signature and the public key uploaded on the PayBy portal are a key pair
+- **applyStatus** <span style={{color:" #7d8793"}}>Enum</span> <span style={{color:"#f19938"}}>Required</span>  
+  The result of the request. Possible values are:  
+  - <span style={{color:"#7d8793"}}>`SUCCESS`</span> – Application successful  
+  - <span style={{color:"#7d8793"}}>`FAIL`</span> – Application failed. Check the <code>code</code> and <code>msg</code> for the exact reason  
+  - <span style={{color:"#7d8793"}}>`ERROR`</span> – Application error. The signature verification failed. Check whether the private key used for the signature and the public key uploaded on the PayBy portal are a key pair
 
-**code** (String, Required)
-Response codes. View the [Response Code](/docs/response-code) section to see all possible results.
-Example value: 0
+- **code** <span style={{color:" #7d8793"}}>String</span> <span style={{color:"#f19938"}}>Required</span>  
+  Response codes. View the <a href="/docs/response-code">Response Code</a> section to see all possible results.  
+  Example value: <span style={{color:"#7d8793"}}>0</span>
 
-**msg** (String)
-Description of this code. View the [Response Code](/docs/response-code) section to see all possible results.
+- **msg** <span style={{color:" #7d8793"}}>String</span>  
+  Description of this code. View the <a href="/docs/response-code">Response Code</a> section to see all possible results.
 
-**traceCode** (String)
-Internal PayBy identifier used to locate errors.
+- **traceCode** <span style={{color:" #7d8793"}}>String</span>  
+  Internal PayBy identifier used to locate errors.
 
 ## Build Your Integration
 
