@@ -13,7 +13,6 @@ When a VAM top-up occurs, PayBy will send relevant top-up information to the mer
  **<font color = '#f19938'>Note</font>**
 
   1. The same notification may be sent to the merchant system multiple times. The merchant system must be able to correctly handle duplicate notifications.
-
   2. During backend notification interactions, if PayBy receives a response from the merchant that does not conform to specifications or times out, PayBy will determine this notification as failed and resend the notification until successful (default retry 7 times with intervals: 2, 10, 10, 60, 120, 360, 900 minutes). However, PayBy does not guarantee that notifications will ultimately succeed.
   3. In cases where the order status is unclear or no PayBy payment result notification is received, it is recommended that merchants actively call the order query interface to confirm the order status.
 
@@ -54,7 +53,7 @@ When a VAM top-up occurs, PayBy will send relevant top-up information to the mer
   Example value: 202004140007474501
 
 
-- **VAMDepositOrder**   <font color = ' #7d8793'>Object</font>
+- **vamDepositOrder**   <font color = ' #7d8793'>Object</font>
 
   <details open={true}>
   <summary>Attributes</summary>
