@@ -35,13 +35,13 @@ toc_max_heading_level: 6
 
 **QueryRefundOrderPageSgsRequest**
 
-| Variable Desc.       | Variable name     | Required | Type          | Example value                               | Description                                           |
-| -------------------- | ----------------- | -------- | ------------- | ------------------------------------------- | ----------------------------------------------------- |
-| Start Date           | startDate         | Required | String(10)    | 2022-07-22                                  | Query start date in YYYY-MM-DD format                 |
-| End Date             | endDate           | Required | String(10)    | 2022-07-22                                  | Query end date in YYYY-MM-DD format                   |
-| Device ID List       | deviceIdList      | Optional | List(String)  | []                                          | Filter by specific device IDs (empty for all devices) |
-| Include Status List  | includeStatusList | Optional | List(String)  | CREATED、REFUNDED_SETTLED、SUCCESS、FAILURE | Filter by refund order status (empty for all statuses) |
-| Sort Page Parameters | sortPageParam     | Required | SortPageParam | -                                           | Pagination and sorting configuration                  |
+| Variable Desc.       | Variable name     | Required | Type          | Example value                            | Description                                            |
+| -------------------- | ----------------- | -------- | ------------- | ---------------------------------------- | ------------------------------------------------------ |
+| Start Date           | startDate         | Required | String(10)    | 2022-07-22                               | Query start date in YYYY-MM-DD format                  |
+| End Date             | endDate           | Required | String(10)    | 2022-07-22                               | Query end date in YYYY-MM-DD format                    |
+| Device ID List       | deviceIdList      | Optional | List(String)  | []                                       | Filter by specific device IDs (empty for all devices)  |
+| Include Status List  | includeStatusList | Optional | List(String)  | CREATED,REFUNDED_SETTLED,SUCCESS,FAILURE | Filter by refund order status (empty for all statuses) |
+| Sort Page Parameters | sortPageParam     | Required | SortPageParam | -                                        | Pagination and sorting configuration                   |
 
 ---
 
