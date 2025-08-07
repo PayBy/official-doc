@@ -92,7 +92,7 @@ The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and 
 | Variable Desc. | Variable name | Required | Type                              | Example value | Description                  |
 | -------------- | ------------- | -------- | --------------------------------- | ------------- | ---------------------------- |
 | Response head  | head          | Required | ResponseHeader                    | -             | Response status and metadata |
-| Response body  | body          | Optional | Pagination<RefundOrderListResult> | -             | Paginated refund order data  |
+| Response body  | body          | Optional | Pagination(RefundOrderListResult) | -             | Paginated refund order data  |
 
 ---
 
@@ -102,7 +102,7 @@ The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and 
 | -------------- | ------------- | -------- | --------------------------- | ------------- | ------------------------------- |
 | Total Elements | totalElements | Required | Int                         | 8             | Total number of records found   |
 | Total Pages    | totalPages    | Required | Int                         | 1             | Total number of pages available |
-| Items          | items         | Required | List<RefundOrderListResult> | -             | Array of refund order records   |
+| Items          | items         | Required | List(RefundOrderListResult) | -             | Array of refund order records   |
 
 ---
 

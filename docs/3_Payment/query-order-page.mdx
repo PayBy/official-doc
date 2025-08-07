@@ -95,7 +95,7 @@ The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and 
 | Variable Desc. | Variable name | Required | Type                                | Example value | Description                  |
 | -------------- | ------------- | -------- | ----------------------------------- | ------------- | ---------------------------- |
 | Response head  | head          | Required | ResponseHeader                      |               | Response status and metadata |
-| Response body  | body          | Optional | Pagination<Acquire2OrderListResult> |               | Paginated order data         |
+| Response body  | body          | Optional | Pagination(Acquire2OrderListResult) |               | Paginated order data         |
 
 ---
 
@@ -105,7 +105,7 @@ The body in the HTTP Body are returned only when `applyStatus` is `SUCCESS` and 
 | -------------- | ------------- | -------- | ----------------------------- | ------------- | ------------------------------- |
 | Total Elements | totalElements | Required | Int                           | 6             | Total number of records found   |
 | Total Pages    | totalPages    | Required | Int                           | 1             | Total number of pages available |
-| Items          | items         | Required | List<Acquire2OrderListResult> |               | Array of order records          |
+| Items          | items         | Required | List(Acquire2OrderListResult) |               | Array of order records          |
 
 ---
 
