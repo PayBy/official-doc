@@ -42,8 +42,8 @@ import AcquireOrderPayer from './_acquire-order-payer.mdx'
 | -------------------- | ----------------- | -------- | ------------- | --------------------------------------- | ----------------------------------------------------- |
 | Start Date           | startDate         | Required | String(10)    | 2022-07-22                              | Query start date in YYYY-MM-DD format                 |
 | End Date             | endDate           | Required | String(10)    | 2022-07-22                              | Query end date in YYYY-MM-DD format                   |
-| Device ID List       | deviceIdList      | Optional | List<String>  | []                                      | Filter by specific device IDs (empty for all devices) |
-| Include Status List  | includeStatusList | Optional | List<String>  | CREATED、PAID_SUCCESS、SETTLED、FAILURE | Filter by order status (empty for all statuses)       |
+| Device ID List       | deviceIdList      | Optional | List(String)  | []                                      | Filter by specific device IDs (empty for all devices) |
+| Include Status List  | includeStatusList | Optional | List(String)  | CREATED、PAID_SUCCESS、SETTLED、FAILURE | Filter by order status (empty for all statuses)       |
 | Sort Page Parameters | sortPageParam     | Required | SortPageParam | -                                       | Pagination and sorting configuration                  |
 
 ---
